@@ -1,70 +1,81 @@
 <div align="center">
-  <a href="https://cvcraft.app">
-    <img src="public/opengraph/banner.jpg" alt="CVCraft" />
-  </a>
+  <img src="public/logo/CVCraft_logo.png" alt="CVCraft Logo" width="200" />
 
   <h1>CVCraft</h1>
 
-  <p>CVCraft is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.</p>
+  <p><strong>A Free, Open-Source Resume Builder Built with Passion</strong></p>
+
+  <p>Create professional resumes in minutes. No ads, no tracking, no hidden costs—just a powerful tool that works for you.</p>
 
   <p>
-    <a href="https://rxresu.me"><strong>Get Started</strong></a>
+    <a href="https://cvcraft.app"><strong>Try CVCraft</strong></a>
     ·
-    <a href="https://docs.rxresu.me"><strong>Learn More</strong></a>
+    <a href="#features"><strong>Features</strong></a>
+    ·
+    <a href="#quick-start"><strong>Quick Start</strong></a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/package-json/v/amruthpillai/reactive-resume?style=flat-square" alt="Reactive Resume version">
-    <img src="https://img.shields.io/github/stars/amruthpillai/Reactive-Resume?style=flat-square" alt="GitHub Stars">
-    <img src="https://img.shields.io/github/license/amruthpillai/Reactive-Resume?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/docker/pulls/amruthpillai/reactive-resume?style=flat-square" alt="Docker Pulls" />
-    <a href="https://discord.gg/EE8yFqW4"><img src="https://img.shields.io/discord/1173518977851473940?style=flat-square&label=discord" alt="Discord" /></a>
-    <a href="https://crowdin.com/project/reactive-resume"><img src="https://badges.crowdin.net/reactive-resume/localized.svg?style=flat-square" alt="Crowdin" /></a>
-    <a href="https://github.com/sponsors/AmruthPillai"><img src="https://img.shields.io/github/sponsors/AmruthPillai?style=flat-square&label=sponsors" alt="Sponsors" /></a>
-    <a href="https://opencollective.com/reactive-resume"><img src="https://img.shields.io/opencollective/backers/reactive-resume?style=flat-square&label=donations" alt="Donations" /></a>
+    <img src="https://img.shields.io/badge/version-1.0.0.0-blue?style=flat-square" alt="Version">
+    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/made%20with-❤️-red?style=flat-square" alt="Made with Love" />
   </p>
 </div>
 
 ---
 
-CVCraft makes building resumes straightforward. Pick a template, fill in your details, and export to PDF—no account required for basic use. For those who want more control, the entire application can be self-hosted on your own infrastructure.
+## 🎯 Why CVCraft?
 
-Built with privacy as a core principle, CVCraft gives you complete ownership of your data. The codebase is fully open-source under the MIT license, with no tracking, no ads, and no hidden costs.
+CVCraft was built from the ground up with one mission: **to provide a powerful, free, and privacy-focused resume builder for everyone**. 
 
-## Features
+Unlike other resume builders that bombard you with ads, track your every move, or lock features behind paywalls, CVCraft is:
 
-**Resume Building**
+- ✅ **100% Free Forever** — No premium tiers, no subscriptions, no hidden costs
+- ✅ **Privacy-First** — Your data is yours. No tracking, no selling, no compromises
+- ✅ **Open Source** — Transparent code you can inspect, modify, and self-host
+- ✅ **No Ads** — Clean, distraction-free experience
+- ✅ **Feature-Complete** — Everything you need, nothing you don't
 
+## ✨ Features
+
+### 🎨 **Beautiful Templates**
+Choose from **12+ professionally designed templates** that look great on any device. Each template is fully customizable with:
+- Custom colors, fonts, and spacing
+- A4 and Letter page formats
+- Advanced CSS customization support
 - Real-time preview as you type
-- Multiple export formats (PDF, JSON)
-- Drag-and-drop section ordering
-- Custom sections for any content type
-- Rich text editor with formatting support
 
-**Templates**
+### 🚀 **Powerful Editor**
+- **Drag-and-drop** section ordering
+- **Rich text editor** with formatting support
+- **AI-powered content generation** (OpenAI, Google Gemini, Anthropic Claude)
+- **Custom sections** for any content type
+- **Real-time preview** — see changes instantly
 
-- Professionally designed templates
-- A4 and Letter size support
-- Customizable colors, fonts, and spacing
-- Custom CSS for advanced styling
+### 🔒 **Privacy & Security**
+- **Self-hosting ready** — Deploy on your own infrastructure with Docker
+- **Email 2FA** — Secure your account with two-factor authentication
+- **No tracking** — We don't collect analytics or sell your data
+- **Data ownership** — Export or delete your data anytime
 
-**Privacy & Control**
+### 🌍 **Global & Accessible**
+- **50+ languages** supported
+- **Dark mode** for comfortable editing
+- **Responsive design** — works on desktop, tablet, and mobile
+- **Keyboard shortcuts** for power users
 
-- Self-host on your own infrastructure
-- No tracking or analytics by default
-- Full data export at any time
-- Delete your data permanently with one click
+### 📤 **Export & Share**
+- **High-quality PDF export** — Perfect for printing or digital submission
+- **JSON export** — Compatible with JSON Resume format
+- **Public sharing** — Share your resume with a unique URL
+- **Password protection** — Secure your shared resumes
 
-**Extras**
+### 🛠️ **Developer-Friendly**
+- **REST API** — Programmatic access to your resumes
+- **Self-hosting** — Full control over your deployment
+- **Open source** — Contribute, customize, or learn from the code
 
-- AI integration (OpenAI, Google Gemini, Anthropic Claude)
-- Multi-language support
-- Share resumes via unique links
-- Import from JSON Resume format
-- Dark mode support
-- Passkey and two-factor authentication
-
-## Templates
+## 📸 Templates Showcase
 
 <table>
   <tr>
@@ -129,9 +140,12 @@ Built with privacy as a core principle, CVCraft gives you complete ownership of 
   </tr>
 </table>
 
-## Quick Start
+## 🚀 Quick Start
 
-The quickest way to run CVCraft locally:
+### Option 1: Use the Hosted Version
+Simply visit [cvcraft.app](https://cvcraft.app) and start building your resume immediately. No installation required!
+
+### Option 2: Run Locally
 
 ```bash
 # Clone the repository
@@ -139,95 +153,186 @@ git clone https://github.com/yourusername/cvcraft.git
 cd cvcraft
 
 # Install dependencies
+npm install
+# or
 pnpm install
 
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
 # Start development server
+npm run dev
+# or
 pnpm run dev
 
-# Access the app
-open http://localhost:3000
+# Open your browser
+# Navigate to http://localhost:3000
 ```
 
-For detailed setup instructions, environment configuration, and self-hosting guides, see the documentation.
+### Option 3: Self-Host with Docker
 
-## Tech Stack
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/cvcraft.git
+cd cvcraft
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your production settings
+
+# Start with Docker Compose
+docker-compose up -d
+
+# Access your instance
+# Navigate to http://your-domain.com
+```
+
+For detailed self-hosting instructions, see the [Self-Hosting Guide](#self-hosting).
+
+## 🏗️ Tech Stack
+
+CVCraft is built with modern, cutting-edge technologies:
 
 | Category         | Technology                           |
 | ---------------- | ------------------------------------ |
-| Framework        | TanStack Start (React 19, Vite)      |
-| Runtime          | Node.js                              |
-| Language         | TypeScript                           |
-| Database         | PostgreSQL with Drizzle ORM          |
-| API              | ORPC (Type-safe RPC)                 |
-| Auth             | Better Auth                          |
-| Styling          | Tailwind CSS                         |
-| UI Components    | Radix UI                             |
-| State Management | Zustand + TanStack Query             |
+| **Framework**    | TanStack Start (React 19, Vite)      |
+| **Runtime**      | Node.js                              |
+| **Language**     | TypeScript                           |
+| **Database**     | PostgreSQL with Drizzle ORM          |
+| **API**          | ORPC (Type-safe RPC)                 |
+| **Auth**         | Better Auth                          |
+| **Styling**      | Tailwind CSS                         |
+| **UI**           | Radix UI + Custom Components         |
+| **State**        | Zustand + TanStack Query             |
+| **PDF**          | Headless Chromium (Printer Service)  |
 
-## Documentation
+## 🐳 Self-Hosting
 
-Comprehensive guides for CVCraft:
+CVCraft is designed to be easily self-hosted. You'll need:
 
-| Guide                    | Description                       |
-| ------------------------ | --------------------------------- |
-| Getting Started          | First-time setup and basic usage  |
-| Self-Hosting             | Deploy on your own server         |
-| Development Setup        | Local development environment     |
-| Project Architecture     | Codebase structure and patterns   |
-| Exporting Your Resume    | PDF and JSON export options       |
-
-## Self-Hosting
-
-CVCraft can be self-hosted. The stack includes:
-
+### Requirements
 - **PostgreSQL** — Database for storing user data and resumes
-- **Printer** — Headless Chromium service for PDF and screenshot generation
-- **S3-compatible storage** (optional) — For file uploads
+- **Printer Service** — Headless Chromium for PDF generation
+- **S3-compatible storage** (optional) — For file uploads (e.g., AWS S3, MinIO)
 
-See the documentation for complete self-hosting instructions.
+### Docker Compose Setup
 
-## Support
+The easiest way to self-host is using Docker Compose:
 
-CVCraft is and always will be free and open-source. If it has helped you land a job or saved you time, please consider supporting continued development:
+```yaml
+version: '3.8'
 
-<p>
-  <a href="https://github.com/sponsors/AmruthPillai">
-    <img src="https://img.shields.io/badge/GitHub%20Sponsors-Support-ea4aaa?style=flat-square&logo=github-sponsors" alt="GitHub Sponsors" />
-  </a>
-  <a href="https://opencollective.com/reactive-resume">
-    <img src="https://img.shields.io/badge/Open%20Collective-Contribute-7FADF2?style=flat-square&logo=open-collective" alt="Open Collective" />
-  </a>
-</p>
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: cvcraft
+      POSTGRES_USER: cvcraft
+      POSTGRES_PASSWORD: your_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-Other ways to support:
+  cvcraft:
+    image: cvcraft/cvcraft:latest
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://cvcraft:your_password@postgres:5432/cvcraft
+      # Add other environment variables
+    depends_on:
+      - postgres
 
-- Star this repository
-- Report bugs and suggest features
-- Improve documentation
-- Help with translations
+  printer:
+    image: cvcraft/printer:latest
+    environment:
+      # Printer service configuration
 
-## Star History
+volumes:
+  postgres_data:
+```
 
-<a href="https://www.star-history.com/#amruthpillai/reactive-resume&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&legend=top-left" />
- </picture>
-</a>
+For complete self-hosting documentation, visit the [Self-Hosting Guide](docs/self-hosting).
 
-## Contributing
+## 📚 Documentation
 
-Contributions make open-source thrive. Whether fixing a typo or adding a feature, all contributions are welcome.
+| Topic                    | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| **Getting Started**      | First-time setup and basic usage               |
+| **Templates Guide**      | How to choose and customize templates          |
+| **AI Integration**       | Set up AI-powered content generation           |
+| **Self-Hosting**         | Deploy CVCraft on your own infrastructure      |
+| **API Documentation**    | Use the REST API for programmatic access       |
+| **Development Guide**    | Contribute to CVCraft development              |
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 🤝 Contributing
 
-See the documentation for detailed instructions on how to set up the project locally.
+CVCraft is open source, and contributions are welcome! Whether you're fixing a bug, adding a feature, or improving documentation, your help is appreciated.
 
-## License
+### How to Contribute
 
-[MIT](./LICENSE) — do whatever you want with it.
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Commit your changes**
+   ```bash
+   git commit -m 'Add amazing feature'
+   ```
+5. **Push to your branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+6. **Open a Pull Request**
+
+### Development Setup
+
+```bash
+# Install dependencies
+pnpm install
+
+# Set up environment
+cp .env.example .env
+
+# Run database migrations
+pnpm run db:migrate
+
+# Start development server
+pnpm run dev
+```
+
+## 💖 Support the Project
+
+CVCraft is **100% free** and will always remain that way. If it has helped you land a job or saved you time, consider supporting its continued development:
+
+- ⭐ **Star this repository** — It helps others discover CVCraft
+- 🐛 **Report bugs** — Help improve the app for everyone
+- 💡 **Suggest features** — Share your ideas for new functionality
+- 📖 **Improve documentation** — Make it easier for others to use
+- 🌍 **Help with translations** — Make CVCraft accessible to more people
+
+## 📄 License
+
+CVCraft is open source software licensed under the [MIT License](./LICENSE).
+
+You are free to:
+- ✅ Use it commercially
+- ✅ Modify it
+- ✅ Distribute it
+- ✅ Use it privately
+
+---
+
+<div align="center">
+  <p><strong>Made with ❤️ by Vincent Adam</strong></p>
+  <p>CVCraft v1.0.0.0</p>
+  <p>
+    <a href="https://cvcraft.app">Website</a>
+    ·
+    <a href="https://github.com/yourusername/cvcraft/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/yourusername/cvcraft/issues">Request Feature</a>
+  </p>
+</div>
