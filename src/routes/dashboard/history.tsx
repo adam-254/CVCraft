@@ -39,7 +39,18 @@ function RouteComponent() {
 	const navigate = useNavigate({ from: Route.fullPath });
 
 	const { data: allTags } = useQuery(orpc.resume.tags.list.queryOptions());
-	const { data: resumes } = useQuery(orpc.resume.list.queryOptions({ input: { tags, sort } }));
+	// Fetch resumes sorted by last updated for history view
+	const { data: allResumes } = useQuery(
+		orpc.resume.list.queryOptions({ input: { tags, sort: "lastUpdatedAt" } }),
+	);
+
+	// Filter to show only recently updated resumes (last 30 days)
+	const resumes = useMemo(() => {
+		if (!allResumes) return [];
+		const thirtyDaysAgo = new Date();
+		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+		return allResumes.filter((resume) => new Date(resume.updatedAt) >= thirtyDaysAgo);
+	}, [allResumes]);
 
 	const tagOptions = useMemo(() => {
 		if (!allTags) return [];
@@ -59,6 +70,7 @@ function RouteComponent() {
 	};
 
 	const resumeCount = resumes?.length ?? 0;
+	const totalCount = allResumes?.length ?? 0;
 
 	return (
 		<div className="relative space-y-6">
@@ -85,7 +97,12 @@ function RouteComponent() {
 						)}
 					</div>
 					<p className="text-base text-muted-foreground">
-						<Trans>View and manage all your created resumes</Trans>
+						<Trans>Recently updated resumes from the last 30 days</Trans>
+						{totalCount > resumeCount && (
+							<span className="ml-2 text-muted-foreground/70 text-xs">
+								({resumeCount} of {totalCount} resumes)
+							</span>
+						)}
 					</p>
 				</div>
 
@@ -180,10 +197,14 @@ function RouteComponent() {
 							<ClockCounterClockwiseIcon className="size-10 text-muted-foreground" />
 						</div>
 						<h3 className="mb-2 font-semibold text-lg">
-							<Trans>No resumes yet</Trans>
+							<Trans>No recent activity</Trans>
 						</h3>
 						<p className="text-muted-foreground text-sm">
-							<Trans>Create your first resume to see it here</Trans>
+							{totalCount > 0 ? (
+								<Trans>No resumes updated in the last 30 days</Trans>
+							) : (
+								<Trans>Create your first resume to see it here</Trans>
+							)}
 						</p>
 					</div>
 				</div>

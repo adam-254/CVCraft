@@ -162,16 +162,21 @@ export const setLocaleServerFn = createServerFn({ method: "POST" })
 		setCookie(storageKey, data);
 	});
 
-import { localeModules } from "./locale-loader";
+import { loadLocaleModule } from "./locale-loader";
 
 export const loadLocale = async (locale: string) => {
 	if (!isLocale(locale)) locale = defaultLocale;
-	const localeModule = localeModules[locale];
-	if (!localeModule) {
-		console.error(`Locale ${locale} not found, falling back to ${defaultLocale}`);
-		const fallbackModule = localeModules[defaultLocale];
-		i18n.loadAndActivate({ locale: defaultLocale, messages: fallbackModule.messages });
-		return;
+	
+	try {
+		const localeModule = await loadLocaleModule(locale);
+		i18n.loadAndActivate({ locale, messages: localeModule.messages });
+	} catch (error) {
+		console.error(`Locale ${locale} not found, falling back to ${defaultLocale}`, error);
+		try {
+			const fallbackModule = await loadLocaleModule(defaultLocale);
+			i18n.loadAndActivate({ locale: defaultLocale, messages: fallbackModule.messages });
+		} catch (fallbackError) {
+			console.error(`Failed to load fallback locale ${defaultLocale}`, fallbackError);
+		}
 	}
-	i18n.loadAndActivate({ locale, messages: localeModule.messages });
 };
