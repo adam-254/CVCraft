@@ -1,4 +1,5 @@
 // Locale modules map using require for CommonJS compatibility
+// Force rebuild - updated 2026-02-08
 export const localeModules: Record<string, { messages: any }> = {
   'af-ZA': require('../../locales/af-ZA.js'),
   'am-ET': require('../../locales/am-ET.js'),
