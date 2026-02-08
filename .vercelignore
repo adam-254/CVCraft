@@ -1,0 +1,7 @@
+node_modules
+.git
+pglite-data
+.tanstack
+*.log
+.env
+.env.local

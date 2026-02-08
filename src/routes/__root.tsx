@@ -18,7 +18,7 @@ import { getSession } from "@/integrations/auth/functions";
 import type { AuthSession } from "@/integrations/auth/types";
 import { client, type orpc } from "@/integrations/orpc/client";
 import type { FeatureFlags } from "@/integrations/orpc/services/flags";
-import { getLocale, isRTL, type Locale, loadLocale } from "@/utils/locale";
+import { getLocale, isRTL, type Locale } from "@/utils/locale";
 import { getTheme, type Theme } from "@/utils/theme";
 import appCss from "../styles/globals.css?url";
 
@@ -36,8 +36,6 @@ const tagline = "A free and open-source resume builder";
 const title = `${appName} — ${tagline}`;
 const description =
 	"CVCraft is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.";
-
-await loadLocale(await getLocale());
 
 export const Route = createRootRouteWithContext<RouterContext>()({
 	shellComponent: RootDocument,
@@ -91,6 +89,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 			getSession(),
 			client.flags.get(),
 		]);
+
+		// Load locale translations
+		await loadLocale(locale);
 
 		return { theme, locale, session, flags };
 	},
