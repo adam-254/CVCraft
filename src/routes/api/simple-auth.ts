@@ -96,7 +96,10 @@ async function handleSignup(data: any) {
     updated_at: new Date().toISOString(),
   });
 
-  return Response.json({ success: true, token, userId });
+  // Set cookie
+  const response = Response.json({ success: true, token, userId });
+  response.headers.set('Set-Cookie', `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax`);
+  return response;
 }
 
 async function handleSignin(data: any) {
@@ -145,7 +148,10 @@ async function handleSignin(data: any) {
     updated_at: new Date().toISOString(),
   });
 
-  return Response.json({ success: true, token, user });
+  // Set cookie
+  const response = Response.json({ success: true, token, user });
+  response.headers.set('Set-Cookie', `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax`);
+  return response;
 }
 
 async function handleForgotPassword(data: any) {
@@ -277,7 +283,10 @@ async function handleSignout(data: any) {
 
   await supabase.from('session').delete().eq('token', token);
 
-  return Response.json({ success: true });
+  // Clear cookie
+  const response = Response.json({ success: true });
+  response.headers.set('Set-Cookie', `cvcraft_auth_token=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`);
+  return response;
 }
 
 export const Route = createFileRoute('/api/simple-auth')({

@@ -3,6 +3,8 @@
  * Replaces better-auth client with direct API calls to Supabase
  */
 
+import Cookies from 'js-cookie';
+
 const AUTH_TOKEN_KEY = 'cvcraft_auth_token';
 
 export const simpleAuthClient = {
@@ -11,6 +13,7 @@ export const simpleAuthClient = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'signup', ...data }),
+      credentials: 'include',
     });
 
     const result = await response.json();
@@ -19,9 +22,9 @@ export const simpleAuthClient = {
       throw new Error(result.error || 'Signup failed');
     }
 
-    // Store token in localStorage
+    // Store token in cookie
     if (result.token) {
-      localStorage.setItem(AUTH_TOKEN_KEY, result.token);
+      Cookies.set(AUTH_TOKEN_KEY, result.token, { expires: 30, sameSite: 'lax' });
     }
 
     return result;
@@ -32,6 +35,7 @@ export const simpleAuthClient = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'signin', ...data }),
+      credentials: 'include',
     });
 
     const result = await response.json();
@@ -40,26 +44,27 @@ export const simpleAuthClient = {
       throw new Error(result.error || 'Sign in failed');
     }
 
-    // Store token in localStorage
+    // Store token in cookie
     if (result.token) {
-      localStorage.setItem(AUTH_TOKEN_KEY, result.token);
+      Cookies.set(AUTH_TOKEN_KEY, result.token, { expires: 30, sameSite: 'lax' });
     }
 
     return result;
   },
 
   async signOut() {
-    const token = localStorage.getItem(AUTH_TOKEN_KEY);
+    const token = Cookies.get(AUTH_TOKEN_KEY);
     
     if (token) {
       await fetch('/api/simple-auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'signout', token }),
+        credentials: 'include',
       });
     }
 
-    localStorage.removeItem(AUTH_TOKEN_KEY);
+    Cookies.remove(AUTH_TOKEN_KEY);
   },
 
   async forgotPassword(email: string) {
@@ -67,6 +72,7 @@ export const simpleAuthClient = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'forgot-password', email }),
+      credentials: 'include',
     });
 
     const result = await response.json();
@@ -83,6 +89,7 @@ export const simpleAuthClient = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'reset-password', token, password }),
+      credentials: 'include',
     });
 
     const result = await response.json();
@@ -95,7 +102,7 @@ export const simpleAuthClient = {
   },
 
   async getSession() {
-    const token = localStorage.getItem(AUTH_TOKEN_KEY);
+    const token = Cookies.get(AUTH_TOKEN_KEY);
     
     if (!token) {
       return { session: null };
@@ -105,12 +112,13 @@ export const simpleAuthClient = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'get-session', token }),
+      credentials: 'include',
     });
 
     const result = await response.json();
     
     if (!response.ok) {
-      localStorage.removeItem(AUTH_TOKEN_KEY);
+      Cookies.remove(AUTH_TOKEN_KEY);
       return { session: null };
     }
 
@@ -118,6 +126,6 @@ export const simpleAuthClient = {
   },
 
   getToken() {
-    return localStorage.getItem(AUTH_TOKEN_KEY);
+    return Cookies.get(AUTH_TOKEN_KEY);
   },
 };
