@@ -1,10 +1,27 @@
 import z from "zod";
-import type { auth } from "./config";
 
 export type AuthSession = {
-	session: typeof auth.$Infer.Session.session;
-	user: typeof auth.$Infer.Session.user & {
+	session: {
+		id: string;
+		userId: string;
+		token: string;
+		expiresAt: Date;
+		ipAddress?: string;
+		userAgent?: string;
+		createdAt: Date;
+		updatedAt: Date;
+	};
+	user: {
+		id: string;
 		name: string;
+		email: string;
+		username: string;
+		displayUsername: string;
+		emailVerified: boolean;
+		image?: string;
+		twoFactorEnabled: boolean;
+		createdAt: Date;
+		updatedAt: Date;
 	};
 };
 

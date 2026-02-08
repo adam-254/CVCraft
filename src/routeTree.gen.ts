@@ -25,6 +25,7 @@ import { Route as AuthResetPasswordRouteImport } from "./routes/auth/reset-passw
 import { Route as AuthRegisterRouteImport } from "./routes/auth/register";
 import { Route as AuthLoginRouteImport } from "./routes/auth/login";
 import { Route as AuthForgotPasswordRouteImport } from "./routes/auth/forgot-password";
+import { Route as ApiSimpleAuthRouteImport } from "./routes/api/simple-auth";
 import { Route as ApiHealthRouteImport } from "./routes/api/health";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
@@ -120,6 +121,11 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   path: "/forgot-password",
   getParentRoute: () => AuthRouteRoute,
 } as any);
+const ApiSimpleAuthRoute = ApiSimpleAuthRouteImport.update({
+  id: "/api/simple-auth",
+  path: "/api/simple-auth",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const ApiHealthRoute = ApiHealthRouteImport.update({
   id: "/api/health",
   path: "/api/health",
@@ -209,6 +215,7 @@ export interface FileRoutesByFullPath {
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/api/health": typeof ApiHealthRoute;
+  "/api/simple-auth": typeof ApiSimpleAuthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
   "/auth/register": typeof AuthRegisterRoute;
@@ -237,6 +244,7 @@ export interface FileRoutesByTo {
   "/schema.json": typeof SchemaDotjsonRoute;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/api/health": typeof ApiHealthRoute;
+  "/api/simple-auth": typeof ApiSimpleAuthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
   "/auth/register": typeof AuthRegisterRoute;
@@ -271,6 +279,7 @@ export interface FileRoutesById {
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/api/health": typeof ApiHealthRoute;
+  "/api/simple-auth": typeof ApiSimpleAuthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
   "/auth/register": typeof AuthRegisterRoute;
@@ -306,6 +315,7 @@ export interface FileRouteTypes {
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/api/health"
+    | "/api/simple-auth"
     | "/auth/forgot-password"
     | "/auth/login"
     | "/auth/register"
@@ -334,6 +344,7 @@ export interface FileRouteTypes {
     | "/schema.json"
     | "/$username/$slug"
     | "/api/health"
+    | "/api/simple-auth"
     | "/auth/forgot-password"
     | "/auth/login"
     | "/auth/register"
@@ -367,6 +378,7 @@ export interface FileRouteTypes {
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/api/health"
+    | "/api/simple-auth"
     | "/auth/forgot-password"
     | "/auth/login"
     | "/auth/register"
@@ -401,6 +413,7 @@ export interface RootRouteChildren {
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
   ApiHealthRoute: typeof ApiHealthRoute;
+  ApiSimpleAuthRoute: typeof ApiSimpleAuthRoute;
   PrinterResumeIdRoute: typeof PrinterResumeIdRoute;
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute;
   ApiOpenapiSplatRoute: typeof ApiOpenapiSplatRoute;
@@ -521,6 +534,13 @@ declare module "@tanstack/react-router" {
       fullPath: "/auth/forgot-password";
       preLoaderRoute: typeof AuthForgotPasswordRouteImport;
       parentRoute: typeof AuthRouteRoute;
+    };
+    "/api/simple-auth": {
+      id: "/api/simple-auth";
+      path: "/api/simple-auth";
+      fullPath: "/api/simple-auth";
+      preLoaderRoute: typeof ApiSimpleAuthRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
     "/api/health": {
       id: "/api/health";
@@ -716,6 +736,7 @@ const rootRouteChildren: RootRouteChildren = {
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,
   ApiHealthRoute: ApiHealthRoute,
+  ApiSimpleAuthRoute: ApiSimpleAuthRoute,
   PrinterResumeIdRoute: PrinterResumeIdRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiOpenapiSplatRoute: ApiOpenapiSplatRoute,

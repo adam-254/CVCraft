@@ -12,7 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/integrations/auth/client";
+import { simpleAuthClient } from "@/integrations/auth/simple-client";
 import { SocialAuth } from "./-components/social-auth";
 
 export const Route = createFileRoute("/auth/register")({
@@ -59,22 +59,30 @@ function RouteComponent() {
 	const onSubmit = async (data: FormValues) => {
 		const toastId = toast.loading(t`Signing up...`);
 
-		const { error } = await authClient.signUp.email({
-			name: data.name,
-			email: data.email,
-			password: data.password,
-			username: data.username,
-			displayUsername: data.username,
-			callbackURL: "/dashboard",
-		});
+		try {
+			await simpleAuthClient.signUp({
+				name: data.name,
+				email: data.email,
+				password: data.password,
+				username: data.username,
+			});
 
-		if (error) {
-			toast.error(error.message, { id: toastId });
-			return;
+			setSubmitted(true);
+			toast.success(t`Account created successfully!`, { id: toastId });
+		} catch (error: any) {
+			// Enhanced error messages for better user experience
+			let errorMessage = error.message;
+			
+			if (error.message.includes("email") || error.message.includes("already exists")) {
+				errorMessage = t`This email is already registered. Please login or use a different email.`;
+				form.setError("email", { message: t`This email is already registered` });
+			} else if (error.message.includes("username")) {
+				errorMessage = t`This username is already taken. Please choose a different username.`;
+				form.setError("username", { message: t`This username is already taken` });
+			}
+			
+			toast.error(errorMessage, { id: toastId });
 		}
-
-		setSubmitted(true);
-		toast.dismiss(toastId);
 	};
 
 	if (submitted) return <PostSignupScreen />;

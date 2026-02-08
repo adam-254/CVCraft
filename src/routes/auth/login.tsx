@@ -3,7 +3,6 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { ArrowRightIcon, EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
-import type { BetterFetchOption } from "better-auth/client";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useToggle } from "usehooks-ts";
@@ -11,7 +10,7 @@ import z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/integrations/auth/client";
+import { simpleAuthClient } from "@/integrations/auth/simple-client";
 import { SocialAuth } from "./-components/social-auth";
 
 export const Route = createFileRoute("/auth/login")({
@@ -46,35 +45,29 @@ function RouteComponent() {
 	const onSubmit = async (data: FormValues) => {
 		const toastId = toast.loading(t`Signing in...`);
 
-		const fetchOptions: BetterFetchOption = {
-			onSuccess: (context) => {
-				if (context.data && "twoFactorRedirect" in context.data && context.data.twoFactorRedirect) {
-					toast.dismiss(toastId);
-					navigate({ to: "/auth/verify-2fa", replace: true });
-					return;
-				}
-
-				router.invalidate();
-				toast.dismiss(toastId);
-				navigate({ to: "/dashboard", replace: true });
-			},
-			onError: ({ error }) => {
-				toast.error(error.message, { id: toastId });
-			},
-		};
-
-		if (data.identifier.includes("@")) {
-			await authClient.signIn.email({
-				email: data.identifier,
+		try {
+			await simpleAuthClient.signIn({
+				identifier: data.identifier,
 				password: data.password,
-				fetchOptions,
 			});
-		} else {
-			await authClient.signIn.username({
-				username: data.identifier,
-				password: data.password,
-				fetchOptions,
-			});
+
+			router.invalidate();
+			toast.success(t`Welcome back!`, { id: toastId });
+			navigate({ to: "/dashboard", replace: true });
+		} catch (error: any) {
+			// Enhanced error messages for better user experience
+			let errorMessage = error.message;
+			
+			if (error.message.includes("Invalid") || error.message.includes("credentials")) {
+				errorMessage = t`Invalid email/username or password. Please check your credentials and try again.`;
+			} else if (error.message.includes("not found") || error.message.includes("does not exist")) {
+				errorMessage = t`No account found with these credentials. Please sign up first.`;
+			} else if (error.message.includes("password")) {
+				errorMessage = t`Incorrect password. Please try again or reset your password.`;
+			}
+			
+			toast.error(errorMessage, { id: toastId });
+			form.setError("password", { message: t`Invalid credentials` });
 		}
 	};
 

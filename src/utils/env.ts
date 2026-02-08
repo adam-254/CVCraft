@@ -17,8 +17,13 @@ export const env = createEnv({
 		// Printer
 		PRINTER_ENDPOINT: z.url({ protocol: /^(wss?|https?)$/ }),
 
-		// Database
-		DATABASE_URL: z.url({ protocol: /^(postgres(ql)?|pglite)$/ }),
+		// Database (optional - not needed when using Supabase client directly)
+		DATABASE_URL: z.string().optional(),
+		
+		// Supabase (when using Supabase adapter)
+		SUPABASE_URL: z.url({ protocol: /https?/ }).optional(),
+		VITE_SUPABASE_URL: z.url({ protocol: /https?/ }).optional(),
+		SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
 
 		// Authentication
 		AUTH_SECRET: z.string().min(1),

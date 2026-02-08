@@ -1,16 +1,14 @@
 import { createIsomorphicFn } from "@tanstack/react-start";
-import { getRequestHeaders } from "@tanstack/react-start/server";
-import { authClient } from "./client";
-import { auth } from "./config";
+import { simpleAuthClient } from "./simple-client";
 import type { AuthSession } from "./types";
 
 export const getSession = createIsomorphicFn()
 	.client(async (): Promise<AuthSession | null> => {
-		const { data, error } = await authClient.getSession();
-		if (error) return null;
-		return data;
+		const { session } = await simpleAuthClient.getSession();
+		return session;
 	})
 	.server(async (): Promise<AuthSession | null> => {
-		const result = await auth.api.getSession({ headers: getRequestHeaders() });
-		return result as AuthSession | null;
+		// For server-side, we'll need to implement cookie-based session
+		// For now, return null and rely on client-side session
+		return null;
 	});

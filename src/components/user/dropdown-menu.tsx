@@ -31,7 +31,7 @@ export function UserDropdownMenu({ children }: Props) {
 	const router = useRouter();
 	const { i18n } = useLingui();
 	const { theme, setTheme } = useTheme();
-	const { data: session } = authClient.useSession();
+	const { data: session, isLoading } = authClient.useSession();
 
 	function handleThemeChange(value: string) {
 		if (!isTheme(value)) return;
@@ -47,20 +47,18 @@ export function UserDropdownMenu({ children }: Props) {
 	function handleLogout() {
 		const toastId = toast.loading(t`Signing out...`);
 
-		authClient.signOut({
-			fetchOptions: {
-				onSuccess: () => {
-					toast.dismiss(toastId);
-					router.invalidate();
-				},
-				onError: ({ error }) => {
-					toast.error(error.message, { id: toastId });
-				},
-			},
-		});
+		authClient.signOut()
+			.then(() => {
+				toast.dismiss(toastId);
+				router.invalidate();
+			})
+			.catch((error) => {
+				toast.error(error.message, { id: toastId });
+			});
 	}
 
-	if (!session?.user) return null;
+	// Show loading state or return null if no session
+	if (isLoading || !session?.user) return null;
 
 	return (
 		<DropdownMenu>

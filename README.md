@@ -159,7 +159,12 @@ pnpm install
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your configuration
+# Edit .env with your Supabase and database configuration
+
+# Run database migrations
+npm run db:migrate
+# or
+pnpm run db:migrate
 
 # Start development server
 npm run dev
@@ -190,6 +195,37 @@ docker-compose up -d
 
 For detailed self-hosting instructions, see the [Self-Hosting Guide](#self-hosting).
 
+## 🔐 Authentication System
+
+CVCraft uses a robust authentication system powered by **Supabase Auth** with custom integration:
+
+### Features
+- **Email/Password Authentication** — Secure user registration and login
+- **Password Reset Flow** — Email-based password recovery
+- **Session Management** — Secure JWT-based sessions
+- **Two-Factor Authentication (2FA)** — Optional email-based 2FA for enhanced security
+- **Passkey Support** — Modern passwordless authentication
+- **Social Login** — Link GitHub, Google, and other OAuth providers
+
+### Architecture
+- **Supabase Auth** — Handles authentication and session management
+- **Custom Adapter** — Integrates Supabase with Drizzle ORM for seamless database operations
+- **Row-Level Security (RLS)** — PostgreSQL policies ensure users can only access their own data
+- **Secure Password Hashing** — Industry-standard bcrypt with salt rounds
+
+### Environment Setup
+To enable authentication, configure these environment variables:
+
+```env
+# Supabase Configuration
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Database
+DATABASE_URL=your_postgresql_connection_string
+```
+
 ## 🏗️ Tech Stack
 
 CVCraft is built with modern, cutting-edge technologies:
@@ -200,8 +236,8 @@ CVCraft is built with modern, cutting-edge technologies:
 | **Runtime**      | Node.js                              |
 | **Language**     | TypeScript                           |
 | **Database**     | PostgreSQL with Drizzle ORM          |
+| **Auth**         | Supabase Auth + Custom Adapter       |
 | **API**          | ORPC (Type-safe RPC)                 |
-| **Auth**         | Better Auth                          |
 | **Styling**      | Tailwind CSS                         |
 | **UI**           | Radix UI + Custom Components         |
 | **State**        | Zustand + TanStack Query             |
@@ -213,8 +249,31 @@ CVCraft is designed to be easily self-hosted. You'll need:
 
 ### Requirements
 - **PostgreSQL** — Database for storing user data and resumes
+- **Supabase** — Authentication and user management (or self-hosted Supabase)
 - **Printer Service** — Headless Chromium for PDF generation
 - **S3-compatible storage** (optional) — For file uploads (e.g., AWS S3, MinIO)
+
+### Environment Variables
+
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/cvcraft
+
+# Supabase Auth
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Optional: AI Integration
+OPENAI_API_KEY=your_openai_key
+GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_key
+ANTHROPIC_API_KEY=your_claude_key
+
+# Optional: Storage
+STORAGE_URL=your_s3_endpoint
+STORAGE_ACCESS_KEY=your_access_key
+STORAGE_SECRET_KEY=your_secret_key
+```
 
 ### Docker Compose Setup
 

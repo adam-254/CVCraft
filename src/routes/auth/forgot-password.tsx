@@ -10,7 +10,7 @@ import z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/integrations/auth/client";
+import { simpleAuthClient } from "@/integrations/auth/simple-client";
 
 export const Route = createFileRoute("/auth/forgot-password")({
 	component: RouteComponent,
@@ -38,18 +38,13 @@ function RouteComponent() {
 	const onSubmit = async (data: FormValues) => {
 		const toastId = toast.loading(t`Sending password reset email...`);
 
-		const { error } = await authClient.requestPasswordReset({
-			email: data.email,
-			redirectTo: "/auth/reset-password",
-		});
-
-		if (error) {
-			toast.error(error.message, { id: toastId });
-			return;
+		try {
+			await simpleAuthClient.forgotPassword(data.email);
+			setSubmitted(true);
+			toast.success(t`Password reset email sent!`, { id: toastId });
+		} catch (error: any) {
+			toast.error(error.message || t`Failed to send reset email`, { id: toastId });
 		}
-
-		setSubmitted(true);
-		toast.dismiss(toastId);
 	};
 
 	if (submitted) return <PostForgotPasswordScreen />;
