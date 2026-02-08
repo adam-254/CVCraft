@@ -1,110 +1,56 @@
-// Static imports for all locale files
-import * as afZA from '../../locales/af-ZA.js';
-import * as amET from '../../locales/am-ET.js';
-import * as arSA from '../../locales/ar-SA.js';
-import * as azAZ from '../../locales/az-AZ.js';
-import * as bgBG from '../../locales/bg-BG.js';
-import * as bnBD from '../../locales/bn-BD.js';
-import * as caES from '../../locales/ca-ES.js';
-import * as csCZ from '../../locales/cs-CZ.js';
-import * as daDK from '../../locales/da-DK.js';
-import * as deDE from '../../locales/de-DE.js';
-import * as elGR from '../../locales/el-GR.js';
-import * as enUS from '../../locales/en-US.js';
-import * as esES from '../../locales/es-ES.js';
-import * as faIR from '../../locales/fa-IR.js';
-import * as fiFI from '../../locales/fi-FI.js';
-import * as frFR from '../../locales/fr-FR.js';
-import * as heIL from '../../locales/he-IL.js';
-import * as hiIN from '../../locales/hi-IN.js';
-import * as huHU from '../../locales/hu-HU.js';
-import * as idID from '../../locales/id-ID.js';
-import * as itIT from '../../locales/it-IT.js';
-import * as jaJP from '../../locales/ja-JP.js';
-import * as kmKH from '../../locales/km-KH.js';
-import * as knIN from '../../locales/kn-IN.js';
-import * as koKR from '../../locales/ko-KR.js';
-import * as ltLT from '../../locales/lt-LT.js';
-import * as lvLV from '../../locales/lv-LV.js';
-import * as mlIN from '../../locales/ml-IN.js';
-import * as mrIN from '../../locales/mr-IN.js';
-import * as msMY from '../../locales/ms-MY.js';
-import * as neNP from '../../locales/ne-NP.js';
-import * as nlNL from '../../locales/nl-NL.js';
-import * as noNO from '../../locales/no-NO.js';
-import * as orIN from '../../locales/or-IN.js';
-import * as plPL from '../../locales/pl-PL.js';
-import * as ptBR from '../../locales/pt-BR.js';
-import * as ptPT from '../../locales/pt-PT.js';
-import * as roRO from '../../locales/ro-RO.js';
-import * as ruRU from '../../locales/ru-RU.js';
-import * as skSK from '../../locales/sk-SK.js';
-import * as sqAL from '../../locales/sq-AL.js';
-import * as srSP from '../../locales/sr-SP.js';
-import * as svSE from '../../locales/sv-SE.js';
-import * as taIN from '../../locales/ta-IN.js';
-import * as teIN from '../../locales/te-IN.js';
-import * as thTH from '../../locales/th-TH.js';
-import * as trTR from '../../locales/tr-TR.js';
-import * as ukUA from '../../locales/uk-UA.js';
-import * as uzUZ from '../../locales/uz-UZ.js';
-import * as viVN from '../../locales/vi-VN.js';
-import * as zhCN from '../../locales/zh-CN.js';
-import * as zhTW from '../../locales/zh-TW.js';
-import * as zuZA from '../../locales/zu-ZA.js';
-
+// Locale modules map using require for CommonJS compatibility
 export const localeModules: Record<string, { messages: any }> = {
-  'af-ZA': afZA,
-  'am-ET': amET,
-  'ar-SA': arSA,
-  'az-AZ': azAZ,
-  'bg-BG': bgBG,
-  'bn-BD': bnBD,
-  'ca-ES': caES,
-  'cs-CZ': csCZ,
-  'da-DK': daDK,
-  'de-DE': deDE,
-  'el-GR': elGR,
-  'en-US': enUS,
-  'es-ES': esES,
-  'fa-IR': faIR,
-  'fi-FI': fiFI,
-  'fr-FR': frFR,
-  'he-IL': heIL,
-  'hi-IN': hiIN,
-  'hu-HU': huHU,
-  'id-ID': idID,
-  'it-IT': itIT,
-  'ja-JP': jaJP,
-  'km-KH': kmKH,
-  'kn-IN': knIN,
-  'ko-KR': koKR,
-  'lt-LT': ltLT,
-  'lv-LV': lvLV,
-  'ml-IN': mlIN,
-  'mr-IN': mrIN,
-  'ms-MY': msMY,
-  'ne-NP': neNP,
-  'nl-NL': nlNL,
-  'no-NO': noNO,
-  'or-IN': orIN,
-  'pl-PL': plPL,
-  'pt-BR': ptBR,
-  'pt-PT': ptPT,
-  'ro-RO': roRO,
-  'ru-RU': ruRU,
-  'sk-SK': skSK,
-  'sq-AL': sqAL,
-  'sr-SP': srSP,
-  'sv-SE': svSE,
-  'ta-IN': taIN,
-  'te-IN': teIN,
-  'th-TH': thTH,
-  'tr-TR': trTR,
-  'uk-UA': ukUA,
-  'uz-UZ': uzUZ,
-  'vi-VN': viVN,
-  'zh-CN': zhCN,
-  'zh-TW': zhTW,
-  'zu-ZA': zuZA,
+  'af-ZA': require('../../locales/af-ZA.js'),
+  'am-ET': require('../../locales/am-ET.js'),
+  'ar-SA': require('../../locales/ar-SA.js'),
+  'az-AZ': require('../../locales/az-AZ.js'),
+  'bg-BG': require('../../locales/bg-BG.js'),
+  'bn-BD': require('../../locales/bn-BD.js'),
+  'ca-ES': require('../../locales/ca-ES.js'),
+  'cs-CZ': require('../../locales/cs-CZ.js'),
+  'da-DK': require('../../locales/da-DK.js'),
+  'de-DE': require('../../locales/de-DE.js'),
+  'el-GR': require('../../locales/el-GR.js'),
+  'en-US': require('../../locales/en-US.js'),
+  'es-ES': require('../../locales/es-ES.js'),
+  'fa-IR': require('../../locales/fa-IR.js'),
+  'fi-FI': require('../../locales/fi-FI.js'),
+  'fr-FR': require('../../locales/fr-FR.js'),
+  'he-IL': require('../../locales/he-IL.js'),
+  'hi-IN': require('../../locales/hi-IN.js'),
+  'hu-HU': require('../../locales/hu-HU.js'),
+  'id-ID': require('../../locales/id-ID.js'),
+  'it-IT': require('../../locales/it-IT.js'),
+  'ja-JP': require('../../locales/ja-JP.js'),
+  'km-KH': require('../../locales/km-KH.js'),
+  'kn-IN': require('../../locales/kn-IN.js'),
+  'ko-KR': require('../../locales/ko-KR.js'),
+  'lt-LT': require('../../locales/lt-LT.js'),
+  'lv-LV': require('../../locales/lv-LV.js'),
+  'ml-IN': require('../../locales/ml-IN.js'),
+  'mr-IN': require('../../locales/mr-IN.js'),
+  'ms-MY': require('../../locales/ms-MY.js'),
+  'ne-NP': require('../../locales/ne-NP.js'),
+  'nl-NL': require('../../locales/nl-NL.js'),
+  'no-NO': require('../../locales/no-NO.js'),
+  'or-IN': require('../../locales/or-IN.js'),
+  'pl-PL': require('../../locales/pl-PL.js'),
+  'pt-BR': require('../../locales/pt-BR.js'),
+  'pt-PT': require('../../locales/pt-PT.js'),
+  'ro-RO': require('../../locales/ro-RO.js'),
+  'ru-RU': require('../../locales/ru-RU.js'),
+  'sk-SK': require('../../locales/sk-SK.js'),
+  'sq-AL': require('../../locales/sq-AL.js'),
+  'sr-SP': require('../../locales/sr-SP.js'),
+  'sv-SE': require('../../locales/sv-SE.js'),
+  'ta-IN': require('../../locales/ta-IN.js'),
+  'te-IN': require('../../locales/te-IN.js'),
+  'th-TH': require('../../locales/th-TH.js'),
+  'tr-TR': require('../../locales/tr-TR.js'),
+  'uk-UA': require('../../locales/uk-UA.js'),
+  'uz-UZ': require('../../locales/uz-UZ.js'),
+  'vi-VN': require('../../locales/vi-VN.js'),
+  'zh-CN': require('../../locales/zh-CN.js'),
+  'zh-TW': require('../../locales/zh-TW.js'),
+  'zu-ZA': require('../../locales/zu-ZA.js'),
 };
