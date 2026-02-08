@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { ArrowRightIcon, EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -42,6 +42,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 function RouteComponent() {
+	const router = useRouter();
 	const [submitted, setSubmitted] = useState(false);
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const { flags } = Route.useRouteContext();
@@ -67,12 +68,16 @@ function RouteComponent() {
 				username: data.username,
 			});
 
+			// Wait a bit to ensure cookie is set before invalidating
+			await new Promise(resolve => setTimeout(resolve, 100));
+			
+			await router.invalidate();
 			setSubmitted(true);
 			toast.success(t`Account created successfully!`, { id: toastId });
 		} catch (error: any) {
 			// Enhanced error messages for better user experience
 			let errorMessage = error.message;
-			
+
 			if (error.message.includes("email") || error.message.includes("already exists")) {
 				errorMessage = t`This email is already registered. Please login or use a different email.`;
 				form.setError("email", { message: t`This email is already registered` });
@@ -80,7 +85,7 @@ function RouteComponent() {
 				errorMessage = t`This username is already taken. Please choose a different username.`;
 				form.setError("username", { message: t`This username is already taken` });
 			}
-			
+
 			toast.error(errorMessage, { id: toastId });
 		}
 	};

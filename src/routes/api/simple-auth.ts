@@ -15,17 +15,17 @@ async function handler({ request }: { request: Request }) {
   try {
     switch (action) {
       case 'signup':
-        return await handleSignup(body);
+        return await handleSignup(body, request);
       case 'signin':
-        return await handleSignin(body);
+        return await handleSignin(body, request);
       case 'forgot-password':
         return await handleForgotPassword(body);
       case 'reset-password':
         return await handleResetPassword(body);
       case 'get-session':
-        return await handleGetSession(body);
+        return await handleGetSession(request);
       case 'signout':
-        return await handleSignout(body);
+        return await handleSignout(request);
       default:
         return Response.json({ error: 'Invalid action' }, { status: 400 });
     }
@@ -34,7 +34,7 @@ async function handler({ request }: { request: Request }) {
   }
 }
 
-async function handleSignup(data: any) {
+async function handleSignup(data: any, request: Request) {
   const { name, email, username, password } = data;
 
   // Check if user exists
@@ -104,7 +104,7 @@ async function handleSignup(data: any) {
   return response;
 }
 
-async function handleSignin(data: any) {
+async function handleSignin(data: any, request: Request) {
   const { identifier, password } = data;
 
   // Find user
@@ -225,8 +225,20 @@ async function handleResetPassword(data: any) {
   return Response.json({ success: true });
 }
 
-async function handleGetSession(data: any) {
-  const { token } = data;
+async function handleGetSession(request: Request) {
+  // Read token from HttpOnly cookie
+  const cookieHeader = request.headers.get('cookie');
+  const cookies = cookieHeader?.split(';').reduce((acc, cookie) => {
+    const [key, value] = cookie.trim().split('=');
+    acc[key] = value;
+    return acc;
+  }, {} as Record<string, string>) || {};
+  
+  const token = cookies['cvcraft_auth_token'];
+
+  if (!token) {
+    return Response.json({ session: null });
+  }
 
   const { data: sessionData, error } = await supabase
     .from('session')
@@ -282,10 +294,20 @@ async function handleGetSession(data: any) {
   return Response.json({ session });
 }
 
-async function handleSignout(data: any) {
-  const { token } = data;
+async function handleSignout(request: Request) {
+  // Read token from HttpOnly cookie
+  const cookieHeader = request.headers.get('cookie');
+  const cookies = cookieHeader?.split(';').reduce((acc, cookie) => {
+    const [key, value] = cookie.trim().split('=');
+    acc[key] = value;
+    return acc;
+  }, {} as Record<string, string>) || {};
+  
+  const token = cookies['cvcraft_auth_token'];
 
-  await supabase.from('session').delete().eq('token', token);
+  if (token) {
+    await supabase.from('session').delete().eq('token', token);
+  }
 
   // Clear cookie with Secure flag for production
   const isProduction = process.env.NODE_ENV === 'production';

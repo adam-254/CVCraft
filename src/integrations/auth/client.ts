@@ -30,9 +30,8 @@ export const authClient = {
 
 	async signOut() {
 		await simpleAuthClient.signOut();
-		if (typeof window !== "undefined") {
-			window.location.href = "/auth/login";
-		}
+		// Don't do hard redirect - let the caller handle navigation
+		// This allows proper router invalidation before navigation
 	},
 
 	// Sign up/in - handled by auth pages directly

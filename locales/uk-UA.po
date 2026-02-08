@@ -19,23 +19,19 @@ msgstr ""
 "X-Crowdin-File-ID: 518\n"
 
 #. js-lingui-explicit-id
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Last Updated"
 msgstr "Оновлено востаннє"
 
 #. js-lingui-explicit-id
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Created"
 msgstr "Створено"
 
 #. js-lingui-explicit-id
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Name"
 msgstr "Назва"
-
-#: src/routes/_home/-sections/hero.tsx
-msgid "(opens in new tab)"
-msgstr "(відкриється у новій вкладці)"
 
 #. placeholder {0}: section.items.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
@@ -47,18 +43,33 @@ msgstr "{0, plural, one {# елемент} few {# елементи} many {# ел
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# Стовпчик} few {# Стовпці} many {# Стовпців} other {# Стовпців}}"
 
+#: src/routes/_home/-sections/templates.tsx
+msgid "{templateCount} Professional Templates"
+msgstr ""
+
+#: src/routes/_home/-sections/templates.tsx
+msgid "<0>Choose Your Perfect</0><1/><2>Template</2>"
+msgstr ""
+
 #: src/routes/_home/-sections/hero.tsx
-msgid "<0>Finally,</0><1>A free and open-source resume builder</1>"
-msgstr "<0>Нарешті,</0><1>безкоштовний конструктор резюме з відкритим кодом</1>"
+msgid "<0>Craft Your Perfect</0><1/><2>Resume in Minutes</2>"
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "<0>Crafted with</0> <1>Passion</1><2/><3>Built for</3> <4>Everyone</4>"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "<0>Create Your Resume</0><1/><2>In 3 Easy Steps</2>"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "<0>Everything You Need</0><1/><2>In One Place</2>"
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
-msgctxt "Every word needs to be wrapped in a tag"
-msgid "<0>Frequently</0><1>Asked</1><2>Questions</2>"
-msgstr "<0>Запитання</0><1>і</1><2>Відповіді</2>"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "<0>Thank you for using Reactive Resume! This app is a labor of love, created mostly in my spare time, with wonderful support from open-source contributors around the world.</0><1>If Reactive Resume has been helpful to you, and you'd like to help keep it free and open for everyone, please consider making a donation. Every little bit is appreciated!</1>"
-msgstr "<0>Дякую що скористались Reactive Resume! Цей додаток створено з любовʼю у мій вільний час з прекрасною підтримкою від open-source волонтерів з усього світу.</0><1>Якщо Reactive Resume був вам корисним, і ви хотіли б зберегти його безкоштовним та вільним для користування, то ваша пожертва дуже допоможе. Кожен внесок неоціненний!</1>"
+msgid "<0>Frequently Asked</0><1/><2>Questions</2>"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "1 month"
@@ -68,13 +79,37 @@ msgstr "1 місяць"
 msgid "1 year"
 msgstr "1 рік"
 
+#: src/routes/_home/-sections/hero.tsx
+msgid "100% Free & Open Source"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "100% Free Forever"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "12+ Professional Templates"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "12+ Templates"
 msgstr "12+ шаблонів"
 
+#: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
+msgid "2FA is currently enabled"
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "3 months"
 msgstr "3 місяці"
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "30+ Templates"
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "50+ Languages"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "6 months"
@@ -93,17 +128,13 @@ msgstr "Безкоштовний конструктор резюме з відк
 msgid "A link to your resume has been copied to clipboard."
 msgstr "Посилання на ваше резюме скопійоване до буфера обміну."
 
-#: src/routes/_home/-sections/testimonials.tsx
-msgid "A lot of people have written to me over the years to share their experiences with Reactive Resume and how it has helped them, and I never get tired of reading them. If you have a story to share, let me know by sending me an email at <0>{email}</0>."
-msgstr "Роками люди ділились своїм досвідом використання Reactive Resume і як їм це допомогло, і я ніколи не стомлююсь їх читати. Якщо у вас є історія на \"поділитись\", то звʼяжіться зі мною через цей емейл <0>{email}</0>."
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "A new page has been added to your resume."
+msgstr ""
 
 #: src/routes/dashboard/settings/profile.tsx
 msgid "A new verification link has been sent to your email address. Please check your inbox to verify your account."
 msgstr "Нове посилання з підтвердженням було надіслане на вашу електронну адресу. Будь ласка, перевірте свою скриньку для підтвердження вашого акаунту."
-
-#: src/components/ui/copyright.tsx
-msgid "A passion project by <0>Amruth Pillai</0>."
-msgstr "Зроблено з любовʼю від <0>Amruth Pillai</0>."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -118,9 +149,9 @@ msgstr "A4"
 msgid "Absolutely! You can export your resume to PDF with a single click. The exported PDF maintains all your formatting and styling perfectly."
 msgstr "Звісно! Ви можете експортувати своє резюме як PDF одним кліком. Експортований PDF ідеально відтворює ваше форматування і стилі."
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Access your resumes and data programmatically using the API."
-msgstr "Отримуйте доступ до ваших резюме і даних за допомогою API."
+#: src/routes/auth/register.tsx
+msgid "Account created successfully!"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
@@ -187,6 +218,10 @@ msgstr "Додати нове вміння"
 msgid "Add a new volunteer experience"
 msgstr "Додати новий волонтерський досвід"
 
+#: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
+msgid "Add an extra layer of security"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
 msgstr "Додати Колонку Справа"
@@ -195,6 +230,11 @@ msgstr "Додати Колонку Справа"
 msgid "Add Column Before"
 msgstr "Додати Колонку Зліва"
 
+#: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
+msgid "Add Device"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
 msgstr "Додати сторінку"
@@ -216,6 +256,10 @@ msgstr "Додано {0}"
 msgid "Adding your passkey..."
 msgstr "Додаємо ваш ключ доступу..."
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Advanced Features"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Afrikaans"
 msgstr "Африканська"
@@ -225,9 +269,23 @@ msgstr "Африканська"
 msgid "AI"
 msgstr "ШІ"
 
+#: src/routes/_home/-sections/features.tsx
+#: src/routes/_home/-sections/hero.tsx
+#: src/routes/_home/-sections/highlights.tsx
+msgid "AI-Powered"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "AI-Powered Content"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Albanian"
 msgstr "Албанська"
+
+#: src/routes/_home/-sections/footer.tsx
+msgid "All rights reserved."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
@@ -249,10 +307,6 @@ msgstr "Виникла помилка під час завантаження с�
 #: src/dialogs/resume/import.tsx
 msgid "An unknown error occurred while importing your resume."
 msgstr "Під час імпорту вашого резюме сталась невідома помилка."
-
-#: src/routes/_home/-sections/features.tsx
-msgid "And many more..."
-msgstr "Та багато іншого..."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -276,7 +330,6 @@ msgstr "API Ключ"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "API Keys"
 msgstr "API Ключі"
@@ -289,9 +342,9 @@ msgstr "Довідник API"
 msgid "App"
 msgstr "Додаток"
 
-#: src/routes/_home/-sections/statistics.tsx
-msgid "Application Statistics"
-msgstr "Статистика заявок"
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Appearance"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Arabic"
@@ -335,7 +388,6 @@ msgstr "Освітня програма"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Artificial Intelligence"
 msgstr "Штучний інтелект"
@@ -352,8 +404,8 @@ msgid "Authentication"
 msgstr "Автентифікація"
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Available in multiple languages. If you would like to contribute, check out Crowdin."
-msgstr "Доступно багатьма мовами. Якщо ви хочете долучитись, загляньте на Crowdin."
+msgid "Available in 50+ languages with community translations."
+msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
 msgctxt "(noun) person, organization, or entity that gives an award"
@@ -368,6 +420,7 @@ msgstr "Нагороди"
 msgid "Azerbaijani"
 msgstr "Азербайджанська"
 
+#: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/verify-2fa.tsx
 msgid "Back to Login"
 msgstr "Повернутися на \"Вхід\""
@@ -389,8 +442,12 @@ msgid "Basics"
 msgstr "Основне"
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Beautiful templates to choose from, with more on the way."
-msgstr "Гарні шаблони на вибір, і ще більше буде незабаром."
+msgid "Beautiful, professional templates with more being added regularly."
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Beautiful, professionally designed templates"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Bengali"
@@ -413,9 +470,29 @@ msgstr "Округлення кутів"
 msgid "Border Width"
 msgstr "Товщина рамки"
 
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Browse and manage your existing cover letters"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Build & Customize"
+msgstr ""
+
 #: src/components/command-palette/index.tsx
 msgid "Builder Command Palette"
 msgstr "Палітра команд Конструктора"
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Building a professional resume has never been easier. Follow our simple 3-step process and land your dream job in minutes, not hours."
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Built with modern tech for optimal performance"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Built with privacy in mind, powered by open source, and completely free forever. Create professional resumes with all the features you need."
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Bulgarian"
@@ -425,12 +502,6 @@ msgstr "Болгарська"
 msgid "Bullet List"
 msgstr "Маркірований список"
 
-#: src/components/ui/copyright.tsx
-#: src/routes/_home/-sections/features.tsx
-#: src/routes/_home/-sections/prefooter.tsx
-msgid "By the community, for the community."
-msgstr "Спільнотою, для спільноти."
-
 #: src/routes/_home/-sections/faq.tsx
 msgid "Can I customize the templates?"
 msgstr "Чи можна налаштовувати шаблони?"
@@ -439,7 +510,12 @@ msgstr "Чи можна налаштовувати шаблони?"
 msgid "Can I export my resume to PDF?"
 msgstr "Чи можу я експортувати своє резюме у PDF?"
 
+#: src/routes/_home/-sections/faq.tsx
+msgid "Can I self-host CVCraft?"
+msgstr ""
+
 #: src/dialogs/auth/enable-two-factor.tsx
+#: src/dialogs/cover-letter/create.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -510,13 +586,13 @@ msgstr "Змінити тему на..."
 msgid "Changed your mind? Rename your resume to something more descriptive."
 msgstr "Передумали? Перейменуйте своє резюме на щось більш описове."
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "Changelog"
-msgstr "Список змін"
+#: src/routes/builder/$resumeId/-components/word-count.tsx
+msgid "chars"
+msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Check your email for a link to reset your password."
-msgstr "Перевірте свою електронну пошту для посилання для скидання пароля."
+msgid "Check Your Email"
+msgstr ""
 
 #: src/routes/auth/register.tsx
 msgid "Check your email for a link to verify your account."
@@ -530,6 +606,26 @@ msgstr "Китайська (спрощена)"
 msgid "Chinese (Traditional)"
 msgstr "Китайська (традиційна)"
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Choose from multiple professional templates"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Choose how you want to start building your cover letter"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Choose how you want to start building your resume"
+msgstr ""
+
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Choose your preferred color scheme"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Choose Your Template"
+msgstr ""
+
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "Кругле"
@@ -542,6 +638,10 @@ msgstr "Очистити вибір"
 msgid "Click here to select a file to import"
 msgstr "Натисніть тут, щоб вибрати файл для імпорту"
 
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Close dialogs"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Блок коду"
@@ -551,17 +651,9 @@ msgstr "Блок коду"
 msgid "Columns"
 msgstr "Стовпці"
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "Community"
-msgstr "Спільнота"
-
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Company"
 msgstr "Компанія"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Completely free, forever, no hidden costs."
-msgstr "Повністю безкоштовно, назавжди, без прихованих витрат."
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -595,9 +687,9 @@ msgstr "Продовжити там, де зупинилися"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Продовжіть там, де зупинилися, імпортувавши вже наявне резюме, створене у Reactive Resume або в іншому конструкторі резюме. Підтримуються формати PDF, Microsoft Word, а також файли JSON із Reactive Resume."
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
-msgstr "Внески фінансують виправлення помилок, оновлення безпеки та постійне вдосконалення для безперебійної роботи додатку."
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Contribute to making CVCraft available in more languages"
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -619,11 +711,20 @@ msgstr "Скопіюйте цей секретний ключ та викори�
 msgid "Copy URL"
 msgstr "Скопіювати URL"
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Core Features"
+msgstr ""
+
 #: src/utils/resume/section.tsx
 msgid "Cover Letter"
 msgstr ""
 
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Cover Letters"
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/cover-letter/create.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -643,10 +744,6 @@ msgstr ""
 msgid "Create"
 msgstr "Створити"
 
-#: src/routes/auth/register.tsx
-msgid "Create a new account"
-msgstr "Створити новий профіль"
-
 #: src/dialogs/api-key/create.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Create a new API key"
@@ -660,6 +757,7 @@ msgstr "Створити нову нагороду"
 msgid "Create a new certification"
 msgstr "Створити нову сертифікацію"
 
+#: src/dialogs/cover-letter/create.tsx
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Create a new cover letter"
 msgstr ""
@@ -723,9 +821,34 @@ msgstr "Створити новий волонтерський досвід"
 msgid "Create a Sample Resume"
 msgstr "Створити шаблон резюме"
 
+#: src/routes/auth/register.tsx
+msgid "Create Account"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
-msgid "Create as many resumes as you want, without limits."
-msgstr "Створюйте стільки резюме, скільки забажаєте, без обмежень."
+msgid "Create as many resumes as you need without any restrictions."
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Create Cover Letter"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Create from Scratch"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Create professional cover letters to complement your resumes"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Create Resume"
+msgstr ""
+
+#: src/routes/dashboard/history.tsx
+msgid "Create your first resume to see it here"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -740,14 +863,33 @@ msgstr "Створення вашого резюме..."
 msgid "Current Password"
 msgstr "Поточний пароль"
 
-#: src/routes/_home/-sections/features.tsx
 #: src/utils/resume/section.tsx
 msgid "Custom CSS"
 msgstr "Власний CSS"
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Custom CSS Support"
+msgstr ""
+
 #: src/utils/resume/section.tsx
 msgid "Custom Sections"
 msgstr "Користувацькі розділи"
+
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Customize your experience with theme and language settings"
+msgstr ""
+
+#: src/routes/_home/-sections/header.tsx
+msgid "CVCraft - Go to homepage"
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "CVCraft is open-source, privacy-focused, and completely free. Unlike other resume builders, it doesn't show ads, track your data, or limit your features behind a paywall."
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "CVCraft was built from the ground up with one mission: to provide a powerful, free, and privacy-focused resume builder for everyone. Every feature, every template, and every line of code was carefully crafted to ensure you have the best experience possible. No ads, no tracking, no hidden costs—just a tool that works for you."
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -755,7 +897,6 @@ msgstr "Чеська"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Danger Zone"
 msgstr "Небезпечна зона"
@@ -772,10 +913,6 @@ msgstr "Темна"
 #: src/components/command-palette/pages/preferences/theme.tsx
 msgid "Dark theme"
 msgstr "Темна тема"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Data Security"
-msgstr "Безпека даних"
 
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -834,6 +971,10 @@ msgstr "Видалення вашого ключа доступу..."
 msgid "Deleting your resume..."
 msgstr "Видалення вашого резюме..."
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Deploy on your own servers with Docker for complete control."
+msgstr ""
+
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/education.tsx
@@ -849,8 +990,15 @@ msgstr "Опис"
 msgid "Design"
 msgstr "Дизайн"
 
-#: src/dialogs/auth/disable-two-factor.tsx
+#: src/routes/_home/-sections/features.tsx
+msgid "Design & Customization"
+msgstr ""
+
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
+msgid "Disable"
+msgstr ""
+
+#: src/dialogs/auth/disable-two-factor.tsx
 msgid "Disable 2FA"
 msgstr "Вимкнути 2FA"
 
@@ -870,22 +1018,13 @@ msgstr "Вимикається двофакторна автентифікаці
 msgid "Disconnect"
 msgstr "Від'єднати"
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "Discord"
-msgstr "Discord"
-
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Documentation"
-msgstr "Документація"
+#: src/routes/_home/-sections/faq.tsx
+msgid "Do I need an account to use CVCraft?"
+msgstr ""
 
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
 msgstr "Не маєте профілю? <0><1>Створіть його зараз <2/></1></0>"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Donate to Reactive Resume"
-msgstr "Пожертвувати на Reactive Resume"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 #: src/routes/$username/$slug.tsx
@@ -907,6 +1046,10 @@ msgstr "Завантажити JSON"
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download PDF"
 msgstr "Завантажити в PDF"
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Download your resume as PDF or share it with a unique link. Your success story starts here!"
+msgstr ""
 
 #: src/routes/$username/$slug.tsx
 msgid "Downloading..."
@@ -945,9 +1088,21 @@ msgstr "Дублювання резюме..."
 msgid "Dutch"
 msgstr "Голландська"
 
+#: src/dialogs/resume/template/data.ts
+msgid "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Editing"
+msgstr ""
+
 #: src/utils/resume/section.tsx
 msgid "Education"
 msgstr "Освіта"
+
+#: src/dialogs/resume/template/data.ts
+msgid "Elegant three-section layout with curved dividers and premium spacing; sophisticated choice for C-level executives or board members."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
 msgid "Email"
@@ -960,14 +1115,22 @@ msgstr "Ел. пошта"
 msgid "Email Address"
 msgstr "Електронна адреса"
 
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Email not verified"
+msgstr ""
+
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Email verified"
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
+msgid "Enable"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/css.tsx
 msgctxt "Turn On/Apply Custom CSS"
 msgid "Enable"
 msgstr "Увімкнути"
-
-#: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
-msgid "Enable 2FA"
-msgstr "Увімкнути 2FA"
 
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Enable AI Features"
@@ -976,6 +1139,10 @@ msgstr "Увімкнути функції ШІ"
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Enable Two-Factor Authentication"
 msgstr "Увімкнути двофакторну автентифікацію"
+
+#: src/routes/dashboard/settings/authentication/index.tsx
+msgid "Enable two-factor authentication via email for enhanced security. Keep your password strong and unique."
+msgstr ""
 
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Enabled"
@@ -992,10 +1159,6 @@ msgstr "Увімкнення двофакторної автентифікаці
 #: src/utils/locale.ts
 msgid "English"
 msgstr "Англійська"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Enhance the security of your account with additional layers of protection."
-msgstr "Підвищте безпеку свого профілю додатковими рівнями захисту."
 
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Enter one of your saved backup codes to access your account"
@@ -1021,17 +1184,17 @@ msgstr "Введіть пароль для підтвердження налаш
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "Введіть свій пароль для вимикання двофакторної автентифікації. Ваш профіль буде менш захищений без увімкненого 2FA."
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
-msgstr "Кожен внесок, великий чи малий, має величезне значення для проєкту.<0/>Дякуємо за вашу підтримку!"
-
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Everything entered here is stored locally on your browser. Your data is only sent to the server when making a request to the AI provider, and is never stored or logged on our servers."
 msgstr "Усе, що ви тут вводите, зберігається локально у вашому браузері. Ваші дані надсилаються на сервер лише під час запиту до AI-провайдера і ніколи не зберігаються чи логуються на наших серверах."
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
-msgstr "Все необхідне для створення, налаштування та поширення професійних резюме. Створено з урахуванням приватності, на основі відкритих вихідних кодів і назавжди безкоштовно."
+#: src/routes/_home/-sections/hero.tsx
+msgid "Everything You Need In One Place"
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Everything you need to create a professional resume, all in one place"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
@@ -1051,8 +1214,8 @@ msgid "Expires on {0}"
 msgstr "Закінчується {0}"
 
 #: src/routes/_home/-sections/templates.tsx
-msgid "Explore our diverse selection of templates, each designed to fit different styles, professions, and personalities. Reactive Resume currently offers 12 templates, with more on the way."
-msgstr "Ознайомтеся з нашим різноманітним вибором шаблонів, кожен з яких створений для різних стилів, професій і особистостей. Reactive Resume наразі пропонує 12 шаблонів, і кількість буде зростати."
+msgid "Explore our diverse collection of professionally designed templates. Each one is fully customizable to match your style and industry. More templates are added regularly."
+msgstr ""
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Explore the API documentation to learn how to integrate Reactive Resume with your applications. Find detailed endpoints, request examples, and authentication methods."
@@ -1062,25 +1225,46 @@ msgstr "Ознайомтеся з документацією API, щоб діз�
 msgid "Export"
 msgstr "Експорт"
 
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Export & Share"
+msgstr ""
+
+#: src/routes/auth/forgot-password.tsx
+msgid "Failed to send reset email"
+msgstr ""
+
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
 msgstr "Не вдалося налаштувати двофакторну автентифікацію."
 
-#: src/routes/_home/-sections/features.tsx
+#: src/components/user/dropdown-menu.tsx
+msgid "Failed to sign out"
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+#: src/routes/_home/-sections/header.tsx
 msgid "Features"
 msgstr "Функції"
 
-#: src/routes/dashboard/resumes/index.tsx
+#: src/dialogs/resume/import.tsx
+msgid "File"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Fill in your details with AI assistance and customize every aspect to match your personal brand."
+msgstr ""
+
+#: src/routes/dashboard/history.tsx
 msgid "Filter by"
 msgstr "Фільтрувати за"
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Find answers to common questions about CVCraft. Can't find what you're looking for? Feel free to reach out to our community."
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Finnish"
 msgstr "Фінська"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Flexibility"
-msgstr "Гнучкість"
 
 #: src/dialogs/resume/sections/language.tsx
 msgid "Fluency"
@@ -1104,10 +1288,6 @@ msgstr "Насичення шрифту"
 msgid "Font Weights"
 msgstr "Насичення шрифтів"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "For a secure and distraction-free experience."
-msgstr "Для безпечної та зосередженої роботи."
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "For example, information regarding which companies you sent this resume to or the links to the job descriptions can be noted down here."
 msgstr "Наприклад, тут можна зазначити інформацію про те, в які компанії ви надсилали це резюме, або посилання на описи вакансій."
@@ -1116,22 +1296,19 @@ msgstr "Наприклад, тут можна зазначити інформа�
 msgid "For security reasons, this key will only be displayed once."
 msgstr "З міркувань безпеки цей ключ буде показано лише один раз."
 
+#: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/login.tsx
 msgid "Forgot Password?"
 msgstr "Забули пароль?"
-
-#: src/routes/auth/forgot-password.tsx
-msgid "Forgot your password?"
-msgstr "Забули свій пароль?"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgctxt "Page Format (A4, Letter or Free-Form)"
 msgid "Format"
 msgstr "Формат"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Free"
-msgstr "Безкоштовно"
+#: src/routes/_home/-sections/footer.tsx
+msgid "Free Forever"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "Free-Form"
@@ -1141,6 +1318,15 @@ msgstr "Вільна форма"
 msgid "French"
 msgstr "Французька"
 
+#: src/routes/_home/-sections/features.tsx
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Full Customization"
+msgstr ""
+
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Full Name"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Full Width"
 msgstr "На всю ширину"
@@ -1149,17 +1335,36 @@ msgstr "На всю ширину"
 msgid "Fullscreen"
 msgstr ""
 
+#: src/routes/_home/-sections/faq.tsx
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "General"
+msgstr ""
+
 #: src/dialogs/resume/index.tsx
 msgid "Generate a random name"
 msgstr "Згенерувати випадкове ім'я"
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Generate content with AI assistance for faster resume creation."
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "German"
 msgstr "Німецька"
 
-#: src/routes/_home/-sections/hero.tsx
+#: src/routes/_home/-sections/header.tsx
+#: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Get Started"
 msgstr "Почати роботу"
+
+#: src/routes/_home/-sections/templates.tsx
+msgid "Get Started Free"
+msgstr ""
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Give your cover letter a title to get started"
+msgstr ""
 
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
@@ -1167,12 +1372,17 @@ msgid "Go Back"
 msgstr "Назад"
 
 #: src/routes/_home/-sections/header.tsx
+#: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Перейти до дашборду"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
 msgstr "Перейти до..."
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Got Questions?"
+msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
 msgid "Grade"
@@ -1182,13 +1392,9 @@ msgstr "Оцінка"
 msgid "Greek"
 msgstr "Грецька"
 
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Grid"
 msgstr "Сітка"
-
-#: src/routes/_home/-sections/donate.tsx
-msgid "Grow the Team"
-msgstr "Розширити команду"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgctxt "Headings or Titles (H1, H2, H3, H4, H5, H6)"
@@ -1227,13 +1433,9 @@ msgstr "Заголовна інформація"
 msgid "Hebrew"
 msgstr "Іврит"
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Help me bring more experienced contributors on board, reducing the burden on a single maintainer and accelerating development."
-msgstr "Допоможіть мені залучити досвідчених учасників, зменшуючи навантаження на одного мейнтейнера та прискорюючи розвиток."
-
 #: src/routes/dashboard/settings/preferences.tsx
-msgid "Help translate the app to your language"
-msgstr "Допоможіть перекласти застосунок на вашу мову"
+msgid "Help us translate"
+msgstr ""
 
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Here's a range of resume templates for different professions and personalities. Whether you prefer modern or classic, bold or simple, there is a design to match you. Look through the options below and choose a template that fits your style."
@@ -1259,6 +1461,10 @@ msgstr "Приховати"
 msgid "Hide all icons on the resume"
 msgstr "Сховати всі іконки на резюме"
 
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "High-Quality PDF Export"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Highlight"
 msgstr "Виділити"
@@ -1266,6 +1472,11 @@ msgstr "Виділити"
 #: src/utils/locale.ts
 msgid "Hindi"
 msgstr "Гінді"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/history.tsx
+msgid "History"
+msgstr ""
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -1303,6 +1514,14 @@ msgstr "Імпортувати"
 msgid "Import an existing resume"
 msgstr "Імпортувати наявне резюме"
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Import Existing Resume"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Import Now"
+msgstr ""
+
 #: src/dialogs/resume/import.tsx
 msgid "Importing your resume..."
 msgstr "Імпортуємо ваше резюме..."
@@ -1311,13 +1530,17 @@ msgstr "Імпортуємо ваше резюме..."
 msgid "Importing..."
 msgstr "Імпорт..."
 
+#: src/routes/auth/login.tsx
+msgid "Incorrect password. Please try again or reset your password."
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Індонезійська"
 
-#: src/utils/resume/section.tsx
-msgid "Information"
-msgstr "Важлива інформація"
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Industry-Specific Options"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Inline Code"
@@ -1331,13 +1554,25 @@ msgstr "Вставити таблицю"
 msgid "Interests"
 msgstr "Інтереси"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Is Reactive Resume available in multiple languages?"
-msgstr "Чи доступна система Reactive Resume кількома мовами?"
+#: src/routes/auth/login.tsx
+msgid "Invalid credentials"
+msgstr ""
+
+#: src/routes/auth/login.tsx
+msgid "Invalid email/username or password. Please check your credentials and try again."
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
-msgid "Is Reactive Resume really free?"
-msgstr "Чи справді Reactive Resume є безкоштовним?"
+msgid "Is CVCraft available in multiple languages?"
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Is CVCraft really free?"
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Is my data sold to third parties?"
+msgstr ""
 
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
@@ -1355,6 +1590,18 @@ msgstr "Курсив"
 msgid "Japanese"
 msgstr "Японська"
 
+#: src/routes/auth/register.tsx
+msgid "Join CVCraft and start building your resume"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Join thousands of professionals who have already created their perfect resume with CVCraft. It's free, fast, and incredibly easy!"
+msgstr ""
+
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Join translation team"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
 msgstr "Вирівняти за шириною"
@@ -1362,6 +1609,14 @@ msgstr "Вирівняти за шириною"
 #: src/utils/locale.ts
 msgid "Kannada"
 msgstr "Каннада"
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Keyboard Shortcuts (?)"
+msgstr ""
 
 #: src/dialogs/resume/sections/interest.tsx
 #: src/dialogs/resume/sections/skill.tsx
@@ -1419,10 +1674,6 @@ msgstr "Латвійська"
 msgid "Layout"
 msgstr "Макет"
 
-#: src/routes/_home/-sections/hero.tsx
-msgid "Learn More"
-msgstr "Дізнатися більше"
-
 #: src/components/resume/preview.tsx
 msgid "Learn more about how to fit content on a page"
 msgstr "Дізнайтеся більше про розміщення контенту на сторінці"
@@ -1453,10 +1704,6 @@ msgstr "Рівень володіння"
 msgid "Level {level} of 5"
 msgstr "Рівень {level} з 5"
 
-#: src/components/ui/copyright.tsx
-msgid "Licensed under <0>MIT</0>."
-msgstr "Ліцензія <0>MIT</0>."
-
 #: src/components/user/dropdown-menu.tsx
 #: src/utils/theme.ts
 msgid "Light"
@@ -1465,6 +1712,10 @@ msgstr "Світлий"
 #: src/components/command-palette/pages/preferences/theme.tsx
 msgid "Light theme"
 msgstr "Світла тема"
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Lightning Fast"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
@@ -1475,7 +1726,7 @@ msgstr "Інтервал між рядками"
 msgid "Linking your {providerName} account..."
 msgstr "Відбувається підключення вашого облікового запису {providerName}..."
 
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "List"
 msgstr "Список"
 
@@ -1483,13 +1734,17 @@ msgstr "Список"
 msgid "Lithuanian"
 msgstr "Литовська"
 
+#: src/components/layout/loading-screen.tsx
+msgid "Loading"
+msgstr ""
+
 #: src/components/command-palette/pages/resumes.tsx
 msgid "Loading resumes..."
 msgstr "Завантаження резюме..."
 
-#: src/components/layout/loading-screen.tsx
-msgid "Loading..."
-msgstr "Завантаження..."
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Localization"
+msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
 #: src/dialogs/resume/sections/experience.tsx
@@ -1508,13 +1763,21 @@ msgstr "Заблокувати"
 msgid "Logout"
 msgstr "Вийти"
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Long-term Sustainability"
-msgstr "Довгострокова сталість"
-
 #: src/routes/auth/verify-2fa.tsx
 msgid "Lost access to your authenticator?"
 msgstr "Втрачене доступ до вашого автентифікатора?"
+
+#: src/routes/_home/-sections/footer.tsx
+msgid "Made by"
+msgstr ""
+
+#: src/components/ui/copyright.tsx
+msgid "Made by Vincent Adam"
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "Made with Passion"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Main"
@@ -1532,6 +1795,14 @@ msgstr "Малайська"
 msgid "Malayalam"
 msgstr "Малаялам"
 
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Manage your personal information and account settings"
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/index.tsx
+msgid "Manage your security settings and authentication methods"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Marathi"
 msgstr "Маратхі"
@@ -1548,6 +1819,10 @@ msgstr "Відступ (вертикальний)"
 msgid "Model"
 msgstr "Модель"
 
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Modern & Clean Designs"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
 msgstr "Перемістити до"
@@ -1555,6 +1830,11 @@ msgstr "Перемістити до"
 #: src/routes/_home/-sections/features.tsx
 msgid "Multilingual"
 msgstr "Багатомовний"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/profile.tsx
+msgid "My Profile"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 #: src/dialogs/resume/index.tsx
@@ -1564,9 +1844,20 @@ msgstr "Багатомовний"
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
-#: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Назва"
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Navigate backwards"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Navigate between fields"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Navigation"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -1576,9 +1867,9 @@ msgstr "Непальська"
 msgid "Network"
 msgstr "Мережа"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "New features are constantly being added and improved, so be sure to check back often."
-msgstr "Нові функції постійно додаються та вдосконалюються, тож регулярно перевіряйте оновлення."
+#: src/routes/_home/-sections/faq.tsx
+msgid "Never. We don't sell, share, or monetize your data in any way. Your privacy is our top priority, and we're committed to keeping your information secure."
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "New Line"
@@ -1597,14 +1888,42 @@ msgstr "Новий пароль"
 msgid "New Section"
 msgstr "Нова секція"
 
+#: src/routes/auth/login.tsx
+msgid "No account found with these credentials. Please sign up first."
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "No account is required for basic use. However, creating an account allows you to save your resumes, access them from any device, and use advanced features."
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
-msgid "No Advertising, No Tracking"
-msgstr "Без реклами, без відстеження"
+msgid "No Ads, No Tracking"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "No hidden costs, no premium tiers, no subscriptions. Everything is free, always."
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
+msgid "No passkeys registered yet. Add your first device to get started."
+msgstr ""
+
+#: src/routes/dashboard/history.tsx
+msgid "No recent activity"
+msgstr ""
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Результатів не знайдено."
+
+#: src/routes/dashboard/history.tsx
+msgid "No resumes updated in the last 30 days"
+msgstr ""
+
+#: src/routes/auth/forgot-password.tsx
+msgid "No worries, we'll send you reset instructions"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1622,10 +1941,6 @@ msgstr "Одія"
 msgid "One-Click Sign-In"
 msgstr "Вхід в 1 клік"
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Ongoing Maintenance"
-msgstr "Поточне обслуговування"
-
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Open"
@@ -1636,15 +1951,10 @@ msgid "Open Email Client"
 msgstr "Відкрити поштовий клієнт"
 
 #: src/routes/_home/-sections/features.tsx
+#: src/routes/_home/-sections/footer.tsx
+#: src/routes/_home/-sections/highlights.tsx
 msgid "Open Source"
 msgstr "Опен-сорс"
-
-#: src/routes/_home/-sections/donate.tsx
-#: src/routes/_home/-sections/donate.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "opens in new tab"
-msgstr "відкриється у новій вкладці"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
@@ -1685,10 +1995,6 @@ msgstr "Абзац"
 msgid "Passkeys"
 msgstr "Passkeys"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Passkeys & 2FA"
-msgstr "Passkeys і 2FA"
-
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
 #: src/routes/auth/login.tsx
@@ -1703,6 +2009,7 @@ msgid "Password cannot be empty."
 msgstr "Пароль не може бути порожнім."
 
 #: src/routes/_home/-sections/features.tsx
+#: src/routes/_home/-sections/how-it-works.tsx
 msgid "Password Protection"
 msgstr "Захист паролем"
 
@@ -1713,6 +2020,10 @@ msgstr "Захист паролем вимкнено."
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Password protection has been enabled."
 msgstr "Захист паролем увімкнено."
+
+#: src/routes/auth/forgot-password.tsx
+msgid "Password reset email sent!"
+msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
 #: src/dialogs/resume/sections/experience.tsx
@@ -1725,9 +2036,17 @@ msgstr "Період"
 msgid "Persian"
 msgstr "Перська"
 
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Personal Information"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
-msgid "Personalize your resume with any colors, fonts or designs, and make it your own."
-msgstr "Персоналізуйте своє резюме, обираючи будь-які кольори, шрифти чи дизайни, і зробіть його унікальним."
+msgid "Personalize colors, fonts, spacing, and layouts to match your style."
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Personalize each cover letter for the specific job"
+msgstr ""
 
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
@@ -1776,6 +2095,14 @@ msgstr "Португальська (Португалія)"
 msgid "Position"
 msgstr "Посада"
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Powerful Features"
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
+msgid "Pre-filled with example data"
+msgstr ""
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/preferences/index.tsx
@@ -1784,13 +2111,38 @@ msgstr "Посада"
 msgid "Preferences"
 msgstr "Налаштування"
 
+#: src/dialogs/resume/template/data.ts
+msgid "Premium two-column with diagonal accent banner and floating profile; stunning design for creative directors, brand managers, or design leads."
+msgstr ""
+
+#: src/components/layout/loading-screen.tsx
+msgid "Preparing your experience..."
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Press ? to toggle this dialog"
+msgstr ""
+
 #: src/components/input/chip-input.tsx
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Натисніть <0>{RETURN_KEY}</0> або <1>{COMMA_KEY}</1>, щоб додати або зберегти поточне ключове слово."
 
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Press Esc to close"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Основний колір"
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Privacy & Security"
+msgstr ""
+
+#: src/routes/_home/-sections/footer.tsx
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Privacy First"
+msgstr ""
 
 #: src/dialogs/resume/sections/skill.tsx
 msgid "Proficiency"
@@ -1798,14 +2150,16 @@ msgstr "Рівень володіння"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
-#: src/routes/dashboard/settings/profile.tsx
 msgid "Profile"
 msgstr "Профіль"
 
 #: src/utils/resume/section.tsx
 msgid "Profiles"
 msgstr "Профілі"
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Programmatic access to your resumes via REST API."
+msgstr ""
 
 #: src/components/level/combobox.tsx
 msgid "Progress Bar"
@@ -1819,10 +2173,6 @@ msgstr "Проєкти"
 msgid "Protect your resume from unauthorized access with a password"
 msgstr "Захистіть своє резюме від несанкціонованого доступу за допомогою пароля"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Protect your resume with a password, and let only people with the password view it."
-msgstr "Захистіть своє резюме паролем, і тільки люди з паролем зможуть його переглядати."
-
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Provider"
 msgstr "Провайдер"
@@ -1835,29 +2185,39 @@ msgstr "Публікації"
 msgid "Publisher"
 msgstr "Видавець"
 
-#: src/routes/_home/-sections/header.tsx
-msgid "Reactive Resume - Go to homepage"
-msgstr "Reactive Resume – перейти на головну сторінку"
+#: src/routes/_home/-sections/features.tsx
+msgid "Quick authentication with Google, GitHub, or custom OAuth."
+msgstr ""
 
-#: src/routes/_home/-sections/prefooter.tsx
-msgid "Reactive Resume continues to grow thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills to make it better. We celebrate the coders who've enhanced its features on GitHub, the linguists whose translations on Crowdin have made it accessible to a broader audience, and the people who've donated to support its continued development."
-msgstr "Reactive Resume продовжує зростати завдяки своїй яскравій спільноті. Цей проєкт завдячує своїм розвитком численним особам, які присвятили свій час і навички на його покращення. Ми відзначаємо розробників, які вдосконалили його функції на GitHub, лінгвістів, чиї переклади на Crowdin зробили його доступнішим для ширшої аудиторії, а також людей, які пожертвували на підтримку його подальшого розвитку."
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Quick Tip"
+msgstr ""
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Reactive Resume is a free and open-source project, built with love and maintained by me and a community of contributors. Your donations help keep the lights on and the code flowing."
-msgstr "Reactive Resume — це безкоштовний проєкт з відкритим вихідним кодом, створений з любов’ю та підтримується мною і спільнотою учасників. Ваші пожертви допомагають підтримувати роботу проєкту й розвиток коду."
-
-#: src/routes/_home/-sections/hero.tsx
-msgid "Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
-msgstr "Reactive Resume — це безкоштовний та відкритий конструктор резюме, що спрощує процес створення, оновлення й поширення вашого резюме."
+#: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Quick Tips"
+msgstr ""
 
 #: src/routes/_home/-sections/product-hunt-banner.tsx
 msgid "Reactive Resume is launching on Product Hunt today, head over to show some love!"
 msgstr "Reactive Resume запускається на Product Hunt сьогодні, завітайте та підтримайте!"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Reactive Resume is open-source, privacy-focused, and completely free. Unlike other resume builders, it doesn't show ads, track your data, or limit your features behind a paywall."
-msgstr "Reactive Resume є open-source, орієнтована на приватність і повністю безкоштовна. На відміну від інших редакторів резюме, вона не показує рекламу, не відстежує ваші дані і не обмежує функції за оплатою."
+#: src/routes/_home/-sections/templates.tsx
+msgid "Ready to create your resume?"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Ready to Get Started?"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Real-Time Preview"
+msgstr ""
+
+#: src/routes/dashboard/history.tsx
+msgid "Recently updated resumes from the last 30 days"
+msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Recipient"
@@ -1871,6 +2231,14 @@ msgstr "Прямокутник"
 msgid "Rectangle (Full Width)"
 msgstr "Прямокутник (на всю ширину)"
 
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Redo"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Redo (alternative)"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgctxt "'Ctrl' may be replaced with the locale-specific equivalent (e.g. 'Strg' for QWERTZ layouts)."
 msgid "Redo (Ctrl+Y)"
@@ -1883,10 +2251,6 @@ msgstr "Рекомендації"
 #: src/components/layout/error-screen.tsx
 msgid "Refresh"
 msgstr "Оновити"
-
-#: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
-msgid "Register New Device"
-msgstr "Зареєструвати новий пристрій"
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
@@ -1904,17 +2268,9 @@ msgstr "Видалення захисту паролем..."
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Report a Bug"
-msgstr "Повідомити про помилку"
-
-#: src/routes/_home/-sections/footer.tsx
-msgid "Report an issue"
-msgstr "Повідомити про проблему"
-
 #: src/routes/dashboard/settings/profile.tsx
-msgid "Resend verification email"
-msgstr "Надіслати лист для підтвердження ще раз"
+msgid "Resend verification"
+msgstr ""
 
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resending verification email..."
@@ -1932,22 +2288,24 @@ msgstr "Скинути пароль"
 msgid "Reset your password"
 msgstr "Скинути пароль"
 
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Reset zoom"
+msgstr ""
+
 #: src/routes/auth/reset-password.tsx
 msgid "Resetting your password..."
 msgstr "Скидання пароля..."
 
 #: src/routes/_home/-sections/footer.tsx
-msgid "Resources"
-msgstr "Ресурси"
+msgid "Resume Builder"
+msgstr ""
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
 #: src/components/command-palette/pages/resumes.tsx
 #: src/components/command-palette/pages/resumes.tsx
-#: src/routes/_home/-sections/statistics.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
-#: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "Резюме"
 
@@ -1966,6 +2324,10 @@ msgstr "Обертання"
 #: src/utils/locale.ts
 msgid "Russian"
 msgstr "Російська"
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Save (Auto-save is enabled)"
+msgstr ""
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
@@ -2017,18 +2379,50 @@ msgstr "Секрет скопійовано до буфера обміну."
 msgid "Section Type"
 msgstr "Тип секції"
 
+#: src/routes/_home/-sections/features.tsx
+msgid "Secure Data Storage"
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
+msgid "Secure passwordless authentication"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Secure your resume with password protection for privacy."
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Security & Privacy"
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/index.tsx
+msgid "Security Best Practices"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "See your changes instantly as you type with live preview updates."
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Select from 12+ professionally designed templates that suit your style and industry."
+msgstr ""
+
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Select your preferred language"
+msgstr ""
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "Оберіть..."
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Self-Host with Docker"
-msgstr "Самостійний хостинг з Docker"
+msgid "Self-Hosting Ready"
+msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Send Password Reset Email"
-msgstr "Надіслати лист для скидання пароля"
+msgid "Send Reset Link"
+msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Sending password reset email..."
@@ -2041,6 +2435,10 @@ msgstr "Роздільник"
 #: src/utils/locale.ts
 msgid "Serbian"
 msgstr "Сербська"
+
+#: src/routes/dashboard/settings/authentication/-components/password.tsx
+msgid "Set a password for your account"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -2064,12 +2462,16 @@ msgid "Shadow Width"
 msgstr "Ширина тіні"
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Share your resume with a public URL, and let others view it."
-msgstr "Поширте своє резюме за публічним посиланням, і дозвольте іншим переглядати його."
+msgid "Share your resume with a public URL or password protection."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Shareable Links"
 msgstr "Доступні для поширення посилання"
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Shareable Public Links"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Sharing"
@@ -2080,6 +2482,10 @@ msgstr "Поширити"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Show"
 msgstr "Показати"
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Show keyboard shortcuts"
+msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -2106,18 +2512,17 @@ msgid "Sign in"
 msgstr "Увійти"
 
 #: src/routes/auth/login.tsx
-msgid "Sign in to your account"
-msgstr "Увійдіть до свого облікового запису"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Sign in with GitHub, Google or a custom OAuth provider."
-msgstr "Увійдіть через GitHub, Google або власного постачальника OAuth."
+msgid "Sign in to continue to CVCraft"
+msgstr ""
 
 #: src/routes/auth/register.tsx
 msgid "Sign up"
 msgstr "Зареєструватися"
 
-#: src/routes/auth/-components/social-auth.tsx
+#: src/components/user/dropdown-menu.tsx
+msgid "Signed out successfully"
+msgstr ""
+
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
@@ -2132,6 +2537,14 @@ msgstr "Вихід..."
 msgid "Signing up..."
 msgstr "Реєстрація..."
 
+#: src/routes/_home/-sections/hero.tsx
+msgid "Simple Authentication"
+msgstr ""
+
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Simple Process"
+msgstr ""
+
 #: src/dialogs/resume/template/data.ts
 msgid "Single-column with a magenta left border accent; compact and efficient for entry-level or internship applications."
 msgstr "Одна колонка з акцентним малиновим лівим бордюром; компактно та ефективно для молодших спеціалістів або стажувань."
@@ -2143,6 +2556,18 @@ msgstr "Одна колонка з мінімалістичним верхнім
 #: src/dialogs/resume/template/data.ts
 msgid "Single-column with a sidebar and clean grid layout; versatile for any professional or technical role."
 msgstr "Одна колонка з бічною панеллю та чіткою сіткою; універсально для будь-якої професійної чи технічної ролі."
+
+#: src/dialogs/resume/template/data.ts
+msgid "Single-column with bold section headers and horizontal dividers; strong visual hierarchy for management or leadership roles."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Single-column with decorative header banner and section icons; balanced design for healthcare, education, or public service."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Single-column with striking header and timeline markers; powerful layout for sales, business development, or consulting."
+msgstr ""
 
 #: src/dialogs/resume/template/data.ts
 msgid "Single-column; polished and serious for senior or enterprise-level positions."
@@ -2168,20 +2593,19 @@ msgstr "Словацька"
 msgid "Slug"
 msgstr "Посилання"
 
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Smart content generation with multiple AI providers"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Something went wrong. Please try again."
 msgstr "Щось пішло не так. Будь ласка, спробуйте ще раз."
 
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Sort by"
 msgstr "Сортувати за"
-
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Source Code"
-msgstr "Вихідний код"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "Spacing (Horizontal)"
@@ -2194,14 +2618,6 @@ msgstr "Відступи (вертикальні)"
 #: src/utils/locale.ts
 msgid "Spanish"
 msgstr "Іспанська"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Sponsors"
-msgstr "Спонсори"
-
-#: src/routes/_home/-sections/footer.tsx
-msgid "Sponsorships"
-msgstr "Спонсорство"
 
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
@@ -2217,14 +2633,31 @@ msgstr "Поставте нам зірку на GitHub (відкриється �
 msgid "Star us on GitHub, currently {0} stars (opens in new tab)"
 msgstr "Поставте нам зірку на GitHub, наразі {0} зірок (відкриється у новій вкладці)"
 
+#: src/routes/_home/-sections/hero.tsx
+#: src/routes/_home/-sections/how-it-works.tsx
+msgid "Start Building Free"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Start building your professional resume in minutes"
+msgstr ""
+
 #: src/dialogs/resume/index.tsx
-msgid "Start building your resume by giving it a name."
-msgstr "Почніть створення резюме з назви."
+msgid "Start building your resume by giving it a name"
+msgstr ""
 
 #: src/routes/dashboard/resumes/-components/cards/create-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Start building your resume from scratch"
 msgstr "Почати створення резюме з нуля"
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Start with a blank canvas and build your cover letter step by step"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Start with a blank canvas and build your resume step by step with our intuitive editor"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Statistics"
@@ -2238,21 +2671,13 @@ msgstr ""
 msgid "Strike"
 msgstr "Закреслення"
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "Subreddit"
-msgstr "Сабреддіт"
+#: src/dialogs/resume/template/data.ts
+msgid "Striking single-column with flame-inspired header waves and gradient accents; passionate design for marketing executives or innovation leaders."
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Summary"
 msgstr "Загальні відомості"
-
-#: src/routes/_home/-sections/donate.tsx
-msgid "Support Reactive Resume"
-msgstr "Підтримати Reactive Resume"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Support the app by doing what you can!"
-msgstr "Підтримайте застосунок будь-яким доступним способом!"
 
 #: src/utils/locale.ts
 msgid "Swedish"
@@ -2275,12 +2700,16 @@ msgid "Tags"
 msgstr "Теги"
 
 #: src/dialogs/resume/index.tsx
-msgid "Tags can be used to categorize your resume by keywords."
-msgstr "Теги можна використовувати для категоризації резюме за ключовими словами."
+msgid "Tags can be used to categorize your resume by keywords"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "Тамільська"
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Technical"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Telugu"
@@ -2294,17 +2723,13 @@ msgstr "Шаблон"
 msgid "Template Gallery"
 msgstr "Галерея шаблонів"
 
-#: src/routes/_home/-sections/templates.tsx
+#: src/routes/_home/-sections/header.tsx
 msgid "Templates"
 msgstr "Шаблони"
 
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Test Connection"
 msgstr "Перевірити з'єднання"
-
-#: src/routes/_home/-sections/testimonials.tsx
-msgid "Testimonials"
-msgstr "Відгуки"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Text Color"
@@ -2329,6 +2754,10 @@ msgstr "Команди, яку ви шукаєте, не існує."
 #: src/components/resume/preview.tsx
 msgid "The content is too tall for this page, this may cause undesirable results when exporting to PDF."
 msgstr "Вміст цієї сторінки занадто великий, що може призвести до некоректного експорту у PDF."
+
+#: src/routes/_home/-sections/hero.tsx
+msgid "The most powerful, privacy-focused resume builder. Free forever, open-source, and designed to help you land your dream job."
+msgstr ""
 
 #: src/routes/auth/resume-password.tsx
 msgid "The password you entered is incorrect"
@@ -2367,14 +2796,22 @@ msgstr "Цю дію неможливо скасувати."
 msgid "This action cannot be undone. All your data will be permanently deleted."
 msgstr "Цю дію неможливо скасувати. Усі ваші дані буде остаточно видалено."
 
+#: src/routes/auth/register.tsx
+msgid "This email is already registered"
+msgstr ""
+
+#: src/routes/auth/register.tsx
+msgid "This email is already registered. Please login or use a different email."
+msgstr ""
+
 #: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/import.tsx
 msgid "This feature requires AI Integration to be enabled. Please enable it in the settings."
 msgstr "Ця функція вимагає активації інтеграції з AI. Будь ласка, увімкніть її в налаштуваннях."
 
 #: src/dialogs/resume/index.tsx
-msgid "This is a URL-friendly name for your resume."
-msgstr "Це ім'я вашого резюме, пристосоване для використання у URL."
+msgid "This is a URL-friendly name for your resume"
+msgstr ""
 
 #: src/dialogs/resume/import.tsx
 msgid "This may take a few minutes, depending on the response of the AI provider. Please do not close the window or refresh the page."
@@ -2397,22 +2834,31 @@ msgstr "Тут можна зберігати персональні нотатк
 msgid "This step is optional, but recommended."
 msgstr "Цей крок необов'язковий, але рекомендований."
 
+#: src/routes/auth/register.tsx
+msgid "This username is already taken"
+msgstr ""
+
+#: src/routes/auth/register.tsx
+msgid "This username is already taken. Please choose a different username."
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
 msgstr "Ця дія згенерує новий API-ключ для доступу до API Reactive Resume, щоб дозволити пристроям взаємодіяти з даними вашого резюме."
 
 #: src/routes/_home/-sections/hero.tsx
-msgid "Timelapse demonstration of building a resume with Reactive Resume"
-msgstr "Таймлапс-демонстрація створення резюме у Reactive Resume"
+msgid "Timelapse demonstration of building a resume with CVCraft"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Tip: Give your API key a name, corresponding to the purpose of the key, to help you identify it later."
 msgstr "Порада: дайте вашому API-ключу ім’я, яке відповідає його призначенню, щоб легше було його знайти пізніше."
 
 #: src/dialogs/resume/index.tsx
-msgid "Tip: You can name the resume referring to the position you are applying for."
-msgstr "Порада: Ви можете назвати резюме відповідно до посади, на яку претендуєте."
+msgid "Tip: You can name the resume referring to the position you are applying for"
+msgstr ""
 
+#: src/dialogs/cover-letter/create.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/custom.tsx
@@ -2424,14 +2870,29 @@ msgstr "Назва"
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Щоб видалити акаунт, введіть підтверджувальний текст і натисніть кнопку нижче."
 
+#: src/routes/builder/$resumeId/-components/word-count.tsx
+msgid "Total character count: {charCount}"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/word-count.tsx
+msgid "Total word count: {wordCount}"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
 msgstr "Відстежуйте перегляди та завантаження вашого резюме"
 
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Translations"
-msgstr "Переклади"
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Transparent, auditable, and community-driven"
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Transparent, trustworthy, and built with care. Inspect the code yourself."
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Truly global, accessible to everyone"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Turkish"
@@ -2444,6 +2905,10 @@ msgstr "Увімкніть публічний доступ, щоб відсте�
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column with a bold colored sidebar and skill bars; great for creative or tech roles where visual flair is welcome."
 msgstr "Дві колонки з яскравою кольоровою бічною панеллю і смугами навичок; чудово для творчих чи технічних посад, де вітається візуальний стиль."
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with a compact header and skill badges; efficient layout for tech startups, product managers, or UX designers."
+msgstr ""
 
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column with a dark teal sidebar and skills grid; modern feel for developers, data scientists, or technical PMs."
@@ -2464,6 +2929,38 @@ msgstr "Дві колонки з мʼяким кольоровим акцент�
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column with accent colors and clean typography; balanced choice for business analysts or operations roles."
 msgstr "Дві колонки з акцентними кольорами і чистою типографікою; збалансований вибір для бізнес-аналітиків чи операційних ролей."
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with adaptive styling and clean lines; versatile template that works for any industry or experience level."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with asymmetric layout and creative spacing; standout design for designers, artists, or creative directors."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with dramatic full-height colored sidebar and bold typography; commanding presence for senior executives or C-suite positions."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with elegant typography and refined spacing; sophisticated choice for executive, legal, or academic positions."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with minimalist design and strategic whitespace; intelligent layout for researchers, analysts, or academics."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with nature-inspired accents and organic flow; perfect for environmental, creative, or wellness industries."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with rounded corners and soft colors; friendly and approachable for education, social work, or customer service."
+msgstr ""
+
+#: src/dialogs/resume/template/data.ts
+msgid "Two-column with structured grid layout and professional borders; solid choice for engineering, architecture, or project management."
+msgstr ""
 
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column, clean and professional with subtle section dividers; suits corporate, finance, or consulting positions."
@@ -2511,9 +3008,17 @@ msgstr "Форматування"
 msgid "Ukrainian"
 msgstr "Українська"
 
+#: src/dialogs/resume/template/data.ts
+msgid "Ultra-modern asymmetric design with overlapping sections and bold typography; commanding presence for tech leaders or visionary roles."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Underline"
 msgstr "Підкреслення"
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Undo"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgctxt "'Ctrl' may be replaced with the locale-specific equivalent (e.g. 'Strg' for QWERTZ layouts)."
@@ -2536,14 +3041,15 @@ msgid "Unlock"
 msgstr "Розблокувати"
 
 #: src/routes/dashboard/settings/profile.tsx
-msgid "Unverified"
-msgstr "Непідтверджена"
+msgid "Unsaved Changes"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
+#: src/routes/dashboard/settings/authentication/-components/password.tsx
 msgid "Update"
 msgstr "Оновити"
 
@@ -2608,13 +3114,20 @@ msgid "Update an existing volunteer experience"
 msgstr "Оновити досвід волонтерства"
 
 #: src/dialogs/auth/change-password.tsx
-#: src/routes/dashboard/settings/authentication/-components/password.tsx
 msgid "Update Password"
 msgstr "Оновити пароль"
 
 #: src/dialogs/resume/index.tsx
 msgid "Update Resume"
 msgstr "Оновити резюме"
+
+#: src/routes/dashboard/settings/profile.tsx
+msgid "Update your account details below"
+msgstr ""
+
+#: src/routes/dashboard/settings/authentication/-components/password.tsx
+msgid "Update your account password"
+msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Update your password"
@@ -2628,6 +3141,10 @@ msgstr "Оновлення пароля..."
 msgid "Updating your resume..."
 msgstr "Оновлення резюме..."
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Upload your existing resume and continue editing with our powerful tools"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."
 msgstr "Завантаження зображення..."
@@ -2636,15 +3153,28 @@ msgstr "Завантаження зображення..."
 msgid "URL"
 msgstr "URL-адреса"
 
+#. placeholder {0}: metadata.name
+#: src/routes/_home/-sections/templates.tsx
+msgid "Use {0} template"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "Use AI to help generate compelling content"
+msgstr ""
+
+#: src/routes/_home/-sections/templates.tsx
+msgid "Use Template"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "Use these keyboard shortcuts to work faster and more efficiently."
+msgstr ""
+
 #: src/dialogs/resume/sections/profile.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Username"
 msgstr "Ім'я користувача"
-
-#: src/routes/_home/-sections/statistics.tsx
-msgid "Users"
-msgstr "Користувачі"
 
 #: src/utils/locale.ts
 msgid "Uzbek"
@@ -2653,10 +3183,6 @@ msgstr "Узбецька"
 #: src/components/input/rich-input.tsx
 msgid "Valid URLs must start with http:// or https://."
 msgstr "Дійсні URL-адреси мають починатися з http:// або https://."
-
-#: src/routes/dashboard/settings/profile.tsx
-msgid "Verified"
-msgstr "Підтверджено"
 
 #: src/routes/auth/verify-2fa-backup.tsx
 #: src/routes/auth/verify-2fa.tsx
@@ -2688,6 +3214,22 @@ msgstr "Підтвердження вашої електронної пошти 
 msgid "Vietnamese"
 msgstr "Вʼєтнамська"
 
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+msgid "View"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "View All"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/index.tsx
+msgid "View All Cover Letters"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "View all your resumes in the History page"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Перегляди"
@@ -2695,6 +3237,10 @@ msgstr "Перегляди"
 #: src/utils/resume/section.tsx
 msgid "Volunteer"
 msgstr "Волонтер"
+
+#: src/routes/auth/forgot-password.tsx
+msgid "We've sent a password reset link to your email address. Click the link in the email to reset your password."
+msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -2709,6 +3255,14 @@ msgstr "Волонтер"
 msgid "Website"
 msgstr "Вебсайт"
 
+#: src/routes/auth/login.tsx
+msgid "Welcome Back"
+msgstr ""
+
+#: src/routes/auth/login.tsx
+msgid "Welcome back!"
+msgstr ""
+
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
 msgid "What do you want to call this passkey?"
 msgstr "Як ви хочете назвати цей ключ доступу?"
@@ -2718,12 +3272,13 @@ msgid "What do you want to rename this section to?"
 msgstr "На яку назву ви хочете перейменувати цей розділ?"
 
 #: src/routes/_home/-sections/faq.tsx
-msgid "What makes Reactive Resume different from other resume builders?"
-msgstr "Чим Reactive Resume відрізняється від інших конструкторів резюме?"
+msgid "What makes CVCraft different from other resume builders?"
+msgstr ""
 
-#: src/routes/_home/-sections/hero.tsx
-msgid "What's new in the latest version?"
-msgstr "Що нового в останній версії?"
+#: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "What would you like to create?"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -2731,25 +3286,33 @@ msgstr "Що нового в останній версії?"
 msgid "When locked, the resume cannot be updated or deleted."
 msgstr "Коли резюме заблоковано, його неможливо оновити або видалити."
 
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Why Choose CVCraft?"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-components/word-count.tsx
+msgid "words"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
-msgid "Write your own CSS (or use an AI to generate it for you) to customize your resume to the fullest."
-msgstr "Напишіть власний CSS (або скористайтеся ШІ для його створення), щоб повністю налаштувати ваше резюме."
+msgid "Write custom CSS or use AI to generate it for ultimate flexibility."
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
-msgid "Yes, Reactive Resume is available in multiple languages. You can choose your preferred language in the settings page, or using the language switcher in the top right corner. If you don't see your language, or you would like to improve the existing translations, you can <0>contribute to the translations on Crowdin<1> (opens in new tab)</1></0>."
-msgstr "Так, Reactive Resume доступна багатьма мовами. Ви можете обрати бажану мову на сторінці налаштувань або через перемикач мови у верхньому правому кутку. Якщо ви не бачите своєї мови або хочете покращити існуючий переклад, ви можете <0>долучитися до перекладу на Crowdin<1> (відкриється у новій вкладці)</1></0>."
+msgid "Yes, CVCraft is available in multiple languages. You can choose your preferred language in the settings page, or using the language switcher in the top right corner. If you don't see your language, or you would like to improve the existing translations, you can <0>contribute to the translations on Crowdin<1> (opens in new tab)</1></0>."
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Yes! CVCraft can be self-hosted using Docker. This gives you complete control over your data and infrastructure. Check our documentation for setup instructions."
+msgstr ""
+
+#: src/routes/_home/-sections/faq.tsx
+msgid "Yes! CVCraft is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Every template is fully customizable. You can change colors, fonts, spacing, and even write custom CSS for complete control over your resume's appearance."
 msgstr "Так! Кожен шаблон повністю налаштовується. Ви можете змінювати кольори, шрифти, відступи та навіть писати власний CSS, щоб повністю контролювати вигляд вашого резюме."
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
-msgstr "Так! Reactive Resume повністю безкоштовний у використанні, без прихованих платежів, преміум тарифів чи підписок. Це відкрите програмне забезпечення, яке завжди залишатиметься безкоштовним."
-
-#: src/routes/_home/-sections/features.tsx
-msgid "You also have the option to deploy on your own servers using the Docker image."
-msgstr "Ви також можете розгорнути на власних серверах за допомогою Docker-образу."
 
 #: src/routes/auth/login.tsx
 msgid "You can also use your username to login."
@@ -2768,7 +3331,10 @@ msgstr "Ви більше не зможете використовувати к�
 msgid "You have unsaved changes that will be lost."
 msgstr ""
 
-#: src/routes/auth/forgot-password.tsx
+#: src/routes/dashboard/settings/profile.tsx
+msgid "You have unsaved changes. Save or cancel to continue."
+msgstr ""
+
 #: src/routes/auth/register.tsx
 msgid "You've got mail!"
 msgstr "Ви отримали листа!"
@@ -2786,16 +3352,20 @@ msgid "Your changes are saved automatically."
 msgstr "Ваші зміни зберігаються автоматично."
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Your data is secure, and never shared or sold to anyone."
-msgstr "Ваші дані захищені і ніколи не передаються або не продаються нікому."
+msgid "Your data is encrypted and never shared with third parties."
+msgstr ""
 
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Your data is stored locally"
 msgstr "Ваші дані зберігаються локально"
 
 #: src/routes/_home/-sections/faq.tsx
-msgid "Your data is stored securely and is never shared with third parties. You can also self-host Reactive Resume on your own servers for complete control over your data."
-msgstr "Ваші дані зберігаються безпечно і ніколи не передаються третім особам. Ви також можете самостійно розгорнути Reactive Resume на власних серверах для повного контролю над своїми даними."
+msgid "Your data is stored securely and is never shared with third parties. You can also self-host CVCraft on your own servers for complete control over your data."
+msgstr ""
+
+#: src/routes/_home/-sections/highlights.tsx
+msgid "Your data stays yours, no tracking or selling"
+msgstr ""
 
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
 msgid "Your passkey has been added successfully."
@@ -2812,6 +3382,14 @@ msgstr "Ваш пароль було успішно скинуто. Тепер �
 #: src/dialogs/auth/change-password.tsx
 msgid "Your password has been updated successfully."
 msgstr "Ваш пароль успішно оновлено."
+
+#: src/routes/dashboard/settings/preferences.tsx
+msgid "Your preferences are automatically saved and will be applied across all your devices when you sign in."
+msgstr ""
+
+#: src/routes/_home/-sections/features.tsx
+msgid "Your privacy matters. We don't track, sell, or monetize your data."
+msgstr ""
 
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
@@ -2844,17 +3422,25 @@ msgstr "Ваше резюме успішно оновлено."
 msgid "Your resume's public link is currently protected by a password. Share the password only with people you trust."
 msgstr "Публічне посилання на ваше резюме наразі захищене паролем. Діліться паролем лише з тими, кому ви довіряєте."
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Your support ensures the project remains free and accessible for everyone, now and in the future."
-msgstr "Ваша підтримка гарантує, що проєкт залишиться безкоштовним і доступним для всіх — зараз і в майбутньому."
+#: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Your work is automatically saved as you type"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom in"
 msgstr "Збільшити"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom out"
 msgstr "Зменшити"
+
+#. placeholder {0}: Math.round(scale * 100)
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Zoom to {0}%"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Zulu"

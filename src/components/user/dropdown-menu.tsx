@@ -44,17 +44,23 @@ export function UserDropdownMenu({ children }: Props) {
 		window.location.reload();
 	}
 
-	function handleLogout() {
+	async function handleLogout() {
 		const toastId = toast.loading(t`Signing out...`);
 
-		authClient.signOut()
-			.then(() => {
-				toast.dismiss(toastId);
-				router.invalidate();
-			})
-			.catch((error) => {
-				toast.error(error.message, { id: toastId });
-			});
+		try {
+			await authClient.signOut();
+			
+			// Wait a bit to ensure cookie is cleared before invalidating
+			await new Promise(resolve => setTimeout(resolve, 100));
+			
+			await router.invalidate();
+			toast.success(t`Signed out successfully`, { id: toastId });
+			
+			// Navigate to login page
+			router.navigate({ to: "/auth/login", replace: true });
+		} catch (error: any) {
+			toast.error(error.message || t`Failed to sign out`, { id: toastId });
+		}
 	}
 
 	// Show loading state or return null if no session

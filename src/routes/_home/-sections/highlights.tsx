@@ -1,3 +1,4 @@
+import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import type { Icon } from "@phosphor-icons/react";
 import {
@@ -22,43 +23,43 @@ const highlights: Highlight[] = [
 	{
 		id: "templates",
 		icon: PaintBrushIcon,
-		title: "30+ Templates",
-		description: "Beautiful, professionally designed templates",
+		title: t`30+ Templates`,
+		description: t`Beautiful, professionally designed templates`,
 		color: "from-purple-500 to-pink-500",
 	},
 	{
 		id: "languages",
 		icon: GlobeIcon,
-		title: "50+ Languages",
-		description: "Truly global, accessible to everyone",
+		title: t`50+ Languages`,
+		description: t`Truly global, accessible to everyone`,
 		color: "from-blue-500 to-cyan-500",
 	},
 	{
 		id: "ai",
 		icon: SparkleIcon,
-		title: "AI-Powered",
-		description: "Smart content generation with multiple AI providers",
+		title: t`AI-Powered`,
+		description: t`Smart content generation with multiple AI providers`,
 		color: "from-amber-500 to-orange-500",
 	},
 	{
 		id: "privacy",
 		icon: LockKeyIcon,
-		title: "Privacy First",
-		description: "Your data stays yours, no tracking or selling",
+		title: t`Privacy First`,
+		description: t`Your data stays yours, no tracking or selling`,
 		color: "from-green-500 to-emerald-500",
 	},
 	{
 		id: "opensource",
 		icon: CodeIcon,
-		title: "Open Source",
-		description: "Transparent, auditable, and community-driven",
+		title: t`Open Source`,
+		description: t`Transparent, auditable, and community-driven`,
 		color: "from-indigo-500 to-purple-500",
 	},
 	{
 		id: "fast",
 		icon: RocketLaunchIcon,
-		title: "Lightning Fast",
-		description: "Built with modern tech for optimal performance",
+		title: t`Lightning Fast`,
+		description: t`Built with modern tech for optimal performance`,
 		color: "from-red-500 to-pink-500",
 	},
 ];

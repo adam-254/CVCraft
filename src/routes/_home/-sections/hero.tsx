@@ -118,9 +118,9 @@ export function Hero() {
 					className="flex flex-wrap items-center justify-center gap-3"
 				>
 					{[
-						{ icon: CheckCircleIcon, text: "Simple Authentication" },
-						{ icon: CheckCircleIcon, text: "100% Free & Open Source" },
-						{ icon: CheckCircleIcon, text: "AI-Powered" },
+						{ icon: CheckCircleIcon, text: t`Simple Authentication` },
+						{ icon: CheckCircleIcon, text: t`100% Free & Open Source` },
+						{ icon: CheckCircleIcon, text: t`AI-Powered` },
 					].map((item, i) => (
 						<motion.div
 							key={item.text}

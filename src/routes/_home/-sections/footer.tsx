@@ -1,3 +1,4 @@
+import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { CodeIcon, HeartIcon, ShieldCheckIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
@@ -7,9 +8,9 @@ export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	const features = [
-		{ icon: CodeIcon, label: "Open Source" },
-		{ icon: ShieldCheckIcon, label: "Privacy First" },
-		{ icon: HeartIcon, label: "Free Forever" },
+		{ icon: CodeIcon, label: t`Open Source` },
+		{ icon: ShieldCheckIcon, label: t`Privacy First` },
+		{ icon: HeartIcon, label: t`Free Forever` },
 	];
 
 	return (

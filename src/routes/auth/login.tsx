@@ -51,7 +51,10 @@ function RouteComponent() {
 				password: data.password,
 			});
 
-			router.invalidate();
+			// Wait a bit to ensure cookie is set before invalidating
+			await new Promise(resolve => setTimeout(resolve, 100));
+			
+			await router.invalidate();
 			toast.success(t`Welcome back!`, { id: toastId });
 			navigate({ to: "/dashboard", replace: true });
 		} catch (error: any) {

@@ -3,129 +3,113 @@
  * Replaces better-auth client with direct API calls to Supabase
  */
 
-import Cookies from 'js-cookie';
-
-const AUTH_TOKEN_KEY = 'cvcraft_auth_token';
+const AUTH_TOKEN_KEY = "cvcraft_auth_token";
 
 export const simpleAuthClient = {
-  async signUp(data: { name: string; email: string; username: string; password: string }) {
-    const response = await fetch('/api/simple-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'signup', ...data }),
-      credentials: 'include',
-    });
+	async signUp(data: { name: string; email: string; username: string; password: string }) {
+		const response = await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "signup", ...data }),
+			credentials: "include",
+		});
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Signup failed');
-    }
+		const result = await response.json();
 
-    // Store token in cookie
-    if (result.token) {
-      Cookies.set(AUTH_TOKEN_KEY, result.token, { expires: 30, sameSite: 'lax' });
-    }
+		if (!response.ok) {
+			throw new Error(result.error || "Signup failed");
+		}
 
-    return result;
-  },
+		// Cookie is set by server via Set-Cookie header (HttpOnly)
+		// No need to set it client-side
+		return result;
+	},
 
-  async signIn(data: { identifier: string; password: string }) {
-    const response = await fetch('/api/simple-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'signin', ...data }),
-      credentials: 'include',
-    });
+	async signIn(data: { identifier: string; password: string }) {
+		const response = await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "signin", ...data }),
+			credentials: "include",
+		});
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Sign in failed');
-    }
+		const result = await response.json();
 
-    // Store token in cookie
-    if (result.token) {
-      Cookies.set(AUTH_TOKEN_KEY, result.token, { expires: 30, sameSite: 'lax' });
-    }
+		if (!response.ok) {
+			throw new Error(result.error || "Sign in failed");
+		}
 
-    return result;
-  },
+		// Cookie is set by server via Set-Cookie header (HttpOnly)
+		// No need to set it client-side
+		return result;
+	},
 
-  async signOut() {
-    const token = Cookies.get(AUTH_TOKEN_KEY);
-    
-    if (token) {
-      await fetch('/api/simple-auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'signout', token }),
-        credentials: 'include',
-      });
-    }
+	async signOut() {
+		// Server will clear the HttpOnly cookie
+		await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "signout" }),
+			credentials: "include",
+		});
+	},
 
-    Cookies.remove(AUTH_TOKEN_KEY);
-  },
+	async forgotPassword(email: string) {
+		const response = await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "forgot-password", email }),
+			credentials: "include",
+		});
 
-  async forgotPassword(email: string) {
-    const response = await fetch('/api/simple-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'forgot-password', email }),
-      credentials: 'include',
-    });
+		const result = await response.json();
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Password reset failed');
-    }
+		if (!response.ok) {
+			throw new Error(result.error || "Password reset failed");
+		}
 
-    return result;
-  },
+		return result;
+	},
 
-  async resetPassword(token: string, password: string) {
-    const response = await fetch('/api/simple-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'reset-password', token, password }),
-      credentials: 'include',
-    });
+	async resetPassword(token: string, password: string) {
+		const response = await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "reset-password", token, password }),
+			credentials: "include",
+		});
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Password reset failed');
-    }
+		const result = await response.json();
 
-    return result;
-  },
+		if (!response.ok) {
+			throw new Error(result.error || "Password reset failed");
+		}
 
-  async getSession() {
-    const token = Cookies.get(AUTH_TOKEN_KEY);
-    
-    if (!token) {
-      return { session: null };
-    }
+		return result;
+	},
 
-    const response = await fetch('/api/simple-auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'get-session', token }),
-      credentials: 'include',
-    });
+	async getSession() {
+		// Session is managed via HttpOnly cookie
+		// Make request to get session data
+		const response = await fetch("/api/simple-auth", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ action: "get-session" }),
+			credentials: "include",
+		});
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      Cookies.remove(AUTH_TOKEN_KEY);
-      return { session: null };
-    }
+		const result = await response.json();
 
-    return result;
-  },
+		if (!response.ok) {
+			return { session: null };
+		}
 
-  getToken() {
-    return Cookies.get(AUTH_TOKEN_KEY);
-  },
+		return result;
+	},
+
+	getToken() {
+		// Token is in HttpOnly cookie, not accessible from JavaScript
+		// This method is kept for compatibility but returns undefined
+		return undefined;
+	},
 };

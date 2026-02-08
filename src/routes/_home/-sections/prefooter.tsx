@@ -1,3 +1,4 @@
+import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { GithubLogoIcon, HeartIcon, UsersIcon } from "@phosphor-icons/react";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -101,9 +102,9 @@ export function Prefooter() {
 						transition={{ duration: 0.6, delay: 0.5 }}
 					>
 						{[
-							{ icon: GithubLogoIcon, label: "Open Source", color: "text-purple-600 dark:text-purple-400" },
-							{ icon: HeartIcon, label: "Made with Love", color: "text-pink-600 dark:text-pink-400" },
-							{ icon: UsersIcon, label: "Built for You", color: "text-blue-600 dark:text-blue-400" },
+							{ icon: GithubLogoIcon, label: t`Open Source`, color: "text-purple-600 dark:text-purple-400" },
+							{ icon: HeartIcon, label: t`Made with Love`, color: "text-pink-600 dark:text-pink-400" },
+							{ icon: UsersIcon, label: t`Built for You`, color: "text-blue-600 dark:text-blue-400" },
 						].map((item, i) => (
 							<motion.div
 								key={item.label}

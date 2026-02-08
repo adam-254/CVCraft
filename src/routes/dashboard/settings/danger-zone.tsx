@@ -2,7 +2,7 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { TrashSimpleIcon, WarningIcon } from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -21,8 +21,9 @@ export const Route = createFileRoute("/dashboard/settings/danger-zone")({
 const CONFIRMATION_TEXT = "delete";
 
 function RouteComponent() {
-	const confirm = useConfirm();
+	const router = useRouter();
 	const navigate = useNavigate();
+	const confirm = useConfirm();
 	const [confirmationText, setConfirmationText] = useState("");
 	const isConfirmationValid = confirmationText === CONFIRMATION_TEXT;
 
@@ -42,8 +43,14 @@ function RouteComponent() {
 		deleteAccount(undefined, {
 			onSuccess: async () => {
 				toast.success(t`Your account has been deleted successfully.`, { id: toastId });
+				
 				await authClient.signOut();
-				navigate({ to: "/" });
+				
+				// Wait a bit to ensure cookie is cleared before invalidating
+				await new Promise(resolve => setTimeout(resolve, 100));
+				
+				await router.invalidate();
+				navigate({ to: "/", replace: true });
 			},
 			onError: (error) => {
 				toast.error(error.message, { id: toastId });
