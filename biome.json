@@ -12,7 +12,6 @@
 			"**",
 			"!**/webfontlist.json",
 			"!**/schema/schema.json",
-			"!**/docs/spec.json",
 			"!**/src/routeTree.gen.ts"
 		]
 	},
