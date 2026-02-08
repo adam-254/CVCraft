@@ -39,7 +39,7 @@ Unlike other resume builders that bombard you with ads, track your every move, o
 ## ✨ Features
 
 ### 🎨 **Beautiful Templates**
-Choose from **12+ professionally designed templates** that look great on any device. Each template is fully customizable with:
+Choose from **30+ professionally designed templates** that look great on any device. Each template is fully customizable with:
 - Custom colors, fonts, and spacing
 - A4 and Letter page formats
 - Advanced CSS customization support
@@ -175,25 +175,30 @@ pnpm run dev
 # Navigate to http://localhost:3000
 ```
 
-### Option 3: Self-Host with Docker
+### Environment Variables
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/cvcraft.git
-cd cvcraft
+Create a `.env` file in the root directory with the following variables:
 
-# Configure environment
-cp .env.example .env
-# Edit .env with your production settings
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/cvcraft
 
-# Start with Docker Compose
-docker-compose up -d
+# Supabase Auth
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
-# Access your instance
-# Navigate to http://your-domain.com
+# Optional: AI Integration
+OPENAI_API_KEY=your_openai_key
+GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_key
+ANTHROPIC_API_KEY=your_claude_key
+
+# Optional: AWS S3 Storage
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_REGION=your_region
+AWS_BUCKET_NAME=your_bucket_name
 ```
-
-For detailed self-hosting instructions, see the [Self-Hosting Guide](#self-hosting).
 
 ## 🔐 Authentication System
 
@@ -230,88 +235,79 @@ DATABASE_URL=your_postgresql_connection_string
 
 CVCraft is built with modern, cutting-edge technologies:
 
-| Category         | Technology                           |
-| ---------------- | ------------------------------------ |
-| **Framework**    | TanStack Start (React 19, Vite)      |
-| **Runtime**      | Node.js                              |
-| **Language**     | TypeScript                           |
-| **Database**     | PostgreSQL with Drizzle ORM          |
-| **Auth**         | Supabase Auth + Custom Adapter       |
-| **API**          | ORPC (Type-safe RPC)                 |
-| **Styling**      | Tailwind CSS                         |
-| **UI**           | Radix UI + Custom Components         |
-| **State**        | Zustand + TanStack Query             |
-| **PDF**          | Headless Chromium (Printer Service)  |
+| Category            | Technology                                    |
+| ------------------- | --------------------------------------------- |
+| **Framework**       | TanStack Start (React 19, Vite 6)             |
+| **Runtime**         | Node.js                                       |
+| **Language**        | TypeScript                                    |
+| **Database**        | PostgreSQL with Drizzle ORM                   |
+| **Auth**            | Supabase Auth + Better Auth + Custom Adapter  |
+| **API**             | ORPC (Type-safe RPC with Zod validation)      |
+| **Styling**         | Tailwind CSS 4                                |
+| **UI Components**   | Radix UI + shadcn/ui                          |
+| **State Management**| Zustand + TanStack Query + Zundo (undo/redo)  |
+| **Rich Text Editor**| Tiptap                                        |
+| **AI Integration**  | Vercel AI SDK (OpenAI, Google, Anthropic)     |
+| **PDF Generation**  | Puppeteer (Headless Chromium)                 |
+| **Drag & Drop**     | dnd-kit                                       |
+| **Animations**      | Motion (Framer Motion)                        |
+| **Internationalization** | Lingui (50+ languages)                   |
+| **Storage**         | AWS S3 SDK                                    |
+| **Code Editor**     | Monaco Editor                                 |
+| **PWA**             | Vite PWA Plugin + Workbox                     |
 
-## 🐳 Self-Hosting
+## 🚀 Deployment
 
-CVCraft is designed to be easily self-hosted. You'll need:
+CVCraft can be deployed to various platforms:
 
 ### Requirements
-- **PostgreSQL** — Database for storing user data and resumes
-- **Supabase** — Authentication and user management (or self-hosted Supabase)
-- **Printer Service** — Headless Chromium for PDF generation
-- **S3-compatible storage** (optional) — For file uploads (e.g., AWS S3, MinIO)
+- **PostgreSQL Database** — For storing user data and resumes
+- **Supabase Project** — For authentication (or self-hosted Supabase)
+- **Node.js 18+** — Runtime environment
+- **AWS S3** (optional) — For file uploads and storage
 
-### Environment Variables
+### Deployment Platforms
 
-```env
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/cvcraft
+CVCraft works with any platform that supports Node.js applications:
 
-# Supabase Auth
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+- **Vercel** — Recommended for easy deployment
+- **Netlify** — Great for static + serverless
+- **Railway** — Simple deployment with PostgreSQL included
+- **Render** — Full-stack deployment
+- **DigitalOcean App Platform** — Managed deployment
+- **AWS / GCP / Azure** — Enterprise-grade hosting
 
-# Optional: AI Integration
-OPENAI_API_KEY=your_openai_key
-GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_key
-ANTHROPIC_API_KEY=your_claude_key
+### Build for Production
 
-# Optional: Storage
-STORAGE_URL=your_s3_endpoint
-STORAGE_ACCESS_KEY=your_access_key
-STORAGE_SECRET_KEY=your_secret_key
+```bash
+# Install dependencies
+pnpm install
+
+# Build the application
+pnpm run build
+
+# Start production server
+pnpm run start
 ```
 
-### Docker Compose Setup
+### Database Setup
 
-The easiest way to self-host is using Docker Compose:
+1. Create a PostgreSQL database
+2. Set `DATABASE_URL` in your environment variables
+3. Run migrations:
+   ```bash
+   pnpm run db:migrate
+   ```
 
-```yaml
-version: '3.8'
+### Supabase Setup
 
-services:
-  postgres:
-    image: postgres:16
-    environment:
-      POSTGRES_DB: cvcraft
-      POSTGRES_USER: cvcraft
-      POSTGRES_PASSWORD: your_password
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  cvcraft:
-    image: cvcraft/cvcraft:latest
-    ports:
-      - "3000:3000"
-    environment:
-      DATABASE_URL: postgresql://cvcraft:your_password@postgres:5432/cvcraft
-      # Add other environment variables
-    depends_on:
-      - postgres
-
-  printer:
-    image: cvcraft/printer:latest
-    environment:
-      # Printer service configuration
-
-volumes:
-  postgres_data:
-```
-
-For complete self-hosting documentation, visit the [Self-Hosting Guide](docs/self-hosting).
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Get your project URL and keys from Settings > API
+3. Set the following environment variables:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+4. Enable Email authentication in Supabase Dashboard
 
 ## 📚 Documentation
 
@@ -320,7 +316,7 @@ For complete self-hosting documentation, visit the [Self-Hosting Guide](docs/sel
 | **Getting Started**      | First-time setup and basic usage               |
 | **Templates Guide**      | How to choose and customize templates          |
 | **AI Integration**       | Set up AI-powered content generation           |
-| **Self-Hosting**         | Deploy CVCraft on your own infrastructure      |
+| **Deployment**           | Deploy CVCraft to production                   |
 | **API Documentation**    | Use the REST API for programmatic access       |
 | **Development Guide**    | Contribute to CVCraft development              |
 
