@@ -309,17 +309,6 @@ pnpm run start
    - `SUPABASE_SERVICE_ROLE_KEY`
 4. Enable Email authentication in Supabase Dashboard
 
-## 📚 Documentation
-
-| Topic                    | Description                                    |
-| ------------------------ | ---------------------------------------------- |
-| **Getting Started**      | First-time setup and basic usage               |
-| **Templates Guide**      | How to choose and customize templates          |
-| **AI Integration**       | Set up AI-powered content generation           |
-| **Deployment**           | Deploy CVCraft to production                   |
-| **API Documentation**    | Use the REST API for programmatic access       |
-| **Development Guide**    | Contribute to CVCraft development              |
-
 ## 🤝 Contributing
 
 CVCraft is open source, and contributions are welcome! Whether you're fixing a bug, adding a feature, or improving documentation, your help is appreciated.
@@ -357,26 +346,6 @@ pnpm run db:migrate
 # Start development server
 pnpm run dev
 ```
-
-## 💖 Support the Project
-
-CVCraft is **100% free** and will always remain that way. If it has helped you land a job or saved you time, consider supporting its continued development:
-
-- ⭐ **Star this repository** — It helps others discover CVCraft
-- 🐛 **Report bugs** — Help improve the app for everyone
-- 💡 **Suggest features** — Share your ideas for new functionality
-- 📖 **Improve documentation** — Make it easier for others to use
-- 🌍 **Help with translations** — Make CVCraft accessible to more people
-
-## 📄 License
-
-CVCraft is open source software licensed under the [MIT License](./LICENSE).
-
-You are free to:
-- ✅ Use it commercially
-- ✅ Modify it
-- ✅ Distribute it
-- ✅ Use it privately
 
 ---
 
