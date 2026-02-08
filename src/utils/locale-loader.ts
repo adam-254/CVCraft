@@ -39,7 +39,6 @@ import ptPT from '../../locales/pt-PT.js';
 import roRO from '../../locales/ro-RO.js';
 import ruRU from '../../locales/ru-RU.js';
 import skSK from '../../locales/sk-SK.js';
-import slSI from '../../locales/sl-SI.js';
 import sqAL from '../../locales/sq-AL.js';
 import srSP from '../../locales/sr-SP.js';
 import svSE from '../../locales/sv-SE.js';
@@ -95,7 +94,6 @@ export const localeModules: Record<string, { messages: any }> = {
   'ro-RO': roRO,
   'ru-RU': ruRU,
   'sk-SK': skSK,
-  'sl-SI': slSI,
   'sq-AL': sqAL,
   'sr-SP': srSP,
   'sv-SE': svSE,
