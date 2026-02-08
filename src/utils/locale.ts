@@ -1,4 +1,4 @@
-import { i18n, type MessageDescriptor, type Messages } from "@lingui/core";
+import { i18n, type MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { createIsomorphicFn, createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
@@ -164,6 +164,6 @@ export const setLocaleServerFn = createServerFn({ method: "POST" })
 
 export const loadLocale = async (locale: string) => {
 	if (!isLocale(locale)) locale = defaultLocale;
-	const { messages } = await (import(`../../locales/${locale}.po`) as Promise<{ messages: Messages }>);
+	const { messages } = await import(`../../locales/${locale}.js`);
 	i18n.loadAndActivate({ locale, messages });
 };
