@@ -162,8 +162,16 @@ export const setLocaleServerFn = createServerFn({ method: "POST" })
 		setCookie(storageKey, data);
 	});
 
+import { localeModules } from "./locale-loader";
+
 export const loadLocale = async (locale: string) => {
 	if (!isLocale(locale)) locale = defaultLocale;
-	const { messages } = await import(`../../locales/${locale}.js`);
-	i18n.loadAndActivate({ locale, messages });
+	const localeModule = localeModules[locale];
+	if (!localeModule) {
+		console.error(`Locale ${locale} not found, falling back to ${defaultLocale}`);
+		const fallbackModule = localeModules[defaultLocale];
+		i18n.loadAndActivate({ locale: defaultLocale, messages: fallbackModule.messages });
+		return;
+	}
+	i18n.loadAndActivate({ locale, messages: localeModule.messages });
 };
