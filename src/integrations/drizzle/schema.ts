@@ -297,3 +297,34 @@ export const coverLetter = pg.pgTable(
 		pg.index().on(t.isPublic, t.slug, t.userId),
 	],
 );
+
+export const aiProvider = pg.pgTable(
+	"ai_provider",
+	{
+		id: pg
+			.uuid("id")
+			.notNull()
+			.primaryKey()
+			.$defaultFn(() => generateId()),
+		userId: pg
+			.uuid("user_id")
+			.notNull()
+			.references(() => user.id, { onDelete: "cascade" }),
+		provider: pg.text("provider").notNull(),
+		apiKey: pg.text("api_key").notNull(),
+		baseUrl: pg.text("base_url"),
+		model: pg.text("model").notNull(),
+		isActive: pg.boolean("is_active").notNull().default(false),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: pg
+			.timestamp("updated_at", { withTimezone: true })
+			.notNull()
+			.defaultNow()
+			.$onUpdate(() => /* @__PURE__ */ new Date()),
+	},
+	(t) => [
+		pg.index().on(t.userId),
+		pg.index().on(t.userId, t.isActive),
+		pg.uniqueIndex("idx_ai_provider_user_one_active").on(t.userId).where(pg.sql`${t.isActive} = true`),
+	],
+);

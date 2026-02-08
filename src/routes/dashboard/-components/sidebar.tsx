@@ -6,6 +6,7 @@ import {
 	ClockCounterClockwiseIcon,
 	EnvelopeSimpleIcon,
 	GearSixIcon,
+	PlugsConnectedIcon,
 	ReadCvLogoIcon,
 	ShieldCheckIcon,
 	UserCircleIcon,
@@ -72,6 +73,11 @@ const settingsSidebarItems = [
 		icon: <ShieldCheckIcon />,
 		label: msg`Authentication`,
 		href: "/dashboard/settings/authentication",
+	},
+	{
+		icon: <PlugsConnectedIcon />,
+		label: msg`Integrations`,
+		href: "/dashboard/settings/integrations",
 	},
 ] as const satisfies SidebarItem[];
 
