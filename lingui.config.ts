@@ -65,6 +65,8 @@ export default defineConfig({
 	formatOptions: {
 		lineNumbers: false,
 	},
+	format: "po",
+	compileNamespace: "es",
 	catalogs: [
 		{
 			path: "<rootDir>/locales/{locale}",

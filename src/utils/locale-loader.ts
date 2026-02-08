@@ -1,7 +1,7 @@
 // Dynamic locale loader using import() for Vite compatibility
 // The locale files are CommonJS modules with module.exports
 export async function loadLocaleModule(locale: string): Promise<{ messages: any }> {
-  // Use dynamic import with ?commonjs to handle CommonJS modules
+  // Use dynamic import - Vite will handle CommonJS conversion
   const modules: Record<string, () => Promise<any>> = {
     'af-ZA': () => import('../../locales/af-ZA.js'),
     'am-ET': () => import('../../locales/am-ET.js'),
@@ -64,6 +64,6 @@ export async function loadLocaleModule(locale: string): Promise<{ messages: any 
   }
 
   const module = await loader();
-  // Handle both default export and direct module.exports
+  // Vite converts CommonJS to ES modules, so check both default and direct export
   return module.default || module;
 }

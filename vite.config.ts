@@ -1,5 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { lingui } from "@lingui/vite-plugin";
+import commonjs from "@rollup/plugin-commonjs";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -65,121 +66,128 @@ const config = defineConfig({
 
 	plugins: [
 		reflectPolyfillPlugin(),
+		commonjs({
+			include: /locales\/.*\.js$/,
+		}),
 		lingui(),
 		tailwindcss(),
 		tanstackStart({ router: { semicolons: true, quoteStyle: "double" } }),
 		viteReact({ babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] } }),
-		...(process.env.NODE_ENV === 'production' ? [VitePWA({
-			outDir: "public",
-			useCredentials: true,
-			injectRegister: false,
-			includeAssets: ["**/*"],
-			registerType: "autoUpdate",
-			workbox: {
-				skipWaiting: true,
-				clientsClaim: true,
-				globPatterns: ["**/*"],
-				maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10mb
-				navigateFallback: null, // Disable navigation fallback for SSR
-			},
-			manifest: {
-				name: "CVCraft",
-				short_name: "CVCraft",
-				description: "A free and open-source resume builder.",
-				id: "/?source=pwa",
-				start_url: "/?source=pwa",
-				display: "standalone",
-				orientation: "portrait",
-				theme_color: "#09090B",
-				background_color: "#09090B",
-				icons: [
-					{
-						src: "logo/CVCraft_logo.png",
-						sizes: "64x64 128x128 192x192 512x512",
-						type: "image/png",
-						purpose: "any maskable",
-					},
-				],
-				screenshots: [
-					{
-						src: "screenshots/web/1-landing-page.webp",
-						sizes: "1920x1080 any",
-						type: "image/webp",
-						form_factor: "wide",
-						label: "Landing Page",
-					},
-					{
-						src: "screenshots/web/2-resume-dashboard.webp",
-						sizes: "1920x1080 any",
-						type: "image/webp",
-						form_factor: "wide",
-						label: "Resume Dashboard",
-					},
-					{
-						src: "screenshots/web/3-builder-screen.webp",
-						sizes: "1920x1080 any",
-						type: "image/webp",
-						form_factor: "wide",
-						label: "Builder Screen",
-					},
-					{
-						src: "screenshots/web/4-template-gallery.webp",
-						sizes: "1920x1080 any",
-						type: "image/webp",
-						form_factor: "wide",
-						label: "Template Gallery",
-					},
-					{
-						src: "screenshots/mobile/1-landing-page.webp",
-						sizes: "1284x2778 any",
-						type: "image/webp",
-						form_factor: "narrow",
-						label: "Landing Page",
-					},
-					{
-						src: "screenshots/mobile/2-resume-dashboard.webp",
-						sizes: "1284x2778 any",
-						type: "image/webp",
-						form_factor: "narrow",
-						label: "Resume Dashboard",
-					},
-					{
-						src: "screenshots/mobile/3-builder-screen.webp",
-						sizes: "1284x2778 any",
-						type: "image/webp",
-						form_factor: "narrow",
-						label: "Builder Screen",
-					},
-					{
-						src: "screenshots/mobile/4-template-gallery.webp",
-						sizes: "1284x2778 any",
-						type: "image/webp",
-						form_factor: "narrow",
-						label: "Template Gallery",
-					},
-				],
-				categories: [
-					"ai",
-					"builder",
-					"business",
-					"career",
-					"cv",
-					"editor",
-					"free",
-					"generator",
-					"job-search",
-					"multilingual",
-					"open-source",
-					"privacy",
-					"productivity",
-					"resume",
-					"self-hosted",
-					"templates",
-					"utilities",
-					"writing",
-				],
-			},
-		})] : []),
+		...(process.env.NODE_ENV === "production"
+			? [
+					VitePWA({
+						outDir: "public",
+						useCredentials: true,
+						injectRegister: false,
+						includeAssets: ["**/*"],
+						registerType: "autoUpdate",
+						workbox: {
+							skipWaiting: true,
+							clientsClaim: true,
+							globPatterns: ["**/*"],
+							maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10mb
+							navigateFallback: null, // Disable navigation fallback for SSR
+						},
+						manifest: {
+							name: "CVCraft",
+							short_name: "CVCraft",
+							description: "A free and open-source resume builder.",
+							id: "/?source=pwa",
+							start_url: "/?source=pwa",
+							display: "standalone",
+							orientation: "portrait",
+							theme_color: "#09090B",
+							background_color: "#09090B",
+							icons: [
+								{
+									src: "logo/CVCraft_logo.png",
+									sizes: "64x64 128x128 192x192 512x512",
+									type: "image/png",
+									purpose: "any maskable",
+								},
+							],
+							screenshots: [
+								{
+									src: "screenshots/web/1-landing-page.webp",
+									sizes: "1920x1080 any",
+									type: "image/webp",
+									form_factor: "wide",
+									label: "Landing Page",
+								},
+								{
+									src: "screenshots/web/2-resume-dashboard.webp",
+									sizes: "1920x1080 any",
+									type: "image/webp",
+									form_factor: "wide",
+									label: "Resume Dashboard",
+								},
+								{
+									src: "screenshots/web/3-builder-screen.webp",
+									sizes: "1920x1080 any",
+									type: "image/webp",
+									form_factor: "wide",
+									label: "Builder Screen",
+								},
+								{
+									src: "screenshots/web/4-template-gallery.webp",
+									sizes: "1920x1080 any",
+									type: "image/webp",
+									form_factor: "wide",
+									label: "Template Gallery",
+								},
+								{
+									src: "screenshots/mobile/1-landing-page.webp",
+									sizes: "1284x2778 any",
+									type: "image/webp",
+									form_factor: "narrow",
+									label: "Landing Page",
+								},
+								{
+									src: "screenshots/mobile/2-resume-dashboard.webp",
+									sizes: "1284x2778 any",
+									type: "image/webp",
+									form_factor: "narrow",
+									label: "Resume Dashboard",
+								},
+								{
+									src: "screenshots/mobile/3-builder-screen.webp",
+									sizes: "1284x2778 any",
+									type: "image/webp",
+									form_factor: "narrow",
+									label: "Builder Screen",
+								},
+								{
+									src: "screenshots/mobile/4-template-gallery.webp",
+									sizes: "1284x2778 any",
+									type: "image/webp",
+									form_factor: "narrow",
+									label: "Template Gallery",
+								},
+							],
+							categories: [
+								"ai",
+								"builder",
+								"business",
+								"career",
+								"cv",
+								"editor",
+								"free",
+								"generator",
+								"job-search",
+								"multilingual",
+								"open-source",
+								"privacy",
+								"productivity",
+								"resume",
+								"self-hosted",
+								"templates",
+								"utilities",
+								"writing",
+							],
+						},
+					}),
+				]
+			: []),
 	],
 });
 
