@@ -125,11 +125,4 @@ export const authClient = {
 	async unlinkAccount() {
 		return { error: new Error("Unlink account not yet implemented") };
 	},
-
-	// Hooks for React components
-	useSession: () => {
-		// This would need to be implemented with React hooks
-		console.warn("useSession not implemented - use getSession instead");
-		return { data: null, isPending: false, error: null };
-	},
 };

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Features } from "./-sections/features";
 import { Footer } from "./-sections/footer";
 import { Hero } from "./-sections/hero";
+import { Highlights } from "./-sections/highlights";
 import { HowItWorks } from "./-sections/how-it-works";
 import { Prefooter } from "./-sections/prefooter";
 import { Templates } from "./-sections/templates";
