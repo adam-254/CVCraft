@@ -14,7 +14,7 @@ function RouteComponent() {
 	const { openDialog } = useDialogStore();
 
 	const handleCreateCoverLetter = () => {
-		openDialog("cover-letter.create");
+		openDialog("cover-letter.create", {});
 	};
 
 	const handleViewCoverLetters = () => {
