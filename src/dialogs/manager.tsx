@@ -9,7 +9,7 @@ import { ImportResumeDialog } from "./resume/import";
 import { CreateAwardDialog, UpdateAwardDialog } from "./resume/sections/award";
 import { CreateCertificationDialog, UpdateCertificationDialog } from "./resume/sections/certification";
 import { CreateCoverLetterDialog, UpdateCoverLetterDialog } from "./resume/sections/cover-letter";
-import { CreateCustomSectionDialog, UpdateCustomSectionDialog } from "./resume/sections/custom";
+import { CreateCustomSectionDialog } from "./resume/sections/custom";
 import { CreateEducationDialog, UpdateEducationDialog } from "./resume/sections/education";
 import { CreateExperienceDialog, UpdateExperienceDialog } from "./resume/sections/experience";
 import { CreateInterestDialog, UpdateInterestDialog } from "./resume/sections/interest";
@@ -66,7 +66,9 @@ export function DialogManager() {
 		.with({ type: "resume.sections.cover-letter.create" }, ({ data }) => <CreateCoverLetterDialog data={data} />)
 		.with({ type: "resume.sections.cover-letter.update" }, ({ data }) => <UpdateCoverLetterDialog data={data} />)
 		.with({ type: "resume.sections.custom.create" }, ({ data }) => <CreateCustomSectionDialog data={data} />)
-		.with({ type: "resume.sections.custom.update" }, ({ data }) => <UpdateCustomSectionDialog data={data} />)
+		.with({ type: "resume.sections.custom.update" }, ({ data }) => <CreateCustomSectionDialog data={data} />)
+		// Standalone Cover Letter dialogs
+		.with({ type: "cover-letter.create" }, ({ data }) => <CreateCoverLetterStandaloneDialog data={data} />)
 		.otherwise(() => null);
 
 	return (

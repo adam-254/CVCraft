@@ -154,6 +154,13 @@ const dialogTypeSchema = z.discriminatedUnion("type", [
 	}),
 	z.object({ type: z.literal("resume.sections.custom.create"), data: customSectionSchema.optional() }),
 	z.object({ type: z.literal("resume.sections.custom.update"), data: customSectionSchema }),
+	// Cover Letter dialogs
+	z.object({ type: z.literal("cover-letter.create"), data: z.object({ title: z.string().optional() }).optional() }),
+	z.object({
+		type: z.literal("cover-letter.update"),
+		data: z.object({ id: z.string(), title: z.string() }),
+	}),
+	z.object({ type: z.literal("cover-letter.delete"), data: z.object({ id: z.string(), title: z.string() }) }),
 ]);
 
 type DialogSchema = z.infer<typeof dialogTypeSchema>;

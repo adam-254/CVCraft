@@ -1,22 +1,24 @@
 import { Trans } from "@lingui/react/macro";
 import { EnvelopeSimpleIcon, FileTextIcon, PlusIcon, SparkleIcon } from "@phosphor-icons/react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Separator } from "@/components/ui/separator";
+import { useDialogStore } from "@/dialogs/store";
 
 export const Route = createFileRoute("/dashboard/cover-letters/")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
+	const navigate = useNavigate();
+	const { openDialog } = useDialogStore();
+
 	const handleCreateCoverLetter = () => {
-		// TODO: Implement cover letter creation
-		console.log("Create cover letter");
+		openDialog("cover-letter.create");
 	};
 
 	const handleViewCoverLetters = () => {
-		// TODO: Navigate to cover letters list
-		console.log("View cover letters");
+		navigate({ to: "/dashboard/cover-letters/list" });
 	};
 
 	return (
