@@ -91,10 +91,6 @@ msgstr ""
 msgid "12+ Professional Templates"
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "12+ Templates"
-msgstr "12+ ಮಾದರಿಗಳು"
-
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
 msgid "2FA is currently enabled"
 msgstr ""
@@ -103,6 +99,7 @@ msgstr ""
 msgid "3 months"
 msgstr "3 ತಿಂಗಳು"
 
+#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/highlights.tsx
 msgid "30+ Templates"
 msgstr ""
@@ -320,10 +317,6 @@ msgstr "ರೆಸ್ಯೂಮ್‌ನ ಸಾರ್ವಜನಿಕ URL ಹೊಂ
 msgid "Anyone with the link can view and download the resume."
 msgstr "ಲಿಂಕ್ ಹೊಂದಿರುವ ಯಾರಾದರೂ ರೆಸ್ಯೂಮ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಡೌನ್‌ಲೋಡ್ ಮಾಡಬಹುದು."
 
-#: src/routes/_home/-sections/features.tsx
-msgid "API Access"
-msgstr "API ಪ್ರವೇಶ"
-
 #: src/routes/dashboard/settings/ai.tsx
 msgid "API Key"
 msgstr "API ಕೀಲಿ"
@@ -484,6 +477,10 @@ msgstr "ಬಿಲ್ಡರ್ ಕಮಾಂಡ್ ಪ್ಯಾಲೆಟ್"
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Building a professional resume has never been easier. Follow our simple 3-step process and land your dream job in minutes, not hours."
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "Built for You"
 msgstr ""
 
 #: src/routes/_home/-sections/highlights.tsx
@@ -970,10 +967,6 @@ msgstr "ನಿಮ್ಮ ಪಾಸ್‌ಕೀ ಅಳಿಸಲಾಗುತ್ತ�
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Deleting your resume..."
 msgstr "ನಿಮ್ಮ ರೆಸ್ಯೂಮ್ ಅಳಿಸಲಾಗುತ್ತಿದೆ..."
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Deploy on your own servers with Docker for complete control."
-msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -1776,6 +1769,10 @@ msgid "Made by Vincent Adam"
 msgstr ""
 
 #: src/routes/_home/-sections/prefooter.tsx
+msgid "Made with Love"
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Made with Passion"
 msgstr ""
 
@@ -1937,10 +1934,6 @@ msgstr "ಟಿಪ್ಪಣಿಗಳು"
 msgid "Odia"
 msgstr "ಒಡಿಯಾ"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "One-Click Sign-In"
-msgstr "ಒನ್-ಕ್ಲಿಕ್ ಸೈನ್ ಇನ್"
-
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Open"
@@ -1953,6 +1946,7 @@ msgstr "ಇಮೇಲ್ ಕ್ಲೈಂಟ್ ತೆರೆಯಿರಿ"
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/footer.tsx
 #: src/routes/_home/-sections/highlights.tsx
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Open Source"
 msgstr "ಮುಕ್ತ ಸಂಪನ್ಮೂಲ"
 
@@ -2008,7 +2002,6 @@ msgstr "ಗುಪ್ತಪದ"
 msgid "Password cannot be empty."
 msgstr "ಪಾಸ್‌ವರ್ಡ್ ಖಾಲಿಯಾಗಿರಬಾರದು."
 
-#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Password Protection"
 msgstr "ಪಾಸ್‌ವರ್ಡ್ ರಕ್ಷಣೆ"
@@ -2157,10 +2150,6 @@ msgstr "ಪ್ರೊಫೈಲ್"
 msgid "Profiles"
 msgstr "ಪ್ರೊಫೈಲ್‌ಗಳು"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Programmatic access to your resumes via REST API."
-msgstr ""
-
 #: src/components/level/combobox.tsx
 msgid "Progress Bar"
 msgstr "ಪ್ರಗತಿ ಪಟ್ಟೆ"
@@ -2184,10 +2173,6 @@ msgstr "ಪ್ರಕಟನೆಗಳು"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
 msgstr "ಪ್ರಕಾಶಕರು"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Quick authentication with Google, GitHub, or custom OAuth."
-msgstr ""
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Quick Tip"
@@ -2388,10 +2373,6 @@ msgid "Secure passwordless authentication"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Secure your resume with password protection for privacy."
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
 msgid "Security & Privacy"
 msgstr ""
 
@@ -2415,10 +2396,6 @@ msgstr ""
 #: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "ಆಯ್ಕೆಮಾಡಿ..."
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Self-Hosting Ready"
-msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Send Reset Link"
@@ -2462,7 +2439,7 @@ msgid "Shadow Width"
 msgstr "ನೆರಳಿನ ಅಗಲ"
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Share your resume with a public URL or password protection."
+msgid "Share your resume with a public URL for easy access."
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx

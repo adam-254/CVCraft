@@ -91,10 +91,6 @@ msgstr ""
 msgid "12+ Professional Templates"
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "12+ Templates"
-msgstr "12+ 個範本"
-
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
 msgid "2FA is currently enabled"
 msgstr ""
@@ -103,6 +99,7 @@ msgstr ""
 msgid "3 months"
 msgstr "3 個月"
 
+#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/highlights.tsx
 msgid "30+ Templates"
 msgstr ""
@@ -320,10 +317,6 @@ msgstr "任何擁有此履歷公開 URL 的人，都可以在不輸入密碼的�
 msgid "Anyone with the link can view and download the resume."
 msgstr "任何擁有連結的人都可以檢視和下載履歷。"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "API Access"
-msgstr "API 存取"
-
 #: src/routes/dashboard/settings/ai.tsx
 msgid "API Key"
 msgstr "API Key"
@@ -484,6 +477,10 @@ msgstr "編輯器指令選單"
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Building a professional resume has never been easier. Follow our simple 3-step process and land your dream job in minutes, not hours."
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "Built for You"
 msgstr ""
 
 #: src/routes/_home/-sections/highlights.tsx
@@ -970,10 +967,6 @@ msgstr "正在刪除您的通行金鑰…"
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Deleting your resume..."
 msgstr "正在刪除您的履歷…"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Deploy on your own servers with Docker for complete control."
-msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -1776,6 +1769,10 @@ msgid "Made by Vincent Adam"
 msgstr ""
 
 #: src/routes/_home/-sections/prefooter.tsx
+msgid "Made with Love"
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Made with Passion"
 msgstr ""
 
@@ -1937,10 +1934,6 @@ msgstr "注意事項"
 msgid "Odia"
 msgstr "歐利亞語"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "One-Click Sign-In"
-msgstr "一鍵登入"
-
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Open"
@@ -1953,6 +1946,7 @@ msgstr "開啟電子郵件用戶端"
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/footer.tsx
 #: src/routes/_home/-sections/highlights.tsx
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Open Source"
 msgstr "開放原始碼"
 
@@ -2008,7 +2002,6 @@ msgstr "密碼"
 msgid "Password cannot be empty."
 msgstr "密碼不能為空白。"
 
-#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Password Protection"
 msgstr "密碼保護"
@@ -2157,10 +2150,6 @@ msgstr "個人設置"
 msgid "Profiles"
 msgstr "個人檔案"
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Programmatic access to your resumes via REST API."
-msgstr ""
-
 #: src/components/level/combobox.tsx
 msgid "Progress Bar"
 msgstr "進度條"
@@ -2184,10 +2173,6 @@ msgstr "出版品"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
 msgstr "出版者"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Quick authentication with Google, GitHub, or custom OAuth."
-msgstr ""
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Quick Tip"
@@ -2388,10 +2373,6 @@ msgid "Secure passwordless authentication"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Secure your resume with password protection for privacy."
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
 msgid "Security & Privacy"
 msgstr ""
 
@@ -2415,10 +2396,6 @@ msgstr ""
 #: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "選取…"
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Self-Hosting Ready"
-msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Send Reset Link"
@@ -2462,7 +2439,7 @@ msgid "Shadow Width"
 msgstr "陰影寬度"
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Share your resume with a public URL or password protection."
+msgid "Share your resume with a public URL for easy access."
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx

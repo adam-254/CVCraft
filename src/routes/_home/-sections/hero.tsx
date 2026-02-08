@@ -1,4 +1,5 @@
-import { t } from "@lingui/core/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { ArrowRightIcon, CheckCircleIcon, RocketLaunchIcon, SparkleIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
@@ -8,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
+	const { i18n } = useLingui();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
@@ -118,19 +120,19 @@ export function Hero() {
 					className="flex flex-wrap items-center justify-center gap-3"
 				>
 					{[
-						{ icon: CheckCircleIcon, text: t`Simple Authentication` },
-						{ icon: CheckCircleIcon, text: t`100% Free & Open Source` },
-						{ icon: CheckCircleIcon, text: t`AI-Powered` },
+						{ icon: CheckCircleIcon, text: msg`Simple Authentication` },
+						{ icon: CheckCircleIcon, text: msg`100% Free & Open Source` },
+						{ icon: CheckCircleIcon, text: msg`AI-Powered` },
 					].map((item, i) => (
 						<motion.div
-							key={item.text}
+							key={i18n._(item.text)}
 							initial={{ opacity: 0, scale: 0.8 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ delay: 1 + i * 0.1 }}
 							className="flex items-center gap-2 rounded-full border border-border/30 bg-secondary/50 px-4 py-2 text-sm backdrop-blur-sm"
 						>
 							<item.icon className="size-4 text-green-600 dark:text-green-400" weight="fill" />
-							<span className="font-medium">{item.text}</span>
+							<span className="font-medium">{i18n._(item.text)}</span>
 						</motion.div>
 					))}
 				</motion.div>
@@ -179,7 +181,7 @@ export function Hero() {
 							// @ts-expect-error - typescript doesn't know about fetchPriority for video elements
 							fetchPriority="high"
 							src="/videos/timelapse.mp4"
-							aria-label={t`Timelapse demonstration of building a resume with CVCraft`}
+							aria-label={i18n._(msg`Timelapse demonstration of building a resume with CVCraft`)}
 							className="pointer-events-none relative size-full rounded-xl object-cover shadow-xl"
 						/>
 					</div>

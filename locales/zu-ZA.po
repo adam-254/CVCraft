@@ -86,10 +86,6 @@ msgstr ""
 msgid "12+ Professional Templates"
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "12+ Templates"
-msgstr ""
-
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
 msgid "2FA is currently enabled"
 msgstr ""
@@ -98,6 +94,7 @@ msgstr ""
 msgid "3 months"
 msgstr ""
 
+#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/highlights.tsx
 msgid "30+ Templates"
 msgstr ""
@@ -315,10 +312,6 @@ msgstr ""
 msgid "Anyone with the link can view and download the resume."
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "API Access"
-msgstr ""
-
 #: src/routes/dashboard/settings/ai.tsx
 msgid "API Key"
 msgstr ""
@@ -479,6 +472,10 @@ msgstr ""
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Building a professional resume has never been easier. Follow our simple 3-step process and land your dream job in minutes, not hours."
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
+msgid "Built for You"
 msgstr ""
 
 #: src/routes/_home/-sections/highlights.tsx
@@ -964,10 +961,6 @@ msgstr ""
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Deleting your resume..."
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Deploy on your own servers with Docker for complete control."
 msgstr ""
 
 #: src/dialogs/resume/sections/award.tsx
@@ -1771,6 +1764,10 @@ msgid "Made by Vincent Adam"
 msgstr ""
 
 #: src/routes/_home/-sections/prefooter.tsx
+msgid "Made with Love"
+msgstr ""
+
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Made with Passion"
 msgstr ""
 
@@ -1932,10 +1929,6 @@ msgstr ""
 msgid "Odia"
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "One-Click Sign-In"
-msgstr ""
-
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "Open"
@@ -1948,6 +1941,7 @@ msgstr ""
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/footer.tsx
 #: src/routes/_home/-sections/highlights.tsx
+#: src/routes/_home/-sections/prefooter.tsx
 msgid "Open Source"
 msgstr ""
 
@@ -2003,7 +1997,6 @@ msgstr ""
 msgid "Password cannot be empty."
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Password Protection"
 msgstr ""
@@ -2152,10 +2145,6 @@ msgstr ""
 msgid "Profiles"
 msgstr ""
 
-#: src/routes/_home/-sections/features.tsx
-msgid "Programmatic access to your resumes via REST API."
-msgstr ""
-
 #: src/components/level/combobox.tsx
 msgid "Progress Bar"
 msgstr ""
@@ -2178,10 +2167,6 @@ msgstr ""
 
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Quick authentication with Google, GitHub, or custom OAuth."
 msgstr ""
 
 #: src/routes/dashboard/settings/preferences.tsx
@@ -2383,10 +2368,6 @@ msgid "Secure passwordless authentication"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Secure your resume with password protection for privacy."
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
 msgid "Security & Privacy"
 msgstr ""
 
@@ -2409,10 +2390,6 @@ msgstr ""
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
-msgstr ""
-
-#: src/routes/_home/-sections/features.tsx
-msgid "Self-Hosting Ready"
 msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
@@ -2457,7 +2434,7 @@ msgid "Shadow Width"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
-msgid "Share your resume with a public URL or password protection."
+msgid "Share your resume with a public URL for easy access."
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx

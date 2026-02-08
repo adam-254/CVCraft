@@ -1,21 +1,16 @@
-import { t } from "@lingui/core/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import type { Icon } from "@phosphor-icons/react";
-import {
-	CodeIcon,
-	GlobeIcon,
-	LockKeyIcon,
-	PaintBrushIcon,
-	RocketLaunchIcon,
-	SparkleIcon,
-} from "@phosphor-icons/react";
+import { CodeIcon, GlobeIcon, LockKeyIcon, PaintBrushIcon, RocketLaunchIcon, SparkleIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 
 type Highlight = {
 	id: string;
 	icon: Icon;
-	title: string;
-	description: string;
+	title: MessageDescriptor;
+	description: MessageDescriptor;
 	color: string;
 };
 
@@ -23,43 +18,43 @@ const highlights: Highlight[] = [
 	{
 		id: "templates",
 		icon: PaintBrushIcon,
-		title: t`30+ Templates`,
-		description: t`Beautiful, professionally designed templates`,
+		title: msg`30+ Templates`,
+		description: msg`Beautiful, professionally designed templates`,
 		color: "from-purple-500 to-pink-500",
 	},
 	{
 		id: "languages",
 		icon: GlobeIcon,
-		title: t`50+ Languages`,
-		description: t`Truly global, accessible to everyone`,
+		title: msg`50+ Languages`,
+		description: msg`Truly global, accessible to everyone`,
 		color: "from-blue-500 to-cyan-500",
 	},
 	{
 		id: "ai",
 		icon: SparkleIcon,
-		title: t`AI-Powered`,
-		description: t`Smart content generation with multiple AI providers`,
+		title: msg`AI-Powered`,
+		description: msg`Smart content generation with multiple AI providers`,
 		color: "from-amber-500 to-orange-500",
 	},
 	{
 		id: "privacy",
 		icon: LockKeyIcon,
-		title: t`Privacy First`,
-		description: t`Your data stays yours, no tracking or selling`,
+		title: msg`Privacy First`,
+		description: msg`Your data stays yours, no tracking or selling`,
 		color: "from-green-500 to-emerald-500",
 	},
 	{
 		id: "opensource",
 		icon: CodeIcon,
-		title: t`Open Source`,
-		description: t`Transparent, auditable, and community-driven`,
+		title: msg`Open Source`,
+		description: msg`Transparent, auditable, and community-driven`,
 		color: "from-indigo-500 to-purple-500",
 	},
 	{
 		id: "fast",
 		icon: RocketLaunchIcon,
-		title: t`Lightning Fast`,
-		description: t`Built with modern tech for optimal performance`,
+		title: msg`Lightning Fast`,
+		description: msg`Built with modern tech for optimal performance`,
 		color: "from-red-500 to-pink-500",
 	},
 ];
@@ -70,6 +65,7 @@ type HighlightCardProps = {
 };
 
 function HighlightCard({ highlight, index }: HighlightCardProps) {
+	const { i18n } = useLingui();
 	const Icon = highlight.icon;
 
 	return (
@@ -100,10 +96,10 @@ function HighlightCard({ highlight, index }: HighlightCardProps) {
 			</motion.div>
 
 			{/* Title */}
-			<h3 className="font-bold text-xl tracking-tight">{highlight.title}</h3>
+			<h3 className="font-bold text-xl tracking-tight">{i18n._(highlight.title)}</h3>
 
 			{/* Description */}
-			<p className="text-muted-foreground text-sm leading-relaxed">{highlight.description}</p>
+			<p className="text-muted-foreground text-sm leading-relaxed">{i18n._(highlight.description)}</p>
 		</motion.div>
 	);
 }

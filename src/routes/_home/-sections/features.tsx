@@ -1,8 +1,8 @@
-import { t } from "@lingui/core/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
-	CloudArrowUpIcon,
-	CodeSimpleIcon,
 	CurrencyDollarIcon,
 	DatabaseIcon,
 	EyeIcon,
@@ -11,9 +11,7 @@ import {
 	GithubLogoIcon,
 	GlobeIcon,
 	type Icon,
-	KeyIcon,
 	LayoutIcon,
-	LockSimpleIcon,
 	PaletteIcon,
 	ProhibitIcon,
 	SparkleIcon,
@@ -27,8 +25,8 @@ import { cn } from "@/utils/style";
 type Feature = {
 	id: string;
 	icon: Icon;
-	title: string;
-	description: string;
+	title: MessageDescriptor;
+	description: MessageDescriptor;
 	category: "core" | "security" | "design" | "advanced";
 };
 
@@ -40,113 +38,85 @@ const getFeatures = (): Feature[] => [
 	{
 		id: "free",
 		icon: CurrencyDollarIcon,
-		title: t`100% Free Forever`,
-		description: t`No hidden costs, no premium tiers, no subscriptions. Everything is free, always.`,
+		title: msg`100% Free Forever`,
+		description: msg`No hidden costs, no premium tiers, no subscriptions. Everything is free, always.`,
 		category: "core",
 	},
 	{
 		id: "open-source",
 		icon: GithubLogoIcon,
-		title: t`Open Source`,
-		description: t`Transparent, trustworthy, and built with care. Inspect the code yourself.`,
+		title: msg`Open Source`,
+		description: msg`Transparent, trustworthy, and built with care. Inspect the code yourself.`,
 		category: "core",
 	},
 	{
 		id: "no-ads",
 		icon: ProhibitIcon,
-		title: t`No Ads, No Tracking`,
-		description: t`Your privacy matters. We don't track, sell, or monetize your data.`,
+		title: msg`No Ads, No Tracking`,
+		description: msg`Your privacy matters. We don't track, sell, or monetize your data.`,
+		category: "core",
+	},
+	{
+		id: "unlimited-resumes",
+		icon: FilesIcon,
+		title: msg`Unlimited Resumes`,
+		description: msg`Create as many resumes as you need without any restrictions.`,
 		category: "core",
 	},
 	{
 		id: "data-security",
 		icon: DatabaseIcon,
-		title: t`Secure Data Storage`,
-		description: t`Your data is encrypted and never shared with third parties.`,
-		category: "security",
-	},
-	{
-		id: "self-host",
-		icon: CloudArrowUpIcon,
-		title: t`Self-Hosting Ready`,
-		description: t`Deploy on your own servers with Docker for complete control.`,
+		title: msg`Secure Data Storage`,
+		description: msg`Your data is encrypted and never shared with third parties.`,
 		category: "security",
 	},
 	{
 		id: "real-time-preview",
 		icon: EyeIcon,
-		title: t`Real-Time Preview`,
-		description: t`See your changes instantly as you type with live preview updates.`,
+		title: msg`Real-Time Preview`,
+		description: msg`See your changes instantly as you type with live preview updates.`,
 		category: "security",
-	},
-	{
-		id: "unlimited-resumes",
-		icon: FilesIcon,
-		title: t`Unlimited Resumes`,
-		description: t`Create as many resumes as you need without any restrictions.`,
-		category: "core",
 	},
 	{
 		id: "design",
 		icon: PaletteIcon,
-		title: t`Full Customization`,
-		description: t`Personalize colors, fonts, spacing, and layouts to match your style.`,
+		title: msg`Full Customization`,
+		description: msg`Personalize colors, fonts, spacing, and layouts to match your style.`,
 		category: "design",
 	},
 	{
 		id: "css",
 		icon: FileCssIcon,
-		title: t`Custom CSS Support`,
-		description: t`Write custom CSS or use AI to generate it for ultimate flexibility.`,
+		title: msg`Custom CSS Support`,
+		description: msg`Write custom CSS or use AI to generate it for ultimate flexibility.`,
 		category: "design",
 	},
 	{
 		id: "templates",
 		icon: LayoutIcon,
-		title: t`12+ Templates`,
-		description: t`Beautiful, professional templates with more being added regularly.`,
+		title: msg`30+ Templates`,
+		description: msg`Beautiful, professional templates with more being added regularly.`,
 		category: "design",
 	},
 	{
 		id: "languages",
 		icon: TranslateIcon,
-		title: t`Multilingual`,
-		description: t`Available in 50+ languages with community translations.`,
-		category: "advanced",
-	},
-	{
-		id: "auth",
-		icon: KeyIcon,
-		title: t`One-Click Sign-In`,
-		description: t`Quick authentication with Google, GitHub, or custom OAuth.`,
+		title: msg`Multilingual`,
+		description: msg`Available in 50+ languages with community translations.`,
 		category: "advanced",
 	},
 	{
 		id: "public",
 		icon: GlobeIcon,
-		title: t`Shareable Links`,
-		description: t`Share your resume with a public URL or password protection.`,
-		category: "advanced",
-	},
-	{
-		id: "password-protection",
-		icon: LockSimpleIcon,
-		title: t`Password Protection`,
-		description: t`Secure your resume with password protection for privacy.`,
-		category: "advanced",
-	},
-	{
-		id: "api-access",
-		icon: CodeSimpleIcon,
-		title: t`API Access`,
-		description: t`Programmatic access to your resumes via REST API.`,
+		title: msg`Shareable Links`,
+		description: msg`Share your resume with a public URL for easy access.`,
 		category: "advanced",
 	},
 	{
 		id: "ai",
 		icon: SparkleIcon,
-		title: t`AI-Powered`,
-		description: t`Generate content with AI assistance for faster resume creation.`,
+		title: msg`AI-Powered`,
+		description: msg`Generate content with AI assistance for faster resume creation.`,
 		category: "advanced",
 	},
 ];
@@ -159,13 +129,14 @@ const categoryColors = {
 };
 
 const categoryLabels = {
-	core: t`Core Features`,
-	security: t`Security & Privacy`,
-	design: t`Design & Customization`,
-	advanced: t`Advanced Features`,
+	core: msg`Core Features`,
+	security: msg`Security & Privacy`,
+	design: msg`Design & Customization`,
+	advanced: msg`Advanced Features`,
 };
 
 function FeatureCard({ icon: Icon, title, description, category, index }: FeatureCardProps) {
+	const { i18n } = useLingui();
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
@@ -202,8 +173,8 @@ function FeatureCard({ icon: Icon, title, description, category, index }: Featur
 
 				{/* Content */}
 				<div className="relative space-y-2">
-					<h3 className="font-bold text-lg tracking-tight">{title}</h3>
-					<p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+					<h3 className="font-bold text-lg tracking-tight">{i18n._(title)}</h3>
+					<p className="text-muted-foreground text-sm leading-relaxed">{i18n._(description)}</p>
 				</div>
 
 				{/* Shine effect */}
@@ -218,6 +189,7 @@ function FeatureCard({ icon: Icon, title, description, category, index }: Featur
 }
 
 export function Features() {
+	const { i18n } = useLingui();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
@@ -295,7 +267,7 @@ export function Features() {
 								<div className="mb-8 flex items-center gap-3">
 									<div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
 									<h3 className="font-semibold text-muted-foreground text-sm uppercase tracking-wider">
-										{categoryLabels[category]}
+										{i18n._(categoryLabels[category])}
 									</h3>
 									<div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
 								</div>

@@ -1,4 +1,6 @@
-import { t } from "@lingui/core/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { GithubLogoIcon, HeartIcon, UsersIcon } from "@phosphor-icons/react";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -6,6 +8,7 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 
 export function Prefooter() {
+	const { i18n } = useLingui();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
@@ -102,12 +105,12 @@ export function Prefooter() {
 						transition={{ duration: 0.6, delay: 0.5 }}
 					>
 						{[
-							{ icon: GithubLogoIcon, label: t`Open Source`, color: "text-purple-600 dark:text-purple-400" },
-							{ icon: HeartIcon, label: t`Made with Love`, color: "text-pink-600 dark:text-pink-400" },
-							{ icon: UsersIcon, label: t`Built for You`, color: "text-blue-600 dark:text-blue-400" },
+							{ icon: GithubLogoIcon, label: msg`Open Source`, color: "text-purple-600 dark:text-purple-400" },
+							{ icon: HeartIcon, label: msg`Made with Love`, color: "text-pink-600 dark:text-pink-400" },
+							{ icon: UsersIcon, label: msg`Built for You`, color: "text-blue-600 dark:text-blue-400" },
 						].map((item, i) => (
 							<motion.div
-								key={item.label}
+								key={i18n._(item.label)}
 								className="flex items-center gap-3 rounded-full border-2 border-border/50 bg-card/50 px-6 py-3 backdrop-blur-sm"
 								initial={{ opacity: 0, scale: 0.8 }}
 								whileInView={{ opacity: 1, scale: 1 }}
@@ -116,7 +119,7 @@ export function Prefooter() {
 								whileHover={{ scale: 1.05 }}
 							>
 								<item.icon weight="fill" className={`size-5 ${item.color}`} />
-								<span className="font-medium text-sm">{item.label}</span>
+								<span className="font-medium text-sm">{i18n._(item.label)}</span>
 							</motion.div>
 						))}
 					</motion.div>

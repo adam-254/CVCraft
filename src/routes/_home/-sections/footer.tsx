@@ -1,16 +1,19 @@
-import { t } from "@lingui/core/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { CodeIcon, HeartIcon, ShieldCheckIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import { BrandIcon } from "@/components/ui/brand-icon";
 
 export function Footer() {
+	const { i18n } = useLingui();
 	const currentYear = new Date().getFullYear();
 
-	const features = [
-		{ icon: CodeIcon, label: t`Open Source` },
-		{ icon: ShieldCheckIcon, label: t`Privacy First` },
-		{ icon: HeartIcon, label: t`Free Forever` },
+	const features: { icon: typeof CodeIcon; label: MessageDescriptor }[] = [
+		{ icon: CodeIcon, label: msg`Open Source` },
+		{ icon: ShieldCheckIcon, label: msg`Privacy First` },
+		{ icon: HeartIcon, label: msg`Free Forever` },
 	];
 
 	return (
@@ -69,7 +72,7 @@ export function Footer() {
 						>
 							{features.map((feature, i) => (
 								<motion.div
-									key={feature.label}
+									key={i18n._(feature.label)}
 									className="flex items-center gap-2 rounded-full border-2 border-border/50 bg-card/50 px-4 py-2 backdrop-blur-sm"
 									initial={{ opacity: 0, scale: 0.8 }}
 									whileInView={{ opacity: 1, scale: 1 }}
@@ -78,7 +81,7 @@ export function Footer() {
 									whileHover={{ scale: 1.05 }}
 								>
 									<feature.icon weight="fill" className="size-4 text-primary" />
-									<span className="font-medium text-xs">{feature.label}</span>
+									<span className="font-medium text-xs">{i18n._(feature.label)}</span>
 								</motion.div>
 							))}
 						</motion.div>
