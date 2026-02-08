@@ -118,7 +118,7 @@ export function Hero() {
 					className="flex flex-wrap items-center justify-center gap-3"
 				>
 					{[
-						{ icon: CheckCircleIcon, text: "No Account Required" },
+						{ icon: CheckCircleIcon, text: "Simple Authentication" },
 						{ icon: CheckCircleIcon, text: "100% Free & Open Source" },
 						{ icon: CheckCircleIcon, text: "AI-Powered" },
 					].map((item, i) => (
