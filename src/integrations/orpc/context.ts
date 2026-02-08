@@ -3,9 +3,9 @@ import type { User } from "better-auth";
 import { eq } from "drizzle-orm";
 import { env } from "@/utils/env";
 import type { Locale } from "@/utils/locale";
-import { auth } from "../auth/config";
 import { db } from "../drizzle/client";
 import { user } from "../drizzle/schema";
+import { supabase } from "../supabase/client";
 
 interface ORPCContext {
 	locale: Locale;
@@ -14,24 +14,40 @@ interface ORPCContext {
 
 async function getUserFromHeaders(headers: Headers): Promise<User | null> {
 	try {
-		const result = await auth.api.getSession({ headers });
-		if (!result || !result.user) return null;
+		// Get the authorization header
+		const authHeader = headers.get("authorization");
+		if (!authHeader || !authHeader.startsWith("Bearer ")) {
+			return null;
+		}
 
-		return result.user;
+		const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+		// Verify the JWT token with Supabase
+		const {
+			data: { user: supabaseUser },
+			error,
+		} = await supabase.auth.getUser(token);
+
+		if (error || !supabaseUser) {
+			return null;
+		}
+
+		// Get the user from our database
+		const [userResult] = await db.select().from(user).where(eq(user.id, supabaseUser.id)).limit(1);
+		if (!userResult) return null;
+
+		return userResult;
 	} catch {
 		return null;
 	}
 }
 
-async function getUserFromApiKey(apiKey: string): Promise<User | null> {
+async function getUserFromApiKey(_apiKey: string): Promise<User | null> {
 	try {
-		const result = await auth.api.verifyApiKey({ body: { key: apiKey } });
-		if (!result.key || !result.valid) return null;
-
-		const [userResult] = await db.select().from(user).where(eq(user.id, result.key.userId)).limit(1);
-		if (!userResult) return null;
-
-		return userResult;
+		// API key verification not yet implemented with Supabase
+		// TODO: Implement API key verification
+		console.warn("API key verification not yet implemented");
+		return null;
 	} catch {
 		return null;
 	}

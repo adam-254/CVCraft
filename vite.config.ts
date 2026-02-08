@@ -69,7 +69,7 @@ const config = defineConfig({
 		tailwindcss(),
 		tanstackStart({ router: { semicolons: true, quoteStyle: "double" } }),
 		viteReact({ babel: { plugins: ["@lingui/babel-plugin-lingui-macro"] } }),
-		VitePWA({
+		...(process.env.NODE_ENV === 'production' ? [VitePWA({
 			outDir: "public",
 			useCredentials: true,
 			injectRegister: false,
@@ -179,7 +179,7 @@ const config = defineConfig({
 					"writing",
 				],
 			},
-		}),
+		})] : []),
 	],
 });
 
