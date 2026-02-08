@@ -10,6 +10,38 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/logo/(.*)",
+      "dest": "/logo/$1"
+    },
+    {
+      "src": "/icon/(.*)",
+      "dest": "/icon/$1"
+    },
+    {
+      "src": "/photos/(.*)",
+      "dest": "/photos/$1"
+    },
+    {
+      "src": "/screenshots/(.*)",
+      "dest": "/screenshots/$1"
+    },
+    {
+      "src": "/sounds/(.*)",
+      "dest": "/sounds/$1"
+    },
+    {
+      "src": "/templates/(.*)",
+      "dest": "/templates/$1"
+    },
+    {
+      "src": "/videos/(.*)",
+      "dest": "/videos/$1"
+    },
+    {
+      "src": "/(robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|funding\\.json)",
+      "dest": "/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index"
     }
