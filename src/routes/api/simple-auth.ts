@@ -96,9 +96,11 @@ async function handleSignup(data: any) {
     updated_at: new Date().toISOString(),
   });
 
-  // Set cookie
+  // Set cookie with Secure flag for production
+  const isProduction = process.env.NODE_ENV === 'production';
+  const cookieOptions = `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax${isProduction ? '; Secure' : ''}`;
   const response = Response.json({ success: true, token, userId });
-  response.headers.set('Set-Cookie', `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax`);
+  response.headers.set('Set-Cookie', cookieOptions);
   return response;
 }
 
@@ -148,9 +150,11 @@ async function handleSignin(data: any) {
     updated_at: new Date().toISOString(),
   });
 
-  // Set cookie
+  // Set cookie with Secure flag for production
+  const isProduction = process.env.NODE_ENV === 'production';
+  const cookieOptions = `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax${isProduction ? '; Secure' : ''}`;
   const response = Response.json({ success: true, token, user });
-  response.headers.set('Set-Cookie', `cvcraft_auth_token=${token}; Path=/; Max-Age=${30 * 24 * 60 * 60}; HttpOnly; SameSite=Lax`);
+  response.headers.set('Set-Cookie', cookieOptions);
   return response;
 }
 
@@ -283,9 +287,11 @@ async function handleSignout(data: any) {
 
   await supabase.from('session').delete().eq('token', token);
 
-  // Clear cookie
+  // Clear cookie with Secure flag for production
+  const isProduction = process.env.NODE_ENV === 'production';
+  const cookieOptions = `cvcraft_auth_token=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax${isProduction ? '; Secure' : ''}`;
   const response = Response.json({ success: true });
-  response.headers.set('Set-Cookie', `cvcraft_auth_token=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`);
+  response.headers.set('Set-Cookie', cookieOptions);
   return response;
 }
 
