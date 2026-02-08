@@ -2,7 +2,14 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { ClockCounterClockwiseIcon, GearSixIcon, ReadCvLogoIcon, ShieldCheckIcon, UserCircleIcon } from "@phosphor-icons/react";
+import {
+	ClockCounterClockwiseIcon,
+	EnvelopeSimpleIcon,
+	GearSixIcon,
+	ReadCvLogoIcon,
+	ShieldCheckIcon,
+	UserCircleIcon,
+} from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -35,8 +42,13 @@ type SidebarItem = {
 const appSidebarItems = [
 	{
 		icon: <ReadCvLogoIcon />,
-		label: msg`Create Resume`,
+		label: msg`Resumes`,
 		href: "/dashboard/resumes",
+	},
+	{
+		icon: <EnvelopeSimpleIcon />,
+		label: msg`Cover Letters`,
+		href: "/dashboard/cover-letters",
 	},
 	{
 		icon: <ClockCounterClockwiseIcon />,
@@ -48,7 +60,7 @@ const appSidebarItems = [
 const settingsSidebarItems = [
 	{
 		icon: <UserCircleIcon />,
-		label: msg`Profile`,
+		label: msg`My Profile`,
 		href: "/dashboard/settings/profile",
 	},
 	{

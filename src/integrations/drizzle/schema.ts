@@ -262,3 +262,38 @@ export const apikey = pg.pgTable(
 	},
 	(t) => [pg.index().on(t.userId), pg.index().on(t.key), pg.index().on(t.enabled, t.userId)],
 );
+
+export const coverLetter = pg.pgTable(
+	"cover_letter",
+	{
+		id: pg
+			.uuid("id")
+			.notNull()
+			.primaryKey()
+			.$defaultFn(() => generateId()),
+		title: pg.text("title").notNull(),
+		slug: pg.text("slug").notNull(),
+		recipient: pg.text("recipient"),
+		content: pg.text("content").notNull(),
+		tags: pg.text("tags").array().notNull().default([]),
+		isPublic: pg.boolean("is_public").notNull().default(false),
+		isLocked: pg.boolean("is_locked").notNull().default(false),
+		password: pg.text("password"),
+		userId: pg
+			.uuid("user_id")
+			.notNull()
+			.references(() => user.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: pg
+			.timestamp("updated_at", { withTimezone: true })
+			.notNull()
+			.defaultNow()
+			.$onUpdate(() => /* @__PURE__ */ new Date()),
+	},
+	(t) => [
+		pg.unique().on(t.slug, t.userId),
+		pg.index().on(t.userId),
+		pg.index().on(t.userId, t.updatedAt.desc()),
+		pg.index().on(t.isPublic, t.slug, t.userId),
+	],
+);
