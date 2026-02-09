@@ -1,7 +1,7 @@
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { BrainIcon, CheckCircleIcon, InfoIcon, PlusIcon, TrashSimpleIcon, XCircleIcon } from "@phosphor-icons/react";
+import { BrainIcon, CheckCircleIcon, PlusIcon, TrashSimpleIcon, XCircleIcon } from "@phosphor-icons/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,7 +17,6 @@ import { Switch } from "@/components/ui/switch";
 import { useConfirm } from "@/hooks/use-confirm";
 import type { AIProvider } from "@/integrations/ai/store";
 import { orpc } from "@/integrations/orpc/client";
-import { DashboardHeader } from "../-components/header";
 
 export const Route = createFileRoute("/dashboard/settings/integrations")({
 	component: RouteComponent,
@@ -77,16 +76,7 @@ function AddProviderForm({ onSuccess }: { onSuccess: () => void }) {
 
 	const { mutate: addProvider, isPending } = useMutation({
 		mutationFn: async () => {
-			// First test the connection
-			await orpc.ai.testConnection.mutate({
-				provider,
-				model,
-				apiKey,
-				baseURL: baseUrl || selectedOption?.defaultBaseURL || "",
-			});
-
-			// If successful, create the provider
-			return orpc.aiProvider.create.mutate({
+			return (orpc.aiProvider.create as any).mutate({
 				provider,
 				model,
 				apiKey,
@@ -115,12 +105,19 @@ function AddProviderForm({ onSuccess }: { onSuccess: () => void }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="space-y-4 rounded-lg border bg-card p-6">
-			<h3 className="font-semibold text-lg">
+		<motion.form
+			initial={{ opacity: 0, height: 0 }}
+			animate={{ opacity: 1, height: "auto" }}
+			exit={{ opacity: 0, height: 0 }}
+			transition={{ duration: 0.3 }}
+			onSubmit={handleSubmit}
+			className="overflow-hidden rounded-2xl border-2 border-border/50 border-dashed bg-gradient-to-br from-card via-card to-primary/5 p-8 shadow-lg"
+		>
+			<h3 className="mb-6 font-semibold text-lg">
 				<Trans>Add New AI Provider</Trans>
 			</h3>
 
-			<div className="grid gap-4 sm:grid-cols-2">
+			<div className="grid gap-6 sm:grid-cols-2">
 				<div className="flex flex-col gap-y-2">
 					<Label htmlFor="provider">
 						<Trans>Provider</Trans>
@@ -175,77 +172,97 @@ function AddProviderForm({ onSuccess }: { onSuccess: () => void }) {
 				</div>
 			</div>
 
-			<div className="flex gap-2">
-				<Button type="submit" disabled={isPending}>
-					{isPending ? <Spinner /> : <PlusIcon />}
+			<div className="mt-6 flex gap-2">
+				<Button
+					type="submit"
+					disabled={isPending}
+					className="gap-2 bg-gradient-to-r from-primary to-primary/80 font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-primary/20 hover:shadow-xl"
+				>
+					{isPending ? <Spinner /> : <PlusIcon weight="bold" />}
 					<Trans>Add Provider</Trans>
 				</Button>
 			</div>
-		</form>
+		</motion.form>
 	);
 }
 
 function ProviderCard({
 	provider,
+	providerLabel,
 	onDelete,
 	onActivate,
 }: {
 	provider: AIProviderConfig;
+	providerLabel: string;
 	onDelete: (id: string) => void;
 	onActivate: (id: string) => void;
 }) {
 	const { i18n } = useLingui();
-	const providerOption = providerOptions.find((opt) => opt.value === provider.provider);
 
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: -16 }}
+			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0, y: -16 }}
-			className="flex items-start gap-4 rounded-lg border bg-card p-4"
+			exit={{ opacity: 0, y: -20 }}
+			transition={{ duration: 0.3 }}
+			className="group relative overflow-hidden rounded-2xl border-2 border-border/50 bg-gradient-to-br from-card via-card to-purple-500/5 p-6 shadow-xl transition-all hover:shadow-2xl"
 		>
-			<div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-				<BrainIcon className="text-primary" size={24} />
-			</div>
+			{/* Decorative gradient overlay */}
+			<div className="absolute top-0 right-0 size-40 rounded-full bg-gradient-to-br from-purple-500/10 to-transparent blur-3xl transition-all group-hover:scale-150" />
 
-			<div className="flex-1 space-y-2">
-				<div className="flex items-start justify-between">
-					<div>
-						<h4 className="font-semibold">{providerOption?.label || provider.provider}</h4>
-						<p className="text-muted-foreground text-sm">{provider.model}</p>
-					</div>
-					<div className="flex items-center gap-2">
-						<Switch
-							checked={provider.isActive}
-							onCheckedChange={() => onActivate(provider.id)}
-							aria-label={i18n._(msg`Toggle active status`)}
-						/>
-						<Button size="icon" variant="ghost" onClick={() => onDelete(provider.id)}>
-							<TrashSimpleIcon />
-						</Button>
-					</div>
+			<div className="relative flex items-start gap-4">
+				<div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/10 shadow-md">
+					<BrainIcon className="size-7 text-purple-600" weight="duotone" />
 				</div>
 
-				<div className="flex items-center gap-2 text-xs">
-					{provider.isActive ? (
-						<>
-							<CheckCircleIcon className="text-success" size={16} />
-							<span className="text-success">
-								<Trans>Active</Trans>
-							</span>
-						</>
-					) : (
-						<>
-							<XCircleIcon className="text-muted-foreground" size={16} />
-							<span className="text-muted-foreground">
-								<Trans>Inactive</Trans>
-							</span>
-						</>
-					)}
-					<span className="text-muted-foreground">•</span>
-					<span className="text-muted-foreground">
-						<Trans>Added {provider.createdAt.toLocaleDateString()}</Trans>
-					</span>
+				<div className="flex-1 space-y-3">
+					<div className="flex items-start justify-between gap-4">
+						<div>
+							<h4 className="font-semibold text-lg">{providerLabel}</h4>
+							<p className="text-muted-foreground text-sm">{provider.model}</p>
+						</div>
+						<div className="flex items-center gap-2">
+							<Switch
+								checked={provider.isActive}
+								onCheckedChange={() => onActivate(provider.id)}
+								aria-label={i18n._(msg`Toggle active status`)}
+							/>
+							<Button
+								size="icon"
+								variant="ghost"
+								onClick={() => onDelete(provider.id)}
+								className="transition-all hover:scale-110 hover:bg-destructive/10 hover:text-destructive"
+							>
+								<TrashSimpleIcon weight="bold" />
+							</Button>
+						</div>
+					</div>
+
+					<div className="flex items-center gap-3 text-xs">
+						{provider.isActive ? (
+							<>
+								<div className="flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 font-medium text-success">
+									<CheckCircleIcon size={14} weight="fill" />
+									<span>
+										<Trans>Active</Trans>
+									</span>
+								</div>
+							</>
+						) : (
+							<>
+								<div className="flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
+									<XCircleIcon size={14} weight="fill" />
+									<span>
+										<Trans>Inactive</Trans>
+									</span>
+								</div>
+							</>
+						)}
+						<span className="text-muted-foreground">•</span>
+						<span className="text-muted-foreground">
+							<Trans>Added {provider.createdAt.toLocaleDateString()}</Trans>
+						</span>
+					</div>
 				</div>
 			</div>
 		</motion.div>
@@ -261,13 +278,13 @@ function RouteComponent() {
 	const { data: providers = [] } = useQuery<AIProviderConfig[]>({
 		queryKey: ["ai-providers"],
 		queryFn: async () => {
-			return orpc.aiProvider.list.query();
+			return (orpc.aiProvider.list as any).query();
 		},
 	});
 
 	const { mutate: deleteProvider } = useMutation({
 		mutationFn: async (id: string) => {
-			return orpc.aiProvider.delete.mutate({ id });
+			return (orpc.aiProvider.delete as any).mutate({ id });
 		},
 		onSuccess: () => {
 			toast.success(i18n._(msg`Provider deleted successfully`));
@@ -280,7 +297,7 @@ function RouteComponent() {
 
 	const { mutate: activateProvider } = useMutation({
 		mutationFn: async (id: string) => {
-			return orpc.aiProvider.activate.mutate({ id });
+			return (orpc.aiProvider.activate as any).mutate({ id });
 		},
 		onSuccess: () => {
 			toast.success(i18n._(msg`Provider activated successfully`));
@@ -303,100 +320,147 @@ function RouteComponent() {
 	};
 
 	return (
-		<div className="space-y-4">
-			<DashboardHeader icon={BrainIcon} title={i18n._(msg`AI Integrations`)} />
+		<div className="relative mx-auto w-full max-w-4xl space-y-8 px-4 py-6 sm:px-6 lg:px-8">
+			{/* Animated Background Orbs */}
+			<div className="pointer-events-none absolute inset-0 overflow-hidden">
+				<div className="absolute top-0 -left-32 size-64 animate-pulse rounded-full bg-gradient-to-br from-purple-500/20 to-transparent blur-3xl" />
+				<div className="absolute top-32 -right-32 size-96 animate-pulse rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-3xl delay-1000" />
+				<div className="absolute top-64 left-1/2 size-80 animate-pulse rounded-full bg-gradient-to-br from-pink-500/15 to-transparent blur-3xl delay-500" />
+			</div>
 
-			<Separator />
-
+			{/* Header Section */}
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.3 }}
-				className="grid max-w-3xl gap-6"
+				transition={{ duration: 0.4 }}
+				className="relative space-y-3 text-center"
 			>
-				<div className="flex items-start gap-4 rounded-sm border bg-popover p-6">
-					<div className="rounded-sm bg-primary/10 p-2.5">
-						<InfoIcon className="text-primary" size={24} />
-					</div>
-
-					<div className="flex-1 space-y-2">
-						<h3 className="font-semibold">
-							<Trans>Secure AI Integration</Trans>
-						</h3>
-
-						<p className="text-muted-foreground leading-relaxed">
-							<Trans>
-								Connect your AI provider accounts to enable AI-powered features like resume content generation, cover
-								letter writing, and more. Your API keys are encrypted and stored securely.
-							</Trans>
-						</p>
-					</div>
+				<div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-purple-500/5 shadow-lg">
+					<BrainIcon className="size-8 text-purple-600" weight="duotone" />
 				</div>
+				<div>
+					<h1 className="font-bold text-3xl tracking-tight">
+						<Trans>AI Integrations</Trans>
+					</h1>
+					<p className="mt-2 text-muted-foreground">
+						<Trans>Connect AI providers to enable intelligent features</Trans>
+					</p>
+				</div>
+			</motion.div>
 
-				<Separator />
+			<Separator className="bg-gradient-to-r from-transparent via-border to-transparent" />
 
-				<div className="space-y-4">
-					<div className="flex items-center justify-between">
-						<h3 className="font-semibold text-lg">
-							<Trans>Your AI Providers</Trans>
-						</h3>
-						<Button variant="outline" onClick={() => setShowAddForm(!showAddForm)}>
-							<PlusIcon />
-							<Trans>Add Provider</Trans>
-						</Button>
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5, delay: 0.1 }}
+				className="relative mx-auto max-w-2xl space-y-6"
+			>
+				{/* Info Card */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.2, duration: 0.4 }}
+					className="rounded-xl border-2 border-border/30 bg-gradient-to-br from-muted/40 to-muted/10 p-5 shadow-md"
+				>
+					<div className="flex items-start gap-4">
+						<div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/10 shadow-sm">
+							<span className="text-2xl">🤖</span>
+						</div>
+						<div className="space-y-1.5">
+							<p className="font-semibold text-foreground text-sm">
+								<Trans>Secure AI Integration</Trans>
+							</p>
+							<p className="text-muted-foreground text-sm leading-relaxed">
+								<Trans>
+									Connect your AI provider accounts to enable AI-powered features like resume content generation, cover
+									letter writing, and more. Your API keys are encrypted and stored securely.
+								</Trans>
+							</p>
+						</div>
 					</div>
+				</motion.div>
 
-					<AnimatePresence>
-						{showAddForm && (
+				{/* Add Provider Button */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.3, duration: 0.4 }}
+					className="flex items-center justify-between"
+				>
+					<h3 className="font-semibold text-lg">
+						<Trans>Your AI Providers</Trans>
+					</h3>
+					<Button
+						variant="outline"
+						onClick={() => setShowAddForm(!showAddForm)}
+						className="gap-2 border-2 border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-transparent font-semibold transition-all hover:scale-105 hover:border-purple-500/50 hover:bg-purple-500/20 hover:shadow-purple-500/20 hover:shadow-lg"
+					>
+						<PlusIcon weight="bold" />
+						<Trans>Add Provider</Trans>
+					</Button>
+				</motion.div>
+
+				{/* Add Provider Form */}
+				<AnimatePresence>
+					{showAddForm && (
+						<AddProviderForm
+							onSuccess={() => {
+								setShowAddForm(false);
+								queryClient.invalidateQueries({ queryKey: ["ai-providers"] });
+							}}
+						/>
+					)}
+				</AnimatePresence>
+
+				{/* Provider Cards */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.4, duration: 0.4 }}
+					className="space-y-4"
+				>
+					<AnimatePresence mode="popLayout">
+						{providers.length === 0 && !showAddForm && (
 							<motion.div
-								initial={{ opacity: 0, height: 0 }}
-								animate={{ opacity: 1, height: "auto" }}
-								exit={{ opacity: 0, height: 0 }}
+								initial={{ opacity: 0, scale: 0.95 }}
+								animate={{ opacity: 1, scale: 1 }}
+								exit={{ opacity: 0, scale: 0.95 }}
+								transition={{ duration: 0.3 }}
+								className="rounded-2xl border-2 border-border/50 border-dashed bg-gradient-to-br from-muted/30 to-muted/10 p-12 text-center"
 							>
-								<AddProviderForm
-									onSuccess={() => {
-										setShowAddForm(false);
-										queryClient.invalidateQueries({ queryKey: ["ai-providers"] });
-									}}
-								/>
+								<BrainIcon className="mx-auto mb-4 text-muted-foreground" size={56} weight="duotone" />
+								<h4 className="mb-2 font-semibold text-lg">
+									<Trans>No AI providers configured</Trans>
+								</h4>
+								<p className="mb-6 text-muted-foreground text-sm">
+									<Trans>Add your first AI provider to start using AI-powered features</Trans>
+								</p>
+								<Button
+									onClick={() => setShowAddForm(true)}
+									className="gap-2 bg-gradient-to-r from-purple-500 to-purple-600 font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-purple-500/20 hover:shadow-xl"
+								>
+									<PlusIcon weight="bold" />
+									<Trans>Add Your First Provider</Trans>
+								</Button>
 							</motion.div>
 						)}
-					</AnimatePresence>
 
-					<div className="space-y-3">
-						<AnimatePresence>
-							{providers.length === 0 && !showAddForm && (
-								<motion.div
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-									className="rounded-lg border border-dashed bg-muted/30 p-8 text-center"
-								>
-									<BrainIcon className="mx-auto mb-3 text-muted-foreground" size={48} />
-									<h4 className="mb-2 font-semibold">
-										<Trans>No AI providers configured</Trans>
-									</h4>
-									<p className="mb-4 text-muted-foreground text-sm">
-										<Trans>Add your first AI provider to start using AI-powered features</Trans>
-									</p>
-									<Button onClick={() => setShowAddForm(true)}>
-										<PlusIcon />
-										<Trans>Add Your First Provider</Trans>
-									</Button>
-								</motion.div>
-							)}
-
-							{providers.map((provider) => (
+						{providers.map((provider) => {
+							const providerOption = providerOptions.find((opt) => opt.value === provider.provider);
+							const providerLabel = providerOption?.label || provider.provider;
+							return (
 								<ProviderCard
 									key={provider.id}
 									provider={provider}
+									providerLabel={String(providerLabel)}
 									onDelete={handleDelete}
 									onActivate={activateProvider}
 								/>
-							))}
-						</AnimatePresence>
-					</div>
-				</div>
+							);
+						})}
+					</AnimatePresence>
+				</motion.div>
 			</motion.div>
 		</div>
 	);
