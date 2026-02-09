@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import { CircleNotchIcon, EnvelopeIcon } from "@phosphor-icons/react";
+import { EnvelopeIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { RouterOutput } from "@/integrations/orpc/client";
@@ -14,18 +14,12 @@ export function CoverLetterCard({ coverLetter }: CoverLetterCardProps) {
 	const { i18n } = useLingui();
 
 	const updatedAt = useMemo(() => {
-		return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(
-			coverLetter.updatedAt,
-		);
+		return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(coverLetter.updatedAt);
 	}, [i18n.locale, coverLetter.updatedAt]);
 
 	return (
 		<Link to="/cover-letter/$id" params={{ id: coverLetter.id }} className="cursor-default">
-			<BaseCard
-				title={coverLetter.title}
-				description={t`Last updated on ${updatedAt}`}
-				tags={coverLetter.tags}
-			>
+			<BaseCard title={coverLetter.title} description={t`Last updated on ${updatedAt}`} tags={coverLetter.tags}>
 				<CoverLetterPreview coverLetter={coverLetter} />
 			</BaseCard>
 		</Link>
@@ -57,9 +51,7 @@ function CoverLetterPreview({ coverLetter }: CoverLetterCardProps) {
 				{/* Content preview */}
 				<div className="space-y-2">
 					{coverLetter.content ? (
-						<div className="line-clamp-6 text-muted-foreground text-xs leading-relaxed">
-							{coverLetter.content}
-						</div>
+						<div className="line-clamp-6 text-muted-foreground text-xs leading-relaxed">{coverLetter.content}</div>
 					) : (
 						<div className="flex items-center justify-center py-8">
 							<p className="text-muted-foreground text-xs italic">No content yet</p>

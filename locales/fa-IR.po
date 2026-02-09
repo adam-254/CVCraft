@@ -120,6 +120,11 @@ msgstr "یک لینک تأیید به آدرس ایمیل فعلی شما ارس
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "یک رزومه‌ساز رایگان و متن‌باز که فرایند ایجاد، به‌روزرسانی و اشتراک‌گذاری رزومه شما را ساده می‌کند."
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "A link to your cover letter has been copied to clipboard."
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "A link to your resume has been copied to clipboard."
@@ -152,6 +157,10 @@ msgstr ""
 
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Active"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Add"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
@@ -257,6 +266,10 @@ msgstr "افزودن ردیف بعد از این"
 msgid "Add Row Before"
 msgstr "افزودن ردیف قبل از این"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Add tag..."
+msgstr ""
+
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Add your first AI provider to start using AI-powered features"
 msgstr ""
@@ -292,6 +305,10 @@ msgstr "آفریکانس"
 msgid "AI"
 msgstr "AI"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "AI Assistance"
+msgstr ""
+
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "AI Integrations"
 msgstr ""
@@ -316,6 +333,10 @@ msgstr "آلبانیایی"
 
 #: src/routes/_home/-sections/footer.tsx
 msgid "All rights reserved."
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Allow others to view this cover letter"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -435,6 +456,11 @@ msgstr "نسبت تصویر"
 msgid "Authentication"
 msgstr "احراز هویت"
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Auto-saving..."
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Available in 50+ languages with community translations."
 msgstr ""
@@ -451,6 +477,14 @@ msgstr "جوایز"
 #: src/utils/locale.ts
 msgid "Azerbaijani"
 msgstr "آذربایجانی"
+
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Back"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Back to Dashboard"
+msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/verify-2fa.tsx
@@ -492,6 +526,7 @@ msgid "Body"
 msgstr "متن بدنه"
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Bold"
 msgstr "بولد"
 
@@ -624,8 +659,20 @@ msgstr "تغییر تم به..."
 msgid "Changed your mind? Rename your resume to something more descriptive."
 msgstr "نظرتان عوض شده؟ نام رزومه خود را به چیزی توصیفی‌تر تغییر دهید."
 
+#: src/routes/cover-letter/$id/index.tsx
+msgid "characters"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Characters:"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "chars"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Check Grammar"
 msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
@@ -676,13 +723,22 @@ msgstr "پاک کردن انتخاب"
 msgid "Click here to select a file to import"
 msgstr "برای انتخاب فایل برای وارد کردن، اینجا کلیک کنید"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Close dialogs"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Closing Paragraph"
 msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "بلوک کد"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+msgid "Color Scheme"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -714,6 +770,9 @@ msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Content"
 msgstr ""
 
@@ -730,8 +789,8 @@ msgid "Continue where you left off"
 msgstr "ادامه از جایی که رها کرده بودید"
 
 #: src/dialogs/resume/import.tsx
-msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
-msgstr "با وارد کردن یک رزومهٔ موجود که با Reactive Resume یا هر رزومه‌ساز دیگری ایجاد کرده‌اید، از جایی که رها کرده بودید ادامه دهید. قالب‌های پشتیبانی‌شده شامل PDF، Microsoft Word و همچنین فایل‌های JSON از Reactive Resume هستند."
+msgid "Continue where you left off by importing an existing resume you created using CVCraft or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from CVCraft."
+msgstr ""
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Contribute to making CVCraft available in more languages"
@@ -749,6 +808,11 @@ msgstr "برای زمانی که دستگاه خود را از دست می‌د�
 msgid "Copy Backup Codes"
 msgstr "کپی کردن کدهای پشتیبان"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Copy Public URL"
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "Copy this secret key and use it in your applications to access your data."
 msgstr "این کلید مخفی را کپی کنید و برای دسترسی به داده‌های خود در اپلیکیشن‌هایتان از آن استفاده کنید."
@@ -765,7 +829,38 @@ msgstr ""
 msgid "Cover Letter"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Cover letter downloaded as TXT."
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Cover Letter Editor"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now locked"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now private"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now public"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now unlocked"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Cover Letter Title"
+msgstr ""
+
 #: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/cover-letters/list.tsx
+#: src/routes/dashboard/history.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Cover Letters"
 msgstr ""
 
@@ -876,6 +971,7 @@ msgid "Create as many resumes as you need without any restrictions."
 msgstr ""
 
 #: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/cover-letters/list.tsx
 msgid "Create Cover Letter"
 msgstr ""
 
@@ -892,13 +988,21 @@ msgstr ""
 msgid "Create Resume"
 msgstr ""
 
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "Create your first cover letter to get started"
+msgstr ""
+
 #: src/routes/dashboard/history.tsx
-msgid "Create your first resume to see it here"
+msgid "Create your first resume or cover letter to see it here"
 msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
 msgstr "در حال ایجاد کلید API شما..."
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Creating your cover letter..."
+msgstr ""
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -921,12 +1025,24 @@ msgstr ""
 msgid "Custom Sections"
 msgstr "بخش‌های سفارشی"
 
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Customization"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Customize the appearance and settings"
+msgstr ""
+
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Customize your experience with theme and language settings"
 msgstr ""
 
 #: src/routes/_home/-sections/header.tsx
 msgid "CVCraft - Go to homepage"
+msgstr ""
+
+#: src/routes/_home/-sections/product-hunt-banner.tsx
+msgid "CVCraft is launching on Product Hunt today, head over to show some love!"
 msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
@@ -965,6 +1081,13 @@ msgstr "تم تیره"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Date"
 msgstr "تاریخ"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid ""
+"Dear [Recipient],\n"
+"\n"
+"I am writing to express my strong interest in the [Position] role at [Company]. With my background in [Field/Industry], I am excited about the opportunity to contribute to your team."
+msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
@@ -1082,13 +1205,30 @@ msgstr "یک کپی از رزومه خود را در قالب JSON دانلود 
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "یک کپی از رزومه خود را در قالب PDF دانلود کنید. از این فایل برای چاپ یا اشتراک‌گذاری آسان رزومه با استخدام‌کنندگان استفاده کنید."
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as PDF"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as Text"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as Word"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
 msgstr "دانلود JSON"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download PDF"
 msgstr "دانلود PDF"
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Download TXT"
+msgstr ""
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Download your resume as PDF or share it with a unique link. Your success story starts here!"
@@ -1097,10 +1237,6 @@ msgstr ""
 #: src/routes/$username/$slug.tsx
 msgid "Downloading..."
 msgstr "در حال دانلود..."
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Downloads"
-msgstr "دانلودها"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Drag and drop sections here to move them between columns"
@@ -1139,6 +1275,11 @@ msgstr ""
 msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Edit your cover letter content and metadata"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr ""
@@ -1255,6 +1396,10 @@ msgstr ""
 msgid "Experience"
 msgstr "تجربه"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Experience Paragraph"
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "Expires in"
 msgstr "منقضی می‌شود در"
@@ -1269,15 +1414,29 @@ msgid "Explore our diverse collection of professionally designed templates. Each
 msgstr ""
 
 #: src/routes/dashboard/settings/api-keys.tsx
-msgid "Explore the API documentation to learn how to integrate Reactive Resume with your applications. Find detailed endpoints, request examples, and authentication methods."
-msgstr "مستندات API را بررسی کنید تا بیاموزید چگونه Reactive Resume را با اپلیکیشن‌های خود ادغام کنید. در آنجا نقاط پایانی، نمونه درخواست‌ها و روش‌های احراز هویت به‌تفصیل آمده است."
+msgid "Explore the API documentation to learn how to integrate CVCraft with your applications. Find detailed endpoints, request examples, and authentication methods."
+msgstr ""
 
+#: src/routes/cover-letter/$id/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "خروجی گرفتن"
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Export & Share"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Export Options"
+msgstr ""
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Failed to create cover letter"
+msgstr ""
+
+#. placeholder {0}: error.message
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Failed to save changes: {0}"
 msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
@@ -1290,6 +1449,14 @@ msgstr "راه‌اندازی احراز هویت دو مرحله‌ای نام�
 
 #: src/components/user/dropdown-menu.tsx
 msgid "Failed to sign out"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Failed to update lock status"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Failed to update visibility"
 msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
@@ -1321,11 +1488,13 @@ msgstr "فنلاندی"
 msgid "Fluency"
 msgstr "روان بودن"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Family"
 msgstr "خانواده فونت"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Size"
@@ -1387,6 +1556,7 @@ msgid "Fullscreen"
 msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "General"
 msgstr ""
@@ -1430,6 +1600,10 @@ msgstr "رفتن به داشبورد"
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
 msgstr "رفتن به..."
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Good"
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Got Questions?"
@@ -1524,6 +1698,10 @@ msgstr "هایلایت"
 msgid "Hindi"
 msgstr "هندی"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Hiring Manager, John Doe, etc."
+msgstr ""
+
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/history.tsx
 msgid "History"
@@ -1549,6 +1727,14 @@ msgstr "داده‌های من چگونه محافظت می‌شوند؟"
 #: src/utils/locale.ts
 msgid "Hungarian"
 msgstr "مجاری"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid ""
+"I would welcome the opportunity to discuss how my skills and enthusiasm can contribute to [Company]'s continued success. Thank you for considering my application. I look forward to hearing from you.\n"
+"\n"
+"Sincerely,\n"
+"[Your Name]"
+msgstr ""
 
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
@@ -1580,6 +1766,14 @@ msgstr "در حال وارد کردن رزومه شما..."
 #: src/dialogs/resume/import.tsx
 msgid "Importing..."
 msgstr "در حال وارد کردن..."
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Improve Writing"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "In my previous role as [Previous Position] at [Previous Company], I successfully [Achievement/Responsibility]. This experience has equipped me with [Relevant Skills] that directly align with the requirements of this position."
+msgstr ""
 
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Inactive"
@@ -1642,6 +1836,7 @@ msgid "Italian"
 msgstr "ایتالیایی"
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Italic"
 msgstr "ایتالیک"
 
@@ -1669,6 +1864,8 @@ msgstr "تراز دوطرفه"
 msgid "Kannada"
 msgstr "کانادا"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Keyboard Shortcuts"
 msgstr ""
@@ -1710,20 +1907,12 @@ msgstr "زبان"
 msgid "Languages"
 msgstr "زبان‌ها"
 
-#. placeholder {0}: statistics.lastDownloadedAt.toDateString()
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Last downloaded on {0}"
-msgstr "آخرین‌بار در {0} دانلود شد"
-
+#: src/routes/dashboard/cover-letters/-components/cards/cover-letter-card.tsx
+#: src/routes/dashboard/cover-letters/-components/cover-letter-list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Last updated on {updatedAt}"
 msgstr "آخرین به‌روزرسانی در {updatedAt}"
-
-#. placeholder {0}: statistics.lastViewedAt.toDateString()
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Last viewed on {0}"
-msgstr "آخرین‌بار در {0} مشاهده شد"
 
 #: src/utils/locale.ts
 msgid "Latvian"
@@ -1748,6 +1937,10 @@ msgstr "برای بازگرداندن عنوان به مقدار اصلی، آن
 #: src/components/input/rich-input.tsx
 msgid "Left Align"
 msgstr "تراز چپ"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Length:"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "Letter"
@@ -1776,10 +1969,15 @@ msgstr "تم روشن"
 msgid "Lightning Fast"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Line Height"
 msgstr "فاصلهٔ بین خطوط"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Lines:"
+msgstr ""
 
 #: src/routes/dashboard/settings/authentication/-components/hooks.tsx
 msgid "Linking your {providerName} account..."
@@ -1818,9 +2016,17 @@ msgstr "موقعیت مکانی"
 msgid "Lock"
 msgstr "قفل کردن"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Locked"
+msgstr ""
+
 #: src/components/user/dropdown-menu.tsx
 msgid "Logout"
 msgstr "خروج"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Long"
+msgstr ""
 
 #: src/routes/auth/verify-2fa.tsx
 msgid "Lost access to your authenticator?"
@@ -1878,6 +2084,10 @@ msgstr "حاشیه (افقی)"
 msgid "Margin (Vertical)"
 msgstr "حاشیه (عمودی)"
 
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Metadata"
+msgstr ""
+
 #: src/routes/dashboard/settings/ai.tsx
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
@@ -1919,6 +2129,7 @@ msgstr ""
 msgid "Navigate between fields"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Navigation"
 msgstr ""
@@ -1933,6 +2144,10 @@ msgstr "شبکه"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Never. We don't sell, share, or monetize your data in any way. Your privacy is our top priority, and we're committed to keeping your information secure."
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "New Cover Letter"
 msgstr ""
 
 #: src/components/input/rich-input.tsx
@@ -1952,6 +2167,10 @@ msgstr "گذرواژهٔ جدید"
 msgid "New Section"
 msgstr "بخش جدید"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Next field"
+msgstr ""
+
 #: src/routes/auth/login.tsx
 msgid "No account found with these credentials. Please sign up first."
 msgstr ""
@@ -1966,6 +2185,10 @@ msgstr ""
 
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "No AI providers configured"
+msgstr ""
+
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "No cover letters yet"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
@@ -1986,7 +2209,7 @@ msgid "No results found."
 msgstr "موردی یافت نشد."
 
 #: src/routes/dashboard/history.tsx
-msgid "No resumes updated in the last 30 days"
+msgid "No resumes or cover letters updated in the last 30 days"
 msgstr ""
 
 #: src/routes/auth/forgot-password.tsx
@@ -2021,6 +2244,14 @@ msgstr "باز کردن کلاینت ایمیل"
 msgid "Open Source"
 msgstr "متن‌باز"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Opening Paragraph"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Optimal"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "در صورت تمایل می‌توانید گذرواژه‌ای تنظیم کنید تا فقط افرادی که گذرواژه را دارند بتوانند از طریق لینک، رزومه شما را ببینند."
@@ -2051,6 +2282,10 @@ msgstr "صفحه {0}"
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "صفحه {pageNumber} از {totalNumberOfPages}"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+msgid "Page Margins"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
@@ -2087,6 +2322,10 @@ msgstr "حفاظت با گذرواژه فعال شده است."
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Password reset email sent!"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "PDF export coming soon."
 msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
@@ -2199,6 +2438,14 @@ msgstr ""
 msgid "Press Esc to close"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Prevent editing of this cover letter"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Previous field"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "رنگ اصلی"
@@ -2250,6 +2497,10 @@ msgstr ""
 msgid "Provider deleted successfully"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Public"
+msgstr ""
+
 #: src/utils/resume/section.tsx
 msgid "Publications"
 msgstr "انتشارها"
@@ -2257,6 +2508,10 @@ msgstr "انتشارها"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
 msgstr "منتشرکننده"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Quick Templates"
+msgstr ""
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Quick Tip"
@@ -2266,10 +2521,6 @@ msgstr ""
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Quick Tips"
 msgstr ""
-
-#: src/routes/_home/-sections/product-hunt-banner.tsx
-msgid "Reactive Resume is launching on Product Hunt today, head over to show some love!"
-msgstr "Reactive Resume امروز در Product Hunt لانچ می‌شود، سری بزنید و کمی عشق نشان دهید!"
 
 #: src/routes/_home/-sections/templates.tsx
 msgid "Ready to create your resume?"
@@ -2285,10 +2536,12 @@ msgid "Real-Time Preview"
 msgstr ""
 
 #: src/routes/dashboard/history.tsx
-msgid "Recently updated resumes from the last 30 days"
+msgid "Recently updated resumes and cover letters from the last 30 days"
 msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Recipient"
 msgstr ""
 
@@ -2300,10 +2553,13 @@ msgstr "مستطیل"
 msgid "Rectangle (Full Width)"
 msgstr "مستطیل (تمام‌عرض)"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Redo"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Redo (alternative)"
 msgstr ""
@@ -2357,6 +2613,7 @@ msgstr "تنظیم مجدد گذرواژه"
 msgid "Reset your password"
 msgstr "تنظیم مجدد گذرواژهٔ شما"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Reset zoom"
 msgstr ""
@@ -2375,6 +2632,8 @@ msgstr ""
 #: src/components/command-palette/pages/resumes.tsx
 #: src/components/command-palette/pages/resumes.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/history.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Resumes"
 msgstr "رزومه‌ها"
 
@@ -2396,6 +2655,10 @@ msgstr "روسی"
 
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Save (Auto-save is enabled)"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Save (auto-save notification)"
 msgstr ""
 
 #: src/dialogs/resume/index.tsx
@@ -2472,6 +2735,10 @@ msgstr ""
 msgid "See your changes instantly as you type with live preview updates."
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Select all"
+msgstr ""
+
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Select from 12+ professionally designed templates that suit your style and industry."
 msgstr ""
@@ -2514,6 +2781,7 @@ msgstr "تنظیم گذرواژه"
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "تنظیمات"
@@ -2548,6 +2816,7 @@ msgstr "اشتراک‌گذاری"
 msgid "Show"
 msgstr "نمایش"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Show keyboard shortcuts"
 msgstr ""
@@ -2689,15 +2958,6 @@ msgstr "اسپانیایی"
 msgid "Square"
 msgstr "مربعی"
 
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub (opens in new tab)"
-msgstr "در GitHub برای ما ستاره بگذارید (در زبانهٔ جدید باز می‌شود)"
-
-#. placeholder {0}: starCount.toLocaleString()
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub, currently {0} stars (opens in new tab)"
-msgstr "در GitHub برای ما ستاره بگذارید، در حال حاضر {0} ستاره (در زبانهٔ جدید باز می‌شود)"
-
 #: src/routes/_home/-sections/hero.tsx
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Start Building Free"
@@ -2724,9 +2984,9 @@ msgstr ""
 msgid "Start with a blank canvas and build your resume step by step with our intuitive editor"
 msgstr ""
 
-#: src/utils/resume/section.tsx
-msgid "Statistics"
-msgstr "آمارها"
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Start writing your cover letter"
+msgstr ""
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
@@ -2738,6 +2998,14 @@ msgstr "خط‌خورده"
 
 #: src/dialogs/resume/template/data.ts
 msgid "Striking single-column with flame-inspired header waves and gradient accents; passionate design for marketing executives or innovation leaders."
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Styles"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Suggest Improvements"
 msgstr ""
 
 #: src/utils/resume/section.tsx
@@ -2761,6 +3029,7 @@ msgid "Table"
 msgstr "جدول"
 
 #: src/dialogs/resume/index.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
 msgid "Tags"
 msgstr "برچسب‌ها"
 
@@ -2862,6 +3131,10 @@ msgstr "این عمل قابل بازگشت نیست."
 msgid "This action cannot be undone. All your data will be permanently deleted."
 msgstr "این عمل قابل بازگشت نیست. تمام داده‌های شما برای همیشه حذف خواهند شد."
 
+#: src/routes/builder/$coverletterId/-store/cover-letter.ts
+msgid "This cover letter is locked and cannot be updated."
+msgstr ""
+
 #: src/routes/auth/register.tsx
 msgid "This email is already registered"
 msgstr ""
@@ -2909,8 +3182,8 @@ msgid "This username is already taken. Please choose a different username."
 msgstr ""
 
 #: src/dialogs/api-key/create.tsx
-msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
-msgstr "این کار یک کلید API جدید برای دسترسی به API Reactive Resume تولید می‌کند تا ماشین‌ها بتوانند با داده‌های رزومهٔ شما تعامل داشته باشند."
+msgid "This will generate a new API key to access the CVCraft API to allow machines to interact with your resume data."
+msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with CVCraft"
@@ -2929,6 +3202,8 @@ msgstr ""
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/dialogs/resume/sections/publication.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Title"
 msgstr "عنوان"
 
@@ -2940,6 +3215,22 @@ msgstr "برای حذف حساب خود، باید متن تأیید را وار
 msgid "Toggle active status"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Toggle Left Sidebar"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Toggle Right Sidebar"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Too Long"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Too Short"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
 msgstr ""
@@ -2947,10 +3238,6 @@ msgstr ""
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total word count: {wordCount}"
 msgstr ""
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Track your resume's views and downloads"
-msgstr "بازدیدها و دانلودهای رزومهٔ خود را پیگیری کنید"
 
 #: src/routes/_home/-sections/highlights.tsx
 msgid "Transparent, auditable, and community-driven"
@@ -2967,10 +3254,6 @@ msgstr ""
 #: src/utils/locale.ts
 msgid "Turkish"
 msgstr "ترکی"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Turn on public sharing to track how many times your resume has been viewed or downloaded. Only you can see your resume's statistics."
-msgstr "اشتراک‌گذاری عمومی را روشن کنید تا ببینید رزومه شما چند بار دیده یا دانلود شده است. فقط شما می‌توانید آمار رزومهٔ خود را ببینید."
 
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column with a bold colored sidebar and skill bars; great for creative or tech roles where visual flair is welcome."
@@ -3083,9 +3366,12 @@ msgid "Ultra-modern asymmetric design with overlapping sections and bold typogra
 msgstr ""
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Underline"
 msgstr "زیرخط"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Undo"
 msgstr ""
@@ -3112,6 +3398,10 @@ msgstr "باز کردن قفل"
 
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Unsaved Changes"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Untitled Cover Letter"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
@@ -3236,8 +3526,16 @@ msgstr ""
 msgid "Use Template"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Use the editor on the left to add content"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Use these keyboard shortcuts to work faster and more efficiently."
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Use these keyboard shortcuts to work more efficiently."
 msgstr ""
 
 #: src/dialogs/resume/sections/profile.tsx
@@ -3284,6 +3582,7 @@ msgstr "برای تنظیم مجدد گذرواژه، تأیید ایمیل ال
 msgid "Vietnamese"
 msgstr "ویتنامی"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "View"
 msgstr ""
@@ -3299,10 +3598,6 @@ msgstr ""
 #: src/routes/dashboard/resumes/index.tsx
 msgid "View all your resumes in the History page"
 msgstr ""
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Views"
-msgstr "بازدیدها"
 
 #: src/utils/resume/section.tsx
 msgid "Volunteer"
@@ -3364,8 +3659,16 @@ msgstr ""
 msgid "words"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Words:"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Write custom CSS or use AI to generate it for ultimate flexibility."
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Write your cover letter content here..."
 msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
@@ -3421,9 +3724,15 @@ msgstr ""
 msgid "Your API key has been copied to the clipboard."
 msgstr "کلید API شما در کلیپ‌بورد کپی شد."
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/$coverletterId/index.tsx
 #: src/routes/builder/$resumeId/index.tsx
 msgid "Your changes are saved automatically."
 msgstr "تغییرات شما به‌صورت خودکار ذخیره می‌شوند."
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Your cover letter has been created successfully."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Your data is encrypted and never shared with third parties."
@@ -3501,15 +3810,25 @@ msgstr "لینک عمومی رزومه شما در حال حاضر با گذرو
 msgid "Your work is automatically saved as you type"
 msgstr ""
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom in"
 msgstr "بزرگ‌نمایی"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Zoom In"
+msgstr ""
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom out"
 msgstr "کوچک‌نمایی"
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Zoom Out"
+msgstr ""
 
 #. placeholder {0}: Math.round(scale * 100)
 #: src/routes/builder/$resumeId/-components/dock.tsx

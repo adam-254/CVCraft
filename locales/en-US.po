@@ -115,6 +115,11 @@ msgstr "A confirmation link has been sent to your current email address. Please 
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "A link to your cover letter has been copied to clipboard."
+msgstr "A link to your cover letter has been copied to clipboard."
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "A link to your resume has been copied to clipboard."
@@ -148,6 +153,10 @@ msgstr "Account created successfully!"
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Active"
 msgstr "Active"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Add"
+msgstr "Add"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
@@ -252,6 +261,10 @@ msgstr "Add Row After"
 msgid "Add Row Before"
 msgstr "Add Row Before"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Add tag..."
+msgstr "Add tag..."
+
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Add your first AI provider to start using AI-powered features"
 msgstr "Add your first AI provider to start using AI-powered features"
@@ -287,6 +300,10 @@ msgstr "Afrikaans"
 msgid "AI"
 msgstr "AI"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "AI Assistance"
+msgstr "AI Assistance"
+
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "AI Integrations"
 msgstr "AI Integrations"
@@ -312,6 +329,10 @@ msgstr "Albanian"
 #: src/routes/_home/-sections/footer.tsx
 msgid "All rights reserved."
 msgstr "All rights reserved."
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Allow others to view this cover letter"
+msgstr "Allow others to view this cover letter"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
@@ -430,6 +451,11 @@ msgstr "Aspect Ratio"
 msgid "Authentication"
 msgstr "Authentication"
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Auto-saving..."
+msgstr "Auto-saving..."
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Available in 50+ languages with community translations."
 msgstr "Available in 50+ languages with community translations."
@@ -446,6 +472,14 @@ msgstr "Awards"
 #: src/utils/locale.ts
 msgid "Azerbaijani"
 msgstr "Azerbaijani"
+
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Back"
+msgstr "Back"
+
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Back to Dashboard"
+msgstr "Back to Dashboard"
 
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/verify-2fa.tsx
@@ -487,6 +521,7 @@ msgid "Body"
 msgstr "Body"
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Bold"
 msgstr "Bold"
 
@@ -619,9 +654,21 @@ msgstr "Change theme to..."
 msgid "Changed your mind? Rename your resume to something more descriptive."
 msgstr "Changed your mind? Rename your resume to something more descriptive."
 
+#: src/routes/cover-letter/$id/index.tsx
+msgid "characters"
+msgstr "characters"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Characters:"
+msgstr "Characters:"
+
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "chars"
 msgstr "chars"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Check Grammar"
+msgstr "Check Grammar"
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Check Your Email"
@@ -671,13 +718,22 @@ msgstr "Clear selection"
 msgid "Click here to select a file to import"
 msgstr "Click here to select a file to import"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Close dialogs"
 msgstr "Close dialogs"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Closing Paragraph"
+msgstr "Closing Paragraph"
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Code Block"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+msgid "Color Scheme"
+msgstr "Color Scheme"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -709,6 +765,9 @@ msgstr "Connect your AI provider accounts to enable AI-powered features like res
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Content"
 msgstr "Content"
 
@@ -725,8 +784,8 @@ msgid "Continue where you left off"
 msgstr "Continue where you left off"
 
 #: src/dialogs/resume/import.tsx
-msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
-msgstr "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
+msgid "Continue where you left off by importing an existing resume you created using CVCraft or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from CVCraft."
+msgstr "Continue where you left off by importing an existing resume you created using CVCraft or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from CVCraft."
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Contribute to making CVCraft available in more languages"
@@ -744,6 +803,11 @@ msgstr "Copy and store these backup codes in case you lose your device."
 msgid "Copy Backup Codes"
 msgstr "Copy Backup Codes"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Copy Public URL"
+msgstr "Copy Public URL"
+
 #: src/dialogs/api-key/create.tsx
 msgid "Copy this secret key and use it in your applications to access your data."
 msgstr "Copy this secret key and use it in your applications to access your data."
@@ -760,7 +824,38 @@ msgstr "Core Features"
 msgid "Cover Letter"
 msgstr "Cover Letter"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Cover letter downloaded as TXT."
+msgstr "Cover letter downloaded as TXT."
+
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Cover Letter Editor"
+msgstr "Cover Letter Editor"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now locked"
+msgstr "Cover letter is now locked"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now private"
+msgstr "Cover letter is now private"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now public"
+msgstr "Cover letter is now public"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Cover letter is now unlocked"
+msgstr "Cover letter is now unlocked"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Cover Letter Title"
+msgstr "Cover Letter Title"
+
 #: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/cover-letters/list.tsx
+#: src/routes/dashboard/history.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Cover Letters"
 msgstr "Cover Letters"
 
@@ -871,6 +966,7 @@ msgid "Create as many resumes as you need without any restrictions."
 msgstr "Create as many resumes as you need without any restrictions."
 
 #: src/routes/dashboard/cover-letters/index.tsx
+#: src/routes/dashboard/cover-letters/list.tsx
 msgid "Create Cover Letter"
 msgstr "Create Cover Letter"
 
@@ -887,13 +983,21 @@ msgstr "Create professional cover letters to complement your resumes"
 msgid "Create Resume"
 msgstr "Create Resume"
 
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "Create your first cover letter to get started"
+msgstr "Create your first cover letter to get started"
+
 #: src/routes/dashboard/history.tsx
-msgid "Create your first resume to see it here"
-msgstr "Create your first resume to see it here"
+msgid "Create your first resume or cover letter to see it here"
+msgstr "Create your first resume or cover letter to see it here"
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
 msgstr "Creating your API key..."
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Creating your cover letter..."
+msgstr "Creating your cover letter..."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -916,6 +1020,14 @@ msgstr "Custom CSS Support"
 msgid "Custom Sections"
 msgstr "Custom Sections"
 
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Customization"
+msgstr "Customization"
+
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Customize the appearance and settings"
+msgstr "Customize the appearance and settings"
+
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Customize your experience with theme and language settings"
 msgstr "Customize your experience with theme and language settings"
@@ -923,6 +1035,10 @@ msgstr "Customize your experience with theme and language settings"
 #: src/routes/_home/-sections/header.tsx
 msgid "CVCraft - Go to homepage"
 msgstr "CVCraft - Go to homepage"
+
+#: src/routes/_home/-sections/product-hunt-banner.tsx
+msgid "CVCraft is launching on Product Hunt today, head over to show some love!"
+msgstr "CVCraft is launching on Product Hunt today, head over to show some love!"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "CVCraft is open-source, privacy-focused, and completely free. Unlike other resume builders, it doesn't show ads, track your data, or limit your features behind a paywall."
@@ -960,6 +1076,16 @@ msgstr "Dark theme"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Date"
 msgstr "Date"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid ""
+"Dear [Recipient],\n"
+"\n"
+"I am writing to express my strong interest in the [Position] role at [Company]. With my background in [Field/Industry], I am excited about the opportunity to contribute to your team."
+msgstr ""
+"Dear [Recipient],\n"
+"\n"
+"I am writing to express my strong interest in the [Position] role at [Company]. With my background in [Field/Industry], I am excited about the opportunity to contribute to your team."
 
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
@@ -1077,13 +1203,30 @@ msgstr "Download a copy of your resume in JSON format. Use this file for backup 
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as PDF"
+msgstr "Download as PDF"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as Text"
+msgstr "Download as Text"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Download as Word"
+msgstr "Download as Word"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
 msgstr "Download JSON"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download PDF"
 msgstr "Download PDF"
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Download TXT"
+msgstr "Download TXT"
 
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Download your resume as PDF or share it with a unique link. Your success story starts here!"
@@ -1092,10 +1235,6 @@ msgstr "Download your resume as PDF or share it with a unique link. Your success
 #: src/routes/$username/$slug.tsx
 msgid "Downloading..."
 msgstr "Downloading..."
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Downloads"
-msgstr "Downloads"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Drag and drop sections here to move them between columns"
@@ -1134,6 +1273,11 @@ msgstr "Dynamic two-column with electric zigzag dividers and bold accents; high-
 msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
 msgstr "e.g., gpt-4, claude-3-opus, gemini-pro"
 
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Edit your cover letter content and metadata"
+msgstr "Edit your cover letter content and metadata"
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr "Editing"
@@ -1250,6 +1394,10 @@ msgstr "Exit Fullscreen"
 msgid "Experience"
 msgstr "Experience"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Experience Paragraph"
+msgstr "Experience Paragraph"
+
 #: src/dialogs/api-key/create.tsx
 msgid "Expires in"
 msgstr "Expires in"
@@ -1264,9 +1412,10 @@ msgid "Explore our diverse collection of professionally designed templates. Each
 msgstr "Explore our diverse collection of professionally designed templates. Each one is fully customizable to match your style and industry. More templates are added regularly."
 
 #: src/routes/dashboard/settings/api-keys.tsx
-msgid "Explore the API documentation to learn how to integrate Reactive Resume with your applications. Find detailed endpoints, request examples, and authentication methods."
-msgstr "Explore the API documentation to learn how to integrate Reactive Resume with your applications. Find detailed endpoints, request examples, and authentication methods."
+msgid "Explore the API documentation to learn how to integrate CVCraft with your applications. Find detailed endpoints, request examples, and authentication methods."
+msgstr "Explore the API documentation to learn how to integrate CVCraft with your applications. Find detailed endpoints, request examples, and authentication methods."
 
+#: src/routes/cover-letter/$id/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Export"
@@ -1274,6 +1423,19 @@ msgstr "Export"
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Export & Share"
 msgstr "Export & Share"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Export Options"
+msgstr "Export Options"
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Failed to create cover letter"
+msgstr "Failed to create cover letter"
+
+#. placeholder {0}: error.message
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Failed to save changes: {0}"
+msgstr "Failed to save changes: {0}"
 
 #: src/routes/auth/forgot-password.tsx
 msgid "Failed to send reset email"
@@ -1286,6 +1448,14 @@ msgstr "Failed to setup two-factor authentication."
 #: src/components/user/dropdown-menu.tsx
 msgid "Failed to sign out"
 msgstr "Failed to sign out"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Failed to update lock status"
+msgstr "Failed to update lock status"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Failed to update visibility"
+msgstr "Failed to update visibility"
 
 #: src/routes/_home/-sections/faq.tsx
 #: src/routes/_home/-sections/header.tsx
@@ -1316,11 +1486,13 @@ msgstr "Finnish"
 msgid "Fluency"
 msgstr "Fluency"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Family"
 msgstr "Font Family"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Size"
@@ -1382,6 +1554,7 @@ msgid "Fullscreen"
 msgstr "Fullscreen"
 
 #: src/routes/_home/-sections/faq.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "General"
 msgstr "General"
@@ -1425,6 +1598,10 @@ msgstr "Go to dashboard"
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
 msgstr "Go to..."
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Good"
+msgstr "Good"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Got Questions?"
@@ -1519,6 +1696,10 @@ msgstr "Highlight"
 msgid "Hindi"
 msgstr "Hindi"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+msgid "Hiring Manager, John Doe, etc."
+msgstr "Hiring Manager, John Doe, etc."
+
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/history.tsx
 msgid "History"
@@ -1544,6 +1725,18 @@ msgstr "How is my data protected?"
 #: src/utils/locale.ts
 msgid "Hungarian"
 msgstr "Hungarian"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid ""
+"I would welcome the opportunity to discuss how my skills and enthusiasm can contribute to [Company]'s continued success. Thank you for considering my application. I look forward to hearing from you.\n"
+"\n"
+"Sincerely,\n"
+"[Your Name]"
+msgstr ""
+"I would welcome the opportunity to discuss how my skills and enthusiasm can contribute to [Company]'s continued success. Thank you for considering my application. I look forward to hearing from you.\n"
+"\n"
+"Sincerely,\n"
+"[Your Name]"
 
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
@@ -1575,6 +1768,14 @@ msgstr "Importing your resume..."
 #: src/dialogs/resume/import.tsx
 msgid "Importing..."
 msgstr "Importing..."
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Improve Writing"
+msgstr "Improve Writing"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "In my previous role as [Previous Position] at [Previous Company], I successfully [Achievement/Responsibility]. This experience has equipped me with [Relevant Skills] that directly align with the requirements of this position."
+msgstr "In my previous role as [Previous Position] at [Previous Company], I successfully [Achievement/Responsibility]. This experience has equipped me with [Relevant Skills] that directly align with the requirements of this position."
 
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Inactive"
@@ -1637,6 +1838,7 @@ msgid "Italian"
 msgstr "Italian"
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Italic"
 msgstr "Italic"
 
@@ -1664,6 +1866,8 @@ msgstr "Justify Align"
 msgid "Kannada"
 msgstr "Kannada"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Keyboard Shortcuts"
 msgstr "Keyboard Shortcuts"
@@ -1705,20 +1909,12 @@ msgstr "Language"
 msgid "Languages"
 msgstr "Languages"
 
-#. placeholder {0}: statistics.lastDownloadedAt.toDateString()
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Last downloaded on {0}"
-msgstr "Last downloaded on {0}"
-
+#: src/routes/dashboard/cover-letters/-components/cards/cover-letter-card.tsx
+#: src/routes/dashboard/cover-letters/-components/cover-letter-list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Last updated on {updatedAt}"
 msgstr "Last updated on {updatedAt}"
-
-#. placeholder {0}: statistics.lastViewedAt.toDateString()
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Last viewed on {0}"
-msgstr "Last viewed on {0}"
 
 #: src/utils/locale.ts
 msgid "Latvian"
@@ -1743,6 +1939,10 @@ msgstr "Leave empty to reset the title to the original."
 #: src/components/input/rich-input.tsx
 msgid "Left Align"
 msgstr "Left Align"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Length:"
+msgstr "Length:"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "Letter"
@@ -1771,10 +1971,15 @@ msgstr "Light theme"
 msgid "Lightning Fast"
 msgstr "Lightning Fast"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Line Height"
 msgstr "Line Height"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Lines:"
+msgstr "Lines:"
 
 #: src/routes/dashboard/settings/authentication/-components/hooks.tsx
 msgid "Linking your {providerName} account..."
@@ -1813,9 +2018,17 @@ msgstr "Location"
 msgid "Lock"
 msgstr "Lock"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Locked"
+msgstr "Locked"
+
 #: src/components/user/dropdown-menu.tsx
 msgid "Logout"
 msgstr "Logout"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Long"
+msgstr "Long"
 
 #: src/routes/auth/verify-2fa.tsx
 msgid "Lost access to your authenticator?"
@@ -1873,6 +2086,10 @@ msgstr "Margin (Horizontal)"
 msgid "Margin (Vertical)"
 msgstr "Margin (Vertical)"
 
+#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+msgid "Metadata"
+msgstr "Metadata"
+
 #: src/routes/dashboard/settings/ai.tsx
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
@@ -1914,6 +2131,7 @@ msgstr "Navigate backwards"
 msgid "Navigate between fields"
 msgstr "Navigate between fields"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Navigation"
 msgstr "Navigation"
@@ -1929,6 +2147,10 @@ msgstr "Network"
 #: src/routes/_home/-sections/faq.tsx
 msgid "Never. We don't sell, share, or monetize your data in any way. Your privacy is our top priority, and we're committed to keeping your information secure."
 msgstr "Never. We don't sell, share, or monetize your data in any way. Your privacy is our top priority, and we're committed to keeping your information secure."
+
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "New Cover Letter"
+msgstr "New Cover Letter"
 
 #: src/components/input/rich-input.tsx
 msgid "New Line"
@@ -1947,6 +2169,10 @@ msgstr "New Password"
 msgid "New Section"
 msgstr "New Section"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Next field"
+msgstr "Next field"
+
 #: src/routes/auth/login.tsx
 msgid "No account found with these credentials. Please sign up first."
 msgstr "No account found with these credentials. Please sign up first."
@@ -1962,6 +2188,10 @@ msgstr "No Ads, No Tracking"
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "No AI providers configured"
 msgstr "No AI providers configured"
+
+#: src/routes/dashboard/cover-letters/list.tsx
+msgid "No cover letters yet"
+msgstr "No cover letters yet"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "No hidden costs, no premium tiers, no subscriptions. Everything is free, always."
@@ -1981,8 +2211,8 @@ msgid "No results found."
 msgstr "No results found."
 
 #: src/routes/dashboard/history.tsx
-msgid "No resumes updated in the last 30 days"
-msgstr "No resumes updated in the last 30 days"
+msgid "No resumes or cover letters updated in the last 30 days"
+msgstr "No resumes or cover letters updated in the last 30 days"
 
 #: src/routes/auth/forgot-password.tsx
 msgid "No worries, we'll send you reset instructions"
@@ -2016,6 +2246,14 @@ msgstr "Open Email Client"
 msgid "Open Source"
 msgstr "Open Source"
 
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Opening Paragraph"
+msgstr "Opening Paragraph"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Optimal"
+msgstr "Optimal"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "Optionally, set a password so that only people with the password can view your resume through the link."
@@ -2046,6 +2284,10 @@ msgstr "Page {0}"
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Page {pageNumber} of {totalNumberOfPages}"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+msgid "Page Margins"
+msgstr "Page Margins"
 
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
@@ -2083,6 +2325,10 @@ msgstr "Password protection has been enabled."
 #: src/routes/auth/forgot-password.tsx
 msgid "Password reset email sent!"
 msgstr "Password reset email sent!"
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "PDF export coming soon."
+msgstr "PDF export coming soon."
 
 #: src/dialogs/resume/sections/education.tsx
 #: src/dialogs/resume/sections/experience.tsx
@@ -2194,6 +2440,14 @@ msgstr "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the curre
 msgid "Press Esc to close"
 msgstr "Press Esc to close"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Prevent editing of this cover letter"
+msgstr "Prevent editing of this cover letter"
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Previous field"
+msgstr "Previous field"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Primary Color"
@@ -2245,6 +2499,10 @@ msgstr "Provider activated successfully"
 msgid "Provider deleted successfully"
 msgstr "Provider deleted successfully"
 
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Public"
+msgstr "Public"
+
 #: src/utils/resume/section.tsx
 msgid "Publications"
 msgstr "Publications"
@@ -2252,6 +2510,10 @@ msgstr "Publications"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
 msgstr "Publisher"
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Quick Templates"
+msgstr "Quick Templates"
 
 #: src/routes/dashboard/settings/preferences.tsx
 msgid "Quick Tip"
@@ -2261,10 +2523,6 @@ msgstr "Quick Tip"
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Quick Tips"
 msgstr "Quick Tips"
-
-#: src/routes/_home/-sections/product-hunt-banner.tsx
-msgid "Reactive Resume is launching on Product Hunt today, head over to show some love!"
-msgstr "Reactive Resume is launching on Product Hunt today, head over to show some love!"
 
 #: src/routes/_home/-sections/templates.tsx
 msgid "Ready to create your resume?"
@@ -2280,10 +2538,12 @@ msgid "Real-Time Preview"
 msgstr "Real-Time Preview"
 
 #: src/routes/dashboard/history.tsx
-msgid "Recently updated resumes from the last 30 days"
-msgstr "Recently updated resumes from the last 30 days"
+msgid "Recently updated resumes and cover letters from the last 30 days"
+msgstr "Recently updated resumes and cover letters from the last 30 days"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Recipient"
 msgstr "Recipient"
 
@@ -2295,10 +2555,13 @@ msgstr "Rectangle"
 msgid "Rectangle (Full Width)"
 msgstr "Rectangle (Full Width)"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Redo"
 msgstr "Redo"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Redo (alternative)"
 msgstr "Redo (alternative)"
@@ -2352,6 +2615,7 @@ msgstr "Reset Password"
 msgid "Reset your password"
 msgstr "Reset your password"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Reset zoom"
 msgstr "Reset zoom"
@@ -2370,6 +2634,8 @@ msgstr "Resume Builder"
 #: src/components/command-palette/pages/resumes.tsx
 #: src/components/command-palette/pages/resumes.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/history.tsx
+#: src/routes/dashboard/history.tsx
 msgid "Resumes"
 msgstr "Resumes"
 
@@ -2392,6 +2658,10 @@ msgstr "Russian"
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Save (Auto-save is enabled)"
 msgstr "Save (Auto-save is enabled)"
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Save (auto-save notification)"
+msgstr "Save (auto-save notification)"
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
@@ -2467,6 +2737,10 @@ msgstr "Security Best Practices"
 msgid "See your changes instantly as you type with live preview updates."
 msgstr "See your changes instantly as you type with live preview updates."
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Select all"
+msgstr "Select all"
+
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Select from 12+ professionally designed templates that suit your style and industry."
 msgstr "Select from 12+ professionally designed templates that suit your style and industry."
@@ -2509,6 +2783,7 @@ msgstr "Set Password"
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Settings"
@@ -2543,6 +2818,7 @@ msgstr "Sharing"
 msgid "Show"
 msgstr "Show"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Show keyboard shortcuts"
 msgstr "Show keyboard shortcuts"
@@ -2684,15 +2960,6 @@ msgstr "Spanish"
 msgid "Square"
 msgstr "Square"
 
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub (opens in new tab)"
-msgstr "Star us on GitHub (opens in new tab)"
-
-#. placeholder {0}: starCount.toLocaleString()
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub, currently {0} stars (opens in new tab)"
-msgstr "Star us on GitHub, currently {0} stars (opens in new tab)"
-
 #: src/routes/_home/-sections/hero.tsx
 #: src/routes/_home/-sections/how-it-works.tsx
 msgid "Start Building Free"
@@ -2719,9 +2986,9 @@ msgstr "Start with a blank canvas and build your cover letter step by step"
 msgid "Start with a blank canvas and build your resume step by step with our intuitive editor"
 msgstr "Start with a blank canvas and build your resume step by step with our intuitive editor"
 
-#: src/utils/resume/section.tsx
-msgid "Statistics"
-msgstr "Statistics"
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Start writing your cover letter"
+msgstr "Start writing your cover letter"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
@@ -2734,6 +3001,14 @@ msgstr "Strike"
 #: src/dialogs/resume/template/data.ts
 msgid "Striking single-column with flame-inspired header waves and gradient accents; passionate design for marketing executives or innovation leaders."
 msgstr "Striking single-column with flame-inspired header waves and gradient accents; passionate design for marketing executives or innovation leaders."
+
+#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+msgid "Styles"
+msgstr "Styles"
+
+#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+msgid "Suggest Improvements"
+msgstr "Suggest Improvements"
 
 #: src/utils/resume/section.tsx
 msgid "Summary"
@@ -2756,6 +3031,7 @@ msgid "Table"
 msgstr "Table"
 
 #: src/dialogs/resume/index.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
 msgid "Tags"
 msgstr "Tags"
 
@@ -2857,6 +3133,10 @@ msgstr "This action cannot be undone."
 msgid "This action cannot be undone. All your data will be permanently deleted."
 msgstr "This action cannot be undone. All your data will be permanently deleted."
 
+#: src/routes/builder/$coverletterId/-store/cover-letter.ts
+msgid "This cover letter is locked and cannot be updated."
+msgstr "This cover letter is locked and cannot be updated."
+
 #: src/routes/auth/register.tsx
 msgid "This email is already registered"
 msgstr "This email is already registered"
@@ -2904,8 +3184,8 @@ msgid "This username is already taken. Please choose a different username."
 msgstr "This username is already taken. Please choose a different username."
 
 #: src/dialogs/api-key/create.tsx
-msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
-msgstr "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
+msgid "This will generate a new API key to access the CVCraft API to allow machines to interact with your resume data."
+msgstr "This will generate a new API key to access the CVCraft API to allow machines to interact with your resume data."
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with CVCraft"
@@ -2924,6 +3204,8 @@ msgstr "Tip: You can name the resume referring to the position you are applying 
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/dialogs/resume/sections/publication.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/cover-letter/$id/index.tsx
 msgid "Title"
 msgstr "Title"
 
@@ -2935,6 +3217,22 @@ msgstr "To delete your account, you need to enter the confirmation text and clic
 msgid "Toggle active status"
 msgstr "Toggle active status"
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Toggle Left Sidebar"
+msgstr "Toggle Left Sidebar"
+
+#: src/routes/builder/$coverletterId/-components/header.tsx
+msgid "Toggle Right Sidebar"
+msgstr "Toggle Right Sidebar"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Too Long"
+msgstr "Too Long"
+
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Too Short"
+msgstr "Too Short"
+
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
 msgstr "Total character count: {charCount}"
@@ -2942,10 +3240,6 @@ msgstr "Total character count: {charCount}"
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total word count: {wordCount}"
 msgstr "Total word count: {wordCount}"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Track your resume's views and downloads"
-msgstr "Track your resume's views and downloads"
 
 #: src/routes/_home/-sections/highlights.tsx
 msgid "Transparent, auditable, and community-driven"
@@ -2962,10 +3256,6 @@ msgstr "Truly global, accessible to everyone"
 #: src/utils/locale.ts
 msgid "Turkish"
 msgstr "Turkish"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Turn on public sharing to track how many times your resume has been viewed or downloaded. Only you can see your resume's statistics."
-msgstr "Turn on public sharing to track how many times your resume has been viewed or downloaded. Only you can see your resume's statistics."
 
 #: src/dialogs/resume/template/data.ts
 msgid "Two-column with a bold colored sidebar and skill bars; great for creative or tech roles where visual flair is welcome."
@@ -3078,9 +3368,12 @@ msgid "Ultra-modern asymmetric design with overlapping sections and bold typogra
 msgstr "Ultra-modern asymmetric design with overlapping sections and bold typography; commanding presence for tech leaders or visionary roles."
 
 #: src/components/input/rich-input.tsx
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
 msgid "Underline"
 msgstr "Underline"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Undo"
 msgstr "Undo"
@@ -3108,6 +3401,10 @@ msgstr "Unlock"
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Unsaved Changes"
 msgstr "Unsaved Changes"
+
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Untitled Cover Letter"
+msgstr "Untitled Cover Letter"
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
@@ -3231,9 +3528,17 @@ msgstr "Use AI to help generate compelling content"
 msgid "Use Template"
 msgstr "Use Template"
 
+#: src/routes/builder/$coverletterId/-components/preview.tsx
+msgid "Use the editor on the left to add content"
+msgstr "Use the editor on the left to add content"
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Use these keyboard shortcuts to work faster and more efficiently."
 msgstr "Use these keyboard shortcuts to work faster and more efficiently."
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+msgid "Use these keyboard shortcuts to work more efficiently."
+msgstr "Use these keyboard shortcuts to work more efficiently."
 
 #: src/dialogs/resume/sections/profile.tsx
 #: src/routes/auth/register.tsx
@@ -3279,6 +3584,7 @@ msgstr "Verifying your email is required when resetting your password."
 msgid "Vietnamese"
 msgstr "Vietnamese"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "View"
 msgstr "View"
@@ -3294,10 +3600,6 @@ msgstr "View All Cover Letters"
 #: src/routes/dashboard/resumes/index.tsx
 msgid "View all your resumes in the History page"
 msgstr "View all your resumes in the History page"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
-msgid "Views"
-msgstr "Views"
 
 #: src/utils/resume/section.tsx
 msgid "Volunteer"
@@ -3359,9 +3661,17 @@ msgstr "Why Choose CVCraft?"
 msgid "words"
 msgstr "words"
 
+#: src/routes/builder/$coverletterId/-components/word-count.tsx
+msgid "Words:"
+msgstr "Words:"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Write custom CSS or use AI to generate it for ultimate flexibility."
 msgstr "Write custom CSS or use AI to generate it for ultimate flexibility."
+
+#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+msgid "Write your cover letter content here..."
+msgstr "Write your cover letter content here..."
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes, CVCraft is available in multiple languages. You can choose your preferred language in the settings page, or using the language switcher in the top right corner. If you don't see your language, or you would like to improve the existing translations, you can <0>contribute to the translations on Crowdin<1> (opens in new tab)</1></0>."
@@ -3416,9 +3726,15 @@ msgstr "Your AI Providers"
 msgid "Your API key has been copied to the clipboard."
 msgstr "Your API key has been copied to the clipboard."
 
+#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/$coverletterId/index.tsx
 #: src/routes/builder/$resumeId/index.tsx
 msgid "Your changes are saved automatically."
 msgstr "Your changes are saved automatically."
+
+#: src/dialogs/cover-letter/create.tsx
+msgid "Your cover letter has been created successfully."
+msgstr "Your cover letter has been created successfully."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Your data is encrypted and never shared with third parties."
@@ -3496,15 +3812,25 @@ msgstr "Your resume's public link is currently protected by a password. Share th
 msgid "Your work is automatically saved as you type"
 msgstr "Your work is automatically saved as you type"
 
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom in"
 msgstr "Zoom in"
 
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Zoom In"
+msgstr "Zoom In"
+
+#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Zoom out"
 msgstr "Zoom out"
+
+#: src/routes/builder/$coverletterId/-components/dock.tsx
+msgid "Zoom Out"
+msgstr "Zoom Out"
 
 #. placeholder {0}: Math.round(scale * 100)
 #: src/routes/builder/$resumeId/-components/dock.tsx

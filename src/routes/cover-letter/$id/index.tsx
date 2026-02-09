@@ -70,6 +70,13 @@ function RouteComponent() {
 						</div>
 					</div>
 					<div className="flex items-center gap-2">
+						<Button 
+							variant="default" 
+							size="sm" 
+							onClick={() => navigate({ to: `/builder/${id}` })}
+						>
+							<Trans>Open in Builder</Trans>
+						</Button>
 						<Button variant="outline" size="sm">
 							<PaperPlaneIcon className="size-4" />
 							<Trans>Export</Trans>
