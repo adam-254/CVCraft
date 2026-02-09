@@ -35,6 +35,7 @@ import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resu
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
 import { Route as DashboardSettingsPreferencesRouteImport } from "./routes/dashboard/settings/preferences";
+import { Route as DashboardSettingsIntegrationsRouteImport } from "./routes/dashboard/settings/integrations";
 import { Route as DashboardSettingsDangerZoneRouteImport } from "./routes/dashboard/settings/danger-zone";
 import { Route as DashboardSettingsApiKeysRouteImport } from "./routes/dashboard/settings/api-keys";
 import { Route as DashboardSettingsAiRouteImport } from "./routes/dashboard/settings/ai";
@@ -175,6 +176,12 @@ const DashboardSettingsPreferencesRoute =
     path: "/settings/preferences",
     getParentRoute: () => DashboardRouteRoute,
   } as any);
+const DashboardSettingsIntegrationsRoute =
+  DashboardSettingsIntegrationsRouteImport.update({
+    id: "/settings/integrations",
+    path: "/settings/integrations",
+    getParentRoute: () => DashboardRouteRoute,
+  } as any);
 const DashboardSettingsDangerZoneRoute =
   DashboardSettingsDangerZoneRouteImport.update({
     id: "/settings/danger-zone",
@@ -240,6 +247,7 @@ export interface FileRoutesByFullPath {
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
+  "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
@@ -271,6 +279,7 @@ export interface FileRoutesByTo {
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
+  "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
@@ -307,6 +316,7 @@ export interface FileRoutesById {
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
+  "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
@@ -343,6 +353,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
+    | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
+    | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
@@ -409,6 +421,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
+    | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
@@ -618,6 +631,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof DashboardSettingsPreferencesRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
+    "/dashboard/settings/integrations": {
+      id: "/dashboard/settings/integrations";
+      path: "/settings/integrations";
+      fullPath: "/dashboard/settings/integrations";
+      preLoaderRoute: typeof DashboardSettingsIntegrationsRouteImport;
+      parentRoute: typeof DashboardRouteRoute;
+    };
     "/dashboard/settings/danger-zone": {
       id: "/dashboard/settings/danger-zone";
       path: "/settings/danger-zone";
@@ -714,6 +734,7 @@ interface DashboardRouteRouteChildren {
   DashboardSettingsAiRoute: typeof DashboardSettingsAiRoute;
   DashboardSettingsApiKeysRoute: typeof DashboardSettingsApiKeysRoute;
   DashboardSettingsDangerZoneRoute: typeof DashboardSettingsDangerZoneRoute;
+  DashboardSettingsIntegrationsRoute: typeof DashboardSettingsIntegrationsRoute;
   DashboardSettingsPreferencesRoute: typeof DashboardSettingsPreferencesRoute;
   DashboardSettingsProfileRoute: typeof DashboardSettingsProfileRoute;
   DashboardCoverLettersIndexRoute: typeof DashboardCoverLettersIndexRoute;
@@ -727,6 +748,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardSettingsAiRoute: DashboardSettingsAiRoute,
   DashboardSettingsApiKeysRoute: DashboardSettingsApiKeysRoute,
   DashboardSettingsDangerZoneRoute: DashboardSettingsDangerZoneRoute,
+  DashboardSettingsIntegrationsRoute: DashboardSettingsIntegrationsRoute,
   DashboardSettingsPreferencesRoute: DashboardSettingsPreferencesRoute,
   DashboardSettingsProfileRoute: DashboardSettingsProfileRoute,
   DashboardCoverLettersIndexRoute: DashboardCoverLettersIndexRoute,
