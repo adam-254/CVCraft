@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "@phosphor-icons/react";
-import { useCallback, useRef, useState } from "react";
+import { TextBolderIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,21 +13,12 @@ export function CoverLetterEditor() {
 	const updateCoverLetter = useCoverLetterBuilderStore((state) => state.updateCoverLetter);
 
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
-	const [selectionStart, setSelectionStart] = useState(0);
-	const [selectionEnd, setSelectionEnd] = useState(0);
 
 	const handleContentChange = (value: string) => {
 		updateCoverLetter((draft) => {
 			draft.content = value;
 		});
 	};
-
-	const handleSelectionChange = useCallback(() => {
-		if (textareaRef.current) {
-			setSelectionStart(textareaRef.current.selectionStart);
-			setSelectionEnd(textareaRef.current.selectionEnd);
-		}
-	}, []);
 
 	const insertFormatting = useCallback((prefix: string, suffix: string = prefix) => {
 		if (!textareaRef.current) return;
@@ -89,7 +80,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatBold}>
-								<BoldIcon className="size-4" />
+								<TextBolderIcon className="size-4" />
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
@@ -99,7 +90,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatItalic}>
-								<ItalicIcon className="size-4" />
+								<TextItalicIcon className="size-4" />
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
@@ -109,7 +100,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatUnderline}>
-								<UnderlineIcon className="size-4" />
+								<TextUnderlineIcon className="size-4" />
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
@@ -124,7 +115,6 @@ export function CoverLetterEditor() {
 				id="content"
 				value={coverLetter.content}
 				onChange={(e) => handleContentChange(e.target.value)}
-				onSelect={handleSelectionChange}
 				placeholder={t`Write your cover letter content here...`}
 				className="min-h-[400px] resize-none"
 			/>
