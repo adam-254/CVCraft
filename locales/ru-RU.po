@@ -150,6 +150,10 @@ msgstr "Конечно! Вы можете экспортировать свое 
 msgid "Account created successfully!"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Active"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Добавьте настраиваемое поле"
@@ -231,10 +235,19 @@ msgstr "Добавить столбец до"
 msgid "Add Device"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add New AI Provider"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
 msgstr "Добавить страницу"
+
+#: src/routes/dashboard/settings/integrations.tsx
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Provider"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -243,6 +256,19 @@ msgstr "Добавить строку после"
 #: src/components/input/rich-input.tsx
 msgid "Add Row Before"
 msgstr "Добавить строку до"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add your first AI provider to start using AI-powered features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Your First Provider"
+msgstr ""
+
+#. placeholder {0}: provider.createdAt.toLocaleDateString()
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Added {0}"
+msgstr ""
 
 #. placeholder {0}: passkey.createdAt.toLocaleDateString()
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -265,6 +291,14 @@ msgstr "Африкаанс"
 #: src/dialogs/resume/import.tsx
 msgid "AI"
 msgstr "ИИ"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI Integrations"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI provider added successfully"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/hero.tsx
@@ -318,6 +352,7 @@ msgid "Anyone with the link can view and download the resume."
 msgstr "Любой человек, получивший ссылку, может просмотреть и скачать резюме."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "API Key"
 msgstr "API-ключ"
 
@@ -345,6 +380,10 @@ msgstr "Арабский"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Are you sure you want to delete this AI provider?"
 msgstr ""
 
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -427,6 +466,7 @@ msgid "Backup codes copied to clipboard."
 msgstr "Резервные коды скопированы в буфер обмена."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Base URL (Optional)"
 msgstr "Базовый URL (необязательно)"
 
@@ -547,6 +587,7 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Cancel"
 msgstr "Отмена"
@@ -662,6 +703,14 @@ msgstr "Подтвердить"
 #: src/routes/dashboard/settings/authentication/-components/social-provider.tsx
 msgid "Connect"
 msgstr "Подключить"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect AI providers to enable intelligent features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect your AI provider accounts to enable AI-powered features like resume content generation, cover letter writing, and more. Your API keys are encrypted and stored securely."
+msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
@@ -927,6 +976,7 @@ msgstr "Степень"
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Delete"
 msgstr "Удалить"
 
@@ -1085,6 +1135,10 @@ msgstr "Нидерландский"
 msgid "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr ""
@@ -1164,6 +1218,10 @@ msgstr "Введите URL для ссылки"
 #: src/routes/auth/verify-2fa.tsx
 msgid "Enter the verification code from your authenticator app"
 msgstr "Введите код подтверждения из приложения-аутентификатора"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Enter your API key"
+msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
@@ -1523,6 +1581,10 @@ msgstr "Импорт вашего резюме..."
 msgid "Importing..."
 msgstr "Импорт..."
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Inactive"
+msgstr ""
+
 #: src/routes/auth/login.tsx
 msgid "Incorrect password. Please try again or reset your password."
 msgstr ""
@@ -1542,6 +1604,10 @@ msgstr "Встроенный код"
 #: src/components/input/rich-input.tsx
 msgid "Insert Table"
 msgstr "Вставить таблицу"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Integrations"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Interests"
@@ -1813,6 +1879,7 @@ msgid "Margin (Vertical)"
 msgstr "Отступ (по вертикали)"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
 msgstr "Модель"
 
@@ -1895,6 +1962,10 @@ msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "No Ads, No Tracking"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "No AI providers configured"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
@@ -2062,6 +2133,10 @@ msgstr "Пожалуйста, введите пароль, который вла
 msgid "Please enter the URL you want to link to:"
 msgstr "Введите URL, на который вы хотите поставить ссылку:"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Please fill in all required fields"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
@@ -2163,8 +2238,17 @@ msgid "Protect your resume from unauthorized access with a password"
 msgstr "Защитите свое резюме от несанкционированного доступа с помощью пароля"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Provider"
 msgstr "Провайдер"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider activated successfully"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider deleted successfully"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Publications"
@@ -2363,6 +2447,10 @@ msgstr "Секрет скопирован в буфер обмена."
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "Тип раздела"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Secure AI Integration"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Secure Data Storage"
@@ -2766,6 +2854,7 @@ msgstr "Возникла проблема при генерации PDF, пож�
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "This action cannot be undone."
 msgstr "Это действие нельзя отменить."
 
@@ -2846,6 +2935,10 @@ msgstr "Название"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Чтобы удалить учетную запись, вам нужно ввести текст подтверждения и нажать кнопку ниже."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Toggle active status"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
@@ -3319,6 +3412,10 @@ msgstr "Вы получили письмо!"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Your account has been deleted successfully."
 msgstr "Ваша учетная запись была успешно удалена."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Your AI Providers"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."

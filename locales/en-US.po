@@ -145,6 +145,10 @@ msgstr "Absolutely! You can export your resume to PDF with a single click. The e
 msgid "Account created successfully!"
 msgstr "Account created successfully!"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Active"
+msgstr "Active"
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Add a custom field"
@@ -226,10 +230,19 @@ msgstr "Add Column Before"
 msgid "Add Device"
 msgstr "Add Device"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add New AI Provider"
+msgstr "Add New AI Provider"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
 msgstr "Add Page"
+
+#: src/routes/dashboard/settings/integrations.tsx
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Provider"
+msgstr "Add Provider"
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -238,6 +251,19 @@ msgstr "Add Row After"
 #: src/components/input/rich-input.tsx
 msgid "Add Row Before"
 msgstr "Add Row Before"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add your first AI provider to start using AI-powered features"
+msgstr "Add your first AI provider to start using AI-powered features"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Your First Provider"
+msgstr "Add Your First Provider"
+
+#. placeholder {0}: provider.createdAt.toLocaleDateString()
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Added {0}"
+msgstr "Added {0}"
 
 #. placeholder {0}: passkey.createdAt.toLocaleDateString()
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -260,6 +286,14 @@ msgstr "Afrikaans"
 #: src/dialogs/resume/import.tsx
 msgid "AI"
 msgstr "AI"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI Integrations"
+msgstr "AI Integrations"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI provider added successfully"
+msgstr "AI provider added successfully"
 
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/hero.tsx
@@ -313,6 +347,7 @@ msgid "Anyone with the link can view and download the resume."
 msgstr "Anyone with the link can view and download the resume."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "API Key"
 msgstr "API Key"
 
@@ -341,6 +376,10 @@ msgstr "Arabic"
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
 msgstr "Are you sure you want to close this dialog?"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Are you sure you want to delete this AI provider?"
+msgstr "Are you sure you want to delete this AI provider?"
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Are you sure you want to delete this API key?"
@@ -422,6 +461,7 @@ msgid "Backup codes copied to clipboard."
 msgstr "Backup codes copied to clipboard."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Base URL (Optional)"
 msgstr "Base URL (Optional)"
 
@@ -542,6 +582,7 @@ msgstr "Can I self-host CVCraft?"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Cancel"
 msgstr "Cancel"
@@ -657,6 +698,14 @@ msgstr "Confirm"
 #: src/routes/dashboard/settings/authentication/-components/social-provider.tsx
 msgid "Connect"
 msgstr "Connect"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect AI providers to enable intelligent features"
+msgstr "Connect AI providers to enable intelligent features"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect your AI provider accounts to enable AI-powered features like resume content generation, cover letter writing, and more. Your API keys are encrypted and stored securely."
+msgstr "Connect your AI provider accounts to enable AI-powered features like resume content generation, cover letter writing, and more. Your API keys are encrypted and stored securely."
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
@@ -922,6 +971,7 @@ msgstr "Degree"
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Delete"
 msgstr "Delete"
 
@@ -1080,6 +1130,10 @@ msgstr "Dutch"
 msgid "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
 msgstr "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
+msgstr "e.g., gpt-4, claude-3-opus, gemini-pro"
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr "Editing"
@@ -1159,6 +1213,10 @@ msgstr "Enter the URL to link to"
 #: src/routes/auth/verify-2fa.tsx
 msgid "Enter the verification code from your authenticator app"
 msgstr "Enter the verification code from your authenticator app"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Enter your API key"
+msgstr "Enter your API key"
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
@@ -1518,6 +1576,10 @@ msgstr "Importing your resume..."
 msgid "Importing..."
 msgstr "Importing..."
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Inactive"
+msgstr "Inactive"
+
 #: src/routes/auth/login.tsx
 msgid "Incorrect password. Please try again or reset your password."
 msgstr "Incorrect password. Please try again or reset your password."
@@ -1537,6 +1599,10 @@ msgstr "Inline Code"
 #: src/components/input/rich-input.tsx
 msgid "Insert Table"
 msgstr "Insert Table"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Integrations"
+msgstr "Integrations"
 
 #: src/utils/resume/section.tsx
 msgid "Interests"
@@ -1808,6 +1874,7 @@ msgid "Margin (Vertical)"
 msgstr "Margin (Vertical)"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
 msgstr "Model"
 
@@ -1891,6 +1958,10 @@ msgstr "No account is required for basic use. However, creating an account allow
 #: src/routes/_home/-sections/features.tsx
 msgid "No Ads, No Tracking"
 msgstr "No Ads, No Tracking"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "No AI providers configured"
+msgstr "No AI providers configured"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "No hidden costs, no premium tiers, no subscriptions. Everything is free, always."
@@ -2057,6 +2128,10 @@ msgstr "Please enter the password shared with you by the owner of the resume to 
 msgid "Please enter the URL you want to link to:"
 msgstr "Please enter the URL you want to link to:"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Please fill in all required fields"
+msgstr "Please fill in all required fields"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
@@ -2158,8 +2233,17 @@ msgid "Protect your resume from unauthorized access with a password"
 msgstr "Protect your resume from unauthorized access with a password"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Provider"
 msgstr "Provider"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider activated successfully"
+msgstr "Provider activated successfully"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider deleted successfully"
+msgstr "Provider deleted successfully"
 
 #: src/utils/resume/section.tsx
 msgid "Publications"
@@ -2358,6 +2442,10 @@ msgstr "Secret copied to clipboard."
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "Section Type"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Secure AI Integration"
+msgstr "Secure AI Integration"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Secure Data Storage"
@@ -2761,6 +2849,7 @@ msgstr "There was a problem while generating the PDF, please try again in some t
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "This action cannot be undone."
 msgstr "This action cannot be undone."
 
@@ -2841,6 +2930,10 @@ msgstr "Title"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "To delete your account, you need to enter the confirmation text and click the button below."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Toggle active status"
+msgstr "Toggle active status"
 
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
@@ -3314,6 +3407,10 @@ msgstr "You've got mail!"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Your account has been deleted successfully."
 msgstr "Your account has been deleted successfully."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Your AI Providers"
+msgstr "Your AI Providers"
 
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."

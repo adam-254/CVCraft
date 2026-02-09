@@ -150,6 +150,10 @@ msgstr "Albatta! Tarjimai holingizni bir marta bosish bilan PDF formatiga ekspor
 msgid "Account created successfully!"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Active"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Maxsus maydon qo'shish"
@@ -231,10 +235,19 @@ msgstr "Ustundan oldin ustun qo‘shish"
 msgid "Add Device"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add New AI Provider"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
 msgstr "Sahifa qo‘shish"
+
+#: src/routes/dashboard/settings/integrations.tsx
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Provider"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -243,6 +256,19 @@ msgstr "Qatordan keyin qator qo‘shish"
 #: src/components/input/rich-input.tsx
 msgid "Add Row Before"
 msgstr "Qatordan oldin qator qo‘shish"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add your first AI provider to start using AI-powered features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Your First Provider"
+msgstr ""
+
+#. placeholder {0}: provider.createdAt.toLocaleDateString()
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Added {0}"
+msgstr ""
 
 #. placeholder {0}: passkey.createdAt.toLocaleDateString()
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -265,6 +291,14 @@ msgstr "Afrikaans"
 #: src/dialogs/resume/import.tsx
 msgid "AI"
 msgstr "SO"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI Integrations"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI provider added successfully"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/hero.tsx
@@ -318,6 +352,7 @@ msgid "Anyone with the link can view and download the resume."
 msgstr "Ushbu havolaga ega bo'lgan ixtiyoriy shaxs tarjimai holni ko‘rishi va yuklab olishi mumkin."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "API Key"
 msgstr "API kalit"
 
@@ -345,6 +380,10 @@ msgstr "Arab tili"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Are you sure you want to delete this AI provider?"
 msgstr ""
 
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -427,6 +466,7 @@ msgid "Backup codes copied to clipboard."
 msgstr "Zaxira kodlari buferga nusxalandi."
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Base URL (Optional)"
 msgstr "Asosiy URL (ixtiyoriy)"
 
@@ -547,6 +587,7 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Cancel"
 msgstr "Bekor qilish"
@@ -662,6 +703,14 @@ msgstr "Tasdiqlash"
 #: src/routes/dashboard/settings/authentication/-components/social-provider.tsx
 msgid "Connect"
 msgstr "Ulanish"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect AI providers to enable intelligent features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect your AI provider accounts to enable AI-powered features like resume content generation, cover letter writing, and more. Your API keys are encrypted and stored securely."
+msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
@@ -927,6 +976,7 @@ msgstr "Daraja"
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Delete"
 msgstr "O'chirish"
 
@@ -1085,6 +1135,10 @@ msgstr "Golland tili"
 msgid "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr ""
@@ -1164,6 +1218,10 @@ msgstr "Bog'lanish uchun URL kiriting"
 #: src/routes/auth/verify-2fa.tsx
 msgid "Enter the verification code from your authenticator app"
 msgstr "Authenticator ilovangizdan tasdiqlash kodini kiriting"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Enter your API key"
+msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
@@ -1523,6 +1581,10 @@ msgstr "Rezyumengiz import qilinmoqda..."
 msgid "Importing..."
 msgstr "Import..."
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Inactive"
+msgstr ""
+
 #: src/routes/auth/login.tsx
 msgid "Incorrect password. Please try again or reset your password."
 msgstr ""
@@ -1542,6 +1604,10 @@ msgstr "Inline kod"
 #: src/components/input/rich-input.tsx
 msgid "Insert Table"
 msgstr "Jadval qoʻshish"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Integrations"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Interests"
@@ -1813,6 +1879,7 @@ msgid "Margin (Vertical)"
 msgstr "Vertikal chegarasi"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
 msgstr "Model"
 
@@ -1895,6 +1962,10 @@ msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "No Ads, No Tracking"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "No AI providers configured"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
@@ -2062,6 +2133,10 @@ msgstr "Davom etish uchun, rezyume egasi siz bilan baham ko'rgan parolni kiritin
 msgid "Please enter the URL you want to link to:"
 msgstr "Havola qilmoqchi bo'lgan URL manzilini kiriting:"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Please fill in all required fields"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
@@ -2163,8 +2238,17 @@ msgid "Protect your resume from unauthorized access with a password"
 msgstr "Rezyumeni ruxsatsiz kirishdan parol orqali himoya qiling"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Provider"
 msgstr "Provayder"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider activated successfully"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider deleted successfully"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Publications"
@@ -2363,6 +2447,10 @@ msgstr "Maxfiy kod buferga nusxalandi."
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "Bo'lim turi"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Secure AI Integration"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Secure Data Storage"
@@ -2766,6 +2854,7 @@ msgstr "PDF yaratishda muammo yuzaga keldi, iltimos, birozdan so'ng qaytadan uri
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "This action cannot be undone."
 msgstr "Bu amalni bekor qilib boʻlmaydi."
 
@@ -2846,6 +2935,10 @@ msgstr "Sarlavha"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Hisobingizni oʻchirish uchun tasdiqlash matnini kiriting va quyidagi tugmani bosing."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Toggle active status"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
@@ -3319,6 +3412,10 @@ msgstr "Sizga xat keldi!"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Your account has been deleted successfully."
 msgstr "Hisobingiz muvaffaqiyatli o‘chirildi."
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Your AI Providers"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."

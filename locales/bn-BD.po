@@ -150,6 +150,10 @@ msgstr "অবশ্যই! আপনি এক ক্লিকেই আপন�
 msgid "Account created successfully!"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Active"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "একটি কাস্টম ক্ষেত্র যোগ করুন"
@@ -231,10 +235,19 @@ msgstr "আগের দিকে কলাম যোগ করুন"
 msgid "Add Device"
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add New AI Provider"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
 msgstr "পৃষ্ঠা যোগ করুন"
+
+#: src/routes/dashboard/settings/integrations.tsx
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Provider"
+msgstr ""
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -243,6 +256,19 @@ msgstr "পরের দিকে সারি যোগ করুন"
 #: src/components/input/rich-input.tsx
 msgid "Add Row Before"
 msgstr "আগের দিকে সারি যোগ করুন"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add your first AI provider to start using AI-powered features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Add Your First Provider"
+msgstr ""
+
+#. placeholder {0}: provider.createdAt.toLocaleDateString()
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Added {0}"
+msgstr ""
 
 #. placeholder {0}: passkey.createdAt.toLocaleDateString()
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -265,6 +291,14 @@ msgstr "আফ্রিকান্স"
 #: src/dialogs/resume/import.tsx
 msgid "AI"
 msgstr "এআই"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI Integrations"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "AI provider added successfully"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/hero.tsx
@@ -318,6 +352,7 @@ msgid "Anyone with the link can view and download the resume."
 msgstr "লিঙ্ক যার কাছে থাকবে সে জীবনবৃত্তান্ত দেখতে এবং ডাউনলোড করতে পারবে।"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "API Key"
 msgstr "API কী"
 
@@ -345,6 +380,10 @@ msgstr "আরবি"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Are you sure you want to delete this AI provider?"
 msgstr ""
 
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -427,6 +466,7 @@ msgid "Backup codes copied to clipboard."
 msgstr "ব্যাকআপ কোডগুলো ক্লিপবোর্ডে কপি করা হয়েছে।"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Base URL (Optional)"
 msgstr "বেস URL (ঐচ্ছিক)"
 
@@ -547,6 +587,7 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Cancel"
 msgstr "বাতিল করুন"
@@ -662,6 +703,14 @@ msgstr "নিশ্চিত করুন"
 #: src/routes/dashboard/settings/authentication/-components/social-provider.tsx
 msgid "Connect"
 msgstr "কনেক্ট করুন"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect AI providers to enable intelligent features"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Connect your AI provider accounts to enable AI-powered features like resume content generation, cover letter writing, and more. Your API keys are encrypted and stored securely."
+msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
@@ -927,6 +976,7 @@ msgstr "ডিগ্রি"
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Delete"
 msgstr "মুছে ফেলুন"
 
@@ -1085,6 +1135,10 @@ msgstr "ডাচ"
 msgid "Dynamic two-column with electric zigzag dividers and bold accents; high-energy layout for sales leaders, entrepreneurs, or startup founders."
 msgstr ""
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Editing"
 msgstr ""
@@ -1164,6 +1218,10 @@ msgstr "লিংক করার জন্য URL লিখুন"
 #: src/routes/auth/verify-2fa.tsx
 msgid "Enter the verification code from your authenticator app"
 msgstr "আপনার অথেনটিকেটর অ্যাপ থেকে যাচাইকরণ কোডটি লিখুন"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Enter your API key"
+msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
@@ -1523,6 +1581,10 @@ msgstr "আপনার জীবনবৃত্তান্ত ইমপোর�
 msgid "Importing..."
 msgstr "ইমপোর্ট হচ্ছে..."
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Inactive"
+msgstr ""
+
 #: src/routes/auth/login.tsx
 msgid "Incorrect password. Please try again or reset your password."
 msgstr ""
@@ -1542,6 +1604,10 @@ msgstr "ইনলাইন কোড"
 #: src/components/input/rich-input.tsx
 msgid "Insert Table"
 msgstr "টেবিল যুক্ত করুন"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Integrations"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Interests"
@@ -1813,6 +1879,7 @@ msgid "Margin (Vertical)"
 msgstr "মার্জিন (উল্লম্ব)"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Model"
 msgstr "মডেল"
 
@@ -1895,6 +1962,10 @@ msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "No Ads, No Tracking"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "No AI providers configured"
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
@@ -2062,6 +2133,10 @@ msgstr "অবিরত থাকতে জীবনবৃত্তান্ত�
 msgid "Please enter the URL you want to link to:"
 msgstr "যে URL‑এ লিংক করতে চান অনুগ্রহ করে সেটি লিখুন:"
 
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Please fill in all required fields"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
@@ -2163,8 +2238,17 @@ msgid "Protect your resume from unauthorized access with a password"
 msgstr "একটি পাসওয়ার্ড দিয়ে আপনার জীবনবৃত্তান্তকে অননুমোদিত প্রবেশ থেকে সুরক্ষিত রাখুন"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "Provider"
 msgstr "প্রদানকারী"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider activated successfully"
+msgstr ""
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Provider deleted successfully"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Publications"
@@ -2363,6 +2447,10 @@ msgstr "সিক্রেটটি ক্লিপবোর্ডে কপি 
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "বিভাগের ধরন"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Secure AI Integration"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Secure Data Storage"
@@ -2766,6 +2854,7 @@ msgstr "PDF তৈরি করার সময় একটি সমস্য�
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
+#: src/routes/dashboard/settings/integrations.tsx
 msgid "This action cannot be undone."
 msgstr "এই কাজটি ফিরিয়ে নেওয়া যাবে না।"
 
@@ -2846,6 +2935,10 @@ msgstr "শিরোনাম"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "আপনার অ্যাকাউন্ট মুছে ফেলতে চাইলে নিশ্চয়তাসূচক টেক্সট লিখে নিচের বাটনে ক্লিক করতে হবে।"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Toggle active status"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/word-count.tsx
 msgid "Total character count: {charCount}"
@@ -3319,6 +3412,10 @@ msgstr "আপনার জন্য একটি ইমেইল এসেছ�
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Your account has been deleted successfully."
 msgstr "আপনার অ্যাকাউন্ট সফলভাবে মুছে ফেলা হয়েছে।"
+
+#: src/routes/dashboard/settings/integrations.tsx
+msgid "Your AI Providers"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."
