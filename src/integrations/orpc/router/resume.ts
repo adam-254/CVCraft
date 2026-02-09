@@ -1,6 +1,5 @@
 import z from "zod";
 import { resumeDataSchema } from "@/schema/resume/data";
-import { sampleResumeData } from "@/schema/resume/sample";
 import { generateRandomName, slugify } from "@/utils/string";
 import { protectedProcedure, publicProcedure, serverOnlyProcedure } from "../context";
 import { resumeDirectService } from "../services/resume-direct";
@@ -21,42 +20,8 @@ const tagsRouter = {
 		}),
 };
 
-const statisticsRouter = {
-	getById: protectedProcedure
-		.route({
-			method: "GET",
-			path: "/resume/statistics/{id}",
-			tags: ["Resume"],
-			summary: "Get resume statistics",
-			description: "Get the statistics for a resume, such as number of views and downloads.",
-		})
-		.input(z.object({ id: z.string() }))
-		.output(
-			z.object({
-				isPublic: z.boolean(),
-				views: z.number(),
-				downloads: z.number(),
-				lastViewedAt: z.date().nullable(),
-				lastDownloadedAt: z.date().nullable(),
-			}),
-		)
-		.handler(async ({ context, input }) => {
-			return await resumeDirectService.statistics.getById({ id: input.id, userId: context.user.id });
-		}),
-
-	increment: publicProcedure
-		.route({ tags: ["Internal"], summary: "Increment resume statistics" })
-		.input(z.object({ id: z.string(), views: z.boolean().default(false), downloads: z.boolean().default(false) }))
-		.handler(async ({ input }) => {
-			// TODO: Implement statistics increment with Supabase
-			// For now, just return void to prevent errors
-			return;
-		}),
-};
-
 export const resumeRouter = {
 	tags: tagsRouter,
-	statistics: statisticsRouter,
 
 	list: protectedProcedure
 		.route({

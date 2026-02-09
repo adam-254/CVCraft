@@ -27,59 +27,8 @@ const tags = {
 	},
 };
 
-const statistics = {
-	getById: async (input: { id: string; userId: string }) => {
-		const [statistics] = await db
-			.select({
-				isPublic: schema.resume.isPublic,
-				views: schema.resumeStatistics.views,
-				downloads: schema.resumeStatistics.downloads,
-				lastViewedAt: schema.resumeStatistics.lastViewedAt,
-				lastDownloadedAt: schema.resumeStatistics.lastDownloadedAt,
-			})
-			.from(schema.resumeStatistics)
-			.rightJoin(schema.resume, eq(schema.resumeStatistics.resumeId, schema.resume.id))
-			.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
-
-		return {
-			isPublic: statistics.isPublic,
-			views: statistics.views ?? 0,
-			downloads: statistics.downloads ?? 0,
-			lastViewedAt: statistics.lastViewedAt,
-			lastDownloadedAt: statistics.lastDownloadedAt,
-		};
-	},
-
-	increment: async (input: { id: string; views?: boolean; downloads?: boolean }): Promise<void> => {
-		const views = input.views ? 1 : 0;
-		const downloads = input.downloads ? 1 : 0;
-		const lastViewedAt = input.views ? sql`now()` : undefined;
-		const lastDownloadedAt = input.downloads ? sql`now()` : undefined;
-
-		await db
-			.insert(schema.resumeStatistics)
-			.values({
-				resumeId: input.id,
-				views,
-				downloads,
-				lastViewedAt,
-				lastDownloadedAt,
-			})
-			.onConflictDoUpdate({
-				target: [schema.resumeStatistics.resumeId],
-				set: {
-					views: sql`${schema.resumeStatistics.views} + ${views}`,
-					downloads: sql`${schema.resumeStatistics.downloads} + ${downloads}`,
-					lastViewedAt,
-					lastDownloadedAt,
-				},
-			});
-	},
-};
-
 export const resumeService = {
 	tags,
-	statistics,
 
 	list: async (input: { userId: string; tags: string[]; sort: "lastUpdatedAt" | "createdAt" | "name" }) => {
 		return await db
@@ -191,8 +140,6 @@ export const resumeService = {
 		if (!resume) throw new ORPCError("NOT_FOUND");
 
 		if (!resume.hasPassword) {
-			await resumeService.statistics.increment({ id: resume.id, views: true });
-
 			return {
 				id: resume.id,
 				name: resume.name,
@@ -206,8 +153,6 @@ export const resumeService = {
 		}
 
 		if (hasResumeAccess(resume.id, resume.passwordHash)) {
-			await resumeService.statistics.increment({ id: resume.id, views: true });
-
 			return {
 				id: resume.id,
 				name: resume.name,

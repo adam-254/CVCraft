@@ -141,7 +141,7 @@ export const resumeDirectService = {
 		data?: ResumeData;
 		isPublic?: boolean;
 	}) => {
-		const updateData: Record<string, any> = {};
+		const updateData: Record<string, unknown> = {};
 
 		if (input.name !== undefined) updateData.name = input.name;
 		if (input.slug !== undefined) updateData.slug = input.slug;
@@ -195,54 +195,5 @@ export const resumeDirectService = {
 			const errorMessage = error instanceof Error ? error.message : "Unknown error";
 			throw new Error(`Failed to delete resume: ${errorMessage}`);
 		}
-	},
-
-	statistics: {
-		getById: async (input: { id: string; userId: string }) => {
-			try {
-				// First get the resume to check if it's public
-				const { data: resume, error: resumeError } = await supabase
-					.from("resume")
-					.select("is_public")
-					.eq("id", input.id)
-					.eq("user_id", input.userId)
-					.single();
-
-				if (resumeError) throw resumeError;
-				if (!resume) throw new Error("Resume not found");
-
-				// Get statistics
-				const { data: stats, error: statsError } = await supabase
-					.from("resume_statistics")
-					.select("views, downloads, last_viewed_at, last_downloaded_at")
-					.eq("resume_id", input.id)
-					.single();
-
-				// If no statistics exist yet, return defaults
-				if (statsError && statsError.code === 'PGRST116') {
-					return {
-						isPublic: resume.is_public,
-						views: 0,
-						downloads: 0,
-						lastViewedAt: null,
-						lastDownloadedAt: null,
-					};
-				}
-
-				if (statsError) throw statsError;
-
-				return {
-					isPublic: resume.is_public,
-					views: stats?.views ?? 0,
-					downloads: stats?.downloads ?? 0,
-					lastViewedAt: stats?.last_viewed_at ? new Date(stats.last_viewed_at) : null,
-					lastDownloadedAt: stats?.last_downloaded_at ? new Date(stats.last_downloaded_at) : null,
-				};
-			} catch (error) {
-				console.error("Resume statistics error:", error);
-				const errorMessage = error instanceof Error ? error.message : "Unknown error";
-				throw new Error(`Failed to fetch resume statistics: ${errorMessage}`);
-			}
-		},
 	},
 };

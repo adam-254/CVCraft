@@ -4,7 +4,6 @@ import {
 	BooksIcon,
 	BriefcaseIcon,
 	CertificateIcon,
-	ChartLineIcon,
 	CodeSimpleIcon,
 	CompassToolIcon,
 	DiamondsFourIcon,
@@ -47,7 +46,6 @@ export type RightSidebarSection =
 	| "css"
 	| "notes"
 	| "sharing"
-	| "statistics"
 	| "export";
 
 export type SidebarSection = LeftSidebarSection | RightSidebarSection;
@@ -80,7 +78,6 @@ export const rightSidebarSections: RightSidebarSection[] = [
 	"css",
 	"notes",
 	"sharing",
-	"statistics",
 	"export",
 ] as const;
 
@@ -117,7 +114,6 @@ export const getSectionTitle = (type: SidebarSection | CustomOnlyType): string =
 			.with("css", () => t`Custom CSS`)
 			.with("notes", () => t`Notes`)
 			.with("sharing", () => t`Sharing`)
-			.with("statistics", () => t`Statistics`)
 			.with("export", () => t`Export`)
 
 			.exhaustive()
@@ -159,7 +155,6 @@ export const getSectionIcon = (type: SidebarSection | CustomOnlyType, props?: Ic
 			.with("css", () => <FileCssIcon {...iconProps} />)
 			.with("notes", () => <NotepadIcon {...iconProps} />)
 			.with("sharing", () => <ShareFatIcon {...iconProps} />)
-			.with("statistics", () => <ChartLineIcon {...iconProps} />)
 			.with("export", () => <DownloadIcon {...iconProps} />)
 
 			.exhaustive()
