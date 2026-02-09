@@ -1,5 +1,6 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
+// Fixed: Using correct Phosphor Icons names
 import { TextBolderIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
 import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
