@@ -1,31 +1,24 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { CalendarIcon, UserIcon } from "@phosphor-icons/react";
-import { format } from "date-fns";
-import { Card } from "@/components/ui/card";
 import { useCoverLetterBuilderStore } from "../-store/cover-letter";
 
 export function CoverLetterPreview() {
 	const coverLetter = useCoverLetterBuilderStore((state) => state.coverLetter);
 
 	const formatContent = (content: string) => {
-		return content
-			.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-			.replace(/\*(.*?)\*/g, "<em>$1</em>")
-			.replace(/__(.*?)__/g, "<u>$1</u>")
-			.split("\n")
-			.map((line, index) => (
-				<p key={index} className={line.trim() === "" ? "h-4" : ""}>
-					<span dangerouslySetInnerHTML={{ __html: line || "&nbsp;" }} />
-				</p>
-			));
+		return content.split("\n").map((line, index) => (
+			<p key={index} className={line.trim() === "" ? "h-4" : ""}>
+				{line || "\u00A0"}
+			</p>
+		));
 	};
 
 	return (
 		<div className="flex h-full items-center justify-center p-8">
-			<Card
+			<div
 				id="cover-letter-preview"
-				className="w-full max-w-2xl bg-white p-12 shadow-2xl"
+				className="w-full max-w-2xl rounded-lg bg-white p-12 shadow-2xl"
 				style={{
 					aspectRatio: "8.5 / 11",
 					minHeight: "11in",
@@ -41,7 +34,11 @@ export function CoverLetterPreview() {
 						<div className="mt-2 flex items-center gap-4 text-gray-600 text-sm">
 							<div className="flex items-center gap-1">
 								<CalendarIcon className="size-4" />
-								{format(new Date(), "MMMM d, yyyy")}
+								{new Date().toLocaleDateString("en-US", {
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								})}
 							</div>
 							{coverLetter.recipient && (
 								<div className="flex items-center gap-1">
@@ -83,7 +80,7 @@ export function CoverLetterPreview() {
 						</div>
 					)}
 				</div>
-			</Card>
+			</div>
 		</div>
 	);
 }
