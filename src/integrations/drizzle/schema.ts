@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import * as pg from "drizzle-orm/pg-core";
 import { defaultResumeData, type ResumeData } from "@/schema/resume/data";
 import { generateId } from "@/utils/string";
@@ -325,6 +326,6 @@ export const aiProvider = pg.pgTable(
 	(t) => [
 		pg.index().on(t.userId),
 		pg.index().on(t.userId, t.isActive),
-		pg.uniqueIndex("idx_ai_provider_user_one_active").on(t.userId).where(pg.sql`${t.isActive} = true`),
+		pg.uniqueIndex("idx_ai_provider_user_one_active").on(t.userId).where(sql`${t.isActive} = true`),
 	],
 );

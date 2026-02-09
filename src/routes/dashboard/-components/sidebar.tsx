@@ -3,10 +3,10 @@ import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
+	BrainIcon,
 	ClockCounterClockwiseIcon,
 	EnvelopeSimpleIcon,
 	GearSixIcon,
-	PlugsConnectedIcon,
 	ReadCvLogoIcon,
 	ShieldCheckIcon,
 	UserCircleIcon,
@@ -75,7 +75,7 @@ const settingsSidebarItems = [
 		href: "/dashboard/settings/authentication",
 	},
 	{
-		icon: <PlugsConnectedIcon />,
+		icon: <BrainIcon />,
 		label: msg`Integrations`,
 		href: "/dashboard/settings/integrations",
 	},
