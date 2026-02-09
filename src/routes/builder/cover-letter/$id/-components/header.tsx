@@ -15,11 +15,11 @@ import { useBuilderSidebar } from "../-store/sidebar";
 
 export function BuilderHeader() {
 	const { data: session } = authClient.useSession();
-	const params = useParams({ from: "/builder/$coverletterId" });
+	const params = useParams({ from: "/builder/cover-letter/$id" });
 	const [_, copyToClipboard] = useCopyToClipboard();
 
 	const { data: coverLetter } = useSuspenseQuery(
-		orpc.coverLetter.getById.queryOptions({ input: { id: params.coverletterId } }),
+		orpc.coverLetter.getById.queryOptions({ input: { id: params.id } }),
 	);
 	const { mutateAsync: updateCoverLetter } = useMutation(orpc.coverLetter.update.mutationOptions());
 

@@ -1,56 +1,41 @@
-import { CalendarIcon, UserIcon } from "@phosphor-icons/react";
 import { cn } from "@/utils/style";
 import type { CoverLetterTemplateProps } from "./types";
 
-export function ModernTemplate({ title, recipient, content, tags, className }: CoverLetterTemplateProps) {
-	const formatContent = (text: string) => {
-		return text.split("\n").map((line, index) => (
-			<p key={index} className={line.trim() === "" ? "h-4" : "mb-4 leading-relaxed"}>
-				{line || "\u00A0"}
-			</p>
-		));
-	};
+/**
+ * Modern Template - Contemporary design with gradient header and clean typography
+ */
+export function ModernTemplate({ title, recipient, content, className }: CoverLetterTemplateProps) {
+	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-white shadow-xl", className)}>
-			{/* Header with gradient */}
-			<header className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
-				<h1 className="mb-3 font-light text-3xl">{title}</h1>
-				<div className="flex items-center gap-6 text-blue-100 text-sm">
-					<div className="flex items-center gap-2">
-						<CalendarIcon className="size-4" />
-						{new Date().toLocaleDateString("en-US", {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})}
+		<div className={cn("bg-white shadow-sm", className)}>
+			{/* Gradient Header */}
+			<div className="bg-gradient-to-r from-purple-600 to-blue-500 p-12 text-white">
+				<h1 className="mb-2 font-bold text-4xl">{title}</h1>
+				<p className="text-purple-100 text-sm">{today}</p>
+			</div>
+
+			<div className="p-12">
+				{/* Recipient */}
+				{recipient && (
+					<div className="mb-6">
+						<p className="font-semibold text-gray-900 text-lg">Dear {recipient},</p>
 					</div>
-					{recipient && (
-						<div className="flex items-center gap-2">
-							<UserIcon className="size-4" />
-							{recipient}
-						</div>
-					)}
+				)}
+
+				{/* Content */}
+				<div className="mb-8 space-y-4 text-gray-700 leading-relaxed">
+					{content.split("\n\n").map((paragraph, index) => (
+						<p key={index}>{paragraph}</p>
+					))}
 				</div>
-			</header>
 
-			{/* Content */}
-			<main className="p-8">
-				<div className="text-base text-gray-700 leading-relaxed">{formatContent(content)}</div>
-			</main>
-
-			{/* Footer */}
-			{tags.length > 0 && (
-				<footer className="bg-gray-50 p-6">
-					<div className="flex flex-wrap gap-2">
-						{tags.map((tag) => (
-							<span key={tag} className="rounded-lg bg-blue-100 px-3 py-1 font-medium text-blue-800 text-xs">
-								{tag}
-							</span>
-						))}
-					</div>
-				</footer>
-			)}
+				{/* Signature */}
+				<div className="mt-12">
+					<p className="font-semibold text-gray-900">Best regards,</p>
+					<div className="mt-8 h-1 w-48 rounded bg-gradient-to-r from-purple-600 to-blue-500" />
+				</div>
+			</div>
 		</div>
 	);
 }

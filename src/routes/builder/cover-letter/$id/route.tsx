@@ -24,20 +24,26 @@ const builderLayoutSchema = z.object({
 });
 
 const getBuilderLayoutServerFn = createServerFn({ method: "GET" }).handler(async () => {
-	const cookie = getCookie("cover-letter-builder-layout");
-	const layout = builderLayoutSchema.safeParse(JSON.parse(cookie ?? "{}"));
-	return layout.success ? layout.data : builderLayoutSchema.parse({});
+	try {
+		const cookie = getCookie("cover-letter-builder-layout");
+		if (!cookie) {
+			return { left: 30, artboard: 40, right: 30 };
+		}
+		const layout = builderLayoutSchema.safeParse(JSON.parse(cookie));
+		return layout.success ? layout.data : { left: 30, artboard: 40, right: 30 };
+	} catch {
+		return { left: 30, artboard: 40, right: 30 };
+	}
 });
 
 const setBuilderLayoutServerFn = createServerFn({ method: "POST" })
-	.validator(z.object({ data: builderLayoutSchema }))
-	.handler(async ({ data }) => {
+	.handler(async ({ data }: { data: z.infer<typeof builderLayoutSchema> }) => {
 		setCookie("cover-letter-builder-layout", JSON.stringify(data), {
 			maxAge: 60 * 60 * 24 * 365, // 1 year
 		});
 	});
 
-export const Route = createFileRoute("/builder/$coverletterId")({
+export const Route = createFileRoute("/builder/cover-letter/$id")({
 	component: RouteComponent,
 	beforeLoad: async ({ context }) => {
 		if (!context.session) throw redirect({ to: "/auth/login", replace: true });
@@ -47,7 +53,7 @@ export const Route = createFileRoute("/builder/$coverletterId")({
 		const [layout, coverLetter] = await Promise.all([
 			getBuilderLayoutServerFn(),
 			context.queryClient.ensureQueryData(
-				orpc.coverLetter.getById.queryOptions({ input: { id: params.coverletterId } }),
+				orpc.coverLetter.getById.queryOptions({ input: { id: params.id } }),
 			),
 		]);
 
@@ -61,9 +67,9 @@ export const Route = createFileRoute("/builder/$coverletterId")({
 function RouteComponent() {
 	const { layout: initialLayout } = Route.useLoaderData();
 
-	const { coverletterId } = Route.useParams();
+	const { id } = Route.useParams();
 	const { data: coverLetter } = useSuspenseQuery(
-		orpc.coverLetter.getById.queryOptions({ input: { id: coverletterId } }),
+		orpc.coverLetter.getById.queryOptions({ input: { id } }),
 	);
 
 	const isReady = useCoverLetterBuilderStore((state) => state.isReady);
@@ -80,7 +86,7 @@ function RouteComponent() {
 }
 
 type BuilderLayoutProps = React.ComponentProps<"div"> & {
-	initialLayout: Layout;
+	initialLayout?: Layout;
 };
 
 function BuilderLayout({ initialLayout, ...props }: BuilderLayoutProps) {
@@ -108,9 +114,9 @@ function BuilderLayout({ initialLayout, ...props }: BuilderLayoutProps) {
 		setRightSidebar(rightSidebarRef);
 	}, [leftSidebarRef, rightSidebarRef, setLeftSidebar, setRightSidebar]);
 
-	const leftSidebarSize = isMobile ? 0 : initialLayout.left;
-	const rightSidebarSize = isMobile ? 0 : initialLayout.right;
-	const artboardSize = isMobile ? 100 : initialLayout.artboard;
+	const leftSidebarSize = isMobile ? 0 : (initialLayout?.left ?? 30);
+	const rightSidebarSize = isMobile ? 0 : (initialLayout?.right ?? 30);
+	const artboardSize = isMobile ? 100 : (initialLayout?.artboard ?? 40);
 
 	return (
 		<div className="flex h-svh flex-col" {...props}>

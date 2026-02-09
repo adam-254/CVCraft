@@ -4,6 +4,17 @@ export interface CoverLetterTemplateProps {
 	content: string;
 	tags: string[];
 	className?: string;
+	// Extended metadata for professional letter headers
+	senderName?: string;
+	senderAddress?: string;
+	senderCity?: string;
+	senderPhone?: string;
+	senderEmail?: string;
+	companyName?: string;
+	companyAddress?: string;
+	companyCity?: string;
+	hiringManager?: string;
+	position?: string;
 }
 
 export type CoverLetterTemplate = 
@@ -12,4 +23,10 @@ export type CoverLetterTemplate =
 	| "elegant"
 	| "creative"
 	| "minimal"
-	| "classic";
+	| "classic"
+	| "executive"
+	| "tech"
+	| "artistic"
+	| "corporate"
+	| "startup"
+	| "academic";

@@ -49,7 +49,7 @@ export function CreateCoverLetterDialog({ data }: DialogProps<"cover-letter.crea
 					closeDialog();
 
 					// Navigate to the cover letter builder
-					navigate({ to: "/builder/$coverletterId", params: { coverletterId: coverLetter.id } });
+					navigate({ to: "/builder/cover-letter/$id", params: { id: coverLetter.id } });
 				},
 				onError: (error) => {
 					toast.error(t`Failed to create cover letter`, { id: toastId });

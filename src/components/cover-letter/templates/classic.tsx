@@ -1,58 +1,44 @@
-import { CalendarIcon, UserIcon } from "@phosphor-icons/react";
 import { cn } from "@/utils/style";
 import type { CoverLetterTemplateProps } from "./types";
 
-export function ClassicTemplate({ title, recipient, content, tags, className }: CoverLetterTemplateProps) {
-	const formatContent = (text: string) => {
-		return text.split("\n").map((line, index) => (
-			<p key={index} className={line.trim() === "" ? "h-5" : "mb-5 leading-normal"}>
-				{line || "\u00A0"}
-			</p>
-		));
-	};
+/**
+ * Classic Template - Traditional formal letter design with serif typography
+ */
+export function ClassicTemplate({ title, recipient, content, className }: CoverLetterTemplateProps) {
+	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("border border-gray-300 bg-white p-12 shadow-sm", className)}>
-			{/* Classic header */}
-			<header className="mb-10 border-gray-400 border-b pb-6 text-center">
-				<h1 className="mb-4 font-bold font-serif text-2xl text-gray-900 uppercase tracking-wide">{title}</h1>
-				<div className="flex items-center justify-center gap-6 text-gray-600 text-sm">
-					<div className="flex items-center gap-2">
-						<CalendarIcon className="size-4" />
-						{new Date().toLocaleDateString("en-US", {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})}
-					</div>
-					{recipient && (
-						<div className="flex items-center gap-2">
-							<UserIcon className="size-4" />
-							{recipient}
-						</div>
-					)}
+		<div className={cn("bg-white p-12 shadow-sm", className)}>
+			{/* Classic Header */}
+			<div className="mb-12 border-gray-800 border-b-2 pb-4 text-center">
+				<h1 className="mb-2 font-bold font-serif text-3xl text-gray-900 uppercase tracking-wide">{title}</h1>
+				<p className="font-serif text-gray-600 text-sm">{today}</p>
+			</div>
+
+			{/* Recipient */}
+			{recipient && (
+				<div className="mb-8">
+					<p className="font-serif text-gray-900">Dear {recipient}:</p>
 				</div>
-			</header>
+			)}
 
 			{/* Content */}
-			<main className="mb-10">
-				<div className="font-serif text-base text-gray-800 leading-normal">{formatContent(content)}</div>
-			</main>
+			<div className="mb-10 space-y-5 text-justify font-serif text-gray-800 leading-relaxed">
+				{content.split("\n\n").map((paragraph, index) => (
+					<p key={index} className="indent-8">
+						{paragraph}
+					</p>
+				))}
+			</div>
 
-			{/* Classic footer */}
-			{tags.length > 0 && (
-				<footer className="border-gray-400 border-t pt-6">
-					<div className="text-center">
-						<div className="inline-flex flex-wrap gap-4">
-							{tags.map((tag) => (
-								<span key={tag} className="font-serif text-gray-600 text-sm italic">
-									{tag}
-								</span>
-							))}
-						</div>
-					</div>
-				</footer>
-			)}
+			{/* Signature */}
+			<div className="mt-16">
+				<p className="font-serif text-gray-900">Respectfully yours,</p>
+				<div className="mt-12 space-y-1">
+					<div className="h-px w-48 bg-gray-800" />
+					<p className="font-serif text-gray-600 text-sm">Signature</p>
+				</div>
+			</div>
 		</div>
 	);
 }

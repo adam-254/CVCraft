@@ -26,7 +26,7 @@ import { useCoverLetterBuilderStore, useTemporalStore } from "../-store/cover-le
 
 export function BuilderDock() {
 	const { data: session } = authClient.useSession();
-	const params = useParams({ from: "/builder/$coverletterId" });
+	const params = useParams({ from: "/builder/cover-letter/$id" });
 
 	const [_, copyToClipboard] = useCopyToClipboard();
 	const { zoomIn, zoomOut, centerView, zoomToElement } = useControls();
@@ -43,7 +43,7 @@ export function BuilderDock() {
 	const updateCoverLetter = useCoverLetterBuilderStore((state) => state.updateCoverLetter);
 
 	const { data: coverLetter } = useQuery(
-		orpc.coverLetter.getById.queryOptions({ input: { id: params.coverletterId } }),
+		orpc.coverLetter.getById.queryOptions({ input: { id: params.id } }),
 	);
 
 	const { undo, redo, pastStates, futureStates } = useTemporalStore((state) => ({

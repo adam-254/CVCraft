@@ -9,7 +9,7 @@ import { CoverLetterPreview } from "./-components/preview";
 import { ShortcutsDialog } from "./-components/shortcuts-dialog";
 import { WordCount } from "./-components/word-count";
 
-export const Route = createFileRoute("/builder/$coverletterId/")({
+export const Route = createFileRoute("/builder/cover-letter/$id/")({
 	component: RouteComponent,
 });
 

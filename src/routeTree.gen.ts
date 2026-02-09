@@ -30,12 +30,10 @@ import { Route as ApiHealthRouteImport } from "./routes/api/health";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as CoverLetterIdRouteRouteImport } from "./routes/cover-letter/$id/route";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
-import { Route as BuilderCoverletterIdRouteRouteImport } from "./routes/builder/$coverletterId/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardCoverLettersIndexRouteImport } from "./routes/dashboard/cover-letters/index";
 import { Route as CoverLetterIdIndexRouteImport } from "./routes/cover-letter/$id/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
-import { Route as BuilderCoverletterIdIndexRouteImport } from "./routes/builder/$coverletterId/index";
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
 import { Route as DashboardSettingsPreferencesRouteImport } from "./routes/dashboard/settings/preferences";
@@ -47,7 +45,9 @@ import { Route as DashboardCoverLettersListRouteImport } from "./routes/dashboar
 import { Route as ApiRpcSplatRouteImport } from "./routes/api/rpc.$";
 import { Route as ApiOpenapiSplatRouteImport } from "./routes/api/openapi.$";
 import { Route as ApiAuthSplatRouteImport } from "./routes/api/auth.$";
+import { Route as BuilderCoverLetterIdRouteRouteImport } from "./routes/builder/cover-letter/$id/route";
 import { Route as DashboardSettingsAuthenticationIndexRouteImport } from "./routes/dashboard/settings/authentication/index";
+import { Route as BuilderCoverLetterIdIndexRouteImport } from "./routes/builder/cover-letter/$id/index";
 
 const SchemaDotjsonRoute = SchemaDotjsonRouteImport.update({
   id: "/schema.json",
@@ -153,12 +153,6 @@ const BuilderResumeIdRouteRoute = BuilderResumeIdRouteRouteImport.update({
   path: "/builder/$resumeId",
   getParentRoute: () => rootRouteImport,
 } as any);
-const BuilderCoverletterIdRouteRoute =
-  BuilderCoverletterIdRouteRouteImport.update({
-    id: "/builder/$coverletterId",
-    path: "/builder/$coverletterId",
-    getParentRoute: () => rootRouteImport,
-  } as any);
 const DashboardResumesIndexRoute = DashboardResumesIndexRouteImport.update({
   id: "/resumes/",
   path: "/resumes/",
@@ -180,12 +174,6 @@ const BuilderResumeIdIndexRoute = BuilderResumeIdIndexRouteImport.update({
   path: "/",
   getParentRoute: () => BuilderResumeIdRouteRoute,
 } as any);
-const BuilderCoverletterIdIndexRoute =
-  BuilderCoverletterIdIndexRouteImport.update({
-    id: "/",
-    path: "/",
-    getParentRoute: () => BuilderCoverletterIdRouteRoute,
-  } as any);
 const UploadsUserIdSplatRoute = UploadsUserIdSplatRouteImport.update({
   id: "/uploads/$userId/$",
   path: "/uploads/$userId/$",
@@ -247,11 +235,23 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: "/api/auth/$",
   getParentRoute: () => rootRouteImport,
 } as any);
+const BuilderCoverLetterIdRouteRoute =
+  BuilderCoverLetterIdRouteRouteImport.update({
+    id: "/builder/cover-letter/$id",
+    path: "/builder/cover-letter/$id",
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const DashboardSettingsAuthenticationIndexRoute =
   DashboardSettingsAuthenticationIndexRouteImport.update({
     id: "/settings/authentication/",
     path: "/settings/authentication/",
     getParentRoute: () => DashboardRouteRoute,
+  } as any);
+const BuilderCoverLetterIdIndexRoute =
+  BuilderCoverLetterIdIndexRouteImport.update({
+    id: "/",
+    path: "/",
+    getParentRoute: () => BuilderCoverLetterIdRouteRoute,
   } as any);
 
 export interface FileRoutesByFullPath {
@@ -259,7 +259,6 @@ export interface FileRoutesByFullPath {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
-  "/builder/$coverletterId": typeof BuilderCoverletterIdRouteRouteWithChildren;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
@@ -276,6 +275,7 @@ export interface FileRoutesByFullPath {
   "/printer/$resumeId": typeof PrinterResumeIdRoute;
   "/auth/": typeof AuthIndexRoute;
   "/dashboard/": typeof DashboardIndexRoute;
+  "/builder/cover-letter/$id": typeof BuilderCoverLetterIdRouteRouteWithChildren;
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
@@ -287,11 +287,11 @@ export interface FileRoutesByFullPath {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
-  "/builder/$coverletterId/": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
+  "/builder/cover-letter/$id/": typeof BuilderCoverLetterIdIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesByTo {
@@ -322,11 +322,11 @@ export interface FileRoutesByTo {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
-  "/builder/$coverletterId": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes": typeof DashboardResumesIndexRoute;
+  "/builder/cover-letter/$id": typeof BuilderCoverLetterIdIndexRoute;
   "/dashboard/settings/authentication": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesById {
@@ -335,7 +335,6 @@ export interface FileRoutesById {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
-  "/builder/$coverletterId": typeof BuilderCoverletterIdRouteRouteWithChildren;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
@@ -353,6 +352,7 @@ export interface FileRoutesById {
   "/_home/": typeof HomeIndexRoute;
   "/auth/": typeof AuthIndexRoute;
   "/dashboard/": typeof DashboardIndexRoute;
+  "/builder/cover-letter/$id": typeof BuilderCoverLetterIdRouteRouteWithChildren;
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
@@ -364,11 +364,11 @@ export interface FileRoutesById {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
-  "/builder/$coverletterId/": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
+  "/builder/cover-letter/$id/": typeof BuilderCoverLetterIdIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRouteTypes {
@@ -378,7 +378,6 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
-    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/$username/$slug"
@@ -395,6 +394,7 @@ export interface FileRouteTypes {
     | "/printer/$resumeId"
     | "/auth/"
     | "/dashboard/"
+    | "/builder/cover-letter/$id"
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
@@ -406,11 +406,11 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
-    | "/builder/$coverletterId/"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
     | "/dashboard/resumes/"
+    | "/builder/cover-letter/$id/"
     | "/dashboard/settings/authentication/";
   fileRoutesByTo: FileRoutesByTo;
   to:
@@ -441,11 +441,11 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
-    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/dashboard/cover-letters"
     | "/dashboard/resumes"
+    | "/builder/cover-letter/$id"
     | "/dashboard/settings/authentication";
   id:
     | "__root__"
@@ -453,7 +453,6 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
-    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/$username/$slug"
@@ -471,6 +470,7 @@ export interface FileRouteTypes {
     | "/_home/"
     | "/auth/"
     | "/dashboard/"
+    | "/builder/cover-letter/$id"
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
@@ -482,11 +482,11 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
-    | "/builder/$coverletterId/"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
     | "/dashboard/resumes/"
+    | "/builder/cover-letter/$id/"
     | "/dashboard/settings/authentication/";
   fileRoutesById: FileRoutesById;
 }
@@ -495,13 +495,13 @@ export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
   SchemaDotjsonRoute: typeof SchemaDotjsonRoute;
-  BuilderCoverletterIdRouteRoute: typeof BuilderCoverletterIdRouteRouteWithChildren;
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
   CoverLetterIdRouteRoute: typeof CoverLetterIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
   ApiHealthRoute: typeof ApiHealthRoute;
   ApiSimpleAuthRoute: typeof ApiSimpleAuthRoute;
   PrinterResumeIdRoute: typeof PrinterResumeIdRoute;
+  BuilderCoverLetterIdRouteRoute: typeof BuilderCoverLetterIdRouteRouteWithChildren;
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute;
   ApiOpenapiSplatRoute: typeof ApiOpenapiSplatRoute;
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute;
@@ -657,13 +657,6 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof BuilderResumeIdRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    "/builder/$coverletterId": {
-      id: "/builder/$coverletterId";
-      path: "/builder/$coverletterId";
-      fullPath: "/builder/$coverletterId";
-      preLoaderRoute: typeof BuilderCoverletterIdRouteRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
     "/dashboard/resumes/": {
       id: "/dashboard/resumes/";
       path: "/resumes";
@@ -691,13 +684,6 @@ declare module "@tanstack/react-router" {
       fullPath: "/builder/$resumeId/";
       preLoaderRoute: typeof BuilderResumeIdIndexRouteImport;
       parentRoute: typeof BuilderResumeIdRouteRoute;
-    };
-    "/builder/$coverletterId/": {
-      id: "/builder/$coverletterId/";
-      path: "/";
-      fullPath: "/builder/$coverletterId/";
-      preLoaderRoute: typeof BuilderCoverletterIdIndexRouteImport;
-      parentRoute: typeof BuilderCoverletterIdRouteRoute;
     };
     "/uploads/$userId/$": {
       id: "/uploads/$userId/$";
@@ -776,12 +762,26 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ApiAuthSplatRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    "/builder/cover-letter/$id": {
+      id: "/builder/cover-letter/$id";
+      path: "/builder/cover-letter/$id";
+      fullPath: "/builder/cover-letter/$id";
+      preLoaderRoute: typeof BuilderCoverLetterIdRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/dashboard/settings/authentication/": {
       id: "/dashboard/settings/authentication/";
       path: "/settings/authentication";
       fullPath: "/dashboard/settings/authentication/";
       preLoaderRoute: typeof DashboardSettingsAuthenticationIndexRouteImport;
       parentRoute: typeof DashboardRouteRoute;
+    };
+    "/builder/cover-letter/$id/": {
+      id: "/builder/cover-letter/$id/";
+      path: "/";
+      fullPath: "/builder/cover-letter/$id/";
+      preLoaderRoute: typeof BuilderCoverLetterIdIndexRouteImport;
+      parentRoute: typeof BuilderCoverLetterIdRouteRoute;
     };
   }
 }
@@ -859,20 +859,6 @@ const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
   DashboardRouteRouteChildren,
 );
 
-interface BuilderCoverletterIdRouteRouteChildren {
-  BuilderCoverletterIdIndexRoute: typeof BuilderCoverletterIdIndexRoute;
-}
-
-const BuilderCoverletterIdRouteRouteChildren: BuilderCoverletterIdRouteRouteChildren =
-  {
-    BuilderCoverletterIdIndexRoute: BuilderCoverletterIdIndexRoute,
-  };
-
-const BuilderCoverletterIdRouteRouteWithChildren =
-  BuilderCoverletterIdRouteRoute._addFileChildren(
-    BuilderCoverletterIdRouteRouteChildren,
-  );
-
 interface BuilderResumeIdRouteRouteChildren {
   BuilderResumeIdIndexRoute: typeof BuilderResumeIdIndexRoute;
 }
@@ -895,18 +881,32 @@ const CoverLetterIdRouteRouteChildren: CoverLetterIdRouteRouteChildren = {
 const CoverLetterIdRouteRouteWithChildren =
   CoverLetterIdRouteRoute._addFileChildren(CoverLetterIdRouteRouteChildren);
 
+interface BuilderCoverLetterIdRouteRouteChildren {
+  BuilderCoverLetterIdIndexRoute: typeof BuilderCoverLetterIdIndexRoute;
+}
+
+const BuilderCoverLetterIdRouteRouteChildren: BuilderCoverLetterIdRouteRouteChildren =
+  {
+    BuilderCoverLetterIdIndexRoute: BuilderCoverLetterIdIndexRoute,
+  };
+
+const BuilderCoverLetterIdRouteRouteWithChildren =
+  BuilderCoverLetterIdRouteRoute._addFileChildren(
+    BuilderCoverLetterIdRouteRouteChildren,
+  );
+
 const rootRouteChildren: RootRouteChildren = {
   HomeRouteRoute: HomeRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SchemaDotjsonRoute: SchemaDotjsonRoute,
-  BuilderCoverletterIdRouteRoute: BuilderCoverletterIdRouteRouteWithChildren,
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
   CoverLetterIdRouteRoute: CoverLetterIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiSimpleAuthRoute: ApiSimpleAuthRoute,
   PrinterResumeIdRoute: PrinterResumeIdRoute,
+  BuilderCoverLetterIdRouteRoute: BuilderCoverLetterIdRouteRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiOpenapiSplatRoute: ApiOpenapiSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,

@@ -1,67 +1,59 @@
-import { CalendarIcon, UserIcon } from "@phosphor-icons/react";
 import { cn } from "@/utils/style";
 import type { CoverLetterTemplateProps } from "./types";
 
-export function ElegantTemplate({ title, recipient, content, tags, className }: CoverLetterTemplateProps) {
-	const formatContent = (text: string) => {
-		return text.split("\n").map((line, index) => (
-			<p key={index} className={line.trim() === "" ? "h-4" : "mb-6 leading-loose"}>
-				{line || "\u00A0"}
-			</p>
-		));
-	};
+/**
+ * Elegant Template - Sophisticated design with serif fonts and decorative elements
+ */
+export function ElegantTemplate({ title, recipient, content, className }: CoverLetterTemplateProps) {
+	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("border border-gray-200 bg-white shadow-lg", className)}>
-			{/* Decorative top border */}
-			<div className="h-1 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600"></div>
-
-			{/* Header */}
-			<header className="p-10 pb-8">
-				<h1 className="mb-4 text-center font-serif text-4xl text-gray-800">{title}</h1>
-				<div className="flex items-center justify-center gap-8 text-gray-500 text-sm">
-					<div className="flex items-center gap-2">
-						<CalendarIcon className="size-4" />
-						{new Date().toLocaleDateString("en-US", {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})}
-					</div>
-					{recipient && (
-						<div className="flex items-center gap-2">
-							<UserIcon className="size-4" />
-							{recipient}
-						</div>
-					)}
+		<div className={cn("bg-amber-50 p-12 shadow-sm", className)}>
+			{/* Decorative Header */}
+			<div className="mb-8 text-center">
+				<div className="mb-4 flex items-center justify-center gap-4">
+					<div className="h-px w-16 bg-amber-600" />
+					<div className="size-2 rotate-45 bg-amber-600" />
+					<div className="h-px w-16 bg-amber-600" />
 				</div>
-			</header>
-
-			{/* Decorative divider */}
-			<div className="mb-8 flex justify-center">
-				<div className="h-px w-24 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+				<h1 className="mb-2 font-bold font-serif text-4xl text-amber-900">{title}</h1>
+				<p className="font-serif text-amber-700 text-sm italic">{today}</p>
+				<div className="mt-4 flex items-center justify-center gap-4">
+					<div className="h-px w-16 bg-amber-600" />
+					<div className="size-2 rotate-45 bg-amber-600" />
+					<div className="h-px w-16 bg-amber-600" />
+				</div>
 			</div>
 
-			{/* Content */}
-			<main className="px-10 pb-8">
-				<div className="font-serif text-base text-gray-700 leading-loose">{formatContent(content)}</div>
-			</main>
-
-			{/* Footer */}
-			{tags.length > 0 && (
-				<footer className="border-gray-100 border-t p-8">
-					<div className="flex flex-wrap justify-center gap-3">
-						{tags.map((tag) => (
-							<span
-								key={tag}
-								className="rounded-full border border-amber-200 bg-amber-50 px-4 py-2 font-medium text-amber-800 text-xs"
-							>
-								{tag}
-							</span>
-						))}
+			<div className="bg-white p-10 shadow-md">
+				{/* Recipient */}
+				{recipient && (
+					<div className="mb-6">
+						<p className="font-medium font-serif text-amber-900">Dear {recipient},</p>
 					</div>
-				</footer>
-			)}
+				)}
+
+				{/* Content */}
+				<div className="mb-8 space-y-4 font-serif text-gray-700 leading-relaxed">
+					{content.split("\n\n").map((paragraph, index) => (
+						<p
+							key={index}
+							className="first-letter:float-left first-letter:mr-2 first-letter:font-bold first-letter:text-5xl first-letter:text-amber-900 first-letter:leading-none"
+						>
+							{paragraph}
+						</p>
+					))}
+				</div>
+
+				{/* Signature */}
+				<div className="mt-12">
+					<p className="font-medium font-serif text-amber-900">With warm regards,</p>
+					<div className="mt-8 flex items-center gap-2">
+						<div className="h-px w-32 bg-amber-600" />
+						<div className="size-1.5 rotate-45 bg-amber-600" />
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

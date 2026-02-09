@@ -1,12 +1,18 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import {
+	AcademicTemplate,
+	ArtisticTemplate,
 	ClassicTemplate,
+	CorporateTemplate,
 	CreativeTemplate,
 	ElegantTemplate,
+	ExecutiveTemplate,
 	MinimalTemplate,
 	ModernTemplate,
 	ProfessionalTemplate,
+	StartupTemplate,
+	TechTemplate,
 } from "@/components/cover-letter/templates";
 import { useCoverLetterBuilderStore } from "../-store/cover-letter";
 
@@ -28,6 +34,18 @@ export function CoverLetterPreview() {
 				return MinimalTemplate;
 			case "classic":
 				return ClassicTemplate;
+			case "executive":
+				return ExecutiveTemplate;
+			case "tech":
+				return TechTemplate;
+			case "artistic":
+				return ArtisticTemplate;
+			case "corporate":
+				return CorporateTemplate;
+			case "startup":
+				return StartupTemplate;
+			case "academic":
+				return AcademicTemplate;
 			default:
 				return ProfessionalTemplate;
 		}
@@ -68,6 +86,16 @@ export function CoverLetterPreview() {
 					recipient={coverLetter.recipient || undefined}
 					content={coverLetter.content || ""}
 					tags={coverLetter.tags}
+					senderName={coverLetter.senderName || undefined}
+					senderAddress={coverLetter.senderAddress || undefined}
+					senderCity={coverLetter.senderCity || undefined}
+					senderPhone={coverLetter.senderPhone || undefined}
+					senderEmail={coverLetter.senderEmail || undefined}
+					companyName={coverLetter.companyName || undefined}
+					companyAddress={coverLetter.companyAddress || undefined}
+					companyCity={coverLetter.companyCity || undefined}
+					hiringManager={coverLetter.hiringManager || undefined}
+					position={coverLetter.position || undefined}
 					className="h-full"
 				/>
 			</div>

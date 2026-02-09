@@ -37,6 +37,16 @@ const _syncCoverLetter = (coverLetter: CoverLetter) => {
 		recipient: coverLetter.recipient,
 		content: coverLetter.content,
 		tags: coverLetter.tags,
+		senderName: coverLetter.senderName,
+		senderAddress: coverLetter.senderAddress,
+		senderCity: coverLetter.senderCity,
+		senderPhone: coverLetter.senderPhone,
+		senderEmail: coverLetter.senderEmail,
+		companyName: coverLetter.companyName,
+		companyAddress: coverLetter.companyAddress,
+		companyCity: coverLetter.companyCity,
+		hiringManager: coverLetter.hiringManager,
+		position: coverLetter.position,
 	}, { signal });
 };
 

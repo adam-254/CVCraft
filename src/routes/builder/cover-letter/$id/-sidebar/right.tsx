@@ -2,7 +2,6 @@ import { Trans } from "@lingui/react/macro";
 import { GearIcon, PaletteIcon, SquaresFourIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { useCoverLetterBuilderStore } from "../-store/cover-letter";
 import { CoverLetterStyles } from "./right/styles";
@@ -54,8 +53,8 @@ export function BuilderSidebarRight() {
 	const setSelectedTemplate = useCoverLetterBuilderStore((state) => state.setSelectedTemplate);
 
 	return (
-		<div className="flex h-full flex-col">
-			<div className="border-b p-4">
+		<div className="flex h-full flex-col overflow-hidden">
+			<div className="flex-shrink-0 border-b p-4">
 				<h2 className="font-semibold">
 					<Trans>Customization</Trans>
 				</h2>
@@ -64,7 +63,7 @@ export function BuilderSidebarRight() {
 				</p>
 			</div>
 
-			<ScrollArea className="flex-1">
+			<div className="flex-1 overflow-y-auto">
 				<div className="space-y-6 p-4">
 					<div className="space-y-3">
 						<div className="flex items-center gap-2">
@@ -100,7 +99,7 @@ export function BuilderSidebarRight() {
 						<CoverLetterSettings />
 					</div>
 				</div>
-			</ScrollArea>
+			</div>
 		</div>
 	);
 }

@@ -253,6 +253,18 @@ export const coverLetter = pg.pgTable(
 		isPublic: pg.boolean("is_public").notNull().default(false),
 		isLocked: pg.boolean("is_locked").notNull().default(false),
 		password: pg.text("password"),
+		// Sender information
+		senderName: pg.text("sender_name"),
+		senderAddress: pg.text("sender_address"),
+		senderCity: pg.text("sender_city"),
+		senderPhone: pg.text("sender_phone"),
+		senderEmail: pg.text("sender_email"),
+		// Company information
+		companyName: pg.text("company_name"),
+		companyAddress: pg.text("company_address"),
+		companyCity: pg.text("company_city"),
+		hiringManager: pg.text("hiring_manager"),
+		position: pg.text("position"),
 		userId: pg
 			.uuid("user_id")
 			.notNull()

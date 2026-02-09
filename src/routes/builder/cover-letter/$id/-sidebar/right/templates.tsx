@@ -3,7 +3,6 @@ import { CheckIcon } from "@phosphor-icons/react";
 import { coverLetterTemplates } from "@/components/cover-letter/templates";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/utils/style";
 
 interface CoverLetterTemplatesProps {
@@ -18,8 +17,8 @@ export function CoverLetterTemplates({ selectedTemplate, onTemplateChange }: Cov
 				<Trans>Templates</Trans>
 			</Label>
 
-			<ScrollArea className="h-96">
-				<div className="grid gap-3">
+			<div className="max-h-[600px] overflow-auto">
+				<div className="grid gap-3 pr-2">
 					{coverLetterTemplates.map((template) => (
 						<div
 							key={template.id}
@@ -79,7 +78,7 @@ export function CoverLetterTemplates({ selectedTemplate, onTemplateChange }: Cov
 						</div>
 					))}
 				</div>
-			</ScrollArea>
+			</div>
 
 			<div className="border-t pt-2">
 				<Button
