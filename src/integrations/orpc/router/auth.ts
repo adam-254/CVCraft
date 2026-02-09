@@ -11,7 +11,7 @@ export const authRouter = {
 				tags: ["Authentication"],
 				summary: "List all auth providers",
 				description:
-					"A list of all authentication providers, and their display names, supported by the instance of Reactive Resume.",
+					"A list of all authentication providers, and their display names, supported by the instance of CVCraft.",
 			})
 			.handler((): ProviderList => {
 				return authService.providers.list();

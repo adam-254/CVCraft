@@ -4,6 +4,7 @@ import { CreateApiKeyDialog } from "./api-key/create";
 import { ChangePasswordDialog } from "./auth/change-password";
 import { DisableTwoFactorDialog } from "./auth/disable-two-factor";
 import { EnableTwoFactorDialog } from "./auth/enable-two-factor";
+import { CreateCoverLetterDialog as CreateCoverLetterStandaloneDialog } from "./cover-letter/create";
 import { CreateResumeDialog, DuplicateResumeDialog, UpdateResumeDialog } from "./resume";
 import { ImportResumeDialog } from "./resume/import";
 import { CreateAwardDialog, UpdateAwardDialog } from "./resume/sections/award";

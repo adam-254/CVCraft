@@ -16,6 +16,8 @@ import { orpc } from "@/integrations/orpc/client";
 import { cn } from "@/utils/style";
 import { GridView } from "./resumes/-components/grid-view";
 import { ListView } from "./resumes/-components/list-view";
+import { CoverLetterGridView } from "./cover-letters/-components/cover-letter-grid-view";
+import { CoverLetterListView } from "./cover-letters/-components/cover-letter-list-view";
 
 type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 
@@ -43,6 +45,9 @@ function RouteComponent() {
 	const { data: allResumes } = useQuery(
 		orpc.resume.list.queryOptions({ input: { tags, sort: "lastUpdatedAt" } }),
 	);
+	
+	// Fetch cover letters
+	const { data: allCoverLetters } = useQuery(orpc.coverLetter.list.queryOptions());
 
 	// Filter to show only recently updated resumes (last 30 days)
 	const resumes = useMemo(() => {
@@ -51,6 +56,14 @@ function RouteComponent() {
 		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 		return allResumes.filter((resume) => new Date(resume.updatedAt) >= thirtyDaysAgo);
 	}, [allResumes]);
+	
+	// Filter to show only recently updated cover letters (last 30 days)
+	const coverLetters = useMemo(() => {
+		if (!allCoverLetters) return [];
+		const thirtyDaysAgo = new Date();
+		thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+		return allCoverLetters.filter((letter) => new Date(letter.updatedAt) >= thirtyDaysAgo);
+	}, [allCoverLetters]);
 
 	const tagOptions = useMemo(() => {
 		if (!allTags) return [];
@@ -70,7 +83,9 @@ function RouteComponent() {
 	};
 
 	const resumeCount = resumes?.length ?? 0;
-	const totalCount = allResumes?.length ?? 0;
+	const coverLetterCount = coverLetters?.length ?? 0;
+	const totalRecentCount = resumeCount + coverLetterCount;
+	const totalCount = (allResumes?.length ?? 0) + (allCoverLetters?.length ?? 0);
 
 	return (
 		<div className="relative space-y-6">
@@ -90,17 +105,17 @@ function RouteComponent() {
 						<h1 className="font-bold text-2xl">
 							<Trans>History</Trans>
 						</h1>
-						{resumeCount > 0 && (
+						{totalRecentCount > 0 && (
 							<div className="rounded-full border border-purple-500/30 bg-gradient-to-br from-purple-500/20 to-purple-500/10 px-3 py-1 font-semibold text-purple-600 text-sm">
-								{resumeCount}
+								{totalRecentCount}
 							</div>
 						)}
 					</div>
 					<p className="text-base text-muted-foreground">
-						<Trans>Recently updated resumes from the last 30 days</Trans>
-						{totalCount > resumeCount && (
+						<Trans>Recently updated resumes and cover letters from the last 30 days</Trans>
+						{totalCount > totalRecentCount && (
 							<span className="ml-2 text-muted-foreground/70 text-xs">
-								({resumeCount} of {totalCount} resumes)
+								({totalRecentCount} of {totalCount} items)
 							</span>
 						)}
 					</p>
@@ -184,13 +199,47 @@ function RouteComponent() {
 
 			<div className="relative">
 				{view === "list" ? (
-					<ListView resumes={resumes ?? []} showCreateCards={false} />
+					<div className="space-y-6">
+						{resumeCount > 0 && (
+							<div>
+								<h3 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
+									<Trans>Resumes</Trans> ({resumeCount})
+								</h3>
+								<ListView resumes={resumes ?? []} showCreateCards={false} />
+							</div>
+						)}
+						{coverLetterCount > 0 && (
+							<div>
+								<h3 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
+									<Trans>Cover Letters</Trans> ({coverLetterCount})
+								</h3>
+								<CoverLetterListView coverLetters={coverLetters ?? []} />
+							</div>
+						)}
+					</div>
 				) : (
-					<GridView resumes={resumes ?? []} showCreateCards={false} />
+					<div className="space-y-6">
+						{resumeCount > 0 && (
+							<div>
+								<h3 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
+									<Trans>Resumes</Trans> ({resumeCount})
+								</h3>
+								<GridView resumes={resumes ?? []} showCreateCards={false} />
+							</div>
+						)}
+						{coverLetterCount > 0 && (
+							<div>
+								<h3 className="mb-3 font-semibold text-sm text-muted-foreground uppercase tracking-wide">
+									<Trans>Cover Letters</Trans> ({coverLetterCount})
+								</h3>
+								<CoverLetterGridView coverLetters={coverLetters ?? []} />
+							</div>
+						)}
+					</div>
 				)}
 			</div>
 
-			{resumeCount === 0 && (
+			{totalRecentCount === 0 && (
 				<div className="flex min-h-[400px] items-center justify-center">
 					<div className="text-center">
 						<div className="mx-auto mb-4 flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-muted/50 to-muted/20">
@@ -201,9 +250,9 @@ function RouteComponent() {
 						</h3>
 						<p className="text-muted-foreground text-sm">
 							{totalCount > 0 ? (
-								<Trans>No resumes updated in the last 30 days</Trans>
+								<Trans>No resumes or cover letters updated in the last 30 days</Trans>
 							) : (
-								<Trans>Create your first resume to see it here</Trans>
+								<Trans>Create your first resume or cover letter to see it here</Trans>
 							)}
 						</p>
 					</div>

@@ -49,17 +49,18 @@ export function UserDropdownMenu({ children }: Props) {
 
 		try {
 			await authClient.signOut();
-			
+
 			// Wait a bit to ensure cookie is cleared before invalidating
-			await new Promise(resolve => setTimeout(resolve, 100));
-			
+			await new Promise((resolve) => setTimeout(resolve, 100));
+
 			await router.invalidate();
 			toast.success(t`Signed out successfully`, { id: toastId });
-			
+
 			// Navigate to login page
 			router.navigate({ to: "/auth/login", replace: true });
-		} catch (error: any) {
-			toast.error(error.message || t`Failed to sign out`, { id: toastId });
+		} catch (error: unknown) {
+			const errorMessage = error instanceof Error ? error.message : t`Failed to sign out`;
+			toast.error(errorMessage, { id: toastId });
 		}
 	}
 

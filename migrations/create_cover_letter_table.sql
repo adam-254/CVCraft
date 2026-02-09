@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS "cover_letter" (
 	"title" text NOT NULL,
 	"slug" text NOT NULL,
 	"recipient" text,
-	"content" text NOT NULL,
+	"content" text NOT NULL DEFAULT '',
 	"tags" text[] DEFAULT '{}' NOT NULL,
 	"is_public" boolean DEFAULT false NOT NULL,
 	"is_locked" boolean DEFAULT false NOT NULL,
@@ -20,26 +20,4 @@ CREATE INDEX IF NOT EXISTS "cover_letter_user_id_idx" ON "cover_letter" ("user_i
 CREATE INDEX IF NOT EXISTS "cover_letter_user_id_updated_at_idx" ON "cover_letter" ("user_id", "updated_at" DESC);
 CREATE INDEX IF NOT EXISTS "cover_letter_public_slug_user_idx" ON "cover_letter" ("is_public", "slug", "user_id");
 
--- Enable RLS
-ALTER TABLE "cover_letter" ENABLE ROW LEVEL SECURITY;
-
--- Create RLS policies
-CREATE POLICY "Users can view their own cover letters"
-	ON "cover_letter"
-	FOR SELECT
-	USING (auth.uid() = user_id OR is_public = true);
-
-CREATE POLICY "Users can insert their own cover letters"
-	ON "cover_letter"
-	FOR INSERT
-	WITH CHECK (auth.uid() = user_id);
-
-CREATE POLICY "Users can update their own cover letters"
-	ON "cover_letter"
-	FOR UPDATE
-	USING (auth.uid() = user_id);
-
-CREATE POLICY "Users can delete their own cover letters"
-	ON "cover_letter"
-	FOR DELETE
-	USING (auth.uid() = user_id);
+-- Note: RLS policies for this table are defined in enable_rls_cover_letter_ai_provider.sql

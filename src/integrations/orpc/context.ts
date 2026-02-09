@@ -14,30 +14,81 @@ interface ORPCContext {
 
 async function getUserFromHeaders(headers: Headers): Promise<User | null> {
 	try {
-		// Get the authorization header
+		// First try Bearer token authentication
 		const authHeader = headers.get("authorization");
-		if (!authHeader || !authHeader.startsWith("Bearer ")) {
+		if (authHeader?.startsWith("Bearer ")) {
+			const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+			// Verify the JWT token with Supabase
+			const {
+				data: { user: supabaseUser },
+				error,
+			} = await supabase.auth.getUser(token);
+
+			if (!error && supabaseUser) {
+				// Get the user from our database
+				const [userResult] = await db.select().from(user).where(eq(user.id, supabaseUser.id)).limit(1);
+				if (userResult) return userResult;
+			}
+		}
+
+		// Fallback to cookie-based authentication
+		const cookieHeader = headers.get("cookie");
+		if (!cookieHeader) return null;
+
+		// Parse cookies to find the auth token
+		const cookies = cookieHeader.split(';').reduce((acc, cookie) => {
+			const [key, value] = cookie.trim().split('=');
+			if (key && value) {
+				acc[key] = decodeURIComponent(value);
+			}
+			return acc;
+		}, {} as Record<string, string>);
+
+		const authToken = cookies['cvcraft_auth_token'];
+		if (!authToken) return null;
+
+		// Query session from database using the token
+		const { data: sessionData, error } = await supabase
+			.from("session")
+			.select(`
+				*,
+				user:user_id (
+					id,
+					name,
+					email,
+					username,
+					display_username,
+					email_verified,
+					image,
+					two_factor_enabled,
+					created_at,
+					updated_at
+				)
+			`)
+			.eq("token", authToken)
+			.gte("expires_at", new Date().toISOString())
+			.single();
+
+		if (error || !sessionData || !sessionData.user) {
 			return null;
 		}
 
-		const token = authHeader.substring(7); // Remove 'Bearer ' prefix
-
-		// Verify the JWT token with Supabase
-		const {
-			data: { user: supabaseUser },
-			error,
-		} = await supabase.auth.getUser(token);
-
-		if (error || !supabaseUser) {
-			return null;
-		}
-
-		// Get the user from our database
-		const [userResult] = await db.select().from(user).where(eq(user.id, supabaseUser.id)).limit(1);
-		if (!userResult) return null;
-
-		return userResult;
-	} catch {
+		// Return the user data
+		return {
+			id: sessionData.user.id,
+			name: sessionData.user.name,
+			email: sessionData.user.email,
+			username: sessionData.user.username,
+			displayUsername: sessionData.user.display_username,
+			emailVerified: sessionData.user.email_verified,
+			image: sessionData.user.image,
+			twoFactorEnabled: sessionData.user.two_factor_enabled,
+			createdAt: new Date(sessionData.user.created_at),
+			updatedAt: new Date(sessionData.user.updated_at),
+		} as User;
+	} catch (error) {
+		console.error("Authentication error:", error);
 		return null;
 	}
 }

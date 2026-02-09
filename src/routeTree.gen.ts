@@ -28,9 +28,11 @@ import { Route as AuthForgotPasswordRouteImport } from "./routes/auth/forgot-pas
 import { Route as ApiSimpleAuthRouteImport } from "./routes/api/simple-auth";
 import { Route as ApiHealthRouteImport } from "./routes/api/health";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
+import { Route as CoverLetterIdRouteRouteImport } from "./routes/cover-letter/$id/route";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardCoverLettersIndexRouteImport } from "./routes/dashboard/cover-letters/index";
+import { Route as CoverLetterIdIndexRouteImport } from "./routes/cover-letter/$id/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
@@ -39,6 +41,7 @@ import { Route as DashboardSettingsIntegrationsRouteImport } from "./routes/dash
 import { Route as DashboardSettingsDangerZoneRouteImport } from "./routes/dashboard/settings/danger-zone";
 import { Route as DashboardSettingsApiKeysRouteImport } from "./routes/dashboard/settings/api-keys";
 import { Route as DashboardSettingsAiRouteImport } from "./routes/dashboard/settings/ai";
+import { Route as DashboardCoverLettersListRouteImport } from "./routes/dashboard/cover-letters/list";
 import { Route as ApiRpcSplatRouteImport } from "./routes/api/rpc.$";
 import { Route as ApiOpenapiSplatRouteImport } from "./routes/api/openapi.$";
 import { Route as ApiAuthSplatRouteImport } from "./routes/api/auth.$";
@@ -138,6 +141,11 @@ const UsernameSlugRoute = UsernameSlugRouteImport.update({
   path: "/$username/$slug",
   getParentRoute: () => rootRouteImport,
 } as any);
+const CoverLetterIdRouteRoute = CoverLetterIdRouteRouteImport.update({
+  id: "/cover-letter/$id",
+  path: "/cover-letter/$id",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const BuilderResumeIdRouteRoute = BuilderResumeIdRouteRouteImport.update({
   id: "/builder/$resumeId",
   path: "/builder/$resumeId",
@@ -154,6 +162,11 @@ const DashboardCoverLettersIndexRoute =
     path: "/cover-letters/",
     getParentRoute: () => DashboardRouteRoute,
   } as any);
+const CoverLetterIdIndexRoute = CoverLetterIdIndexRouteImport.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => CoverLetterIdRouteRoute,
+} as any);
 const BuilderResumeIdIndexRoute = BuilderResumeIdIndexRouteImport.update({
   id: "/",
   path: "/",
@@ -199,6 +212,12 @@ const DashboardSettingsAiRoute = DashboardSettingsAiRouteImport.update({
   path: "/settings/ai",
   getParentRoute: () => DashboardRouteRoute,
 } as any);
+const DashboardCoverLettersListRoute =
+  DashboardCoverLettersListRouteImport.update({
+    id: "/cover-letters/list",
+    path: "/cover-letters/list",
+    getParentRoute: () => DashboardRouteRoute,
+  } as any);
 const ApiRpcSplatRoute = ApiRpcSplatRouteImport.update({
   id: "/api/rpc/$",
   path: "/api/rpc/$",
@@ -227,6 +246,7 @@ export interface FileRoutesByFullPath {
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
+  "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/api/health": typeof ApiHealthRoute;
   "/api/simple-auth": typeof ApiSimpleAuthRoute;
@@ -244,6 +264,7 @@ export interface FileRoutesByFullPath {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/dashboard/cover-letters/list": typeof DashboardCoverLettersListRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
@@ -252,6 +273,7 @@ export interface FileRoutesByFullPath {
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
+  "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -276,6 +298,7 @@ export interface FileRoutesByTo {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/dashboard/cover-letters/list": typeof DashboardCoverLettersListRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
@@ -284,6 +307,7 @@ export interface FileRoutesByTo {
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
+  "/cover-letter/$id": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -295,6 +319,7 @@ export interface FileRoutesById {
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
+  "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/api/health": typeof ApiHealthRoute;
   "/api/simple-auth": typeof ApiSimpleAuthRoute;
@@ -313,6 +338,7 @@ export interface FileRoutesById {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/dashboard/cover-letters/list": typeof DashboardCoverLettersListRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
@@ -321,6 +347,7 @@ export interface FileRoutesById {
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
+  "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -333,6 +360,7 @@ export interface FileRouteTypes {
     | "/dashboard"
     | "/schema.json"
     | "/builder/$resumeId"
+    | "/cover-letter/$id"
     | "/$username/$slug"
     | "/api/health"
     | "/api/simple-auth"
@@ -350,6 +378,7 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/dashboard/cover-letters/list"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
@@ -358,6 +387,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
+    | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
     | "/dashboard/resumes/"
     | "/dashboard/settings/authentication/";
@@ -382,6 +412,7 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/dashboard/cover-letters/list"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
@@ -390,6 +421,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
     | "/builder/$resumeId"
+    | "/cover-letter/$id"
     | "/dashboard/cover-letters"
     | "/dashboard/resumes"
     | "/dashboard/settings/authentication";
@@ -400,6 +432,7 @@ export interface FileRouteTypes {
     | "/dashboard"
     | "/schema.json"
     | "/builder/$resumeId"
+    | "/cover-letter/$id"
     | "/$username/$slug"
     | "/api/health"
     | "/api/simple-auth"
@@ -418,6 +451,7 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/dashboard/cover-letters/list"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
     | "/dashboard/settings/danger-zone"
@@ -426,6 +460,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
+    | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
     | "/dashboard/resumes/"
     | "/dashboard/settings/authentication/";
@@ -437,6 +472,7 @@ export interface RootRouteChildren {
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
   SchemaDotjsonRoute: typeof SchemaDotjsonRoute;
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
+  CoverLetterIdRouteRoute: typeof CoverLetterIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
   ApiHealthRoute: typeof ApiHealthRoute;
   ApiSimpleAuthRoute: typeof ApiSimpleAuthRoute;
@@ -582,6 +618,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof UsernameSlugRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    "/cover-letter/$id": {
+      id: "/cover-letter/$id";
+      path: "/cover-letter/$id";
+      fullPath: "/cover-letter/$id";
+      preLoaderRoute: typeof CoverLetterIdRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/builder/$resumeId": {
       id: "/builder/$resumeId";
       path: "/builder/$resumeId";
@@ -602,6 +645,13 @@ declare module "@tanstack/react-router" {
       fullPath: "/dashboard/cover-letters/";
       preLoaderRoute: typeof DashboardCoverLettersIndexRouteImport;
       parentRoute: typeof DashboardRouteRoute;
+    };
+    "/cover-letter/$id/": {
+      id: "/cover-letter/$id/";
+      path: "/";
+      fullPath: "/cover-letter/$id/";
+      preLoaderRoute: typeof CoverLetterIdIndexRouteImport;
+      parentRoute: typeof CoverLetterIdRouteRoute;
     };
     "/builder/$resumeId/": {
       id: "/builder/$resumeId/";
@@ -657,6 +707,13 @@ declare module "@tanstack/react-router" {
       path: "/settings/ai";
       fullPath: "/dashboard/settings/ai";
       preLoaderRoute: typeof DashboardSettingsAiRouteImport;
+      parentRoute: typeof DashboardRouteRoute;
+    };
+    "/dashboard/cover-letters/list": {
+      id: "/dashboard/cover-letters/list";
+      path: "/cover-letters/list";
+      fullPath: "/dashboard/cover-letters/list";
+      preLoaderRoute: typeof DashboardCoverLettersListRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
     "/api/rpc/$": {
@@ -731,6 +788,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 interface DashboardRouteRouteChildren {
   DashboardHistoryRoute: typeof DashboardHistoryRoute;
   DashboardIndexRoute: typeof DashboardIndexRoute;
+  DashboardCoverLettersListRoute: typeof DashboardCoverLettersListRoute;
   DashboardSettingsAiRoute: typeof DashboardSettingsAiRoute;
   DashboardSettingsApiKeysRoute: typeof DashboardSettingsApiKeysRoute;
   DashboardSettingsDangerZoneRoute: typeof DashboardSettingsDangerZoneRoute;
@@ -745,6 +803,7 @@ interface DashboardRouteRouteChildren {
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardHistoryRoute: DashboardHistoryRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardCoverLettersListRoute: DashboardCoverLettersListRoute,
   DashboardSettingsAiRoute: DashboardSettingsAiRoute,
   DashboardSettingsApiKeysRoute: DashboardSettingsApiKeysRoute,
   DashboardSettingsDangerZoneRoute: DashboardSettingsDangerZoneRoute,
@@ -772,12 +831,24 @@ const BuilderResumeIdRouteRouteChildren: BuilderResumeIdRouteRouteChildren = {
 const BuilderResumeIdRouteRouteWithChildren =
   BuilderResumeIdRouteRoute._addFileChildren(BuilderResumeIdRouteRouteChildren);
 
+interface CoverLetterIdRouteRouteChildren {
+  CoverLetterIdIndexRoute: typeof CoverLetterIdIndexRoute;
+}
+
+const CoverLetterIdRouteRouteChildren: CoverLetterIdRouteRouteChildren = {
+  CoverLetterIdIndexRoute: CoverLetterIdIndexRoute,
+};
+
+const CoverLetterIdRouteRouteWithChildren =
+  CoverLetterIdRouteRoute._addFileChildren(CoverLetterIdRouteRouteChildren);
+
 const rootRouteChildren: RootRouteChildren = {
   HomeRouteRoute: HomeRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SchemaDotjsonRoute: SchemaDotjsonRoute,
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
+  CoverLetterIdRouteRoute: CoverLetterIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiSimpleAuthRoute: ApiSimpleAuthRoute,

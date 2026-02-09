@@ -37,6 +37,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function CreateResumeDialog(_: DialogProps<"resume.create">) {
+	const navigate = useNavigate();
 	const closeDialog = useDialogStore((state) => state.closeDialog);
 
 	const { mutate: createResume, isPending } = useMutation(orpc.resume.create.mutationOptions());
@@ -63,9 +64,12 @@ export function CreateResumeDialog(_: DialogProps<"resume.create">) {
 		const toastId = toast.loading(t`Creating your resume...`);
 
 		createResume(data, {
-			onSuccess: () => {
+			onSuccess: (resumeId) => {
 				toast.success(t`Your resume has been created successfully.`, { id: toastId });
 				closeDialog();
+				
+				// Navigate to the resume builder
+				navigate({ to: "/builder/$resumeId", params: { resumeId } });
 			},
 			onError: (error) => {
 				if (error.message === "RESUME_SLUG_ALREADY_EXISTS") {
@@ -92,9 +96,12 @@ export function CreateResumeDialog(_: DialogProps<"resume.create">) {
 		const toastId = toast.loading(t`Creating your resume...`);
 
 		createResume(data, {
-			onSuccess: () => {
+			onSuccess: (resumeId) => {
 				toast.success(t`Your resume has been created successfully.`, { id: toastId });
 				closeDialog();
+				
+				// Navigate to the resume builder
+				navigate({ to: "/builder/$resumeId", params: { resumeId } });
 			},
 			onError: (error) => {
 				toast.error(error.message, { id: toastId });

@@ -1,18 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { PlusIcon } from "@phosphor-icons/react";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from "@/components/ui/dialog";
+import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import type { DialogProps } from "@/dialogs/store";
@@ -37,24 +33,30 @@ export function CreateCoverLetterDialog({ data }: DialogProps<"cover-letter.crea
 		},
 	});
 
-	const { mutateAsync, isPending } = orpc.coverLetter.create.useMutation();
+	const { mutate: createCoverLetter, isPending } = useMutation(orpc.coverLetter.create.mutationOptions());
 
-	const onSubmit = async (formData: FormValues) => {
-		try {
-			const coverLetter = await mutateAsync({
+	const onSubmit = (formData: FormValues) => {
+		const toastId = toast.loading(t`Creating your cover letter...`);
+
+		createCoverLetter(
+			{
 				title: formData.title,
 				content: "",
-			});
+			},
+			{
+				onSuccess: (coverLetter) => {
+					toast.success(t`Your cover letter has been created successfully.`, { id: toastId });
+					closeDialog();
 
-			toast.success("Cover letter created successfully");
-			closeDialog();
-
-			// Navigate to the cover letter editor
-			navigate({ to: "/cover-letter/$id", params: { id: coverLetter.id } });
-		} catch (error) {
-			toast.error("Failed to create cover letter");
-			console.error(error);
-		}
+					// Navigate to the cover letter editor
+					navigate({ to: "/cover-letter/$id", params: { id: coverLetter.id } });
+				},
+				onError: (error) => {
+					toast.error(t`Failed to create cover letter`, { id: toastId });
+					console.error(error);
+				},
+			},
+		);
 	};
 
 	const { blockEvents, requestClose } = useFormBlocker(form);

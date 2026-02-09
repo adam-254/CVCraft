@@ -1,94 +1,87 @@
 import { and, desc, eq } from "drizzle-orm";
+import { db } from "@/integrations/drizzle/client";
 import { coverLetter } from "@/integrations/drizzle/schema";
 import { slugify } from "@/utils/string";
 
-export const create = async (
-	input: { title: string; recipient?: string; content: string; tags?: string[] },
-	context: { db: any; user: { id: string } },
-) => {
-	const slug = slugify(input.title);
-
-	const [newCoverLetter] = await context.db
-		.insert(coverLetter)
-		.values({
-			title: input.title,
-			slug,
-			recipient: input.recipient || "",
-			content: input.content,
-			tags: input.tags || [],
-			userId: context.user.id,
-		})
-		.returning();
-
-	return newCoverLetter;
-};
-
-export const findAll = async (context: { db: any; user: { id: string } }) => {
-	return await context.db
-		.select()
-		.from(coverLetter)
-		.where(eq(coverLetter.userId, context.user.id))
-		.orderBy(desc(coverLetter.updatedAt));
-};
-
-export const findOne = async (input: { id: string }, context: { db: any; user: { id: string } }) => {
-	const [result] = await context.db
-		.select()
-		.from(coverLetter)
-		.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, context.user.id)))
-		.limit(1);
-
-	if (!result) {
-		throw new Error("Cover letter not found");
-	}
-
-	return result;
-};
-
-export const update = async (
-	input: { id: string; title?: string; recipient?: string; content?: string; tags?: string[] },
-	context: { db: any; user: { id: string } },
-) => {
-	const updateData: any = {};
-
-	if (input.title !== undefined) {
-		updateData.title = input.title;
-		updateData.slug = slugify(input.title);
-	}
-	if (input.recipient !== undefined) updateData.recipient = input.recipient;
-	if (input.content !== undefined) updateData.content = input.content;
-	if (input.tags !== undefined) updateData.tags = input.tags;
-
-	const [updated] = await context.db
-		.update(coverLetter)
-		.set(updateData)
-		.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, context.user.id)))
-		.returning();
-
-	if (!updated) {
-		throw new Error("Cover letter not found");
-	}
-
-	return updated;
-};
-
-export const remove = async (input: { id: string }, context: { db: any; user: { id: string } }) => {
-	const [deleted] = await context.db
-		.delete(coverLetter)
-		.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, context.user.id)))
-		.returning();
-
-	if (!deleted) {
-		throw new Error("Cover letter not found");
-	}
-
-	return { success: true };
-};
-
 export const coverLetterService = {
-	create,
-	findAll,
-	findOne,
-	update,
-	remove,
+	create: async (input: { userId: string; title: string; recipient?: string; content?: string; tags?: string[] }) => {
+		const slug = slugify(input.title);
+
+		const [newCoverLetter] = await db
+			.insert(coverLetter)
+			.values({
+				title: input.title,
+				slug,
+				recipient: input.recipient || "",
+				content: input.content || "",
+				tags: input.tags || [],
+				userId: input.userId,
+			})
+			.returning();
+
+		return newCoverLetter;
+	},
+
+	findAll: async (input: { userId: string }) => {
+		return await db
+			.select()
+			.from(coverLetter)
+			.where(eq(coverLetter.userId, input.userId))
+			.orderBy(desc(coverLetter.updatedAt));
+	},
+
+	findOne: async (input: { id: string; userId: string }) => {
+		const [result] = await db
+			.select()
+			.from(coverLetter)
+			.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, input.userId)))
+			.limit(1);
+
+		if (!result) {
+			throw new Error("Cover letter not found");
+		}
+
+		return result;
+	},
+
+	update: async (input: { id: string; userId: string; title?: string; recipient?: string; content?: string; tags?: string[] }) => {
+		const updateData: Partial<{
+			title: string;
+			slug: string;
+			recipient: string;
+			content: string;
+			tags: string[];
+		}> = {};
+
+		if (input.title !== undefined) {
+			updateData.title = input.title;
+			updateData.slug = slugify(input.title);
+		}
+		if (input.recipient !== undefined) updateData.recipient = input.recipient;
+		if (input.content !== undefined) updateData.content = input.content;
+		if (input.tags !== undefined) updateData.tags = input.tags;
+
+		const [updated] = await db
+			.update(coverLetter)
+			.set(updateData)
+			.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, input.userId)))
+			.returning();
+
+		if (!updated) {
+			throw new Error("Cover letter not found");
+		}
+
+		return updated;
+	},
+
+	remove: async (input: { id: string; userId: string }) => {
+		const [deleted] = await db
+			.delete(coverLetter)
+			.where(and(eq(coverLetter.id, input.id), eq(coverLetter.userId, input.userId)))
+			.returning();
+
+		if (!deleted) {
+			throw new Error("Cover letter not found");
+		}
+	},
 };

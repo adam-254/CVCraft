@@ -79,7 +79,7 @@ function RouteComponent() {
 
 						<p className="text-muted-foreground leading-relaxed">
 							<Trans>
-								Explore the API documentation to learn how to integrate Reactive Resume with your applications. Find
+								Explore the API documentation to learn how to integrate CVCraft with your applications. Find
 								detailed endpoints, request examples, and authentication methods.
 							</Trans>
 						</p>

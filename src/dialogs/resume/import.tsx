@@ -213,8 +213,8 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 
 				<DialogDescription className="text-base">
 					<Trans>
-						Continue where you left off by importing an existing resume you created using Reactive Resume or any another
-						resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume.
+						Continue where you left off by importing an existing resume you created using CVCraft or any another
+						resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from CVCraft.
 					</Trans>
 				</DialogDescription>
 			</DialogHeader>
