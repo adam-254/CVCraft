@@ -16,3 +16,6 @@ public/sw.js
 scripts/**/*.json
 public/workbox-*.js
 .vercel
+
+# Local database files
+pglite-data/
