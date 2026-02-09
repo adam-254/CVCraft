@@ -38,6 +38,14 @@ export function ShortcutsDialog() {
 			],
 		},
 		{
+			category: t`Pages`,
+			items: [
+				{ keys: ["⌘", "←"], description: t`Previous page` },
+				{ keys: ["⌘", "→"], description: t`Next page` },
+				{ keys: ["⌘", "⇧", "N"], description: t`Add new page` },
+			],
+		},
+		{
 			category: t`View`,
 			items: [
 				{ keys: ["⌘", "+"], description: t`Zoom in` },

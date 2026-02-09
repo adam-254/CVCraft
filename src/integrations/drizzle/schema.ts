@@ -249,6 +249,7 @@ export const coverLetter = pg.pgTable(
 		slug: pg.text("slug").notNull(),
 		recipient: pg.text("recipient"),
 		content: pg.text("content").notNull().default(""),
+		pages: pg.jsonb("pages").notNull().default([{ id: "1", content: "" }]),
 		tags: pg.text("tags").array().notNull().default([]),
 		isPublic: pg.boolean("is_public").notNull().default(false),
 		isLocked: pg.boolean("is_locked").notNull().default(false),

@@ -7,6 +7,7 @@ type CoverLetterUpdateInput = {
 	title?: string;
 	recipient?: string;
 	content?: string;
+	pages?: Array<{ id: string; content: string }>;
 	tags?: string[];
 	senderName?: string;
 	senderAddress?: string;
@@ -26,6 +27,7 @@ const mapCoverLetterFromDb = (data: any) => ({
 	slug: data.slug,
 	recipient: data.recipient ?? null,
 	content: data.content ?? "",
+	pages: data.pages ?? [{ id: "1", content: "" }],
 	tags: data.tags ?? [],
 	isPublic: data.is_public ?? false,
 	isLocked: data.is_locked ?? false,
@@ -123,6 +125,7 @@ export const coverLetterDirectService = {
 		}
 		if (input.recipient !== undefined) updateData.recipient = input.recipient;
 		if (input.content !== undefined) updateData.content = input.content;
+		if (input.pages !== undefined) updateData.pages = input.pages;
 		if (input.tags !== undefined) updateData.tags = input.tags;
 		if (input.senderName !== undefined) updateData.sender_name = input.senderName;
 		if (input.senderAddress !== undefined) updateData.sender_address = input.senderAddress;

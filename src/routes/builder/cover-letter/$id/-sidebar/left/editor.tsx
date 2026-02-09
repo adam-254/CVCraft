@@ -9,14 +9,16 @@ import { useCoverLetterBuilderStore } from "../../-store/cover-letter";
 
 export function CoverLetterEditor() {
 	const coverLetter = useCoverLetterBuilderStore((state) => state.coverLetter);
-	const updateCoverLetter = useCoverLetterBuilderStore((state) => state.updateCoverLetter);
+	const currentPageIndex = useCoverLetterBuilderStore((state) => state.currentPageIndex);
+	const updatePageContent = useCoverLetterBuilderStore((state) => state.updatePageContent);
 
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+	const pages = coverLetter?.pages || [{ id: "1", content: "" }];
+	const currentPage = pages[currentPageIndex] || pages[0];
+
 	const handleContentChange = (value: string) => {
-		updateCoverLetter((draft) => {
-			draft.content = value;
-		});
+		updatePageContent(currentPageIndex, value);
 	};
 
 	const insertFormatting = useCallback(
@@ -52,7 +54,7 @@ export function CoverLetterEditor() {
 	const formatUnderline = () => insertFormatting("__");
 
 	const insertTemplate = (template: string) => {
-		const currentContent = coverLetter.content;
+		const currentContent = currentPage.content;
 		const newContent = currentContent ? `${currentContent}\n\n${template}` : template;
 		handleContentChange(newContent);
 	};
@@ -74,6 +76,13 @@ export function CoverLetterEditor() {
 
 	return (
 		<div className="space-y-4">
+			{/* Page Indicator */}
+			<div className="rounded-lg bg-blue-50 px-3 py-2 text-center">
+				<p className="font-medium text-blue-900 text-sm">
+					<Trans>Editing Page {currentPageIndex + 1} of {pages.length}</Trans>
+				</p>
+			</div>
+
 			<div className="flex items-center justify-between">
 				<Label htmlFor="content">
 					<Trans>Content</Trans>
@@ -115,10 +124,10 @@ export function CoverLetterEditor() {
 			<Textarea
 				ref={textareaRef}
 				id="content"
-				value={coverLetter.content}
+				value={currentPage.content}
 				onChange={(e) => handleContentChange(e.target.value)}
 				placeholder={t`Write your cover letter content here...`}
-				className="min-h-[400px] resize-none border-gray-300 bg-white text-black focus:border-blue-500 focus:ring-blue-500"
+				className="min-h-[400px] resize-none border-gray-300 bg-white text-black placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
 			/>
 
 			<div className="space-y-2">
