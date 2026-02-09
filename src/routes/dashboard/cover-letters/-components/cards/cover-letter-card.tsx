@@ -18,7 +18,7 @@ export function CoverLetterCard({ coverLetter }: CoverLetterCardProps) {
 	}, [i18n.locale, coverLetter.updatedAt]);
 
 	return (
-		<Link to="/cover-letter/$id" params={{ id: coverLetter.id }} className="cursor-default">
+		<Link to="/builder/$coverletterId" params={{ coverletterId: coverLetter.id }} className="cursor-default">
 			<BaseCard title={coverLetter.title} description={t`Last updated on ${updatedAt}`} tags={coverLetter.tags}>
 				<CoverLetterPreview coverLetter={coverLetter} />
 			</BaseCard>
