@@ -30,10 +30,12 @@ import { Route as ApiHealthRouteImport } from "./routes/api/health";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as CoverLetterIdRouteRouteImport } from "./routes/cover-letter/$id/route";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
+import { Route as BuilderCoverletterIdRouteRouteImport } from "./routes/builder/$coverletterId/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardCoverLettersIndexRouteImport } from "./routes/dashboard/cover-letters/index";
 import { Route as CoverLetterIdIndexRouteImport } from "./routes/cover-letter/$id/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
+import { Route as BuilderCoverletterIdIndexRouteImport } from "./routes/builder/$coverletterId/index";
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
 import { Route as DashboardSettingsPreferencesRouteImport } from "./routes/dashboard/settings/preferences";
@@ -151,6 +153,12 @@ const BuilderResumeIdRouteRoute = BuilderResumeIdRouteRouteImport.update({
   path: "/builder/$resumeId",
   getParentRoute: () => rootRouteImport,
 } as any);
+const BuilderCoverletterIdRouteRoute =
+  BuilderCoverletterIdRouteRouteImport.update({
+    id: "/builder/$coverletterId",
+    path: "/builder/$coverletterId",
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const DashboardResumesIndexRoute = DashboardResumesIndexRouteImport.update({
   id: "/resumes/",
   path: "/resumes/",
@@ -172,6 +180,12 @@ const BuilderResumeIdIndexRoute = BuilderResumeIdIndexRouteImport.update({
   path: "/",
   getParentRoute: () => BuilderResumeIdRouteRoute,
 } as any);
+const BuilderCoverletterIdIndexRoute =
+  BuilderCoverletterIdIndexRouteImport.update({
+    id: "/",
+    path: "/",
+    getParentRoute: () => BuilderCoverletterIdRouteRoute,
+  } as any);
 const UploadsUserIdSplatRoute = UploadsUserIdSplatRouteImport.update({
   id: "/uploads/$userId/$",
   path: "/uploads/$userId/$",
@@ -245,6 +259,7 @@ export interface FileRoutesByFullPath {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
+  "/builder/$coverletterId": typeof BuilderCoverletterIdRouteRouteWithChildren;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
@@ -272,6 +287,7 @@ export interface FileRoutesByFullPath {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
+  "/builder/$coverletterId/": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
@@ -306,6 +322,7 @@ export interface FileRoutesByTo {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
+  "/builder/$coverletterId": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters": typeof DashboardCoverLettersIndexRoute;
@@ -318,6 +335,7 @@ export interface FileRoutesById {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
+  "/builder/$coverletterId": typeof BuilderCoverletterIdRouteRouteWithChildren;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/cover-letter/$id": typeof CoverLetterIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
@@ -346,6 +364,7 @@ export interface FileRoutesById {
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
+  "/builder/$coverletterId/": typeof BuilderCoverletterIdIndexRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
   "/dashboard/cover-letters/": typeof DashboardCoverLettersIndexRoute;
@@ -359,6 +378,7 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
+    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/$username/$slug"
@@ -386,6 +406,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
+    | "/builder/$coverletterId/"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
@@ -420,6 +441,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
+    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/dashboard/cover-letters"
@@ -431,6 +453,7 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
+    | "/builder/$coverletterId"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
     | "/$username/$slug"
@@ -459,6 +482,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
     | "/uploads/$userId/$"
+    | "/builder/$coverletterId/"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
     | "/dashboard/cover-letters/"
@@ -471,6 +495,7 @@ export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
   SchemaDotjsonRoute: typeof SchemaDotjsonRoute;
+  BuilderCoverletterIdRouteRoute: typeof BuilderCoverletterIdRouteRouteWithChildren;
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
   CoverLetterIdRouteRoute: typeof CoverLetterIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
@@ -632,6 +657,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof BuilderResumeIdRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    "/builder/$coverletterId": {
+      id: "/builder/$coverletterId";
+      path: "/builder/$coverletterId";
+      fullPath: "/builder/$coverletterId";
+      preLoaderRoute: typeof BuilderCoverletterIdRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/dashboard/resumes/": {
       id: "/dashboard/resumes/";
       path: "/resumes";
@@ -659,6 +691,13 @@ declare module "@tanstack/react-router" {
       fullPath: "/builder/$resumeId/";
       preLoaderRoute: typeof BuilderResumeIdIndexRouteImport;
       parentRoute: typeof BuilderResumeIdRouteRoute;
+    };
+    "/builder/$coverletterId/": {
+      id: "/builder/$coverletterId/";
+      path: "/";
+      fullPath: "/builder/$coverletterId/";
+      preLoaderRoute: typeof BuilderCoverletterIdIndexRouteImport;
+      parentRoute: typeof BuilderCoverletterIdRouteRoute;
     };
     "/uploads/$userId/$": {
       id: "/uploads/$userId/$";
@@ -820,6 +859,20 @@ const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
   DashboardRouteRouteChildren,
 );
 
+interface BuilderCoverletterIdRouteRouteChildren {
+  BuilderCoverletterIdIndexRoute: typeof BuilderCoverletterIdIndexRoute;
+}
+
+const BuilderCoverletterIdRouteRouteChildren: BuilderCoverletterIdRouteRouteChildren =
+  {
+    BuilderCoverletterIdIndexRoute: BuilderCoverletterIdIndexRoute,
+  };
+
+const BuilderCoverletterIdRouteRouteWithChildren =
+  BuilderCoverletterIdRouteRoute._addFileChildren(
+    BuilderCoverletterIdRouteRouteChildren,
+  );
+
 interface BuilderResumeIdRouteRouteChildren {
   BuilderResumeIdIndexRoute: typeof BuilderResumeIdIndexRoute;
 }
@@ -847,6 +900,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SchemaDotjsonRoute: SchemaDotjsonRoute,
+  BuilderCoverletterIdRouteRoute: BuilderCoverletterIdRouteRouteWithChildren,
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
   CoverLetterIdRouteRoute: CoverLetterIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,

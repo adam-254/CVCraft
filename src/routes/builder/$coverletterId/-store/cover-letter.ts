@@ -16,11 +16,13 @@ type CoverLetter = RouterOutput["coverLetter"]["getById"];
 type CoverLetterBuilderState = {
 	coverLetter: CoverLetter;
 	isReady: boolean;
+	selectedTemplate: string;
 };
 
 type CoverLetterBuilderActions = {
 	initialize: (coverLetter: CoverLetter | null) => void;
 	updateCoverLetter: (fn: (draft: WritableDraft<CoverLetter>) => void) => void;
+	setSelectedTemplate: (template: string) => void;
 };
 
 type CoverLetterBuilderStore = CoverLetterBuilderState & CoverLetterBuilderActions;
@@ -42,19 +44,26 @@ const syncCoverLetter = debounce(_syncCoverLetter, 500, { signal });
 
 let errorToastId: string | number | undefined;
 
-type PartializedState = { coverLetter: CoverLetter | null };
+type PartializedState = { coverLetter: CoverLetter | null; selectedTemplate: string };
 
 export const useCoverLetterBuilderStore = create<CoverLetterBuilderStore>()(
 	temporal(
 		immer((set) => ({
 			coverLetter: null as unknown as CoverLetter,
 			isReady: false,
+			selectedTemplate: "professional",
 
 			initialize: (coverLetter) => {
 				set((state) => {
 					state.coverLetter = coverLetter as CoverLetter;
 					state.isReady = coverLetter !== null;
 					useCoverLetterBuilderStore.temporal.getState().clear();
+				});
+			},
+
+			setSelectedTemplate: (template) => {
+				set((state) => {
+					state.selectedTemplate = template;
 				});
 			},
 
@@ -73,7 +82,7 @@ export const useCoverLetterBuilderStore = create<CoverLetterBuilderStore>()(
 			},
 		})),
 		{
-			partialize: (state) => ({ coverLetter: state.coverLetter }),
+			partialize: (state) => ({ coverLetter: state.coverLetter, selectedTemplate: state.selectedTemplate }),
 			equality: (pastState, currentState) => isDeepEqual(pastState, currentState),
 			limit: 100,
 		},
