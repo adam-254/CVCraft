@@ -1,7 +1,5 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-// Fixed: Using correct Phosphor Icons names
-import { TextBolderIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
 import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -81,7 +79,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatBold}>
-								<TextBolderIcon className="size-4" />
+								<strong className="text-xs">B</strong>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
@@ -91,7 +89,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatItalic}>
-								<TextItalicIcon className="size-4" />
+								<em className="text-xs">I</em>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
@@ -101,7 +99,7 @@ export function CoverLetterEditor() {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Button variant="ghost" size="sm" onClick={formatUnderline}>
-								<TextUnderlineIcon className="size-4" />
+								<u className="text-xs">U</u>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
