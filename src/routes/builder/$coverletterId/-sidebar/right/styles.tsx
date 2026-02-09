@@ -1,7 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 
 export function CoverLetterStyles() {
@@ -31,18 +30,16 @@ export function CoverLetterStyles() {
 				<Label>
 					<Trans>Font Family</Trans>
 				</Label>
-				<Select defaultValue="inter">
-					<SelectTrigger>
-						<SelectValue />
-					</SelectTrigger>
-					<SelectContent>
-						{fontFamilies.map((font) => (
-							<SelectItem key={font.value} value={font.value}>
-								{font.label}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
+				<select
+					className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+					defaultValue="inter"
+				>
+					{fontFamilies.map((font) => (
+						<option key={font.value} value={font.value}>
+							{font.label}
+						</option>
+					))}
+				</select>
 			</div>
 
 			<div className="space-y-2">
