@@ -59,6 +59,7 @@ export function CoverLetterMetadata() {
 					value={coverLetter.title}
 					onChange={(e) => handleTitleChange(e.target.value)}
 					placeholder={t`Cover Letter Title`}
+					className="border-gray-300 bg-white text-black focus:border-blue-500 focus:ring-blue-500"
 				/>
 			</div>
 
@@ -71,6 +72,7 @@ export function CoverLetterMetadata() {
 					value={coverLetter.recipient || ""}
 					onChange={(e) => handleRecipientChange(e.target.value)}
 					placeholder={t`Hiring Manager, John Doe, etc.`}
+					className="border-gray-300 bg-white text-black focus:border-blue-500 focus:ring-blue-500"
 				/>
 			</div>
 
@@ -100,7 +102,7 @@ export function CoverLetterMetadata() {
 						onChange={(e) => setNewTag(e.target.value)}
 						onKeyPress={handleKeyPress}
 						placeholder={t`Add tag...`}
-						className="flex-1"
+						className="flex-1 border-gray-300 bg-white text-black focus:border-blue-500 focus:ring-blue-500"
 					/>
 					<Button onClick={handleAddTag} disabled={!newTag.trim()}>
 						<Trans>Add</Trans>

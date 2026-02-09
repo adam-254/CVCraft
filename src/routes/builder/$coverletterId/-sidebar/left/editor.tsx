@@ -19,30 +19,33 @@ export function CoverLetterEditor() {
 		});
 	};
 
-	const insertFormatting = useCallback((prefix: string, suffix: string = prefix) => {
-		if (!textareaRef.current) return;
+	const insertFormatting = useCallback(
+		(prefix: string, suffix: string = prefix) => {
+			if (!textareaRef.current) return;
 
-		const textarea = textareaRef.current;
-		const start = textarea.selectionStart;
-		const end = textarea.selectionEnd;
-		const selectedText = textarea.value.substring(start, end);
-		
-		const newText = 
-			textarea.value.substring(0, start) +
-			prefix + selectedText + suffix +
-			textarea.value.substring(end);
+			const textarea = textareaRef.current;
+			const start = textarea.selectionStart;
+			const end = textarea.selectionEnd;
+			const selectedText = textarea.value.substring(start, end);
 
-		handleContentChange(newText);
+			const newText =
+				textarea.value.substring(0, start) + prefix + selectedText + suffix + textarea.value.substring(end);
 
-		// Restore cursor position
-		setTimeout(() => {
-			if (textareaRef.current) {
-				const newCursorPos = selectedText ? start + prefix.length + selectedText.length + suffix.length : start + prefix.length;
-				textareaRef.current.setSelectionRange(newCursorPos, newCursorPos);
-				textareaRef.current.focus();
-			}
-		}, 0);
-	}, [handleContentChange]);
+			handleContentChange(newText);
+
+			// Restore cursor position
+			setTimeout(() => {
+				if (textareaRef.current) {
+					const newCursorPos = selectedText
+						? start + prefix.length + selectedText.length + suffix.length
+						: start + prefix.length;
+					textareaRef.current.setSelectionRange(newCursorPos, newCursorPos);
+					textareaRef.current.focus();
+				}
+			}, 0);
+		},
+		[handleContentChange],
+	);
 
 	const formatBold = () => insertFormatting("**");
 	const formatItalic = () => insertFormatting("*");
@@ -115,7 +118,7 @@ export function CoverLetterEditor() {
 				value={coverLetter.content}
 				onChange={(e) => handleContentChange(e.target.value)}
 				placeholder={t`Write your cover letter content here...`}
-				className="min-h-[400px] resize-none"
+				className="min-h-[400px] resize-none border-gray-300 bg-white text-black focus:border-blue-500 focus:ring-blue-500"
 			/>
 
 			<div className="space-y-2">

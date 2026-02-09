@@ -26,7 +26,7 @@ function RouteComponent() {
 	);
 
 	return (
-		<div className="fixed inset-0 bg-gray-50">
+		<div className="relative h-full bg-gray-50">
 			<TransformWrapper centerOnInit limitToBounds={false} minScale={0.3} initialScale={0.8} maxScale={6}>
 				<TransformComponent wrapperClass="h-full! w-full!">
 					<CoverLetterPreview />
