@@ -185,6 +185,51 @@
 	}
 }
 
+/* Print styles for automatic page overflow handling */
+@media print {
+	/* Ensure content breaks properly across pages */
+	.resume-preview-container {
+		page-break-inside: auto;
+	}
+
+	/* Prevent breaking inside these elements */
+	.section-item,
+	.resume-section,
+	h1, h2, h3, h4, h5, h6,
+	p, li, tr {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	/* Allow breaking after these elements if needed */
+	.section-item,
+	.resume-section {
+		page-break-after: auto;
+		break-after: auto;
+	}
+
+	/* Prevent orphans and widows */
+	p {
+		widows: 3;
+		orphans: 3;
+	}
+
+	/* Ensure lists don't break awkwardly */
+	ul, ol {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	/* Skills and tags should stay together */
+	.skills-list,
+	.tags-list,
+	[class*="skill"],
+	[class*="tag"] {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+}
+
 /* Fix for ScrollArea viewport width overflow */
 [data-slot="scroll-area-viewport"] > div {
 	box-sizing: border-box !important;

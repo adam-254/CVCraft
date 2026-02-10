@@ -2,6 +2,7 @@ import z from "zod";
 import { resumeDataSchema } from "@/schema/resume/data";
 import { generateRandomName, slugify } from "@/utils/string";
 import { protectedProcedure, publicProcedure, serverOnlyProcedure } from "../context";
+import { resumeService } from "../services/resume";
 import { resumeDirectService } from "../services/resume-direct";
 
 const tagsRouter = {
