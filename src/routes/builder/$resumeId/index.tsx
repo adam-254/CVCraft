@@ -31,7 +31,7 @@ function RouteComponent() {
 				<TransformComponent wrapperClass="h-full! w-full!">
 					<ResumePreview
 						showPageNumbers
-						className="flex items-start space-x-10 space-y-10"
+						className="flex flex-col items-center gap-8 py-10"
 						pageClassName="shadow-xl rounded-md overflow-hidden"
 					/>
 				</TransformComponent>

@@ -34,12 +34,8 @@ const _syncResume = async (resume: Resume) => {
 	// Save data to database
 	await orpc.resume.update.call({ id: resume.id, data: resume.data }, { signal });
 	
-	// Save rendered document to storage
-	try {
-		await orpc.resume.saveDocument.call({ id: resume.id }, { signal });
-	} catch (error) {
-		console.error("Failed to save document to storage:", error);
-	}
+	// Note: Document rendering and storage happens on download
+	// We don't store the rendered HTML on every autosave to reduce storage costs
 };
 
 const syncResume = debounce(_syncResume, 500, { signal });

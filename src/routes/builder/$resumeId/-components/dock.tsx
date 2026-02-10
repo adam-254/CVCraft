@@ -5,16 +5,17 @@ import {
 	CubeFocusIcon,
 	FileJsIcon,
 	FilePdfIcon,
+	FloppyDisk as FloppyDiskIcon,
 	type Icon,
 	LinkSimpleIcon,
 	MagnifyingGlassMinusIcon,
 	MagnifyingGlassPlusIcon,
 	PlusIcon,
 } from "@phosphor-icons/react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useControls } from "react-zoom-pan-pinch";
 import { toast } from "sonner";
@@ -25,6 +26,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { authClient } from "@/integrations/auth/client";
 import { orpc } from "@/integrations/orpc/client";
 import { downloadWithAnchor, generateFilename } from "@/utils/file";
+import { downloadPDF } from "@/utils/pdf-client";
 import { cn } from "@/utils/style";
 
 export function BuilderDock() {
@@ -32,9 +34,10 @@ export function BuilderDock() {
 	const params = useParams({ from: "/builder/$resumeId" });
 
 	const [_, copyToClipboard] = useCopyToClipboard();
+	const [isSaving, setIsSaving] = useState(false);
 	const { zoomIn, zoomOut, centerView, zoomToElement } = useControls();
 
-	const zoomPresets = [0.5, 0.75, 1, 1.5, 2];
+	const zoomPresets = [0.5, 0.75, 1, 1.5];
 
 	const handleZoomPreset = useCallback(
 		(scale: number) => {
@@ -46,6 +49,16 @@ export function BuilderDock() {
 	const updateResumeData = useResumeStore((state) => state.updateResumeData);
 
 	const { data: resume } = useQuery(orpc.resume.getById.queryOptions({ input: { id: params.resumeId } }));
+
+	// Check if document is saved
+	const { data: documentStatus, refetch: refetchDocumentStatus } = useQuery({
+		...orpc.resume.getDocumentUrl.queryOptions({ input: { id: params.resumeId } }),
+		enabled: !!params.resumeId,
+	});
+
+	const isDocumentSaved = !!documentStatus?.url;
+
+	const { mutate: saveDocument } = useMutation(orpc.resume.saveDocument.mutationOptions());
 
 	const { undo, redo, pastStates, futureStates } = useTemporalStore((state) => ({
 		undo: state.undo,
@@ -79,35 +92,150 @@ export function BuilderDock() {
 		downloadWithAnchor(blob, filename);
 	}, [resume?.data]);
 
-	const onDownloadPDF = useCallback(async () => {
+	const onSaveDocument = useCallback(async () => {
 		if (!resume?.id) return;
 
-		const filename = generateFilename(resume.data.basics.name, "pdf");
-		const toastId = toast.loading(t`Preparing your PDF...`);
+		setIsSaving(true);
+		const toastId = toast.loading(t`Saving your resume document...`);
 
 		try {
-			// Open the resume in a new window for printing
-			const printUrl = `${window.location.origin}/printer/${resume.id}`;
-			const printWindow = window.open(printUrl, "_blank");
-
-			if (!printWindow) {
-				toast.error(t`Please allow popups to download PDF`);
-				return;
+			// Capture the rendered HTML
+			const resumeElement = document.querySelector(".resume-preview-container");
+			if (!resumeElement) {
+				throw new Error("Resume preview not found");
 			}
 
-			// Wait for the window to load, then trigger print
-			printWindow.addEventListener("load", () => {
-				setTimeout(() => {
-					printWindow.print();
-					toast.success(t`PDF download initiated. Use your browser's print dialog to save as PDF.`);
-				}, 1000);
-			});
-		} catch (error) {
-			toast.error(t`There was a problem preparing the PDF, please try again.`);
-		} finally {
-			toast.dismiss(toastId);
+			// Clone the element to modify it without affecting the display
+			const clonedElement = resumeElement.cloneNode(true) as HTMLElement;
+
+			// Remove the gap styling for saved version
+			clonedElement.style.gap = "0";
+			clonedElement.style.padding = "0";
+			clonedElement.style.margin = "0";
+
+			// Get all styles
+			const styles = Array.from(document.styleSheets)
+				.map((sheet) => {
+					try {
+						return Array.from(sheet.cssRules)
+							.map((rule) => rule.cssText)
+							.join("\n");
+					} catch {
+						return "";
+					}
+				})
+				.join("\n");
+
+			const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>${resume.name} - Resume</title>
+	<style>
+		${styles}
+		
+		/* Override builder styles for print-ready document */
+		body {
+			margin: 0;
+			padding: 0;
+			background: white;
 		}
-	}, [resume?.id, resume?.data.basics.name]);
+		
+		.resume-preview-container {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 0 !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			align-items: center !important;
+		}
+		
+		/* Each page should be separate */
+		.resume-preview-container > div {
+			page-break-after: always;
+			break-after: page;
+			margin: 0 !important;
+		}
+		
+		.resume-preview-container > div:last-child {
+			page-break-after: auto;
+			break-after: auto;
+		}
+		
+		@media print {
+			/* Hide browser default headers and footers */
+			@page {
+				margin: 0;
+				size: auto;
+			}
+			
+			.resume-preview-container {
+				gap: 0 !important;
+			}
+			
+			* {
+				box-shadow: none !important;
+			}
+		}
+	</style>
+</head>
+<body>
+	${clonedElement.outerHTML}
+</body>
+</html>`;
+
+			// Save to storage
+			saveDocument(
+				{ id: resume.id, htmlContent },
+				{
+					onSuccess: () => {
+						toast.success(t`Resume document saved successfully!`, { id: toastId });
+						refetchDocumentStatus();
+					},
+					onError: () => {
+						toast.error(t`Failed to save document. Please try again.`, { id: toastId });
+					},
+				},
+			);
+		} catch (error) {
+			console.error("Save error:", error);
+			toast.error(t`Failed to save document. Please try again.`, { id: toastId });
+		} finally {
+			setIsSaving(false);
+		}
+	}, [resume, saveDocument, refetchDocumentStatus]);
+
+	const onDownloadPDF = useCallback(async () => {
+		if (!resume?.id || !resume?.name) return;
+
+		if (!isDocumentSaved) {
+			toast.error(t`Please save your resume before downloading.`);
+			return;
+		}
+
+		const toastId = toast.loading(t`Generating your PDF...`);
+
+		try {
+			// Get the resume element
+			const resumeElement = document.querySelector(".resume-preview-container") as HTMLElement;
+			if (!resumeElement) {
+				throw new Error("Resume preview not found");
+			}
+
+			// Generate filename
+			const filename = `${resume.name.replace(/[^a-z0-9]/gi, "_")}.pdf`;
+
+			// Generate and download PDF
+			await downloadPDF(resumeElement, filename);
+
+			toast.success(t`PDF downloaded successfully!`, { id: toastId });
+		} catch (error) {
+			console.error("PDF generation error:", error);
+			toast.error(t`Failed to generate PDF. Please try again.`, { id: toastId });
+		}
+	}, [resume?.id, resume?.name, isDocumentSaved]);
 
 	const onAddPage = useCallback(() => {
 		updateResumeData((draft) => {
@@ -166,11 +294,24 @@ export function BuilderDock() {
 					</Tooltip>
 				))}
 				<div className="mx-1 h-8 w-px bg-border" />
+				<DockIcon
+					icon={FloppyDiskIcon}
+					title={isDocumentSaved ? t`Document Saved` : t`Save Document`}
+					onClick={() => onSaveDocument()}
+					disabled={isSaving}
+					iconClassName={isDocumentSaved ? "text-green-500" : ""}
+				/>
+				<div className="mx-1 h-8 w-px bg-border" />
 				<DockIcon icon={PlusIcon} title={t`Add Page`} onClick={() => onAddPage()} />
 				<div className="mx-1 h-8 w-px bg-border" />
 				<DockIcon icon={LinkSimpleIcon} title={t`Copy URL`} onClick={() => onCopyUrl()} />
 				<DockIcon icon={FileJsIcon} title={t`Download JSON`} onClick={() => onDownloadJSON()} />
-				<DockIcon title={t`Download PDF`} onClick={() => onDownloadPDF()} icon={FilePdfIcon} />
+				<DockIcon
+					title={isDocumentSaved ? t`Download PDF` : t`Save document first to download`}
+					onClick={() => onDownloadPDF()}
+					icon={FilePdfIcon}
+					disabled={!isDocumentSaved}
+				/>
 			</motion.div>
 		</div>
 	);

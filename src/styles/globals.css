@@ -179,7 +179,13 @@
 	}
 }
 
+/* Resume preview container - default vertical layout */
 .resume-preview-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: center;
+
 	.page-section .section-item {
 		break-inside: avoid;
 	}
@@ -187,9 +193,38 @@
 
 /* Print styles for automatic page overflow handling */
 @media print {
-	/* Ensure content breaks properly across pages */
+	/* Hide browser default headers and footers */
+	@page {
+		margin: 0;
+		size: auto;
+	}
+
+	/* Remove gaps and padding for print */
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	/* Ensure pages stack vertically without gaps */
 	.resume-preview-container {
-		page-break-inside: auto;
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 0 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	/* Each page should be on its own printed page */
+	.resume-preview-container > * {
+		page-break-after: always;
+		break-after: page;
+		margin: 0 !important;
+	}
+
+	/* Last page shouldn't force a new page */
+	.resume-preview-container > *:last-child {
+		page-break-after: auto;
+		break-after: auto;
 	}
 
 	/* Prevent breaking inside these elements */
@@ -227,6 +262,12 @@
 	[class*="tag"] {
 		page-break-inside: avoid;
 		break-inside: avoid;
+	}
+
+	/* Remove shadows and rounded corners for print */
+	* {
+		border-radius: 0 !important;
+		box-shadow: none !important;
 	}
 }
 

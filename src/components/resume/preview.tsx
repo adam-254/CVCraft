@@ -196,15 +196,16 @@ function PageContainer({ pageIndex, pageLayout, pageClassName, showPageNumbers =
 
 			{metadata.page.format !== "free-form" && pageHeight > maxPageHeight && (
 				<div className="absolute start-0 top-full mt-4 print:hidden">
-					<Alert className="max-w-sm text-yellow-600">
-						<WarningIcon color="currentColor" />
-						<AlertTitle>
-							<Trans>
-								The content is too tall for this page, this may cause undesirable results when exporting to PDF.
-							</Trans>
+					<Alert className="max-w-sm border-yellow-600/20 bg-yellow-50 dark:bg-yellow-950/20">
+						<WarningIcon className="text-yellow-600" />
+						<AlertTitle className="text-yellow-700 dark:text-yellow-500">
+							<Trans>Content exceeds page height</Trans>
 						</AlertTitle>
-						<AlertDescription className="text-xs">
-							<Trans>Try reducing font size, margins, or moving content to another page.</Trans>
+						<AlertDescription className="text-xs text-yellow-600/90 dark:text-yellow-400/90">
+							<Trans>
+								Content will automatically flow to the next page when printing. For better control, consider adding a
+								new page and moving some sections.
+							</Trans>
 						</AlertDescription>
 					</Alert>
 				</div>

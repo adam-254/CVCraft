@@ -8,7 +8,6 @@ import { supabase } from "@/integrations/supabase/client";
 import type { ResumeData } from "@/schema/resume/data";
 import { defaultResumeData } from "@/schema/resume/data";
 import { env } from "@/utils/env";
-import type { Locale } from "@/utils/locale";
 import { hashPassword } from "@/utils/password";
 import { generateId } from "@/utils/string";
 import { hasResumeAccess } from "../helpers/resume-access";
@@ -85,7 +84,7 @@ export const resumeService = {
 		try {
 			const { data, error } = await supabase
 				.from("resume")
-				.select("id, name, slug, tags, data, user_id, is_locked, updated_at")
+				.select("id, name, slug, tags, data, user_id, is_locked, updated_at, document_url")
 				.eq("id", input.id)
 				.single();
 
@@ -101,6 +100,7 @@ export const resumeService = {
 				userId: data.user_id,
 				isLocked: data.is_locked,
 				updatedAt: new Date(data.updated_at),
+				documentUrl: data.document_url,
 			};
 
 			try {
@@ -124,33 +124,121 @@ export const resumeService = {
 		}
 	},
 
-	getBySlug: async (input: { username: string; slug: string; currentUserId?: string }) => {
-		const [resume] = await db
-			.select({
-				id: schema.resume.id,
-				name: schema.resume.name,
-				slug: schema.resume.slug,
-				tags: schema.resume.tags,
-				data: schema.resume.data,
-				isPublic: schema.resume.isPublic,
-				isLocked: schema.resume.isLocked,
-				passwordHash: schema.resume.password,
-				hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
-			})
-			.from(schema.resume)
-			.innerJoin(schema.user, eq(schema.resume.userId, schema.user.id))
-			.where(
-				and(
-					eq(schema.resume.slug, input.slug),
-					eq(schema.user.username, input.username),
-					input.currentUserId ? eq(schema.resume.userId, input.currentUserId) : eq(schema.resume.isPublic, true),
-				),
-			);
+	saveDocument: async (input: { id: string; userId: string; htmlContent: string }): Promise<string> => {
+		try {
+			// Upload HTML to Supabase Storage
+			const path = `${input.userId}/resumes/${input.id}/document.html`;
+			const blob = new Blob([input.htmlContent], { type: "text/html" });
 
-		if (!resume) throw new ORPCError("NOT_FOUND");
+			const { error: uploadError } = await supabase.storage.from("documents").upload(path, blob, {
+				contentType: "text/html",
+				upsert: true,
+			});
 
-		if (!resume.hasPassword) {
+			if (uploadError) throw uploadError;
+
+			// Get public URL
+			const { data: urlData } = supabase.storage.from("documents").getPublicUrl(path);
+
+			// Update resume with document URL
+			const { error: updateError } = await supabase
+				.from("resume")
+				.update({
+					document_url: urlData.publicUrl,
+					document_saved_at: new Date().toISOString(),
+				})
+				.eq("id", input.id)
+				.eq("user_id", input.userId);
+
+			if (updateError) throw updateError;
+
+			return urlData.publicUrl;
+		} catch (error) {
+			console.error("Failed to save document:", error);
+			throw new ORPCError("INTERNAL_SERVER_ERROR");
+		}
+	},
+
+	generatePDF: async (input: { id: string; userId: string }): Promise<{ url: string; filename: string }> => {
+		try {
+			// Dynamically import PDF generator (server-side only)
+			const { pdfGeneratorService } = await import("./pdf-generator");
+
+			// Get the resume to check if document is saved
+			const { data: resume, error: fetchError } = await supabase
+				.from("resume")
+				.select("id, name, document_url")
+				.eq("id", input.id)
+				.eq("user_id", input.userId)
+				.single();
+
+			if (fetchError || !resume) throw new ORPCError("NOT_FOUND");
+			if (!resume.document_url) {
+				throw new ORPCError("BAD_REQUEST", { message: "Document not saved. Please save the document first." });
+			}
+
+			// Fetch the HTML content
+			const htmlResponse = await fetch(resume.document_url);
+			if (!htmlResponse.ok) throw new Error("Failed to fetch HTML document");
+			const htmlContent = await htmlResponse.text();
+
+			// Generate PDF
+			const pdfBuffer = await pdfGeneratorService.generatePDF(htmlContent);
+
+			// Upload PDF to storage
+			const pdfPath = `${input.userId}/resumes/${input.id}/document.pdf`;
+			const { error: uploadError } = await supabase.storage.from("documents").upload(pdfPath, pdfBuffer, {
+				contentType: "application/pdf",
+				upsert: true,
+			});
+
+			if (uploadError) throw uploadError;
+
+			// Get public URL for PDF
+			const { data: pdfUrlData } = supabase.storage.from("documents").getPublicUrl(pdfPath);
+
+			// Generate filename
+			const filename = `${resume.name.replace(/[^a-z0-9]/gi, "_")}.pdf`;
+
 			return {
+				url: pdfUrlData.publicUrl,
+				filename,
+			};
+		} catch (error) {
+			console.error("Failed to generate PDF:", error);
+			throw new ORPCError("INTERNAL_SERVER_ERROR", {
+				message: error instanceof Error ? error.message : "Failed to generate PDF",
+			});
+		}
+	},
+
+	getBySlug: async (input: { username: string; slug: string; currentUserId?: string }) => {
+	const [resume] = await db
+		.select({
+			id: schema.resume.id,
+			name: schema.resume.name,
+			slug: schema.resume.slug,
+			tags: schema.resume.tags,
+			data: schema.resume.data,
+			isPublic: schema.resume.isPublic,
+			isLocked: schema.resume.isLocked,
+			passwordHash: schema.resume.password,
+			hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
+		})
+		.from(schema.resume)
+		.innerJoin(schema.user, eq(schema.resume.userId, schema.user.id))
+		.where(
+			and(
+				eq(schema.resume.slug, input.slug),
+				eq(schema.user.username, input.username),
+				input.currentUserId ? eq(schema.resume.userId, input.currentUserId) : eq(schema.resume.isPublic, true),
+			),
+		);
+
+	if (!resume) throw new ORPCError("NOT_FOUND");
+
+	if (!resume.hasPassword) {
+		return {
 				id: resume.id,
 				name: resume.name,
 				slug: resume.slug,
@@ -160,10 +248,10 @@ export const resumeService = {
 				isLocked: resume.isLocked,
 				hasPassword: false as const,
 			};
-		}
+	}
 
-		if (hasResumeAccess(resume.id, resume.passwordHash)) {
-			return {
+	if (hasResumeAccess(resume.id, resume.passwordHash)) {
+		return {
 				id: resume.id,
 				name: resume.name,
 				slug: resume.slug,
@@ -173,129 +261,164 @@ export const resumeService = {
 				isLocked: resume.isLocked,
 				hasPassword: true as const,
 			};
-		}
+	}
 
-		throw new ORPCError("NEED_PASSWORD", {
-			status: 401,
-			data: { username: input.username, slug: input.slug },
-		});
-	},
+	throw new ORPCError("NEED_PASSWORD", {
+		status: 401,
+		data: { username: input.username, slug: input.slug },
+	});
+}
+,
 
-	create: async (input: {
-		userId: string;
-		name: string;
-		slug: string;
-		tags: string[];
-		locale: Locale;
-		data?: ResumeData;
-	}): Promise<string> => {
-		const id = generateId();
+	create: async (input:
+{
+	userId: string;
+	name: string;
+	slug: string;
+	tags: string[];
+	locale: Locale;
+	data?: ResumeData;
+}
+): Promise<string> =>
+{
+	const id = generateId();
 
-		input.data = input.data ?? defaultResumeData;
-		input.data.metadata.page.locale = input.locale;
+	input.data = input.data ?? defaultResumeData;
+	input.data.metadata.page.locale = input.locale;
 
-		try {
-			await db.insert(schema.resume).values({
-				id,
-				name: input.name,
-				slug: input.slug,
-				tags: input.tags,
-				userId: input.userId,
-				data: input.data,
-			});
-
-			return id;
-		} catch (error) {
-			const constraint = get(error, "cause.constraint") as string | undefined;
-
-			if (constraint === "resume_slug_user_id_unique") {
-				throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });
-			}
-
-			throw error;
-		}
-	},
-
-	update: async (input: {
-		id: string;
-		userId: string;
-		name?: string;
-		slug?: string;
-		tags?: string[];
-		data?: ResumeData;
-		isPublic?: boolean;
-	}): Promise<void> => {
-		const [resume] = await db
-			.select({ isLocked: schema.resume.isLocked })
-			.from(schema.resume)
-			.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
-
-		if (resume?.isLocked) throw new ORPCError("RESUME_LOCKED");
-
-		const updateData: Partial<typeof schema.resume.$inferSelect> = {
+	try {
+		await db.insert(schema.resume).values({
+			id,
 			name: input.name,
 			slug: input.slug,
 			tags: input.tags,
+			userId: input.userId,
 			data: input.data,
-			isPublic: input.isPublic,
-		};
+		});
 
-		try {
-			await db
-				.update(schema.resume)
-				.set(updateData)
-				.where(
-					and(
-						eq(schema.resume.id, input.id),
-						eq(schema.resume.isLocked, false),
-						eq(schema.resume.userId, input.userId),
-					),
-				);
-		} catch (error) {
-			if (get(error, "cause.constraint") === "resume_slug_user_id_unique") {
-				throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });
-			}
+		return id;
+	} catch (error) {
+		const constraint = get(error, "cause.constraint") as string | undefined;
 
-			throw error;
+		if (constraint === "resume_slug_user_id_unique") {
+			throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });
 		}
-	},
 
-	setLocked: async (input: { id: string; userId: string; isLocked: boolean }): Promise<void> => {
+		throw error;
+	}
+}
+,
+
+	update: async (input:
+{
+	id: string;
+	userId: string;
+	name?: string;
+	slug?: string;
+	tags?: string[];
+	data?: ResumeData;
+	isPublic?: boolean;
+}
+): Promise<void> =>
+{
+	const [resume] = await db
+		.select({ isLocked: schema.resume.isLocked })
+		.from(schema.resume)
+		.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
+
+	if (resume?.isLocked) throw new ORPCError("RESUME_LOCKED");
+
+	const updateData: Partial<typeof schema.resume.$inferSelect> = {
+		name: input.name,
+		slug: input.slug,
+		tags: input.tags,
+		data: input.data,
+		isPublic: input.isPublic,
+	};
+
+	try {
 		await db
 			.update(schema.resume)
-			.set({ isLocked: input.isLocked })
-			.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
-	},
-
-	setPassword: async (input: { id: string; userId: string; password: string }): Promise<void> => {
-		const hashedPassword = await hashPassword(input.password);
-
-		await db
-			.update(schema.resume)
-			.set({ password: hashedPassword })
-			.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
-	},
-
-	removePassword: async (input: { id: string; userId: string }): Promise<void> => {
-		await db
-			.update(schema.resume)
-			.set({ password: null })
-			.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
-	},
-
-	delete: async (input: { id: string; userId: string }): Promise<void> => {
-		const storageService = getStorageService();
-
-		const deleteResumePromise = db
-			.delete(schema.resume)
+			.set(updateData)
 			.where(
 				and(eq(schema.resume.id, input.id), eq(schema.resume.isLocked, false), eq(schema.resume.userId, input.userId)),
 			);
+	} catch (error) {
+		if (get(error, "cause.constraint") === "resume_slug_user_id_unique") {
+			throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });
+		}
 
-		// Delete screenshots and PDFs using the new key format
-		const deleteScreenshotsPromise = storageService.delete(`uploads/${input.userId}/screenshots/${input.id}`);
-		const deletePdfsPromise = storageService.delete(`uploads/${input.userId}/pdfs/${input.id}`);
+		throw error;
+	}
+}
+,
 
-		await Promise.allSettled([deleteResumePromise, deleteScreenshotsPromise, deletePdfsPromise]);
-	},
-};
+	setLocked: async (input:
+{
+	id: string;
+	userId: string;
+	isLocked: boolean;
+}
+): Promise<void> =>
+{
+	await db
+		.update(schema.resume)
+		.set({ isLocked: input.isLocked })
+		.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
+}
+,
+
+	setPassword: async (input:
+{
+	id: string;
+	userId: string;
+	password: string;
+}
+): Promise<void> =>
+{
+	const hashedPassword = await hashPassword(input.password);
+
+	await db
+		.update(schema.resume)
+		.set({ password: hashedPassword })
+		.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
+}
+,
+
+	removePassword: async (input:
+{
+	id: string;
+	userId: string;
+}
+): Promise<void> =>
+{
+	await db
+		.update(schema.resume)
+		.set({ password: null })
+		.where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
+}
+,
+
+	delete: async (input:
+{
+	id: string;
+	userId: string;
+}
+): Promise<void> =>
+{
+	const storageService = getStorageService();
+
+	const deleteResumePromise = db
+		.delete(schema.resume)
+		.where(
+			and(eq(schema.resume.id, input.id), eq(schema.resume.isLocked, false), eq(schema.resume.userId, input.userId)),
+		);
+
+	// Delete screenshots and PDFs using the new key format
+	const deleteScreenshotsPromise = storageService.delete(`uploads/${input.userId}/screenshots/${input.id}`);
+	const deletePdfsPromise = storageService.delete(`uploads/${input.userId}/pdfs/${input.id}`);
+
+	await Promise.allSettled([deleteResumePromise, deleteScreenshotsPromise, deletePdfsPromise]);
+}
+,
+}
