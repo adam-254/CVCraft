@@ -325,6 +325,80 @@ export const printerService = {
 		}
 	},
 
+	getCoverLetterScreenshot: async (
+		input: Pick<InferSelectModel<typeof schema.coverLetter>, "userId" | "id" | "updatedAt">,
+	): Promise<string> => {
+		const { id, userId, updatedAt } = input;
+
+		const storageService = getStorageService();
+		const screenshotPrefix = `uploads/${userId}/cover-letters/screenshots/${id}`;
+
+		const existingScreenshots = await storageService.list(screenshotPrefix);
+		const now = Date.now();
+		const coverLetterUpdatedAt = updatedAt.getTime();
+
+		if (existingScreenshots.length > 0) {
+			const sortedFiles = existingScreenshots
+				.map((path) => {
+					const filename = path.split("/").pop();
+					const match = filename?.match(/^(\d+)\.webp$/);
+					return match ? { path, timestamp: Number(match[1]) } : null;
+				})
+				.filter((item): item is { path: string; timestamp: number } => item !== null)
+				.sort((a, b) => b.timestamp - a.timestamp);
+
+			if (sortedFiles.length > 0) {
+				const latest = sortedFiles[0];
+				const age = now - latest.timestamp;
+
+				// Return existing screenshot if it's still fresh (within TTL)
+				if (age < SCREENSHOT_TTL) return new URL(latest.path, env.APP_URL).toString();
+
+				// Screenshot is stale (past TTL), but only regenerate if the cover letter
+				// was updated after the screenshot was taken
+				if (coverLetterUpdatedAt <= latest.timestamp) {
+					return new URL(latest.path, env.APP_URL).toString();
+				}
+
+				// Cover letter was updated after the screenshot - delete old ones and regenerate
+				await Promise.all(sortedFiles.map((file) => storageService.delete(file.path)));
+			}
+		}
+
+		const baseUrl = env.PRINTER_APP_URL ?? env.APP_URL;
+
+		const token = generatePrinterToken(id);
+		const url = `${baseUrl}/printer/cover-letter/${id}?token=${token}`;
+
+		let browser: Browser | null = null;
+
+		try {
+			browser = await getBrowser();
+
+			const page = await browser.newPage();
+
+			await page.setViewport(pageDimensionsAsPixels.letter);
+			await page.goto(url, { waitUntil: "networkidle0" });
+			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
+
+			const screenshotBuffer = await page.screenshot({ type: "webp", quality: 80 });
+
+			await page.close();
+
+			const result = await uploadFile({
+				userId,
+				coverLetterId: id,
+				data: new Uint8Array(screenshotBuffer),
+				contentType: "image/webp",
+				type: "cover-letter-screenshot",
+			});
+
+			return result.url;
+		} catch (error) {
+			throw new ORPCError("INTERNAL_SERVER_ERROR", error as Error);
+		}
+	},
+
 	/**
 	 * Generates a PDF from a cover letter and uploads it to storage.
 	 */

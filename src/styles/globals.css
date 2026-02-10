@@ -219,6 +219,8 @@
 		page-break-after: always;
 		break-after: page;
 		margin: 0 !important;
+		/* Create new stacking context for each page to prevent overlap */
+		isolation: isolate;
 	}
 
 	/* Last page shouldn't force a new page */
@@ -268,6 +270,21 @@
 	* {
 		border-radius: 0 !important;
 		box-shadow: none !important;
+	}
+
+	/* Ensure proper text rendering - prevent text overlap */
+	.page-header,
+	.page-content,
+	.section-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Keep decorative backgrounds behind content */
+	.page-sidebar-background,
+	[class*="absolute"][class*="opacity"],
+	[class*="absolute"][class*="bg-"] {
+		z-index: 0 !important;
 	}
 }
 

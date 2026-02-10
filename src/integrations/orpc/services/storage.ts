@@ -314,7 +314,7 @@ export function getStorageService(): StorageService {
 }
 
 // High-level upload types
-type UploadType = "picture" | "screenshot" | "pdf" | "cover-letter-pdf";
+type UploadType = "picture" | "screenshot" | "pdf" | "cover-letter-pdf" | "cover-letter-screenshot";
 
 export interface UploadFileInput {
 	userId: string;
@@ -350,6 +350,10 @@ export async function uploadFile(input: UploadFileInput): Promise<UploadFileResu
 		case "cover-letter-pdf":
 			if (!input.coverLetterId) throw new Error("coverLetterId is required for cover letter pdf uploads");
 			key = `uploads/${input.userId}/cover-letters/pdfs/${input.coverLetterId}/${Date.now()}.pdf`;
+			break;
+		case "cover-letter-screenshot":
+			if (!input.coverLetterId) throw new Error("coverLetterId is required for cover letter screenshot uploads");
+			key = `uploads/${input.userId}/cover-letters/screenshots/${input.coverLetterId}/${Date.now()}.webp`;
 			break;
 	}
 

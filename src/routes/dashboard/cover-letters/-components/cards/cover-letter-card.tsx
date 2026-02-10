@@ -1,9 +1,11 @@
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import { EnvelopeIcon } from "@phosphor-icons/react";
+import { CircleNotchIcon, EnvelopeIcon } from "@phosphor-icons/react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import type { RouterOutput } from "@/integrations/orpc/client";
+import { match, P } from "ts-pattern";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { BaseCard } from "./base-card";
 
 type CoverLetterCardProps = {
@@ -13,6 +15,10 @@ type CoverLetterCardProps = {
 export function CoverLetterCard({ coverLetter }: CoverLetterCardProps) {
 	const { i18n } = useLingui();
 
+	const { data: screenshotData, isLoading } = useQuery(
+		orpc.printer.getCoverLetterScreenshot.queryOptions({ input: { id: coverLetter.id } }),
+	);
+
 	const updatedAt = useMemo(() => {
 		return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(coverLetter.updatedAt);
 	}, [i18n.locale, coverLetter.updatedAt]);
@@ -20,7 +26,29 @@ export function CoverLetterCard({ coverLetter }: CoverLetterCardProps) {
 	return (
 		<Link to="/builder/cover-letter/$id" params={{ id: coverLetter.id }} className="cursor-default">
 			<BaseCard title={coverLetter.title} description={t`Last updated on ${updatedAt}`} tags={coverLetter.tags}>
-				<CoverLetterPreview coverLetter={coverLetter} />
+				{match({ isLoading, imageSrc: screenshotData?.url })
+					.with({ isLoading: true }, () => (
+						<div className="flex size-full items-center justify-center bg-gradient-to-br from-muted/50 to-muted/20">
+							<div className="flex flex-col items-center gap-3">
+								<CircleNotchIcon weight="bold" className="size-12 animate-spin text-primary" />
+								<p className="text-muted-foreground text-xs">Loading preview...</p>
+							</div>
+						</div>
+					))
+					.with({ imageSrc: P.string }, ({ imageSrc }) => (
+						<>
+							<img
+								src={imageSrc}
+								alt={coverLetter.title}
+								className="size-full object-cover transition-all duration-300 group-hover:scale-105"
+							/>
+							{/* Gradient overlay for better text readability */}
+							<div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+						</>
+					))
+					.otherwise(() => (
+						<CoverLetterPreview coverLetter={coverLetter} />
+					))}
 			</BaseCard>
 		</Link>
 	);

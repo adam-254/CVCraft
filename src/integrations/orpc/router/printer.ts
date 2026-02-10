@@ -43,4 +43,31 @@ export const printerRouter = {
 
 			return { url: null };
 		}),
+
+	getCoverLetterScreenshot: protectedProcedure
+		.route({
+			method: "GET",
+			path: "/printer/cover-letter/{id}/screenshot",
+			tags: ["Cover Letter", "Printer"],
+			summary: "Get cover letter screenshot",
+			description: "Get a screenshot of a cover letter. Returns a URL to the screenshot image.",
+		})
+		.input(z.object({ id: z.string() }))
+		.output(z.object({ url: z.string().nullable() }))
+		.handler(async ({ input }) => {
+			try {
+				const coverLetter = await coverLetterService.getById({ id: input.id });
+				const url = await printerService.getCoverLetterScreenshot({
+					id: coverLetter.id,
+					userId: coverLetter.userId,
+					updatedAt: coverLetter.updatedAt,
+				});
+
+				return { url };
+			} catch {
+				// ignore errors, as the screenshot is not critical
+			}
+
+			return { url: null };
+		}),
 };
