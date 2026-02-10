@@ -1,4 +1,6 @@
-import { t } from "@lingui/core/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
 	ArrowRightIcon,
@@ -15,37 +17,37 @@ import { cn } from "@/utils/style";
 
 type Step = {
 	number: number;
-	title: string;
-	description: string;
+	title: MessageDescriptor;
+	description: MessageDescriptor;
 	icon: typeof PencilIcon;
 	color: string;
-	features: string[];
+	features: MessageDescriptor[];
 };
 
 const getSteps = (): Step[] => [
 	{
 		number: 1,
-		title: t`Choose Your Template`,
-		description: t`Select from 12+ professionally designed templates that suit your style and industry.`,
+		title: msg`Choose Your Template`,
+		description: msg`Select from 12+ professionally designed templates that suit your style and industry.`,
 		icon: SparkleIcon,
 		color: "from-blue-500 to-cyan-500",
-		features: [t`12+ Professional Templates`, t`Modern & Clean Designs`, t`Industry-Specific Options`],
+		features: [msg`12+ Professional Templates`, msg`Modern & Clean Designs`, msg`Industry-Specific Options`],
 	},
 	{
 		number: 2,
-		title: t`Build & Customize`,
-		description: t`Fill in your details with AI assistance and customize every aspect to match your personal brand.`,
+		title: msg`Build & Customize`,
+		description: msg`Fill in your details with AI assistance and customize every aspect to match your personal brand.`,
 		icon: PencilIcon,
 		color: "from-purple-500 to-pink-500",
-		features: [t`AI-Powered Content`, t`Real-Time Preview`, t`Full Customization`],
+		features: [msg`AI-Powered Content`, msg`Real-Time Preview`, msg`Full Customization`],
 	},
 	{
 		number: 3,
-		title: t`Export & Share`,
-		description: t`Download your resume as PDF or share it with a unique link. Your success story starts here!`,
+		title: msg`Export & Share`,
+		description: msg`Download your resume as PDF or share it with a unique link. Your success story starts here!`,
 		icon: RocketLaunchIcon,
 		color: "from-green-500 to-emerald-500",
-		features: [t`High-Quality PDF Export`, t`Shareable Public Links`, t`Password Protection`],
+		features: [msg`High-Quality PDF Export`, msg`Shareable Public Links`, msg`Password Protection`],
 	},
 ];
 
@@ -54,6 +56,8 @@ type StepCardProps = Step & {
 };
 
 function StepCard({ number, title, description, icon: Icon, color, features, index }: StepCardProps) {
+	const { i18n } = useLingui();
+
 	return (
 		<motion.div
 			className="group relative"
@@ -86,8 +90,8 @@ function StepCard({ number, title, description, icon: Icon, color, features, ind
 
 				{/* Content */}
 				<div className="space-y-4">
-					<h3 className="font-bold text-2xl tracking-tight">{title}</h3>
-					<p className="text-muted-foreground leading-relaxed">{description}</p>
+					<h3 className="font-bold text-2xl tracking-tight">{i18n._(title)}</h3>
+					<p className="text-muted-foreground leading-relaxed">{i18n._(description)}</p>
 
 					{/* Features List */}
 					<ul className="space-y-3 pt-4">
@@ -101,7 +105,7 @@ function StepCard({ number, title, description, icon: Icon, color, features, ind
 								transition={{ duration: 0.4, delay: index * 0.2 + i * 0.1 }}
 							>
 								<CheckCircleIcon size={20} weight="fill" className="shrink-0 text-primary" />
-								<span className="text-sm">{feature}</span>
+								<span className="text-sm">{i18n._(feature)}</span>
 							</motion.li>
 						))}
 					</ul>

@@ -19,17 +19,24 @@ async function getBrowser(): Promise<Browser> {
 
 	const args = ["--disable-dev-shm-usage", "--disable-features=LocalNetworkAccessChecks,site-per-process,FedCm"];
 
-	const endpoint = new URL(env.PRINTER_ENDPOINT);
-	const isWebSocket = endpoint.protocol.startsWith("ws");
-	const connectOptions: ConnectOptions = { acceptInsecureCerts: true };
+	try {
+		const endpoint = new URL(env.PRINTER_ENDPOINT);
+		const isWebSocket = endpoint.protocol.startsWith("ws");
+		const connectOptions: ConnectOptions = { acceptInsecureCerts: true };
 
-	endpoint.searchParams.append("launch", JSON.stringify({ args }));
+		endpoint.searchParams.append("launch", JSON.stringify({ args }));
 
-	if (isWebSocket) connectOptions.browserWSEndpoint = endpoint.toString();
-	else connectOptions.browserURL = endpoint.toString();
+		if (isWebSocket) connectOptions.browserWSEndpoint = endpoint.toString();
+		else connectOptions.browserURL = endpoint.toString();
 
-	browserInstance = await puppeteer.connect(connectOptions);
-	return browserInstance;
+		browserInstance = await puppeteer.connect(connectOptions);
+		return browserInstance;
+	} catch (error) {
+		throw new ORPCError("INTERNAL_SERVER_ERROR", {
+			message:
+				"PDF generation service is not available. Please configure PRINTER_ENDPOINT environment variable with a valid browser service URL (e.g., Browserless.io).",
+		});
+	}
 }
 
 async function closeBrowser(): Promise<void> {
@@ -310,6 +317,94 @@ export const printerService = {
 				data: new Uint8Array(screenshotBuffer),
 				contentType: "image/webp",
 				type: "screenshot",
+			});
+
+			return result.url;
+		} catch (error) {
+			throw new ORPCError("INTERNAL_SERVER_ERROR", error as Error);
+		}
+	},
+
+	/**
+	 * Generates a PDF from a cover letter and uploads it to storage.
+	 */
+	printCoverLetterAsPDF: async (
+		input: Pick<InferSelectModel<typeof schema.coverLetter>, "id" | "userId" | "title">,
+	): Promise<string> => {
+		const { id, userId, title } = input;
+
+		// Step 1: Delete any existing PDF for this cover letter
+		const storageService = getStorageService();
+		const pdfPrefix = `uploads/${userId}/cover-letters/pdfs/${id}`;
+		await storageService.delete(pdfPrefix);
+
+		// Step 2: Prepare the URL and authentication for the printer route
+		const baseUrl = env.PRINTER_APP_URL ?? env.APP_URL;
+		const domain = new URL(baseUrl).hostname;
+
+		// Generate a secure token to authenticate the printer request
+		const token = generatePrinterToken(id);
+		const url = `${baseUrl}/printer/cover-letter/${id}?token=${token}`;
+
+		// Cover letters use standard Letter format (8.5" x 11")
+		const format = "letter";
+		const marginX = 0;
+		const marginY = 0;
+
+		let browser: Browser | null = null;
+
+		try {
+			// Step 3: Connect to the browser and navigate to the printer route
+			browser = await getBrowser();
+
+			const page = await browser.newPage();
+
+			// Wait for the page to fully load
+			await page.setViewport(pageDimensionsAsPixels[format]);
+			await page.goto(url, { waitUntil: "networkidle0" });
+			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
+
+			// Step 4: Adjust the DOM for proper PDF pagination
+			await page.evaluate(() => {
+				const pageElements = document.querySelectorAll("[data-page-index]");
+
+				// Add page break CSS to each cover letter page element
+				for (const el of pageElements) {
+					const element = el as HTMLElement;
+					const index = Number.parseInt(element.getAttribute("data-page-index") ?? "0", 10);
+
+					// Force a page break before each page except the first
+					if (index > 0) element.style.breakBefore = "page";
+
+					// Allow content within a page to break naturally if it overflows
+					element.style.breakInside = "auto";
+				}
+			});
+
+			// Step 5: Generate the PDF
+			const pdfBuffer = await page.pdf({
+				width: `${pageDimensionsAsPixels[format].width}px`,
+				height: `${pageDimensionsAsPixels[format].height}px`,
+				tagged: true,
+				waitForFonts: true,
+				printBackground: true,
+				margin: {
+					bottom: marginY,
+					top: marginY,
+					right: marginX,
+					left: marginX,
+				},
+			});
+
+			await page.close();
+
+			// Step 6: Upload the generated PDF to storage
+			const result = await uploadFile({
+				userId,
+				coverLetterId: id,
+				data: new Uint8Array(pdfBuffer),
+				contentType: "application/pdf",
+				type: "cover-letter-pdf",
 			});
 
 			return result.url;

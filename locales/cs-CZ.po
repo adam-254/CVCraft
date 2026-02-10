@@ -33,6 +33,10 @@ msgstr "Vytvořeno"
 msgid "Name"
 msgstr "Název"
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "(555) 123-4567"
+msgstr ""
+
 #. placeholder {0}: section.items.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 msgid "{0, plural, one {# item} other {# items}}"
@@ -67,10 +71,6 @@ msgstr ""
 msgid "<0>Everything You Need</0><1/><2>In One Place</2>"
 msgstr ""
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "<0>Frequently Asked</0><1/><2>Questions</2>"
-msgstr ""
-
 #: src/dialogs/api-key/create.tsx
 msgid "1 month"
 msgstr "1 měsíc"
@@ -91,6 +91,10 @@ msgstr ""
 msgid "12+ Professional Templates"
 msgstr ""
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "123 Main Street"
+msgstr ""
+
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
 msgid "2FA is currently enabled"
 msgstr ""
@@ -102,6 +106,10 @@ msgstr "3 měsíce"
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/highlights.tsx
 msgid "30+ Templates"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "456 Corporate Blvd"
 msgstr ""
 
 #: src/routes/_home/-sections/highlights.tsx
@@ -120,8 +128,8 @@ msgstr "Potvrzovací odkaz byl odeslán na vaši současnou e-mailovou adresu. Z
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Bezplatný nástroj pro tvorbu životopisů s otevřeným zdrojovým kódem, který zjednodušuje proces vytváření, aktualizace a sdílení životopisů."
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 msgid "A link to your cover letter has been copied to clipboard."
 msgstr ""
 
@@ -147,10 +155,6 @@ msgstr "Životopis s tímto slugem už existuje."
 msgid "A4"
 msgstr "A4"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Absolutely! You can export your resume to PDF with a single click. The exported PDF maintains all your formatting and styling perfectly."
-msgstr "Ano! Svůj životopis můžete exportovat do PDF jedním kliknutím. Exportované PDF dokonale zachová veškeré vaše formátování a styl."
-
 #: src/routes/auth/register.tsx
 msgid "Account created successfully!"
 msgstr ""
@@ -159,7 +163,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Add"
 msgstr ""
 
@@ -248,8 +252,14 @@ msgstr ""
 msgid "Add New AI Provider"
 msgstr ""
 
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+msgid "Add new page"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
 msgid "Add Page"
 msgstr "Přidat stránku"
 
@@ -266,7 +276,7 @@ msgstr "Přidat řádek za"
 msgid "Add Row Before"
 msgstr "Přidat řádek před"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Add tag..."
 msgstr ""
 
@@ -292,6 +302,10 @@ msgstr "Přidáno dne {0}"
 msgid "Adding your passkey..."
 msgstr "Přidávání přístupového klíče…"
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Address"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Advanced Features"
 msgstr ""
@@ -305,7 +319,7 @@ msgstr "Afrikánština"
 msgid "AI"
 msgstr "AI"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "AI Assistance"
 msgstr ""
 
@@ -333,10 +347,6 @@ msgstr "Albánština"
 
 #: src/routes/_home/-sections/footer.tsx
 msgid "All rights reserved."
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Allow others to view this cover letter"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -456,7 +466,7 @@ msgstr "Poměr stran"
 msgid "Authentication"
 msgstr "Ověřování"
 
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 #: src/routes/cover-letter/$id/index.tsx
 msgid "Auto-saving..."
 msgstr ""
@@ -482,7 +492,7 @@ msgstr "Ázerbájdžánština"
 msgid "Back"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 msgid "Back to Dashboard"
 msgstr ""
 
@@ -503,6 +513,10 @@ msgstr "Záložní kódy zkopírovány do schránky."
 #: src/routes/dashboard/settings/integrations.tsx
 msgid "Base URL (Optional)"
 msgstr "Základní URL (volitelné)"
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Basic Information"
+msgstr ""
 
 #: src/utils/resume/section.tsx
 msgid "Basics"
@@ -526,7 +540,7 @@ msgid "Body"
 msgstr "Text těla"
 
 #: src/components/input/rich-input.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Bold"
 msgstr "Tučné"
 
@@ -573,18 +587,6 @@ msgstr "Bulharština"
 #: src/components/input/rich-input.tsx
 msgid "Bullet List"
 msgstr "Odrážkový seznam"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Can I customize the templates?"
-msgstr "Mohu si šablony přizpůsobit?"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Can I export my resume to PDF?"
-msgstr "Mohu svůj životopis exportovat do PDF?"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Can I self-host CVCraft?"
-msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 #: src/dialogs/cover-letter/create.tsx
@@ -663,7 +665,7 @@ msgstr "Rozmysleli jste si to? Přejmenujte svůj životopis na něco výstižn�
 msgid "characters"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Characters:"
 msgstr ""
 
@@ -671,7 +673,7 @@ msgstr ""
 msgid "chars"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Check Grammar"
 msgstr ""
 
@@ -715,6 +717,10 @@ msgstr ""
 msgid "Circle"
 msgstr "Kruh"
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "City, State ZIP"
+msgstr ""
+
 #: src/components/ui/multiple-combobox.tsx
 msgid "Clear selection"
 msgstr "Zrušit výběr"
@@ -723,12 +729,12 @@ msgstr "Zrušit výběr"
 msgid "Click here to select a file to import"
 msgstr "Kliknutím zde vyberte soubor k importu"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Close dialogs"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Closing Paragraph"
 msgstr ""
 
@@ -736,7 +742,7 @@ msgstr ""
 msgid "Code Block"
 msgstr "Blok kódu"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/styles.tsx
 msgid "Color Scheme"
 msgstr ""
 
@@ -748,6 +754,22 @@ msgstr "Sloupce"
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Company"
 msgstr "Společnost"
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Company Address"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Company City, State ZIP"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Company Information"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Company Name"
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -770,8 +792,8 @@ msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 #: src/routes/cover-letter/$id/index.tsx
 msgid "Content"
 msgstr ""
@@ -808,8 +830,8 @@ msgstr "Zkopírujte a uložte si tyto záložní kódy pro případ, že ztratí
 msgid "Copy Backup Codes"
 msgstr "Zkopírovat záložní kódy"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 msgid "Copy Public URL"
 msgstr ""
 
@@ -829,31 +851,15 @@ msgstr ""
 msgid "Cover Letter"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "Cover letter downloaded as TXT."
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left.tsx
 msgid "Cover Letter Editor"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Cover letter is now locked"
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Cover letter is now private"
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Cover letter is now public"
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Cover letter is now unlocked"
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Cover Letter Title"
 msgstr ""
 
@@ -1025,11 +1031,15 @@ msgstr ""
 msgid "Custom Sections"
 msgstr "Vlastní sekce"
 
-#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Customization"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/templates.tsx
+msgid "Customize Template"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Customize the appearance and settings"
 msgstr ""
 
@@ -1043,10 +1053,6 @@ msgstr ""
 
 #: src/routes/_home/-sections/product-hunt-banner.tsx
 msgid "CVCraft is launching on Product Hunt today, head over to show some love!"
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "CVCraft is open-source, privacy-focused, and completely free. Unlike other resume builders, it doesn't show ads, track your data, or limit your features behind a paywall."
 msgstr ""
 
 #: src/routes/_home/-sections/prefooter.tsx
@@ -1082,7 +1088,7 @@ msgstr "Tmavý motiv"
 msgid "Date"
 msgstr "Datum"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid ""
 "Dear [Recipient],\n"
 "\n"
@@ -1110,6 +1116,10 @@ msgstr "Smazat účet"
 #: src/components/input/rich-input.tsx
 msgid "Delete Column"
 msgstr "Smazat sloupec"
+
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
+msgid "Delete current page"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Delete Page"
@@ -1184,10 +1194,6 @@ msgstr "Deaktivace dvoufázového ověření…"
 msgid "Disconnect"
 msgstr "Odpojit"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Do I need an account to use CVCraft?"
-msgstr ""
-
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
 msgstr "Nemáte účet? <0><1>Vytvořte si ho nyní <2/></1></0>"
@@ -1205,15 +1211,15 @@ msgstr "Stáhněte si kopii svého životopisu ve formátu JSON. Tento soubor po
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Stáhněte si kopii svého životopisu ve formátu PDF. Tento soubor použijte k tisku nebo snadnému sdílení životopisu s náboráři."
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Download as PDF"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Download as Text"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Download as Word"
 msgstr ""
 
@@ -1221,12 +1227,12 @@ msgstr ""
 msgid "Download JSON"
 msgstr "Stáhnout JSON"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "Download PDF"
 msgstr "Stáhnout PDF"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "Download TXT"
 msgstr ""
 
@@ -1275,13 +1281,19 @@ msgstr ""
 msgid "e.g., gpt-4, claude-3-opus, gemini-pro"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left.tsx
 msgid "Edit your cover letter content and metadata"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Editing"
+msgstr ""
+
+#. placeholder {0}: currentPageIndex + 1
+#. placeholder {1}: pages.length
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
+msgid "Editing Page {0} of {1}"
 msgstr ""
 
 #: src/utils/resume/section.tsx
@@ -1293,6 +1305,7 @@ msgid "Elegant three-section layout with curved dividers and premium spacing; so
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Email"
 msgstr "E-mail"
 
@@ -1396,7 +1409,7 @@ msgstr ""
 msgid "Experience"
 msgstr "Zkušenosti"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Experience Paragraph"
 msgstr ""
 
@@ -1426,7 +1439,7 @@ msgstr "Export"
 msgid "Export & Share"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Export Options"
 msgstr ""
 
@@ -1451,15 +1464,6 @@ msgstr "Dvoufázové ověření se nepodařilo nastavit."
 msgid "Failed to sign out"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Failed to update lock status"
-msgstr ""
-
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Failed to update visibility"
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
 #: src/routes/_home/-sections/header.tsx
 msgid "Features"
 msgstr "Funkce"
@@ -1476,10 +1480,6 @@ msgstr ""
 msgid "Filter by"
 msgstr "Filtrovat podle"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Find answers to common questions about CVCraft. Can't find what you're looking for? Feel free to reach out to our community."
-msgstr ""
-
 #: src/utils/locale.ts
 msgid "Finnish"
 msgstr "Finština"
@@ -1488,15 +1488,15 @@ msgstr "Finština"
 msgid "Fluency"
 msgstr "Úroveň znalosti"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/styles.tsx
 msgid "Font Family"
 msgstr "Řez písma"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/styles.tsx
 msgid "Font Size"
 msgstr "Velikost písma"
 
@@ -1543,6 +1543,7 @@ msgstr "Francouzština"
 msgid "Full Customization"
 msgstr ""
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Full Name"
 msgstr ""
@@ -1555,9 +1556,8 @@ msgstr "Plná šířka"
 msgid "Fullscreen"
 msgstr ""
 
-#: src/routes/_home/-sections/faq.tsx
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "General"
 msgstr ""
 
@@ -1601,12 +1601,8 @@ msgstr "Přejít na nástěnku"
 msgid "Go to..."
 msgstr "Přejít na…"
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Good"
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Got Questions?"
 msgstr ""
 
 #: src/dialogs/resume/sections/education.tsx
@@ -1698,7 +1694,11 @@ msgstr "Zvýraznění"
 msgid "Hindi"
 msgstr "Hindština"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Hiring Manager"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Hiring Manager, John Doe, etc."
 msgstr ""
 
@@ -1712,23 +1712,15 @@ msgstr ""
 msgid "Home"
 msgstr "Domů"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "How do I share my resume?"
-msgstr "Jak mohu sdílet svůj životopis?"
-
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "How do I use the API?"
 msgstr "Jak používat API?"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "How is my data protected?"
-msgstr "Jak jsou má data chráněna?"
 
 #: src/utils/locale.ts
 msgid "Hungarian"
 msgstr "Maďarština"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid ""
 "I would welcome the opportunity to discuss how my skills and enthusiasm can contribute to [Company]'s continued success. Thank you for considering my application. I look forward to hearing from you.\n"
 "\n"
@@ -1767,11 +1759,11 @@ msgstr "Importování životopisu…"
 msgid "Importing..."
 msgstr "Importování…"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Improve Writing"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "In my previous role as [Previous Position] at [Previous Company], I successfully [Achievement/Responsibility]. This experience has equipped me with [Relevant Skills] that directly align with the requirements of this position."
 msgstr ""
 
@@ -1815,18 +1807,6 @@ msgstr ""
 msgid "Invalid email/username or password. Please check your credentials and try again."
 msgstr ""
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Is CVCraft available in multiple languages?"
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Is CVCraft really free?"
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Is my data sold to third parties?"
-msgstr ""
-
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "Vydavatel"
@@ -1836,13 +1816,17 @@ msgid "Italian"
 msgstr "Italština"
 
 #: src/components/input/rich-input.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Italic"
 msgstr "Kurzíva"
 
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Japonština"
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "John Smith"
+msgstr ""
 
 #: src/routes/auth/register.tsx
 msgid "Join CVCraft and start building your resume"
@@ -1864,9 +1848,9 @@ msgstr "Zarovnání do bloku"
 msgid "Kannada"
 msgstr "Kannadština"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Keyboard Shortcuts"
 msgstr ""
 
@@ -1938,7 +1922,7 @@ msgstr "Ponechte prázdné pro resetování názvu na původní."
 msgid "Left Align"
 msgstr "Zarovnat vlevo"
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Length:"
 msgstr ""
 
@@ -1969,13 +1953,13 @@ msgstr "Světlý motiv"
 msgid "Lightning Fast"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/styles.tsx
 msgid "Line Height"
 msgstr "Výška řádku"
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Lines:"
 msgstr ""
 
@@ -2016,15 +2000,11 @@ msgstr "Lokalita"
 msgid "Lock"
 msgstr "Zámek"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Locked"
-msgstr ""
-
 #: src/components/user/dropdown-menu.tsx
 msgid "Logout"
 msgstr "Odhlásit se"
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Long"
 msgstr ""
 
@@ -2084,7 +2064,7 @@ msgstr "Okraje (vodorovné)"
 msgid "Margin (Vertical)"
 msgstr "Okraje (svislé)"
 
-#: src/routes/builder/$coverletterId/-sidebar/left.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left.tsx
 msgid "Metadata"
 msgstr ""
 
@@ -2129,8 +2109,8 @@ msgstr ""
 msgid "Navigate between fields"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Navigation"
 msgstr ""
 
@@ -2141,10 +2121,6 @@ msgstr "Nepálština"
 #: src/dialogs/resume/sections/profile.tsx
 msgid "Network"
 msgstr "Síť"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Never. We don't sell, share, or monetize your data in any way. Your privacy is our top priority, and we're committed to keeping your information secure."
-msgstr ""
 
 #: src/routes/dashboard/cover-letters/list.tsx
 msgid "New Cover Letter"
@@ -2158,6 +2134,10 @@ msgstr "Nový řádek"
 msgid "New Page"
 msgstr "Nová stránka"
 
+#: src/routes/builder/cover-letter/$id/index.tsx
+msgid "New page added"
+msgstr ""
+
 #: src/dialogs/auth/change-password.tsx
 #: src/routes/auth/reset-password.tsx
 msgid "New Password"
@@ -2167,16 +2147,20 @@ msgstr "Nové heslo"
 msgid "New Section"
 msgstr "Nová sekce"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "New York, NY 10001"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Next field"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+msgid "Next page"
 msgstr ""
 
 #: src/routes/auth/login.tsx
 msgid "No account found with these credentials. Please sign up first."
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "No account is required for basic use. However, creating an account allows you to save your resumes, access them from any device, and use advanced features."
 msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
@@ -2237,6 +2221,10 @@ msgstr "Otevřít"
 msgid "Open Email Client"
 msgstr "Otevřít e-mailového klienta"
 
+#: src/routes/cover-letter/$id/index.tsx
+msgid "Open in Builder"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 #: src/routes/_home/-sections/footer.tsx
 #: src/routes/_home/-sections/highlights.tsx
@@ -2244,11 +2232,11 @@ msgstr "Otevřít e-mailového klienta"
 msgid "Open Source"
 msgstr "Open source"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Opening Paragraph"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Optimal"
 msgstr ""
 
@@ -2279,12 +2267,25 @@ msgstr "Stránka"
 msgid "Page {0}"
 msgstr "Stránka {0}"
 
+#. placeholder {0}: currentPageIndex + 1
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
+msgid "Page {0} of {totalPages}"
+msgstr ""
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Stránka {pageNumber} z {totalNumberOfPages}"
 
-#: src/routes/builder/$coverletterId/-sidebar/right/styles.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/styles.tsx
 msgid "Page Margins"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+msgid "Pages"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
+msgid "Pages:"
 msgstr ""
 
 #: src/components/input/rich-input.tsx
@@ -2324,7 +2325,7 @@ msgstr "Ochrana heslem byla aktivována."
 msgid "Password reset email sent!"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "PDF export coming soon."
 msgstr ""
 
@@ -2353,6 +2354,7 @@ msgstr ""
 
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Phone"
 msgstr "Telefon"
 
@@ -2399,6 +2401,7 @@ msgstr "Portugalština (Portugalsko)"
 
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Position"
 msgstr "Pozice"
 
@@ -2438,21 +2441,17 @@ msgstr "Stiskněte <0>{RETURN_KEY}</0> nebo <1>{COMMA_KEY}</1> pro přidání ne
 msgid "Press Esc to close"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Prevent editing of this cover letter"
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+msgid "Previous field"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
-msgid "Previous field"
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
+msgid "Previous page"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Hlavní barva"
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Privacy & Security"
-msgstr ""
 
 #: src/routes/_home/-sections/footer.tsx
 #: src/routes/_home/-sections/highlights.tsx
@@ -2497,10 +2496,6 @@ msgstr ""
 msgid "Provider deleted successfully"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
-msgid "Public"
-msgstr ""
-
 #: src/utils/resume/section.tsx
 msgid "Publications"
 msgstr "Publikace"
@@ -2509,7 +2504,7 @@ msgstr "Publikace"
 msgid "Publisher"
 msgstr "Vydavatel"
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Quick Templates"
 msgstr ""
 
@@ -2540,7 +2535,7 @@ msgid "Recently updated resumes and cover letters from the last 30 days"
 msgstr ""
 
 #: src/dialogs/resume/sections/cover-letter.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 #: src/routes/cover-letter/$id/index.tsx
 msgid "Recipient"
 msgstr ""
@@ -2553,14 +2548,14 @@ msgstr "Obdélník"
 msgid "Rectangle (Full Width)"
 msgstr "Obdélník (plná šířka)"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Redo"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Redo (alternative)"
 msgstr ""
 
@@ -2613,8 +2608,8 @@ msgstr "Obnovit heslo"
 msgid "Reset your password"
 msgstr "Obnovte své heslo"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Reset zoom"
 msgstr ""
 
@@ -2653,11 +2648,15 @@ msgstr "Otočení"
 msgid "Russian"
 msgstr "Ruština"
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "San Francisco, CA 94102"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
 msgid "Save (Auto-save is enabled)"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Save (auto-save notification)"
 msgstr ""
 
@@ -2735,7 +2734,7 @@ msgstr ""
 msgid "See your changes instantly as you type with live preview updates."
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Select all"
 msgstr ""
 
@@ -2781,7 +2780,7 @@ msgstr "Nastavit heslo"
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
-#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Nastavení"
@@ -2816,8 +2815,8 @@ msgstr "Sdílení"
 msgid "Show"
 msgstr "Zobrazit"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Show keyboard shortcuts"
 msgstr ""
 
@@ -2931,6 +2930,10 @@ msgstr "Slug"
 msgid "Smart content generation with multiple AI providers"
 msgstr ""
 
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Software Engineer"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -2984,7 +2987,7 @@ msgstr ""
 msgid "Start with a blank canvas and build your resume step by step with our intuitive editor"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/preview.tsx
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
 msgid "Start writing your cover letter"
 msgstr ""
 
@@ -3000,11 +3003,11 @@ msgstr "Přeškrtnutí"
 msgid "Striking single-column with flame-inspired header waves and gradient accents; passionate design for marketing executives or innovation leaders."
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Styles"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/right/settings.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
 msgid "Suggest Improvements"
 msgstr ""
 
@@ -3024,12 +3027,21 @@ msgstr "Přepnout na tmavý motiv"
 msgid "Switch to light theme"
 msgstr "Přepnout na světlý motiv"
 
+#. placeholder {0}: currentPageIndex + 2
+#: src/routes/builder/cover-letter/$id/index.tsx
+msgid "Switched to page {0}"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/index.tsx
+msgid "Switched to page {currentPageIndex}"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Table"
 msgstr "Tabulka"
 
 #: src/dialogs/resume/index.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 msgid "Tags"
 msgstr "Tagy"
 
@@ -3041,8 +3053,8 @@ msgstr ""
 msgid "Tamil"
 msgstr "Tamilština"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Technical"
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Target Company Inc."
 msgstr ""
 
 #: src/utils/locale.ts
@@ -3058,6 +3070,8 @@ msgid "Template Gallery"
 msgstr "Galerie šablon"
 
 #: src/routes/_home/-sections/header.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/right/templates.tsx
 msgid "Templates"
 msgstr "Šablony"
 
@@ -3131,7 +3145,10 @@ msgstr "Tuto akci nelze vrátit zpět."
 msgid "This action cannot be undone. All your data will be permanently deleted."
 msgstr "Tuto akci nelze vrátit zpět. Všechna vaše data budou trvale smazána."
 
-#: src/routes/builder/$coverletterId/-store/cover-letter.ts
+#: src/routes/builder/cover-letter/$id/-store/cover-letter.ts
+#: src/routes/builder/cover-letter/$id/-store/cover-letter.ts
+#: src/routes/builder/cover-letter/$id/-store/cover-letter.ts
+#: src/routes/builder/cover-letter/$id/-store/cover-letter.ts
 msgid "This cover letter is locked and cannot be updated."
 msgstr ""
 
@@ -3202,7 +3219,7 @@ msgstr ""
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/dialogs/resume/sections/publication.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/metadata.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
 #: src/routes/cover-letter/$id/index.tsx
 msgid "Title"
 msgstr "Název"
@@ -3215,19 +3232,19 @@ msgstr "Pro smazání účtu musíte zadat potvrzovací text a kliknout na tlač
 msgid "Toggle active status"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 msgid "Toggle Left Sidebar"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
 msgid "Toggle Right Sidebar"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Too Long"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Too Short"
 msgstr ""
 
@@ -3366,13 +3383,13 @@ msgid "Ultra-modern asymmetric design with overlapping sections and bold typogra
 msgstr ""
 
 #: src/components/input/rich-input.tsx
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Underline"
 msgstr "Podtržení"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Undo"
 msgstr ""
 
@@ -3400,7 +3417,7 @@ msgstr "Odemknout"
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/preview.tsx
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
 msgid "Untitled Cover Letter"
 msgstr ""
 
@@ -3526,7 +3543,7 @@ msgstr ""
 msgid "Use Template"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/preview.tsx
+#: src/routes/builder/cover-letter/$id/-components/preview.tsx
 msgid "Use the editor on the left to add content"
 msgstr ""
 
@@ -3534,7 +3551,7 @@ msgstr ""
 msgid "Use these keyboard shortcuts to work faster and more efficiently."
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Use these keyboard shortcuts to work more efficiently."
 msgstr ""
 
@@ -3582,8 +3599,8 @@ msgstr "Ověření e-mailu je při obnovování hesla povinné."
 msgid "Vietnamese"
 msgstr "Vietnamština"
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "View"
 msgstr ""
 
@@ -3636,10 +3653,6 @@ msgstr "Jak chcete tento přístupový klíč pojmenovat?"
 msgid "What do you want to rename this section to?"
 msgstr "Na jaký název chcete tuto sekci přejmenovat?"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "What makes CVCraft different from other resume builders?"
-msgstr ""
-
 #: src/routes/dashboard/cover-letters/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "What would you like to create?"
@@ -3659,7 +3672,7 @@ msgstr ""
 msgid "words"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/word-count.tsx
+#: src/routes/builder/cover-letter/$id/-components/word-count.tsx
 msgid "Words:"
 msgstr ""
 
@@ -3667,33 +3680,13 @@ msgstr ""
 msgid "Write custom CSS or use AI to generate it for ultimate flexibility."
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-sidebar/left/editor.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/editor.tsx
 msgid "Write your cover letter content here..."
 msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Yes, CVCraft is available in multiple languages. You can choose your preferred language in the settings page, or using the language switcher in the top right corner. If you don't see your language, or you would like to improve the existing translations, you can <0>contribute to the translations on Crowdin<1> (opens in new tab)</1></0>."
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Yes! CVCraft can be self-hosted using Docker. This gives you complete control over your data and infrastructure. Check our documentation for setup instructions."
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Yes! CVCraft is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
-msgstr ""
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "Yes! Every template is fully customizable. You can change colors, fonts, spacing, and even write custom CSS for complete control over your resume's appearance."
-msgstr "Ano! Každá šablona je plně přizpůsobitelná. Můžete měnit barvy, písma, rozestupy a dokonce psát vlastní CSS pro úplnou kontrolu nad vzhledem svého životopisu."
 
 #: src/routes/auth/login.tsx
 msgid "You can also use your username to login."
 msgstr "K přihlášení můžete také použít své uživatelské jméno."
-
-#: src/routes/_home/-sections/faq.tsx
-msgid "You can share your resume via a unique public URL, protect it with a password, or download it as a PDF to share directly. The choice is yours!"
-msgstr "Svůj životopis můžete sdílet pomocí jedinečné veřejné URL adresy, chránit ho heslem nebo si ho stáhnout jako PDF a sdílet přímo. Volba je na vás!"
 
 #. placeholder {0}: passkey.name ?? "(WebAuthn Device)"
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -3706,6 +3699,10 @@ msgstr ""
 
 #: src/routes/dashboard/settings/profile.tsx
 msgid "You have unsaved changes. Save or cancel to continue."
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-store/cover-letter.ts
+msgid "You must have at least one page."
 msgstr ""
 
 #: src/routes/auth/register.tsx
@@ -3724,9 +3721,9 @@ msgstr ""
 msgid "Your API key has been copied to the clipboard."
 msgstr "Váš API klíč byl zkopírován do schránky."
 
-#: src/routes/builder/$coverletterId/-components/header.tsx
-#: src/routes/builder/$coverletterId/index.tsx
 #: src/routes/builder/$resumeId/index.tsx
+#: src/routes/builder/cover-letter/$id/-components/header.tsx
+#: src/routes/builder/cover-letter/$id/index.tsx
 msgid "Your changes are saved automatically."
 msgstr "Vaše změny se ukládají automaticky."
 
@@ -3742,12 +3739,16 @@ msgstr ""
 msgid "Your data is stored locally"
 msgstr "Vaše data jsou ukládána lokálně"
 
-#: src/routes/_home/-sections/faq.tsx
-msgid "Your data is stored securely and is never shared with third parties. You can also self-host CVCraft on your own servers for complete control over your data."
-msgstr ""
-
 #: src/routes/_home/-sections/highlights.tsx
 msgid "Your data stays yours, no tracking or selling"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Your Full Name"
+msgstr ""
+
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "Your Information"
 msgstr ""
 
 #: src/routes/dashboard/settings/authentication/-components/passkeys.tsx
@@ -3810,23 +3811,27 @@ msgstr "Veřejný odkaz na váš životopis je aktuálně chráněn heslem. Hesl
 msgid "Your work is automatically saved as you type"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-sidebar/left/metadata.tsx
+msgid "your.email@example.com"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Zoom in"
 msgstr "Přiblížit"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "Zoom In"
 msgstr ""
 
-#: src/routes/builder/$coverletterId/-components/shortcuts-dialog.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-components/shortcuts-dialog.tsx
+#: src/routes/builder/cover-letter/$id/-components/shortcuts-dialog.tsx
 msgid "Zoom out"
 msgstr "Oddálit"
 
-#: src/routes/builder/$coverletterId/-components/dock.tsx
+#: src/routes/builder/cover-letter/$id/-components/dock.tsx
 msgid "Zoom Out"
 msgstr ""
 

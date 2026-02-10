@@ -1,10 +1,9 @@
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon, GearSixIcon } from "@phosphor-icons/react";
+import { GearSixIcon } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { LocaleCombobox } from "@/components/locale/combobox";
 import { ThemeCombobox } from "@/components/theme/combobox";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
@@ -118,20 +117,9 @@ function RouteComponent() {
 											<Trans>Help us translate</Trans>
 										</p>
 										<p className="mt-1 text-muted-foreground text-sm">
-											<Trans>Contribute to making CVCraft available in more languages</Trans>
+											<Trans>CVCraft supports 50+ languages with community translations</Trans>
 										</p>
 									</div>
-									<Button
-										asChild
-										size="sm"
-										variant="outline"
-										className="h-9 gap-2 border-2 border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-transparent font-semibold text-blue-600 text-xs transition-all hover:scale-105 hover:border-blue-500/50 hover:bg-blue-500/20 hover:shadow-blue-500/20 hover:shadow-lg"
-									>
-										<a href="https://crowdin.com/project/reactive-resume" target="_blank" rel="noopener">
-											<Trans>Join translation team</Trans>
-											<ArrowRightIcon className="size-3.5" weight="bold" />
-										</a>
-									</Button>
 								</div>
 							</div>
 						</div>

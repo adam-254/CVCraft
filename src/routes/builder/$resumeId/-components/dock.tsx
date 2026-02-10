@@ -2,7 +2,6 @@ import { t } from "@lingui/core/macro";
 import {
 	ArrowUUpLeftIcon,
 	ArrowUUpRightIcon,
-	CircleNotchIcon,
 	CubeFocusIcon,
 	FileJsIcon,
 	FilePdfIcon,
@@ -12,7 +11,7 @@ import {
 	MagnifyingGlassPlusIcon,
 	PlusIcon,
 } from "@phosphor-icons/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { useCallback, useMemo } from "react";
@@ -25,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { authClient } from "@/integrations/auth/client";
 import { orpc } from "@/integrations/orpc/client";
-import { downloadFromUrl, downloadWithAnchor, generateFilename } from "@/utils/file";
+import { downloadWithAnchor, generateFilename } from "@/utils/file";
 import { cn } from "@/utils/style";
 
 export function BuilderDock() {
@@ -47,9 +46,6 @@ export function BuilderDock() {
 	const updateResumeData = useResumeStore((state) => state.updateResumeData);
 
 	const { data: resume } = useQuery(orpc.resume.getById.queryOptions({ input: { id: params.resumeId } }));
-	const { mutateAsync: printResumeAsPDF, isPending: isPrinting } = useMutation(
-		orpc.printer.printResumeAsPDF.mutationOptions(),
-	);
 
 	const { undo, redo, pastStates, futureStates } = useTemporalStore((state) => ({
 		undo: state.undo,
@@ -87,19 +83,31 @@ export function BuilderDock() {
 		if (!resume?.id) return;
 
 		const filename = generateFilename(resume.data.basics.name, "pdf");
-		const toastId = toast.loading(t`Please wait while your PDF is being generated...`, {
-			description: t`This may take a while depending on the server capacity. Please do not close the window or refresh the page.`,
-		});
+		const toastId = toast.loading(t`Preparing your PDF...`);
 
 		try {
-			const { url } = await printResumeAsPDF({ id: resume.id });
-			downloadFromUrl(url, filename);
-		} catch {
-			toast.error(t`There was a problem while generating the PDF, please try again in some time.`);
+			// Open the resume in a new window for printing
+			const printUrl = `${window.location.origin}/printer/${resume.id}`;
+			const printWindow = window.open(printUrl, "_blank");
+
+			if (!printWindow) {
+				toast.error(t`Please allow popups to download PDF`);
+				return;
+			}
+
+			// Wait for the window to load, then trigger print
+			printWindow.addEventListener("load", () => {
+				setTimeout(() => {
+					printWindow.print();
+					toast.success(t`PDF download initiated. Use your browser's print dialog to save as PDF.`);
+				}, 1000);
+			});
+		} catch (error) {
+			toast.error(t`There was a problem preparing the PDF, please try again.`);
 		} finally {
 			toast.dismiss(toastId);
 		}
-	}, [resume?.id, resume?.data.basics.name, printResumeAsPDF]);
+	}, [resume?.id, resume?.data.basics.name]);
 
 	const onAddPage = useCallback(() => {
 		updateResumeData((draft) => {
@@ -162,13 +170,7 @@ export function BuilderDock() {
 				<div className="mx-1 h-8 w-px bg-border" />
 				<DockIcon icon={LinkSimpleIcon} title={t`Copy URL`} onClick={() => onCopyUrl()} />
 				<DockIcon icon={FileJsIcon} title={t`Download JSON`} onClick={() => onDownloadJSON()} />
-				<DockIcon
-					title={t`Download PDF`}
-					disabled={isPrinting}
-					onClick={() => onDownloadPDF()}
-					icon={isPrinting ? CircleNotchIcon : FilePdfIcon}
-					iconClassName={cn(isPrinting && "animate-spin")}
-				/>
+				<DockIcon title={t`Download PDF`} onClick={() => onDownloadPDF()} icon={FilePdfIcon} />
 			</motion.div>
 		</div>
 	);

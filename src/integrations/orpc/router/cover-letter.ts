@@ -1,4 +1,5 @@
 import z from "zod";
+import { printerService } from "@/integrations/orpc/services/printer";
 import { publicProcedure } from "../context";
 import { coverLetterDirectService } from "../services/cover-letter-direct";
 
@@ -137,5 +138,32 @@ export const coverLetterRouter = {
 		.handler(async ({ context, input }) => {
 			const userId = context.user?.id || "00000000-0000-0000-0000-000000000001";
 			await coverLetterDirectService.remove({ id: input.id, userId });
+		}),
+
+	printAsPDF: publicProcedure
+		.route({
+			method: "POST",
+			path: "/cover-letter/{id}/pdf",
+			tags: ["Cover Letter"],
+			summary: "Generate PDF for cover letter",
+			description: "Generates a PDF version of the cover letter",
+		})
+		.input(
+			z.object({
+				id: z.string(),
+			}),
+		)
+		.output(z.object({ url: z.string() }))
+		.handler(async ({ context, input }) => {
+			const userId = context.user?.id || "00000000-0000-0000-0000-000000000001";
+			const coverLetter = await coverLetterDirectService.findOne({ id: input.id, userId });
+
+			const url = await printerService.printCoverLetterAsPDF({
+				id: coverLetter.id,
+				userId: coverLetter.userId,
+				title: coverLetter.title,
+			});
+
+			return { url };
 		}),
 };

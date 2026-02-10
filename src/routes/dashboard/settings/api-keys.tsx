@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { BookOpenIcon, KeyIcon, LinkSimpleIcon, PlusIcon, TrashSimpleIcon } from "@phosphor-icons/react";
+import { BookOpenIcon, KeyIcon, PlusIcon, TrashSimpleIcon } from "@phosphor-icons/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
@@ -79,17 +79,10 @@ function RouteComponent() {
 
 						<p className="text-muted-foreground leading-relaxed">
 							<Trans>
-								Explore the API documentation to learn how to integrate CVCraft with your applications. Find
-								detailed endpoints, request examples, and authentication methods.
+								Use API keys to integrate CVCraft with your applications. Each key provides secure access to your resume
+								data through our REST API endpoints.
 							</Trans>
 						</p>
-
-						<Button asChild variant="link">
-							<a href="https://docs.rxresu.me/api-reference" target="_blank" rel="noopener">
-								<LinkSimpleIcon />
-								<Trans>API Reference</Trans>
-							</a>
-						</Button>
 					</div>
 				</div>
 

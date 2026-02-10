@@ -1,4 +1,5 @@
-import { t } from "@lingui/core/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
@@ -15,6 +16,8 @@ type TemplateCardProps = {
 };
 
 function TemplateCard({ metadata, index }: TemplateCardProps) {
+	const { i18n } = useLingui();
+
 	return (
 		<motion.div
 			className="group relative"
@@ -43,7 +46,7 @@ function TemplateCard({ metadata, index }: TemplateCardProps) {
 							size="sm"
 							className="w-full gap-2 bg-white text-black hover:bg-white/90"
 						>
-							<Link to="/dashboard" aria-label={t`Use ${metadata.name} template`}>
+							<Link to="/dashboard" aria-label={i18n._(msg`Use ${metadata.name} template`)}>
 								<Trans>Use Template</Trans>
 								<ArrowRightIcon className="size-4" />
 							</Link>

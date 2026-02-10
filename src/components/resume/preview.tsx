@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon, IconContext, type IconProps, WarningIcon } from "@phosphor-icons/react";
+import { IconContext, type IconProps, WarningIcon } from "@phosphor-icons/react";
 import { type RefObject, useMemo, useRef, useState } from "react";
 import { match } from "ts-pattern";
 import { useResizeObserver } from "usehooks-ts";
@@ -196,25 +196,17 @@ function PageContainer({ pageIndex, pageLayout, pageClassName, showPageNumbers =
 
 			{metadata.page.format !== "free-form" && pageHeight > maxPageHeight && (
 				<div className="absolute start-0 top-full mt-4 print:hidden">
-					<a
-						rel="noopener"
-						target="_blank"
-						className="group/link"
-						href="https://docs.rxresu.me/guides/fitting-content-on-a-page"
-					>
-						<Alert className="max-w-sm text-yellow-600">
-							<WarningIcon color="currentColor" />
-							<AlertTitle>
-								<Trans>
-									The content is too tall for this page, this may cause undesirable results when exporting to PDF.
-								</Trans>
-							</AlertTitle>
-							<AlertDescription className="text-xs underline-offset-2 group-hover/link:underline">
-								<Trans>Learn more about how to fit content on a page</Trans>
-								<ArrowRightIcon color="currentColor" className="ms-1 inline size-3" />
-							</AlertDescription>
-						</Alert>
-					</a>
+					<Alert className="max-w-sm text-yellow-600">
+						<WarningIcon color="currentColor" />
+						<AlertTitle>
+							<Trans>
+								The content is too tall for this page, this may cause undesirable results when exporting to PDF.
+							</Trans>
+						</AlertTitle>
+						<AlertDescription className="text-xs">
+							<Trans>Try reducing font size, margins, or moving content to another page.</Trans>
+						</AlertDescription>
+					</Alert>
 				</div>
 			)}
 		</div>

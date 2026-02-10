@@ -314,7 +314,7 @@ export function getStorageService(): StorageService {
 }
 
 // High-level upload types
-type UploadType = "picture" | "screenshot" | "pdf";
+type UploadType = "picture" | "screenshot" | "pdf" | "cover-letter-pdf";
 
 export interface UploadFileInput {
 	userId: string;
@@ -322,6 +322,7 @@ export interface UploadFileInput {
 	contentType: string;
 	type: UploadType;
 	resumeId?: string;
+	coverLetterId?: string;
 }
 
 export interface UploadFileResult {
@@ -345,6 +346,10 @@ export async function uploadFile(input: UploadFileInput): Promise<UploadFileResu
 		case "pdf":
 			if (!input.resumeId) throw new Error("resumeId is required for pdf uploads");
 			key = buildPdfKey(input.userId, input.resumeId);
+			break;
+		case "cover-letter-pdf":
+			if (!input.coverLetterId) throw new Error("coverLetterId is required for cover letter pdf uploads");
+			key = `uploads/${input.userId}/cover-letters/pdfs/${input.coverLetterId}/${Date.now()}.pdf`;
 			break;
 	}
 

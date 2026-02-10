@@ -35,6 +35,7 @@ import { Route as DashboardCoverLettersIndexRouteImport } from "./routes/dashboa
 import { Route as CoverLetterIdIndexRouteImport } from "./routes/cover-letter/$id/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
+import { Route as PrinterCoverLetterIdRouteImport } from "./routes/printer/cover-letter/$id";
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
 import { Route as DashboardSettingsPreferencesRouteImport } from "./routes/dashboard/settings/preferences";
 import { Route as DashboardSettingsIntegrationsRouteImport } from "./routes/dashboard/settings/integrations";
@@ -179,6 +180,11 @@ const UploadsUserIdSplatRoute = UploadsUserIdSplatRouteImport.update({
   path: "/uploads/$userId/$",
   getParentRoute: () => rootRouteImport,
 } as any);
+const PrinterCoverLetterIdRoute = PrinterCoverLetterIdRouteImport.update({
+  id: "/printer/cover-letter/$id",
+  path: "/printer/cover-letter/$id",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const DashboardSettingsProfileRoute =
   DashboardSettingsProfileRouteImport.update({
     id: "/settings/profile",
@@ -286,6 +292,7 @@ export interface FileRoutesByFullPath {
   "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
+  "/printer/cover-letter/$id": typeof PrinterCoverLetterIdRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
@@ -321,6 +328,7 @@ export interface FileRoutesByTo {
   "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
+  "/printer/cover-letter/$id": typeof PrinterCoverLetterIdRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id": typeof CoverLetterIdIndexRoute;
@@ -363,6 +371,7 @@ export interface FileRoutesById {
   "/dashboard/settings/integrations": typeof DashboardSettingsIntegrationsRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
+  "/printer/cover-letter/$id": typeof PrinterCoverLetterIdRoute;
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/cover-letter/$id/": typeof CoverLetterIdIndexRoute;
@@ -405,6 +414,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
+    | "/printer/cover-letter/$id"
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
@@ -440,6 +450,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
+    | "/printer/cover-letter/$id"
     | "/uploads/$userId/$"
     | "/builder/$resumeId"
     | "/cover-letter/$id"
@@ -481,6 +492,7 @@ export interface FileRouteTypes {
     | "/dashboard/settings/integrations"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
+    | "/printer/cover-letter/$id"
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
     | "/cover-letter/$id/"
@@ -505,6 +517,7 @@ export interface RootRouteChildren {
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute;
   ApiOpenapiSplatRoute: typeof ApiOpenapiSplatRoute;
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute;
+  PrinterCoverLetterIdRoute: typeof PrinterCoverLetterIdRoute;
   UploadsUserIdSplatRoute: typeof UploadsUserIdSplatRoute;
 }
 
@@ -690,6 +703,13 @@ declare module "@tanstack/react-router" {
       path: "/uploads/$userId/$";
       fullPath: "/uploads/$userId/$";
       preLoaderRoute: typeof UploadsUserIdSplatRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/printer/cover-letter/$id": {
+      id: "/printer/cover-letter/$id";
+      path: "/printer/cover-letter/$id";
+      fullPath: "/printer/cover-letter/$id";
+      preLoaderRoute: typeof PrinterCoverLetterIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/dashboard/settings/profile": {
@@ -910,6 +930,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiOpenapiSplatRoute: ApiOpenapiSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
+  PrinterCoverLetterIdRoute: PrinterCoverLetterIdRoute,
   UploadsUserIdSplatRoute: UploadsUserIdSplatRoute,
 };
 export const routeTree = rootRouteImport
