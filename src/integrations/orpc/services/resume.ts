@@ -3,7 +3,7 @@ import { and, arrayContains, asc, desc, eq, sql } from "drizzle-orm";
 import { get } from "es-toolkit/compat";
 import { match } from "ts-pattern";
 import { schema } from "@/integrations/drizzle";
-import { db } from "@/integrations/drizzle/client";
+import { directDb as db } from "@/integrations/drizzle/direct-client";
 import type { ResumeData } from "@/schema/resume/data";
 import { defaultResumeData } from "@/schema/resume/data";
 import { env } from "@/utils/env";
