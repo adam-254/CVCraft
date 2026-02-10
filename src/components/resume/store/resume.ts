@@ -22,6 +22,7 @@ type ResumeStoreState = {
 type ResumeStoreActions = {
 	initialize: (resume: Resume | null) => void;
 	updateResumeData: (fn: (draft: WritableDraft<ResumeData>) => void) => void;
+	saveDocumentToStorage: () => Promise<void>;
 };
 
 type ResumeStore = ResumeStoreState & ResumeStoreActions;
@@ -29,8 +30,16 @@ type ResumeStore = ResumeStoreState & ResumeStoreActions;
 const controller = new AbortController();
 const signal = controller.signal;
 
-const _syncResume = (resume: Resume) => {
-	orpc.resume.update.call({ id: resume.id, data: resume.data }, { signal });
+const _syncResume = async (resume: Resume) => {
+	// Save data to database
+	await orpc.resume.update.call({ id: resume.id, data: resume.data }, { signal });
+	
+	// Save rendered document to storage
+	try {
+		await orpc.resume.saveDocument.call({ id: resume.id }, { signal });
+	} catch (error) {
+		console.error("Failed to save document to storage:", error);
+	}
 };
 
 const syncResume = debounce(_syncResume, 500, { signal });
@@ -41,7 +50,7 @@ type PartializedState = { resume: Resume | null };
 
 export const useResumeStore = create<ResumeStore>()(
 	temporal(
-		immer((set) => ({
+		immer((set, get) => ({
 			resume: null as unknown as Resume,
 			isReady: false,
 
@@ -65,6 +74,18 @@ export const useResumeStore = create<ResumeStore>()(
 					fn(state.resume.data);
 					syncResume(current(state.resume));
 				});
+			},
+
+			saveDocumentToStorage: async () => {
+				const state = get();
+				if (!state.resume) return;
+
+				try {
+					await orpc.resume.saveDocument.call({ id: state.resume.id }, { signal });
+				} catch (error) {
+					console.error("Failed to save document to storage:", error);
+					throw error;
+				}
 			},
 		})),
 		{

@@ -4,6 +4,7 @@ import { get } from "es-toolkit/compat";
 import { match } from "ts-pattern";
 import { schema } from "@/integrations/drizzle";
 import { directDb as db } from "@/integrations/drizzle/direct-client";
+import { supabase } from "@/integrations/supabase/client";
 import type { ResumeData } from "@/schema/resume/data";
 import { defaultResumeData } from "@/schema/resume/data";
 import { env } from "@/utils/env";
@@ -81,37 +82,46 @@ export const resumeService = {
 	},
 
 	getByIdForPrinter: async (input: { id: string }) => {
-		const [resume] = await db
-			.select({
-				id: schema.resume.id,
-				name: schema.resume.name,
-				slug: schema.resume.slug,
-				tags: schema.resume.tags,
-				data: schema.resume.data,
-				userId: schema.resume.userId,
-				isLocked: schema.resume.isLocked,
-				updatedAt: schema.resume.updatedAt,
-			})
-			.from(schema.resume)
-			.where(eq(schema.resume.id, input.id));
-
-		if (!resume) throw new ORPCError("NOT_FOUND");
-
 		try {
-			if (!resume.data.picture.url) throw new Error("Picture is not available");
+			const { data, error } = await supabase
+				.from("resume")
+				.select("id, name, slug, tags, data, user_id, is_locked, updated_at")
+				.eq("id", input.id)
+				.single();
 
-			// Convert picture URL to base64 data, so there's no fetching required on the client.
-			const url = resume.data.picture.url.replace(env.APP_URL, "http://localhost:3000");
-			const base64 = await fetch(url)
-				.then((res) => res.arrayBuffer())
-				.then((buffer) => Buffer.from(buffer).toString("base64"));
+			if (error) throw error;
+			if (!data) throw new ORPCError("NOT_FOUND");
 
-			resume.data.picture.url = `data:image/jpeg;base64,${base64}`;
-		} catch {
-			// Ignore errors, as the picture is not always available
+			const resume = {
+				id: data.id,
+				name: data.name,
+				slug: data.slug,
+				tags: data.tags,
+				data: data.data as ResumeData,
+				userId: data.user_id,
+				isLocked: data.is_locked,
+				updatedAt: new Date(data.updated_at),
+			};
+
+			try {
+				if (!resume.data.picture.url) throw new Error("Picture is not available");
+
+				// Convert picture URL to base64 data, so there's no fetching required on the client.
+				const url = resume.data.picture.url.replace(env.APP_URL, "http://localhost:3000");
+				const base64 = await fetch(url)
+					.then((res) => res.arrayBuffer())
+					.then((buffer) => Buffer.from(buffer).toString("base64"));
+
+				resume.data.picture.url = `data:image/jpeg;base64,${base64}`;
+			} catch {
+				// Ignore errors, as the picture is not always available
+			}
+
+			return resume;
+		} catch (error) {
+			console.error("Resume fetch error for printer:", error);
+			throw new ORPCError("NOT_FOUND");
 		}
-
-		return resume;
 	},
 
 	getBySlug: async (input: { username: string; slug: string; currentUserId?: string }) => {

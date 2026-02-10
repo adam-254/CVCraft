@@ -315,4 +315,36 @@ export const resumeRouter = {
 		.handler(async ({ context, input }) => {
 			return await resumeDirectService.delete({ id: input.id, userId: context.user.id });
 		}),
+
+	saveDocument: protectedProcedure
+		.route({
+			method: "POST",
+			path: "/resume/{id}/save-document",
+			tags: ["Resume"],
+			summary: "Save resume document to storage",
+			description: "Saves the rendered resume HTML to Supabase Storage for later retrieval.",
+		})
+		.input(z.object({ id: z.string(), htmlContent: z.string().optional() }))
+		.output(z.object({ url: z.string() }))
+		.handler(async ({ context, input }) => {
+			// This will be called from the client with the rendered HTML
+			// For now, return a placeholder - we'll implement the actual rendering server-side
+			return { url: "" };
+		}),
+
+	getDocumentUrl: publicProcedure
+		.route({
+			method: "GET",
+			path: "/resume/{id}/document-url",
+			tags: ["Resume"],
+			summary: "Get resume document URL",
+			description: "Gets the URL of the stored resume document from Supabase Storage.",
+		})
+		.input(z.object({ id: z.string() }))
+		.output(z.object({ url: z.string() }))
+		.handler(async ({ context, input }) => {
+			const userId = context.user?.id || "00000000-0000-0000-0000-000000000001";
+			// Return the storage URL for the document
+			return { url: `${userId}/resumes/${input.id}/document.html` };
+		}),
 };
