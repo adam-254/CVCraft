@@ -8,7 +8,7 @@ export function ElegantTemplate({ title, recipient, content, className }: CoverL
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-amber-50 p-12 shadow-sm", className)}>
+		<div className={cn("relative bg-amber-50 p-12 shadow-sm", className)}>
 			{/* Decorative Header */}
 			<div className="mb-8 text-center">
 				<div className="mb-4 flex items-center justify-center gap-4">
@@ -25,7 +25,7 @@ export function ElegantTemplate({ title, recipient, content, className }: CoverL
 				</div>
 			</div>
 
-			<div className="bg-white p-10 shadow-md">
+			<div className="relative bg-white p-10 shadow-md">
 				{/* Recipient */}
 				{recipient && (
 					<div className="mb-6">

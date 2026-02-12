@@ -22,7 +22,7 @@ export function CorporateTemplate({
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-gray-50 p-12 shadow-lg", className)}>
+		<div className={cn("relative bg-gray-50 p-12 shadow-lg", className)}>
 			<div className="bg-white shadow-xl">
 				{/* Corporate Header with Navy Blue */}
 				<div className="border-blue-900 border-b-4 bg-gradient-to-r from-blue-900 to-blue-800 p-8">

@@ -17,6 +17,14 @@ async function getBrowser(): Promise<Browser> {
 	// Reuse existing connected browser if available
 	if (browserInstance?.connected) return browserInstance;
 
+	// Check if PRINTER_ENDPOINT is configured
+	if (!env.PRINTER_ENDPOINT) {
+		throw new ORPCError("INTERNAL_SERVER_ERROR", {
+			message:
+				"PDF generation service is not configured. PRINTER_ENDPOINT environment variable is not set. Using client-side PDF generation as fallback.",
+		});
+	}
+
 	const args = ["--disable-dev-shm-usage", "--disable-features=LocalNetworkAccessChecks,site-per-process,FedCm"];
 
 	try {
@@ -131,7 +139,13 @@ export const printerService = {
 			// Wait for the page to fully load (network idle + custom loaded attribute)
 			await page.setViewport(pageDimensionsAsPixels[format]);
 			await page.goto(url, { waitUntil: "networkidle0" });
+			
+			// Wait for fonts to load and give extra time for rendering
 			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
+			await page.evaluateHandle("document.fonts.ready");
+			
+			// Additional wait to ensure all CSS is applied and layout is stable
+			await page.waitForTimeout(1000);
 
 			// Step 5: Adjust the DOM for proper PDF pagination
 			// This runs in the browser context to modify CSS before PDF generation
@@ -436,7 +450,11 @@ export const printerService = {
 			// Wait for the page to fully load
 			await page.setViewport(pageDimensionsAsPixels[format]);
 			await page.goto(url, { waitUntil: "networkidle0" });
+			
+			// Wait for fonts and rendering
 			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
+			await page.evaluateHandle("document.fonts.ready");
+			await page.waitForTimeout(1000);
 
 			// Step 4: Adjust the DOM for proper PDF pagination
 			await page.evaluate(() => {

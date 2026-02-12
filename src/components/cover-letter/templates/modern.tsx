@@ -8,7 +8,7 @@ export function ModernTemplate({ title, recipient, content, className }: CoverLe
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-white shadow-sm", className)}>
+		<div className={cn("relative bg-white shadow-sm", className)}>
 			{/* Gradient Header */}
 			<div className="bg-gradient-to-r from-purple-600 to-blue-500 p-12 text-white">
 				<h1 className="mb-2 font-bold text-4xl">{title}</h1>

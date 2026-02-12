@@ -23,7 +23,7 @@ export function ExecutiveTemplate({
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-gradient-to-br from-slate-50 to-gray-100 p-12 shadow-lg", className)}>
+		<div className={cn("relative bg-gradient-to-br from-slate-50 to-gray-100 p-12 shadow-lg", className)}>
 			<div className="bg-white shadow-2xl">
 				{/* Premium Header with Gold Accent */}
 				<div className="relative overflow-hidden bg-gradient-to-r from-slate-900 to-slate-800 p-8">

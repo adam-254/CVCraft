@@ -127,7 +127,8 @@ function buildResponseHeaders({
 }: BuildResponseHeaderArgs): Headers {
 	const headers = new Headers();
 
-	headers.set("Content-Type", shouldForceDownload ? "application/octet-stream" : contentType);
+	// Keep the correct content type even when forcing download
+	headers.set("Content-Type", contentType);
 	headers.set("Content-Length", storedFile.size.toString());
 
 	if (shouldForceDownload) {

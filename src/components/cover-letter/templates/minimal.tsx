@@ -8,7 +8,7 @@ export function MinimalTemplate({ title, recipient, content, className }: CoverL
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-white p-16 shadow-sm", className)}>
+		<div className={cn("relative bg-white p-16 shadow-sm", className)}>
 			{/* Minimal Header */}
 			<div className="mb-12">
 				<h1 className="mb-1 font-light text-2xl text-gray-900 tracking-tight">{title}</h1>

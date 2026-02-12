@@ -8,7 +8,7 @@ export function ClassicTemplate({ title, recipient, content, className }: CoverL
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-white p-12 shadow-sm", className)}>
+		<div className={cn("relative bg-white p-12 shadow-sm", className)}>
 			{/* Classic Header */}
 			<div className="mb-12 border-gray-800 border-b-2 pb-4 text-center">
 				<h1 className="mb-2 font-bold font-serif text-3xl text-gray-900 uppercase tracking-wide">{title}</h1>

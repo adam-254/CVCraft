@@ -8,7 +8,7 @@ export function ProfessionalTemplate({ title, recipient, content, className }: C
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-white p-12 shadow-sm", className)}>
+		<div className={cn("relative bg-white p-12 shadow-sm", className)}>
 			{/* Header with subtle accent */}
 			<div className="mb-8 border-blue-600 border-l-4 pl-6">
 				<h1 className="mb-2 font-bold text-3xl text-gray-900">{title}</h1>

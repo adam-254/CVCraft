@@ -22,7 +22,7 @@ export function AcademicTemplate({
 	const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 	return (
-		<div className={cn("bg-amber-50 p-12 shadow-lg", className)}>
+		<div className={cn("relative bg-amber-50 p-12 shadow-lg", className)}>
 			<div className="bg-white shadow-2xl">
 				{/* Academic Header with Serif Typography */}
 				<div className="border-amber-700 border-b-2 bg-gradient-to-b from-amber-50 to-white p-8">

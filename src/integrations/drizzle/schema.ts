@@ -179,6 +179,10 @@ export const resume = pg.pgTable(
 			.notNull()
 			.$type<ResumeData>()
 			.$defaultFn(() => defaultResumeData),
+		// PDF generation tracking
+		pdfUrl: pg.text("pdf_url"),
+		pdfGeneratedAt: pg.timestamp("pdf_generated_at", { withTimezone: true }),
+		templateUsed: pg.text("template_used").default("professional"),
 		userId: pg
 			.uuid("user_id")
 			.notNull()
@@ -195,6 +199,10 @@ export const resume = pg.pgTable(
 		pg.index().on(t.userId),
 		pg.index().on(t.userId, t.updatedAt.desc()),
 		pg.index().on(t.isPublic, t.slug, t.userId),
+		// PDF tracking indexes
+		pg.index().on(t.pdfUrl).where(sql`${t.pdfUrl} IS NOT NULL`),
+		pg.index().on(t.pdfGeneratedAt.desc()).where(sql`${t.pdfGeneratedAt} IS NOT NULL`),
+		pg.index().on(t.templateUsed),
 	],
 );
 
@@ -266,6 +274,10 @@ export const coverLetter = pg.pgTable(
 		companyCity: pg.text("company_city"),
 		hiringManager: pg.text("hiring_manager"),
 		position: pg.text("position"),
+		// PDF generation tracking
+		pdfUrl: pg.text("pdf_url"),
+		pdfGeneratedAt: pg.timestamp("pdf_generated_at", { withTimezone: true }),
+		templateUsed: pg.text("template_used").default("professional"),
 		userId: pg
 			.uuid("user_id")
 			.notNull()
@@ -282,6 +294,10 @@ export const coverLetter = pg.pgTable(
 		pg.index().on(t.userId),
 		pg.index().on(t.userId, t.updatedAt.desc()),
 		pg.index().on(t.isPublic, t.slug, t.userId),
+		// PDF tracking indexes
+		pg.index().on(t.pdfUrl).where(sql`${t.pdfUrl} IS NOT NULL`),
+		pg.index().on(t.pdfGeneratedAt.desc()).where(sql`${t.pdfGeneratedAt} IS NOT NULL`),
+		pg.index().on(t.templateUsed),
 	],
 );
 

@@ -55,18 +55,20 @@ export function CoverLetterPreview() {
 	const pages = coverLetter.pages || [{ id: "1", content: coverLetter.content || "" }];
 
 	return (
-		<div className="flex flex-col gap-0" data-wf-loaded="true">
+		<div className="relative flex flex-col gap-0" data-wf-loaded="true">
 			{pages.map((page, index) => (
 				<div
 					key={page.id}
 					data-page-index={index}
-					className="w-full print:w-full!"
+					className="relative w-full overflow-hidden print:w-full!"
 					style={{
 						width: "8.5in",
 						minHeight: "11in",
 						fontFamily: "Inter, sans-serif",
 						fontSize: "14px",
 						lineHeight: "1.5",
+						pageBreakAfter: index < pages.length - 1 ? "always" : "auto",
+						pageBreakInside: "avoid",
 					}}
 				>
 					<TemplateComponent
@@ -84,7 +86,7 @@ export function CoverLetterPreview() {
 						companyCity={coverLetter.companyCity || undefined}
 						hiringManager={coverLetter.hiringManager || undefined}
 						position={coverLetter.position || undefined}
-						className="h-full"
+						className="h-full w-full"
 					/>
 				</div>
 			))}

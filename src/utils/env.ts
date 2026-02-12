@@ -15,7 +15,7 @@ export const env = createEnv({
 		PRINTER_APP_URL: z.url({ protocol: /https?/ }).optional(),
 
 		// Printer
-		PRINTER_ENDPOINT: z.url({ protocol: /^(wss?|https?)$/ }),
+		PRINTER_ENDPOINT: z.url({ protocol: /^(wss?|https?)$/ }).optional(),
 
 		// Database (optional - not needed when using Supabase client directly)
 		DATABASE_URL: z.string().optional(),

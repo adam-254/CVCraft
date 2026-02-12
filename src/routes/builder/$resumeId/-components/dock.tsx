@@ -25,8 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { authClient } from "@/integrations/auth/client";
 import { orpc } from "@/integrations/orpc/client";
-import { downloadWithAnchor, generateFilename } from "@/utils/file";
-import { downloadPDF } from "@/utils/pdf-client";
+import { downloadFromUrl, downloadWithAnchor, generateFilename } from "@/utils/file";
 import { cn } from "@/utils/style";
 
 export function BuilderDock() {
@@ -207,35 +206,41 @@ export function BuilderDock() {
 		}
 	}, [resume, saveDocument, refetchDocumentStatus]);
 
+	const { mutateAsync: printResumeAsPDF } = useMutation(orpc.printer.printResumeAsPDF.mutationOptions());
+
 	const onDownloadPDF = useCallback(async () => {
 		if (!resume?.id || !resume?.name) return;
-
-		if (!isDocumentSaved) {
-			toast.error(t`Please save your resume before downloading.`);
-			return;
-		}
 
 		const toastId = toast.loading(t`Generating your PDF...`);
 
 		try {
-			// Get the resume element
-			const resumeElement = document.querySelector(".resume-preview-container") as HTMLElement;
-			if (!resumeElement) {
-				throw new Error("Resume preview not found");
-			}
-
 			// Generate filename
 			const filename = `${resume.name.replace(/[^a-z0-9]/gi, "_")}.pdf`;
 
-			// Generate and download PDF
-			await downloadPDF(resumeElement, filename);
+			try {
+				// Try server-side PDF generation first
+				const { url } = await printResumeAsPDF({ id: resume.id });
+				downloadFromUrl(url, filename);
+			} catch (serverError) {
+				// Fallback to client-side PDF generation if server fails
+				console.warn("Server-side PDF generation failed, falling back to client-side:", serverError);
+				
+				const resumeElement = document.querySelector(".resume-preview-container") as HTMLElement;
+				if (!resumeElement) {
+					throw new Error("Resume preview not found");
+				}
+
+				// Use client-side PDF generation as fallback
+				const { downloadPDF } = await import("@/utils/pdf-client");
+				await downloadPDF(resumeElement, filename);
+			}
 
 			toast.success(t`PDF downloaded successfully!`, { id: toastId });
 		} catch (error) {
 			console.error("PDF generation error:", error);
 			toast.error(t`Failed to generate PDF. Please try again.`, { id: toastId });
 		}
-	}, [resume?.id, resume?.name, isDocumentSaved]);
+	}, [resume?.id, resume?.name, printResumeAsPDF]);
 
 	const onAddPage = useCallback(() => {
 		updateResumeData((draft) => {
@@ -307,10 +312,9 @@ export function BuilderDock() {
 				<DockIcon icon={LinkSimpleIcon} title={t`Copy URL`} onClick={() => onCopyUrl()} />
 				<DockIcon icon={FileJsIcon} title={t`Download JSON`} onClick={() => onDownloadJSON()} />
 				<DockIcon
-					title={isDocumentSaved ? t`Download PDF` : t`Save document first to download`}
+					title={t`Download PDF`}
 					onClick={() => onDownloadPDF()}
 					icon={FilePdfIcon}
-					disabled={!isDocumentSaved}
 				/>
 			</motion.div>
 		</div>
