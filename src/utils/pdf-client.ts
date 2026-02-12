@@ -1,121 +1,128 @@
 /**
  * Client-side PDF Generation
- * Uses jsPDF and html2canvas to generate PDFs in the browser
+ * Uses browser's native print functionality for better quality
  */
 
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
-
-export interface PDFOptions {
-	filename?: string;
-	quality?: number;
-	scale?: number;
-}
-
 /**
- * Generate PDF from HTML element
- */
-export async function generatePDFFromElement(
-	element: HTMLElement,
-	options: PDFOptions = {}
-): Promise<Blob> {
-	const { quality = 0.95, scale = 2 } = options;
-
-	// Capture the element as canvas
-	const canvas = await html2canvas(element, {
-		scale,
-		useCORS: true,
-		logging: false,
-		backgroundColor: "#ffffff",
-		removeContainer: true,
-	});
-
-	// A4 dimensions in mm
-	const a4Width = 210;
-	const a4Height = 297;
-
-	// Calculate dimensions
-	const imgWidth = a4Width;
-	const imgHeight = (canvas.height * a4Width) / canvas.width;
-
-	// Create PDF
-	const pdf = new jsPDF({
-		orientation: imgHeight > a4Height ? "portrait" : "portrait",
-		unit: "mm",
-		format: "a4",
-		compress: true,
-	});
-
-	// Convert canvas to image
-	const imgData = canvas.toDataURL("image/jpeg", quality);
-
-	// Calculate how many pages we need
-	let heightLeft = imgHeight;
-	let position = 0;
-	let page = 0;
-
-	// Add first page
-	pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, "FAST");
-	heightLeft -= a4Height;
-
-	// Add additional pages if needed
-	while (heightLeft > 0) {
-		position = heightLeft - imgHeight;
-		pdf.addPage();
-		page++;
-		pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, "FAST");
-		heightLeft -= a4Height;
-	}
-
-	// Return as blob
-	return pdf.output("blob");
-}
-
-/**
- * Download PDF directly
+ * Download PDF using browser's print dialog
+ * This provides much better quality than html2canvas approach
  */
 export async function downloadPDF(element: HTMLElement, filename: string): Promise<void> {
-	const blob = await generatePDFFromElement(element, { filename });
+	// Store original title
+	const originalTitle = document.title;
+	
+	// Set filename as title (some browsers use this for the PDF filename)
+	document.title = filename.replace('.pdf', '');
 
-	// Create download link
-	const url = URL.createObjectURL(blob);
-	const link = document.createElement("a");
-	link.href = url;
-	link.download = filename;
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link);
-	URL.revokeObjectURL(url);
+	// Create a print-specific stylesheet
+	const printStyles = document.createElement('style');
+	printStyles.textContent = `
+		@media print {
+			body * {
+				visibility: hidden;
+			}
+			.resume-preview-container,
+			.resume-preview-container * {
+				visibility: visible;
+			}
+			.resume-preview-container {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+			/* Hide any UI elements */
+			button, .dock, nav, header, footer, .sidebar {
+				display: none !important;
+			}
+		}
+	`;
+	document.head.appendChild(printStyles);
+
+	// Trigger print dialog
+	window.print();
+
+	// Clean up
+	setTimeout(() => {
+		document.title = originalTitle;
+		document.head.removeChild(printStyles);
+	}, 100);
 }
 
 /**
- * Generate PDF from saved HTML URL
+ * Alternative: Generate PDF using jsPDF with better settings
+ * This is a fallback if print dialog doesn't work
  */
-export async function generatePDFFromHTML(htmlContent: string, filename: string): Promise<void> {
-	// Create a temporary container
-	const container = document.createElement("div");
-	container.style.position = "fixed";
-	container.style.left = "-9999px";
-	container.style.top = "0";
-	container.style.width = "210mm"; // A4 width
-	container.innerHTML = htmlContent;
-	document.body.appendChild(container);
+export async function downloadPDFAlternative(element: HTMLElement, filename: string): Promise<void> {
+	// Dynamic import to reduce bundle size
+	const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+		import('html2canvas'),
+		import('jspdf')
+	]);
+
+	// Clone the element to avoid modifying the original
+	const clone = element.cloneNode(true) as HTMLElement;
+	clone.style.position = 'absolute';
+	clone.style.left = '-9999px';
+	clone.style.top = '0';
+	document.body.appendChild(clone);
 
 	try {
-		// Wait for fonts and images to load
+		// Wait for fonts to load
 		await document.fonts.ready;
-		await new Promise((resolve) => setTimeout(resolve, 500));
+		await new Promise(resolve => setTimeout(resolve, 100));
 
-		// Find the resume container
-		const resumeElement = container.querySelector(".resume-preview-container") as HTMLElement;
-		if (!resumeElement) {
-			throw new Error("Resume preview container not found");
+		// Capture with higher quality settings
+		const canvas = await html2canvas(clone, {
+			scale: 3, // Higher scale for better quality
+			useCORS: true,
+			logging: false,
+			backgroundColor: '#ffffff',
+			removeContainer: false,
+			imageTimeout: 0,
+			allowTaint: false,
+		});
+
+		// A4 dimensions in mm
+		const a4Width = 210;
+		const a4Height = 297;
+
+		// Calculate dimensions maintaining aspect ratio
+		const imgWidth = a4Width;
+		const imgHeight = (canvas.height * a4Width) / canvas.width;
+
+		// Create PDF with better compression
+		const pdf = new jsPDF({
+			orientation: 'portrait',
+			unit: 'mm',
+			format: 'a4',
+			compress: true,
+			precision: 2,
+		});
+
+		// Convert canvas to image with high quality
+		const imgData = canvas.toDataURL('image/png', 1.0);
+
+		// Calculate pages needed
+		let heightLeft = imgHeight;
+		let position = 0;
+
+		// Add first page
+		pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+		heightLeft -= a4Height;
+
+		// Add additional pages if needed
+		while (heightLeft > 0) {
+			position = heightLeft - imgHeight;
+			pdf.addPage();
+			pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+			heightLeft -= a4Height;
 		}
 
-		// Generate and download PDF
-		await downloadPDF(resumeElement, filename);
+		// Download
+		pdf.save(filename);
 	} finally {
 		// Clean up
-		document.body.removeChild(container);
+		document.body.removeChild(clone);
 	}
 }

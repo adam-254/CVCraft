@@ -221,21 +221,27 @@ export function BuilderDock() {
 				// Try server-side PDF generation first
 				const { url } = await printResumeAsPDF({ id: resume.id });
 				downloadFromUrl(url, filename);
+				toast.success(t`PDF downloaded successfully!`, { id: toastId });
 			} catch (serverError) {
-				// Fallback to client-side PDF generation if server fails
-				console.warn("Server-side PDF generation failed, falling back to client-side:", serverError);
+				// Server-side failed, use browser's print dialog for best quality
+				console.warn("Server-side PDF generation not available, using browser print:", serverError);
+				toast.dismiss(toastId);
 				
+				// Use browser's native print functionality
+				const { downloadPDF } = await import("@/utils/pdf-client");
 				const resumeElement = document.querySelector(".resume-preview-container") as HTMLElement;
+				
 				if (!resumeElement) {
 					throw new Error("Resume preview not found");
 				}
 
-				// Use client-side PDF generation as fallback
-				const { downloadPDF } = await import("@/utils/pdf-client");
 				await downloadPDF(resumeElement, filename);
+				
+				// Show instructions for print dialog
+				toast.info(t`Please use your browser's print dialog to save as PDF for best quality`, {
+					duration: 5000,
+				});
 			}
-
-			toast.success(t`PDF downloaded successfully!`, { id: toastId });
 		} catch (error) {
 			console.error("PDF generation error:", error);
 			toast.error(t`Failed to generate PDF. Please try again.`, { id: toastId });
